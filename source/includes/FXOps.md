@@ -1,8 +1,30 @@
 # Bookquote
-## ***POST*** 
+> Example returned JSON structured like this:
+
+```json
+{
+  "ID": 0,
+  "Trade_Date": "string",
+  "Value_Date": "string",
+  "CCY_Bought": "string",
+  "CCY_Sold": "string",
+  "Rate": 0,
+  "Bought_Amount": 0,
+  "Sold_Amount": 0,
+  "Payment_Fee": 0,
+  "Trade_ID": "string",
+  "Trade_Type": "string",
+  "OurAccountName": "string",
+  "OurBankName": "string",
+  "OurIBAN": "string",
+  "OurSortCode": "string",
+  "OurSWIFTCode": "string",
+  "Message": "string"
+}
+```
 
 ### HTTP Request 
-`***POST*** /api/BookQuote/BookQuote` 
+`POST /api/BookQuote/BookQuote` 
 
 **Parameters**
 
@@ -19,10 +41,10 @@
 | 200 | OK |
 
 # Payment instruction
-## ***GET*** 
+## GET 
 
 ### HTTP Request 
-`***GET*** /api/PaymentInstruction/GetValues` 
+`GET /api/PaymentInstruction/GetValues` 
 
 **Parameters**
 
@@ -37,10 +59,10 @@
 | ---- | ----------- |
 | 200 | OK |
 
-## ***POST*** 
+## POST 
 
 ### HTTP Request 
-`***POST*** /api/PaymentInstruction/PostValue` 
+`POST /api/PaymentInstruction/PostValue` 
 
 **Parameters**
 
@@ -55,10 +77,10 @@
 | 200 | OK |
 
 # Quote
-## ***POST*** 
+## POST 
 
 ### HTTP Request 
-`***POST*** /api/Quote/PostValue` 
+`POST /api/Quote/PostValue` 
 
 **Parameters**
 
@@ -77,10 +99,10 @@
 | ---- | ----------- |
 | 200 | OK |
 
-## ***GET*** 
+## GET 
 
 ### HTTP Request 
-`***GET*** /api/Quote/GetValue` 
+`GET /api/Quote/GetValue` 
 
 **Parameters**
 
@@ -97,7 +119,7 @@
 ## calculatequote
 
 ### HTTP Request 
-`***POST*** /api/Quote/CalculateQuote` 
+`POST /api/Quote/CalculateQuote` 
 
 **Parameters**
 
@@ -112,10 +134,10 @@
 | 200 | OK |
 
 # Statement
-## ***GET*** 
+## GET 
 
 ### HTTP Request 
-`***GET*** /api/Statement/GetValues` 
+`GET /api/Statement/GetValues` 
 
 **Parameters**
 
@@ -132,10 +154,10 @@
 | 200 | OK |
 
 # Template
-## ***GET*** 
+## GET 
 
 ### HTTP Request 
-`***GET*** /api/Template/GetValues` 
+`GET /api/Template/GetValues` 
 
 **Responses**
 
@@ -144,10 +166,10 @@
 | 200 | OK |
 
 # Token
-## ***POST*** 
+## POST 
 
 ### HTTP Request 
-`***POST*** /api/Token/PostValues` 
+`POST /api/Token/PostValues` 
 
 **Parameters**
 
@@ -162,10 +184,10 @@
 | 200 | OK |
 
 # Trade
-## ***GET*** 
+## GET 
 
 ### HTTP Request 
-`***GET*** /api/Trade/GetValues` 
+`GET /api/Trade/GetValues` 
 
 **Parameters**
 
@@ -184,7 +206,7 @@
 ## Filters
 
 ### HTTP Request 
-`***GET*** /api/webhooks/filters` 
+`GET /api/webhooks/filters` 
 
 **Responses**
 
@@ -195,7 +217,7 @@
 ## Registrations
 
 ### HTTP Request 
-`***GET*** /api/webhooks/registrations` 
+`GET /api/webhooks/registrations` 
 
 **Responses**
 
@@ -205,7 +227,7 @@
 
 
 ### HTTP Request 
-`***POST*** /api/webhooks/registrations` 
+`POST /api/webhooks/registrations` 
 
 **Parameters**
 
@@ -221,7 +243,7 @@
 
 
 ### HTTP Request 
-`***DELETE*** /api/webhooks/registrations` 
+`DELETE /api/webhooks/registrations` 
 
 **Responses**
 
@@ -230,10 +252,10 @@
 | 200 | OK |
 
 ## Registrations/{id}
-### ***GET*** 
+### GET 
 
 ### HTTP Request 
-`***GET*** /api/webhooks/registrations/{id}` 
+`GET /api/webhooks/registrations/{id}` 
 
 **Parameters**
 
@@ -247,10 +269,10 @@
 | ---- | ----------- |
 | 200 | OK |
 
-### ***PUT*** 
+### PUT 
 
 ### HTTP Request 
-`***PUT*** /api/webhooks/registrations/{id}` 
+`PUT /api/webhooks/registrations/{id}` 
 
 **Parameters**
 
@@ -265,10 +287,10 @@
 | ---- | ----------- |
 | 200 | OK |
 
-### ***DELETE*** 
+### DELETE 
 
 ### HTTP Request 
-`***DELETE*** /api/webhooks/registrations/{id}` 
+`DELETE /api/webhooks/registrations/{id}` 
 
 **Parameters**
 
