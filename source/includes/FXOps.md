@@ -41,6 +41,9 @@
 | 200 | OK |
 
 # Payment instruction
+
+## GET 
+
 > Example JSON response:
 
 ```json
@@ -74,8 +77,6 @@
   }
 ]
 ```
-
-## GET 
 
 ### HTTP Request 
 `GET /api/PaymentInstruction/GetValues` 
@@ -186,6 +187,9 @@
 | 200 | OK |
 
 # Statement
+
+## GET 
+
 > Example JSON response:
 
 ```json
@@ -201,7 +205,6 @@
   }
 ]
 ```
-## GET 
 
 ### HTTP Request 
 `GET /api/Statement/GetValues` 
@@ -221,6 +224,9 @@
 | 200 | OK |
 
 # Template
+
+## GET 
+
 > Example JSON response:
 
 ```json
@@ -268,7 +274,6 @@
   }
 ]
 ```
-## GET 
 
 ### HTTP Request 
 `GET /api/Template/GetValues` 
@@ -298,6 +303,9 @@
 | 200 | OK |
 
 # Trade
+
+## GET 
+
 > Example JSON response:
 
 ```json
@@ -319,7 +327,6 @@
   }
 ]
 ```
-## GET 
 
 ### HTTP Request 
 `GET /api/Trade/GetValues` 
