@@ -1,6 +1,8 @@
 # Introduction
 
-Welcome to the Clear Payments API - Powered by Clear Treasury.
+Welcome to the Clear Payments API - Powered by Clear Treasury. With international payments a daily necessity for many, we have developed our online payments platform that dramatically streamlines the process.
+
+We have designed the Clear Payments API to integrate directly into your process, product or software.
 
 # Authentication
 

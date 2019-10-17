@@ -43,7 +43,8 @@
          <div class=content>
             
                <h1 id="introduction">Introduction</h1>
-<p>Welcome to the Clear Payments API - Powered by Clear Treasury.</p>
+<p>Welcome to the Clear Payments API - Powered by Clear Treasury. With international payments a daily necessity for many, we have developed our online payments platform that dramatically streamlines the process.</p>
+<p>We have designed the Clear Payments API to integrate directly into your process, product or software.</p>
 <h1 id="authentication">Authentication</h1>
 <blockquote>
 <p>To authorize, use this code:</p>
@@ -65,7 +66,7 @@ You must replace <code>--yourAuthKey--</code> with your personal API key.
             
                <h1 id="bookquote">Bookquote</h1>
 <blockquote>
-<p>Example returned JSON structured like this:</p>
+<p>Example JSON response:</p>
 </blockquote>
 <pre class="highlight json"><code>{
   <span class="hljs-attr">"ID"</span>: <span class="hljs-number">0</span>,
@@ -135,7 +136,38 @@ You must replace <code>--yourAuthKey--</code> with your personal API key.
 </tbody></table>
 <h1 id="payment-instruction">Payment instruction</h1>
 <h2 id="get">GET</h2>
-<h3 id="http-request-1">HTTP Request</h3>
+<blockquote>
+<p>Example JSON response:</p>
+</blockquote>
+<pre class="highlight json"><code>[
+  {
+    <span class="hljs-attr">"Intermediary"</span>: <span class="hljs-string">"string"</span>,
+    <span class="hljs-attr">"AccountName"</span>: <span class="hljs-string">"string"</span>,
+    <span class="hljs-attr">"AccountNumber"</span>: <span class="hljs-string">"string"</span>,
+    <span class="hljs-attr">"Address"</span>: <span class="hljs-string">"string"</span>,
+    <span class="hljs-attr">"BankName"</span>: <span class="hljs-string">"string"</span>,
+    <span class="hljs-attr">"CCY"</span>: <span class="hljs-string">"string"</span>,
+    <span class="hljs-attr">"Notes"</span>: <span class="hljs-string">"string"</span>,
+    <span class="hljs-attr">"SortCode"</span>: <span class="hljs-string">"string"</span>,
+    <span class="hljs-attr">"Swift"</span>: <span class="hljs-string">"string"</span>,
+    <span class="hljs-attr">"CountryCode"</span>: <span class="hljs-string">"string"</span>,
+    <span class="hljs-attr">"Email"</span>: <span class="hljs-string">"string"</span>,
+    <span class="hljs-attr">"BenAddress"</span>: <span class="hljs-string">"string"</span>,
+    <span class="hljs-attr">"CNAPS"</span>: <span class="hljs-string">"string"</span>,
+    <span class="hljs-attr">"Purpose"</span>: <span class="hljs-string">"string"</span>,
+    <span class="hljs-attr">"ChargeCode"</span>: <span class="hljs-string">"string"</span>,
+    <span class="hljs-attr">"Amount"</span>: <span class="hljs-number">0</span>,
+    <span class="hljs-attr">"PaymentReference"</span>: <span class="hljs-string">"string"</span>,
+    <span class="hljs-attr">"TradeReference"</span>: <span class="hljs-string">"string"</span>,
+    <span class="hljs-attr">"tra_client_id"</span>: <span class="hljs-number">0</span>,
+    <span class="hljs-attr">"pin_id"</span>: <span class="hljs-number">0</span>,
+    <span class="hljs-attr">"PaymentGUID"</span>: <span class="hljs-string">"string"</span>,
+    <span class="hljs-attr">"opi_id"</span>: <span class="hljs-number">0</span>,
+    <span class="hljs-attr">"CreationDate"</span>: <span class="hljs-string">"2019-10-17T11:27:23.691Z"</span>,
+    <span class="hljs-attr">"Status"</span>: <span class="hljs-string">"string"</span>,
+    <span class="hljs-attr">"exportedDate"</span>: <span class="hljs-string">"2019-10-17T11:27:23.691Z"</span>
+  }
+]</code></pre><h3 id="http-request-1">HTTP Request</h3>
 <p><code>GET /api/PaymentInstruction/GetValues</code> </p>
 <p><strong>Parameters</strong></p>
 <table>
@@ -318,7 +350,23 @@ You must replace <code>--yourAuthKey--</code> with your personal API key.
 </tr>
 </tbody></table>
 <h2 id="calculatequote">calculatequote</h2>
-<h3 id="http-request-5">HTTP Request</h3>
+<blockquote>
+<p>Example JSON response:</p>
+</blockquote>
+<pre class="highlight json"><code>{
+  <span class="hljs-attr">"ID"</span>: <span class="hljs-string">"string"</span>,
+  <span class="hljs-attr">"sell_amount"</span>: <span class="hljs-number">0</span>,
+  <span class="hljs-attr">"buy_amount"</span>: <span class="hljs-number">0</span>,
+  <span class="hljs-attr">"client_rate"</span>: <span class="hljs-number">0</span>,
+  <span class="hljs-attr">"bank_rate"</span>: <span class="hljs-number">0</span>,
+  <span class="hljs-attr">"ccy_sell"</span>: <span class="hljs-string">"string"</span>,
+  <span class="hljs-attr">"fee"</span>: <span class="hljs-number">0</span>,
+  <span class="hljs-attr">"fee_ccy"</span>: <span class="hljs-number">0</span>,
+  <span class="hljs-attr">"ccy_buy"</span>: <span class="hljs-string">"string"</span>,
+  <span class="hljs-attr">"value_date"</span>: <span class="hljs-string">"string"</span>,
+  <span class="hljs-attr">"Message"</span>: <span class="hljs-string">"string"</span>,
+  <span class="hljs-attr">"Status"</span>: <span class="hljs-literal">true</span>
+}</code></pre><h3 id="http-request-5">HTTP Request</h3>
 <p><code>POST /api/Quote/CalculateQuote</code> </p>
 <p><strong>Parameters</strong></p>
 <table>
@@ -354,7 +402,20 @@ You must replace <code>--yourAuthKey--</code> with your personal API key.
 </tbody></table>
 <h1 id="statement">Statement</h1>
 <h2 id="get-2">GET</h2>
-<h3 id="http-request-6">HTTP Request</h3>
+<blockquote>
+<p>Example JSON response:</p>
+</blockquote>
+<pre class="highlight json"><code>[
+  {
+    <span class="hljs-attr">"Date"</span>: <span class="hljs-string">"2019-10-17T12:24:39.589Z"</span>,
+    <span class="hljs-attr">"Reference"</span>: <span class="hljs-string">"string"</span>,
+    <span class="hljs-attr">"Detail"</span>: <span class="hljs-string">"string"</span>,
+    <span class="hljs-attr">"Receipts"</span>: <span class="hljs-number">0</span>,
+    <span class="hljs-attr">"Payments"</span>: <span class="hljs-number">0</span>,
+    <span class="hljs-attr">"Bank_Account"</span>: <span class="hljs-string">"string"</span>,
+    <span class="hljs-attr">"Balance"</span>: <span class="hljs-number">0</span>
+  }
+]</code></pre><h3 id="http-request-6">HTTP Request</h3>
 <p><code>GET /api/Statement/GetValues</code> </p>
 <p><strong>Parameters</strong></p>
 <table>
@@ -404,7 +465,52 @@ You must replace <code>--yourAuthKey--</code> with your personal API key.
 </tbody></table>
 <h1 id="template">Template</h1>
 <h2 id="get-3">GET</h2>
-<h3 id="http-request-7">HTTP Request</h3>
+<blockquote>
+<p>Example JSON response:</p>
+</blockquote>
+<pre class="highlight json"><code>[
+  {
+    <span class="hljs-attr">"pin_id"</span>: <span class="hljs-number">0</span>,
+    <span class="hljs-attr">"pin_link_id"</span>: <span class="hljs-number">0</span>,
+    <span class="hljs-attr">"pin_link_type"</span>: <span class="hljs-number">0</span>,
+    <span class="hljs-attr">"pin_ccy"</span>: <span class="hljs-string">"string"</span>,
+    <span class="hljs-attr">"pin_bank_name"</span>: <span class="hljs-string">"string"</span>,
+    <span class="hljs-attr">"pin_address"</span>: <span class="hljs-string">"string"</span>,
+    <span class="hljs-attr">"pin_account_name"</span>: <span class="hljs-string">"string"</span>,
+    <span class="hljs-attr">"pin_account_number"</span>: <span class="hljs-string">"string"</span>,
+    <span class="hljs-attr">"pin_sort_code"</span>: <span class="hljs-string">"string"</span>,
+    <span class="hljs-attr">"pin_iban"</span>: <span class="hljs-string">"string"</span>,
+    <span class="hljs-attr">"pin_swift_bic"</span>: <span class="hljs-string">"string"</span>,
+    <span class="hljs-attr">"pin_fedwire_bank_code"</span>: <span class="hljs-string">"string"</span>,
+    <span class="hljs-attr">"pin_details"</span>: <span class="hljs-string">"string"</span>,
+    <span class="hljs-attr">"pin_notes"</span>: <span class="hljs-string">"string"</span>,
+    <span class="hljs-attr">"pin_country_code"</span>: <span class="hljs-string">"string"</span>,
+    <span class="hljs-attr">"pin_intermediary"</span>: <span class="hljs-string">"string"</span>,
+    <span class="hljs-attr">"pin_email"</span>: <span class="hljs-string">"string"</span>,
+    <span class="hljs-attr">"pin_alert_date"</span>: <span class="hljs-string">"string"</span>,
+    <span class="hljs-attr">"pin_archived"</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-attr">"pin_ben_name"</span>: <span class="hljs-string">"string"</span>,
+    <span class="hljs-attr">"pin_ben_contact_name"</span>: <span class="hljs-string">"string"</span>,
+    <span class="hljs-attr">"pin_ben_address"</span>: <span class="hljs-string">"string"</span>,
+    <span class="hljs-attr">"pin_ben_activity"</span>: <span class="hljs-string">"string"</span>,
+    <span class="hljs-attr">"pin_ben_post_code"</span>: <span class="hljs-string">"string"</span>,
+    <span class="hljs-attr">"pin_ben_Town"</span>: <span class="hljs-string">"string"</span>,
+    <span class="hljs-attr">"pin_bank_post_code"</span>: <span class="hljs-string">"string"</span>,
+    <span class="hljs-attr">"pin_bank_Town"</span>: <span class="hljs-string">"string"</span>,
+    <span class="hljs-attr">"pin_bank_code"</span>: <span class="hljs-string">"string"</span>,
+    <span class="hljs-attr">"pin_bank_branch"</span>: <span class="hljs-string">"string"</span>,
+    <span class="hljs-attr">"pin_CPF"</span>: <span class="hljs-string">"string"</span>,
+    <span class="hljs-attr">"pin_account_type"</span>: <span class="hljs-string">"string"</span>,
+    <span class="hljs-attr">"pin_cnaps"</span>: <span class="hljs-string">"string"</span>,
+    <span class="hljs-attr">"pin_purpose"</span>: <span class="hljs-string">"string"</span>,
+    <span class="hljs-attr">"pin_validate_date"</span>: <span class="hljs-string">"string"</span>,
+    <span class="hljs-attr">"pin_last_external_check_date"</span>: <span class="hljs-string">"string"</span>,
+    <span class="hljs-attr">"pin_low_risk"</span>: <span class="hljs-number">0</span>,
+    <span class="hljs-attr">"pin_recurrent"</span>: <span class="hljs-number">0</span>,
+    <span class="hljs-attr">"pin_partner"</span>: <span class="hljs-number">0</span>,
+    <span class="hljs-attr">"pin_check_count"</span>: <span class="hljs-number">0</span>
+  }
+]</code></pre><h3 id="http-request-7">HTTP Request</h3>
 <p><code>GET /api/Template/GetValues</code> </p>
 <p><strong>Responses</strong></p>
 <table>
@@ -457,7 +563,26 @@ You must replace <code>--yourAuthKey--</code> with your personal API key.
 </tbody></table>
 <h1 id="trade">Trade</h1>
 <h2 id="get-4">GET</h2>
-<h3 id="http-request-9">HTTP Request</h3>
+<blockquote>
+<p>Example JSON response:</p>
+</blockquote>
+<pre class="highlight json"><code>[
+  {
+    <span class="hljs-attr">"ID"</span>: <span class="hljs-number">0</span>,
+    <span class="hljs-attr">"Trade_Date"</span>: <span class="hljs-string">"string"</span>,
+    <span class="hljs-attr">"Value_Date"</span>: <span class="hljs-string">"string"</span>,
+    <span class="hljs-attr">"CCY_Bought"</span>: <span class="hljs-string">"string"</span>,
+    <span class="hljs-attr">"CCY_Sold"</span>: <span class="hljs-string">"string"</span>,
+    <span class="hljs-attr">"Rate"</span>: <span class="hljs-number">0</span>,
+    <span class="hljs-attr">"Bought_Amount"</span>: <span class="hljs-number">0</span>,
+    <span class="hljs-attr">"Sold_Amount"</span>: <span class="hljs-number">0</span>,
+    <span class="hljs-attr">"Payment_Fee"</span>: <span class="hljs-number">0</span>,
+    <span class="hljs-attr">"Trade_ID"</span>: <span class="hljs-string">"string"</span>,
+    <span class="hljs-attr">"Trade_Type"</span>: <span class="hljs-string">"string"</span>,
+    <span class="hljs-attr">"Status"</span>: <span class="hljs-string">"string"</span>,
+    <span class="hljs-attr">"Beneficiary"</span>: <span class="hljs-string">"string"</span>
+  }
+]</code></pre><h3 id="http-request-9">HTTP Request</h3>
 <p><code>GET /api/Trade/GetValues</code> </p>
 <p><strong>Parameters</strong></p>
 <table>
@@ -500,7 +625,15 @@ You must replace <code>--yourAuthKey--</code> with your personal API key.
 </tbody></table>
 <h1 id="webhooks">Webhooks</h1>
 <h2 id="filters">Filters</h2>
-<h3 id="http-request-10">HTTP Request</h3>
+<blockquote>
+<p>Example JSON response:</p>
+</blockquote>
+<pre class="highlight json"><code>[
+  {
+    <span class="hljs-attr">"Name"</span>: <span class="hljs-string">"string"</span>,
+    <span class="hljs-attr">"Description"</span>: <span class="hljs-string">"string"</span>
+  }
+]</code></pre><h3 id="http-request-10">HTTP Request</h3>
 <p><code>GET /api/webhooks/filters</code> </p>
 <p><strong>Responses</strong></p>
 <table>
@@ -516,7 +649,23 @@ You must replace <code>--yourAuthKey--</code> with your personal API key.
 </tr>
 </tbody></table>
 <h2 id="registrations">Registrations</h2>
-<h3 id="http-request-11">HTTP Request</h3>
+<blockquote>
+<p>Example JSON response:</p>
+</blockquote>
+<pre class="highlight json"><code>[
+  {
+    <span class="hljs-attr">"Id"</span>: <span class="hljs-string">"string"</span>,
+    <span class="hljs-attr">"WebHookUri"</span>: <span class="hljs-string">"string"</span>,
+    <span class="hljs-attr">"Secret"</span>: <span class="hljs-string">"string"</span>,
+    <span class="hljs-attr">"Description"</span>: <span class="hljs-string">"string"</span>,
+    <span class="hljs-attr">"IsPaused"</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-attr">"Filters"</span>: [
+      <span class="hljs-string">"string"</span>
+    ],
+    <span class="hljs-attr">"Headers"</span>: {},
+    <span class="hljs-attr">"Properties"</span>: {}
+  }
+]</code></pre><h3 id="http-request-11">HTTP Request</h3>
 <p><code>GET /api/webhooks/registrations</code> </p>
 <p><strong>Responses</strong></p>
 <table>
@@ -693,7 +842,6 @@ You must replace <code>--yourAuthKey--</code> with your personal API key.
 <td>OK</td>
 </tr>
 </tbody></table>
-<!-- Converted with the swagger-to-slate https://github.com/lavkumarv/swagger-to-slate -->
 
             
                <h1 id="errors">Errors</h1>
