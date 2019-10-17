@@ -1,8 +1,9 @@
 title: API Reference
 
 language_tabs:
-   - bash
    - javascript
+   - bash
+
 
 toc_footers:
    - <a href="https://payments.cleartreasury.co.uk">Sign up for a developer key</a>
