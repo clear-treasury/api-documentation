@@ -7,7 +7,7 @@
       <link rel=icon href=images/bookmark.png> <link href=stylesheets/screen.css rel=stylesheet media=screen>
       <link href=stylesheets/print.css rel=stylesheet media=print>
       <link href=stylesheets/highlight-monokai.css rel=stylesheet media=screen,print>
-      <script src=javascripts/all.js type=text/javascript> </script> </head> <body class="" data-languages="[&#34;bash&#34;,&#34;ruby&#34;,&#34;python&#34;,&#34;javascript&#34;]"> <a href=# id=nav-button>
+      <script src=javascripts/all.js type=text/javascript> </script> </head> <body class="" data-languages="[&#34;javascript&#34;,&#34;bash&#34;]"> <a href=# id=nav-button>
          <span>NAV <img alt=navbar class=image-navbar src=images/navbar.png></span>
       </a>
 
@@ -16,13 +16,9 @@
          
             <div class=lang-selector>
                
-                  <a href=# data-language-name="bash">bash</a>
-               
-                  <a href=# data-language-name="ruby">ruby</a>
-               
-                  <a href=# data-language-name="python">python</a>
-               
                   <a href=# data-language-name="javascript">javascript</a>
+               
+                  <a href=# data-language-name="bash">bash</a>
                
             </div>
          
@@ -36,7 +32,7 @@
          
             <ul class=toc-footer>
                
-                  <li><a href=#>Sign up for a developer key</a></li>
+                  <li><a href="https://payments.cleartreasury.co.uk">Sign up for a developer key</a></li>
                
             </ul>
          
@@ -47,136 +43,50 @@
          <div class=content>
             
                <h1 id="introduction">Introduction</h1>
-<p>Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.</p>
-<p>We have language bindings in Shell, Ruby, and Python! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.</p>
-<p>This example API documentation page was created with <a href="https://github.com/lord/slate">Slate</a>. Feel free to edit it and use it as a base for your own API&#39;s documentation.</p>
+<p>Welcome to the Clear Payments API - Powered by Clear Treasury.</p>
 <h1 id="authentication">Authentication</h1>
 <blockquote>
 <p>To authorize, use this code:</p>
 </blockquote>
-<pre class="highlight ruby"><code><span class="hljs-keyword">require</span> <span class="hljs-string">'kittn'</span>
-
-api = Kittn::APIClient.authorize!(<span class="hljs-string">'meowmeowmeow'</span>)</code></pre><pre class="highlight python"><code><span class="hljs-keyword">import</span> kittn
-
-api = kittn.authorize(<span class="hljs-string">'meowmeowmeow'</span>)</code></pre><pre class="highlight bash"><code><span class="hljs-comment"># With shell, you can just pass the correct header with each request</span>
+<pre class="highlight bash"><code><span class="hljs-comment"># With shell, you can just pass the correct header with each request</span>
 curl <span class="hljs-string">"api_endpoint_here"</span>
-  -H <span class="hljs-string">"Authorization: meowmeowmeow"</span></code></pre><pre class="highlight javascript"><code><span class="hljs-keyword">const</span> kittn = <span class="hljs-built_in">require</span>(<span class="hljs-string">'kittn'</span>);
+  -H <span class="hljs-string">"Authorization: --yourAuthKey--"</span></code></pre><pre class="highlight javascript"><code><span class="hljs-keyword">const</span> kittn = <span class="hljs-built_in">require</span>(<span class="hljs-string">'kittn'</span>);
 
-<span class="hljs-keyword">let</span> api = kittn.authorize(<span class="hljs-string">'meowmeowmeow'</span>);</code></pre><blockquote>
-<p>Make sure to replace <code>meowmeowmeow</code> with your API key.</p>
+<span class="hljs-keyword">let</span> api = kittn.authorize(<span class="hljs-string">'--yourAuthKey--'</span>);</code></pre><blockquote>
+<p>Make sure to replace <code>--yourAuthKey--</code> with your API key.</p>
 </blockquote>
-<p>Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our <a href="https://example.com/developers">developer portal</a>.</p>
-<p>Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:</p>
-<p><code>Authorization: meowmeowmeow</code></p>
+<p>Clear Payments uses API keys to allow access to the API. You can register a new API key at our <a href="https://payments.cleartreasury.co.uk">developer portal</a>.</p>
+<p>Clear Payments expects for the API key to be included in all API requests to the server in a header that looks like the following:</p>
+<p><code>Authorization: --yourAuthKey--</code></p>
 <aside class=notice>
-You must replace <code>meowmeowmeow</code> with your personal API key.
+You must replace <code>--yourAuthKey--</code> with your personal API key.
 </aside>
-
-<h1 id="kittens">Kittens</h1>
-<h2 id="get-all-kittens">Get All Kittens</h2>
-<pre class="highlight ruby"><code><span class="hljs-keyword">require</span> <span class="hljs-string">'kittn'</span>
-
-api = Kittn::APIClient.authorize!(<span class="hljs-string">'meowmeowmeow'</span>)
-api.kittens.get</code></pre><pre class="highlight python"><code><span class="hljs-keyword">import</span> kittn
-
-api = kittn.authorize(<span class="hljs-string">'meowmeowmeow'</span>)
-api.kittens.get()</code></pre><pre class="highlight bash"><code>curl <span class="hljs-string">"https://example.com/api/kittens"</span>
-  -H <span class="hljs-string">"Authorization: meowmeowmeow"</span></code></pre><pre class="highlight javascript"><code><span class="hljs-keyword">const</span> kittn = <span class="hljs-built_in">require</span>(<span class="hljs-string">'kittn'</span>);
-
-<span class="hljs-keyword">let</span> api = kittn.authorize(<span class="hljs-string">'meowmeowmeow'</span>);
-<span class="hljs-keyword">let</span> kittens = api.kittens.get();</code></pre><blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json"><code>[
-   {
-      <span class="hljs-attr">"id"</span>:         <span class="hljs-number">1</span>,
-      <span class="hljs-attr">"name"</span>:       <span class="hljs-string">"Fluffums"</span>,
-      <span class="hljs-attr">"breed"</span>:      <span class="hljs-string">"calico"</span>,
-      <span class="hljs-attr">"fluffiness"</span>: <span class="hljs-number">6</span>,
-      <span class="hljs-attr">"cuteness"</span>:   <span class="hljs-number">7</span>
-   },
-   {
-      <span class="hljs-attr">"id"</span>:         <span class="hljs-number">2</span>,
-      <span class="hljs-attr">"name"</span>:       <span class="hljs-string">"Max"</span>,
-      <span class="hljs-attr">"breed"</span>:      <span class="hljs-string">"unknown"</span>,
-      <span class="hljs-attr">"fluffiness"</span>: <span class="hljs-number">5</span>,
-      <span class="hljs-attr">"cuteness"</span>:   <span class="hljs-number">10</span>
-   }
-]</code></pre><p>This endpoint retrieves all kittens.</p>
-<h3 id="http-request">HTTP Request</h3>
-<p><code>GET https://example.com/api/kittens</code></p>
-<h3 id="query-parameters">Query Parameters</h3>
-<table>
-<thead>
-<tr>
-<th>Parameter</th>
-<th>Default</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>include_cats</td>
-<td>false</td>
-<td>If set to true, the result will also include cats.</td>
-</tr>
-<tr>
-<td>available</td>
-<td>true</td>
-<td>If set to false, the result will include kittens that have already been adopted.</td>
-</tr>
-</tbody></table>
-<aside class=success>
-Remember — a happy kitten is an authenticated kitten!
-</aside>
-
-<h2 id="get-a-specific-kitten">Get a Specific Kitten</h2>
-<pre class="highlight ruby"><code><span class="hljs-keyword">require</span> <span class="hljs-string">'kittn'</span>
-
-api = Kittn::APIClient.authorize!(<span class="hljs-string">'meowmeowmeow'</span>)
-api.kittens.get(<span class="hljs-number">2</span>)</code></pre><pre class="highlight python"><code><span class="hljs-keyword">import</span> kittn
-
-api = kittn.authorize(<span class="hljs-string">'meowmeowmeow'</span>)
-api.kittens.get(<span class="hljs-number">2</span>)</code></pre><pre class="highlight bash"><code>curl <span class="hljs-string">"https://example.com/api/kittens/2"</span>
-  -H <span class="hljs-string">"Authorization: meowmeowmeow"</span></code></pre><pre class="highlight javascript"><code><span class="hljs-keyword">const</span> kittn = <span class="hljs-built_in">require</span>(<span class="hljs-string">'kittn'</span>);
-
-<span class="hljs-keyword">let</span> api = kittn.authorize(<span class="hljs-string">'meowmeowmeow'</span>);
-<span class="hljs-keyword">let</span> max = api.kittens.get(<span class="hljs-number">2</span>);</code></pre><blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json"><code>{
-   <span class="hljs-attr">"id"</span>:         <span class="hljs-number">2</span>,
-   <span class="hljs-attr">"name"</span>:       <span class="hljs-string">"Max"</span>,
-   <span class="hljs-attr">"breed"</span>:      <span class="hljs-string">"unknown"</span>,
-   <span class="hljs-attr">"fluffiness"</span>: <span class="hljs-number">5</span>,
-   <span class="hljs-attr">"cuteness"</span>:   <span class="hljs-number">10</span>
-}</code></pre><p>This endpoint retrieves a specific kitten.</p>
-<aside class=warning>
-Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.
-</aside>
-
-<h3 id="http-request-with-id">HTTP Request (with ID)</h3>
-<p><code>GET https://example.com/kittens/&lt;ID&gt;</code></p>
-<h3 id="url-parameters">URL Parameters</h3>
-<table>
-<thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>ID</td>
-<td>The ID of the kitten to retrieve</td>
-</tr>
-</tbody></table>
 
             
-               <h1 id="introduction">Introduction</h1>
-<p><strong>Version:</strong> api</p>
-<h1 id="apibookquotebookquote">/API/BOOKQUOTE/BOOKQUOTE</h1>
-<h2 id="post"><strong><em>POST</em></strong></h2>
-<h3 id="http-request">HTTP Request</h3>
-<p><code>***POST*** /api/BookQuote/BookQuote</code> </p>
+               <h1 id="bookquote">Bookquote</h1>
+<blockquote>
+<p>Example returned JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code>{
+  <span class="hljs-attr">"ID"</span>: <span class="hljs-number">0</span>,
+  <span class="hljs-attr">"Trade_Date"</span>: <span class="hljs-string">"string"</span>,
+  <span class="hljs-attr">"Value_Date"</span>: <span class="hljs-string">"string"</span>,
+  <span class="hljs-attr">"CCY_Bought"</span>: <span class="hljs-string">"string"</span>,
+  <span class="hljs-attr">"CCY_Sold"</span>: <span class="hljs-string">"string"</span>,
+  <span class="hljs-attr">"Rate"</span>: <span class="hljs-number">0</span>,
+  <span class="hljs-attr">"Bought_Amount"</span>: <span class="hljs-number">0</span>,
+  <span class="hljs-attr">"Sold_Amount"</span>: <span class="hljs-number">0</span>,
+  <span class="hljs-attr">"Payment_Fee"</span>: <span class="hljs-number">0</span>,
+  <span class="hljs-attr">"Trade_ID"</span>: <span class="hljs-string">"string"</span>,
+  <span class="hljs-attr">"Trade_Type"</span>: <span class="hljs-string">"string"</span>,
+  <span class="hljs-attr">"OurAccountName"</span>: <span class="hljs-string">"string"</span>,
+  <span class="hljs-attr">"OurBankName"</span>: <span class="hljs-string">"string"</span>,
+  <span class="hljs-attr">"OurIBAN"</span>: <span class="hljs-string">"string"</span>,
+  <span class="hljs-attr">"OurSortCode"</span>: <span class="hljs-string">"string"</span>,
+  <span class="hljs-attr">"OurSWIFTCode"</span>: <span class="hljs-string">"string"</span>,
+  <span class="hljs-attr">"Message"</span>: <span class="hljs-string">"string"</span>
+}</code></pre><h3 id="http-request">HTTP Request</h3>
+<p><code>POST /api/BookQuote/BookQuote</code> </p>
 <p><strong>Parameters</strong></p>
 <table>
 <thead>
@@ -223,10 +133,10 @@ Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;
 <td>OK</td>
 </tr>
 </tbody></table>
-<h1 id="apipaymentinstructiongetvalues">/API/PAYMENTINSTRUCTION/GETVALUES</h1>
-<h2 id="get"><strong><em>GET</em></strong></h2>
+<h1 id="payment-instruction">Payment instruction</h1>
+<h2 id="get">GET</h2>
 <h3 id="http-request-1">HTTP Request</h3>
-<p><code>***GET*** /api/PaymentInstruction/GetValues</code> </p>
+<p><code>GET /api/PaymentInstruction/GetValues</code> </p>
 <p><strong>Parameters</strong></p>
 <table>
 <thead>
@@ -266,10 +176,9 @@ Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;
 <td>OK</td>
 </tr>
 </tbody></table>
-<h1 id="apipaymentinstructionpostvalue">/API/PAYMENTINSTRUCTION/POSTVALUE</h1>
-<h2 id="post-1"><strong><em>POST</em></strong></h2>
+<h2 id="post">POST</h2>
 <h3 id="http-request-2">HTTP Request</h3>
-<p><code>***POST*** /api/PaymentInstruction/PostValue</code> </p>
+<p><code>POST /api/PaymentInstruction/PostValue</code> </p>
 <p><strong>Parameters</strong></p>
 <table>
 <thead>
@@ -302,10 +211,10 @@ Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;
 <td>OK</td>
 </tr>
 </tbody></table>
-<h1 id="apiquotepostvalue">/API/QUOTE/POSTVALUE</h1>
-<h2 id="post-2"><strong><em>POST</em></strong></h2>
+<h1 id="quote">Quote</h1>
+<h2 id="post-1">POST</h2>
 <h3 id="http-request-3">HTTP Request</h3>
-<p><code>***POST*** /api/Quote/PostValue</code> </p>
+<p><code>POST /api/Quote/PostValue</code> </p>
 <p><strong>Parameters</strong></p>
 <table>
 <thead>
@@ -373,10 +282,9 @@ Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;
 <td>OK</td>
 </tr>
 </tbody></table>
-<h1 id="apiquotegetvalue">/API/QUOTE/GETVALUE</h1>
-<h2 id="get-1"><strong><em>GET</em></strong></h2>
+<h2 id="get-1">GET</h2>
 <h3 id="http-request-4">HTTP Request</h3>
-<p><code>***GET*** /api/Quote/GetValue</code> </p>
+<p><code>GET /api/Quote/GetValue</code> </p>
 <p><strong>Parameters</strong></p>
 <table>
 <thead>
@@ -409,10 +317,9 @@ Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;
 <td>OK</td>
 </tr>
 </tbody></table>
-<h1 id="apiquotecalculatequote">/API/QUOTE/CALCULATEQUOTE</h1>
-<h2 id="post-3"><strong><em>POST</em></strong></h2>
+<h2 id="calculatequote">calculatequote</h2>
 <h3 id="http-request-5">HTTP Request</h3>
-<p><code>***POST*** /api/Quote/CalculateQuote</code> </p>
+<p><code>POST /api/Quote/CalculateQuote</code> </p>
 <p><strong>Parameters</strong></p>
 <table>
 <thead>
@@ -445,10 +352,10 @@ Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;
 <td>OK</td>
 </tr>
 </tbody></table>
-<h1 id="apistatementgetvalues">/API/STATEMENT/GETVALUES</h1>
-<h2 id="get-2"><strong><em>GET</em></strong></h2>
+<h1 id="statement">Statement</h1>
+<h2 id="get-2">GET</h2>
 <h3 id="http-request-6">HTTP Request</h3>
-<p><code>***GET*** /api/Statement/GetValues</code> </p>
+<p><code>GET /api/Statement/GetValues</code> </p>
 <p><strong>Parameters</strong></p>
 <table>
 <thead>
@@ -495,10 +402,10 @@ Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;
 <td>OK</td>
 </tr>
 </tbody></table>
-<h1 id="apitemplategetvalues">/API/TEMPLATE/GETVALUES</h1>
-<h2 id="get-3"><strong><em>GET</em></strong></h2>
+<h1 id="template">Template</h1>
+<h2 id="get-3">GET</h2>
 <h3 id="http-request-7">HTTP Request</h3>
-<p><code>***GET*** /api/Template/GetValues</code> </p>
+<p><code>GET /api/Template/GetValues</code> </p>
 <p><strong>Responses</strong></p>
 <table>
 <thead>
@@ -512,10 +419,10 @@ Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;
 <td>OK</td>
 </tr>
 </tbody></table>
-<h1 id="apitokenpostvalues">/API/TOKEN/POSTVALUES</h1>
-<h2 id="post-4"><strong><em>POST</em></strong></h2>
+<h1 id="token">Token</h1>
+<h2 id="post-2">POST</h2>
 <h3 id="http-request-8">HTTP Request</h3>
-<p><code>***POST*** /api/Token/PostValues</code> </p>
+<p><code>POST /api/Token/PostValues</code> </p>
 <p><strong>Parameters</strong></p>
 <table>
 <thead>
@@ -548,10 +455,10 @@ Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;
 <td>OK</td>
 </tr>
 </tbody></table>
-<h1 id="apitradegetvalues">/API/TRADE/GETVALUES</h1>
-<h2 id="get-4"><strong><em>GET</em></strong></h2>
+<h1 id="trade">Trade</h1>
+<h2 id="get-4">GET</h2>
 <h3 id="http-request-9">HTTP Request</h3>
-<p><code>***GET*** /api/Trade/GetValues</code> </p>
+<p><code>GET /api/Trade/GetValues</code> </p>
 <p><strong>Parameters</strong></p>
 <table>
 <thead>
@@ -591,10 +498,10 @@ Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;
 <td>OK</td>
 </tr>
 </tbody></table>
-<h1 id="apiwebhooksfilters">/API/WEBHOOKS/FILTERS</h1>
-<h2 id="get-5"><strong><em>GET</em></strong></h2>
+<h1 id="webhooks">Webhooks</h1>
+<h2 id="filters">Filters</h2>
 <h3 id="http-request-10">HTTP Request</h3>
-<p><code>***GET*** /api/webhooks/filters</code> </p>
+<p><code>GET /api/webhooks/filters</code> </p>
 <p><strong>Responses</strong></p>
 <table>
 <thead>
@@ -608,10 +515,9 @@ Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;
 <td>OK</td>
 </tr>
 </tbody></table>
-<h1 id="apiwebhooksregistrations">/API/WEBHOOKS/REGISTRATIONS</h1>
-<h2 id="get-6"><strong><em>GET</em></strong></h2>
+<h2 id="registrations">Registrations</h2>
 <h3 id="http-request-11">HTTP Request</h3>
-<p><code>***GET*** /api/webhooks/registrations</code> </p>
+<p><code>GET /api/webhooks/registrations</code> </p>
 <p><strong>Responses</strong></p>
 <table>
 <thead>
@@ -625,9 +531,8 @@ Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;
 <td>OK</td>
 </tr>
 </tbody></table>
-<h2 id="post-5"><strong><em>POST</em></strong></h2>
 <h3 id="http-request-12">HTTP Request</h3>
-<p><code>***POST*** /api/webhooks/registrations</code> </p>
+<p><code>POST /api/webhooks/registrations</code> </p>
 <p><strong>Parameters</strong></p>
 <table>
 <thead>
@@ -660,9 +565,8 @@ Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;
 <td>OK</td>
 </tr>
 </tbody></table>
-<h2 id="delete"><strong><em>DELETE</em></strong></h2>
 <h3 id="http-request-13">HTTP Request</h3>
-<p><code>***DELETE*** /api/webhooks/registrations</code> </p>
+<p><code>DELETE /api/webhooks/registrations</code> </p>
 <p><strong>Responses</strong></p>
 <table>
 <thead>
@@ -676,10 +580,10 @@ Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;
 <td>OK</td>
 </tr>
 </tbody></table>
-<h1 id="apiwebhooksregistrationsid">/API/WEBHOOKS/REGISTRATIONS/{ID}</h1>
-<h2 id="get-7"><strong><em>GET</em></strong></h2>
+<h2 id="registrationsid">Registrations/{id}</h2>
+<h3 id="get-5">GET</h3>
 <h3 id="http-request-14">HTTP Request</h3>
-<p><code>***GET*** /api/webhooks/registrations/{id}</code> </p>
+<p><code>GET /api/webhooks/registrations/{id}</code> </p>
 <p><strong>Parameters</strong></p>
 <table>
 <thead>
@@ -712,9 +616,9 @@ Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;
 <td>OK</td>
 </tr>
 </tbody></table>
-<h2 id="put"><strong><em>PUT</em></strong></h2>
+<h3 id="put">PUT</h3>
 <h3 id="http-request-15">HTTP Request</h3>
-<p><code>***PUT*** /api/webhooks/registrations/{id}</code> </p>
+<p><code>PUT /api/webhooks/registrations/{id}</code> </p>
 <p><strong>Parameters</strong></p>
 <table>
 <thead>
@@ -754,9 +658,9 @@ Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;
 <td>OK</td>
 </tr>
 </tbody></table>
-<h2 id="delete-1"><strong><em>DELETE</em></strong></h2>
+<h3 id="delete">DELETE</h3>
 <h3 id="http-request-16">HTTP Request</h3>
-<p><code>***DELETE*** /api/webhooks/registrations/{id}</code> </p>
+<p><code>DELETE /api/webhooks/registrations/{id}</code> </p>
 <p><strong>Parameters</strong></p>
 <table>
 <thead>
@@ -797,7 +701,7 @@ Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;
 This error section is stored in a separate file in `includes/_errors.md`. Slate allows you to optionally separate out your docs into many files...just save them to the `includes` folder and add them to the top of your `index.md`'s front matter. Files are included in the order listed.
 </aside>
 
-<p>The Kittn API uses the following error codes:</p>
+<p>The Clear Payments API uses the following error codes:</p>
 <table>
 <thead>
 <tr>
@@ -815,15 +719,15 @@ This error section is stored in a separate file in `includes/_errors.md`. Slate 
 </tr>
 <tr>
 <td>403</td>
-<td>Forbidden -- The kitten requested is hidden for administrators only.</td>
+<td>Forbidden -- The value requested is hidden for administrators only.</td>
 </tr>
 <tr>
 <td>404</td>
-<td>Not Found -- The specified kitten could not be found.</td>
+<td>Not Found -- The specified value could not be found.</td>
 </tr>
 <tr>
 <td>405</td>
-<td>Method Not Allowed -- You tried to access a kitten with an invalid method.</td>
+<td>Method Not Allowed -- You tried to access a value with an invalid method.</td>
 </tr>
 <tr>
 <td>406</td>
@@ -831,7 +735,7 @@ This error section is stored in a separate file in `includes/_errors.md`. Slate 
 </tr>
 <tr>
 <td>410</td>
-<td>Gone -- The kitten requested has been removed from our servers.</td>
+<td>Gone -- The value requested has been removed from our servers.</td>
 </tr>
 <tr>
 <td>418</td>
@@ -839,7 +743,7 @@ This error section is stored in a separate file in `includes/_errors.md`. Slate 
 </tr>
 <tr>
 <td>429</td>
-<td>Too Many Requests -- You&#39;re requesting too many kittens! Slow down!</td>
+<td>Too Many Requests -- You&#39;re requesting too many values! Slow down!</td>
 </tr>
 <tr>
 <td>500</td>
@@ -857,13 +761,9 @@ This error section is stored in a separate file in `includes/_errors.md`. Slate 
             
                <div class=lang-selector>
                   
-                     <a href=# data-language-name="bash">bash</a>
-                  
-                     <a href=# data-language-name="ruby">ruby</a>
-                  
-                     <a href=# data-language-name="python">python</a>
-                  
                      <a href=# data-language-name="javascript">javascript</a>
+                  
+                     <a href=# data-language-name="bash">bash</a>
                   
                </div>
             
