@@ -24,7 +24,7 @@
 ```
 
 ### HTTP Request 
-`POST /api/BookQuote/BookQuote` 
+`POST /BookQuote/BookQuote` 
 
 **Parameters**
 
@@ -79,7 +79,7 @@
 ```
 
 ### HTTP Request 
-`GET /api/PaymentInstruction/GetValues` 
+`GET /PaymentInstruction/GetValues` 
 
 **Parameters**
 
@@ -97,7 +97,7 @@
 ## POST 
 
 ### HTTP Request 
-`POST /api/PaymentInstruction/PostValue` 
+`POST /PaymentInstruction/PostValue` 
 
 **Parameters**
 
@@ -115,7 +115,7 @@
 ## POST 
 
 ### HTTP Request 
-`POST /api/Quote/PostValue` 
+`POST /Quote/PostValue` 
 
 **Parameters**
 
@@ -137,7 +137,7 @@
 ## GET 
 
 ### HTTP Request 
-`GET /api/Quote/GetValue` 
+`GET /Quote/GetValue` 
 
 **Parameters**
 
@@ -172,7 +172,7 @@
 ```
 
 ### HTTP Request 
-`POST /api/Quote/CalculateQuote` 
+`POST /Quote/CalculateQuote` 
 
 **Parameters**
 
@@ -207,7 +207,7 @@
 ```
 
 ### HTTP Request 
-`GET /api/Statement/GetValues` 
+`GET /Statement/GetValues` 
 
 **Parameters**
 
@@ -276,7 +276,7 @@
 ```
 
 ### HTTP Request 
-`GET /api/Template/GetValues` 
+`GET /Template/GetValues` 
 
 **Responses**
 
@@ -288,7 +288,7 @@
 ## POST 
 
 ### HTTP Request 
-`POST /api/Token/PostValues` 
+`POST /Token/PostValues` 
 
 **Parameters**
 
@@ -329,7 +329,7 @@
 ```
 
 ### HTTP Request 
-`GET /api/Trade/GetValues` 
+`GET /Trade/GetValues` 
 
 **Parameters**
 
@@ -358,7 +358,7 @@
 ```
 
 ### HTTP Request 
-`GET /api/webhooks/filters` 
+`GET /webhooks/filters` 
 
 **Responses**
 
@@ -387,7 +387,7 @@
 ```
 
 ### HTTP Request 
-`GET /api/webhooks/registrations` 
+`GET /webhooks/registrations` 
 
 **Responses**
 
@@ -397,7 +397,7 @@
 
 
 ### HTTP Request 
-`POST /api/webhooks/registrations` 
+`POST /webhooks/registrations` 
 
 **Parameters**
 
@@ -413,7 +413,7 @@
 
 
 ### HTTP Request 
-`DELETE /api/webhooks/registrations` 
+`DELETE /webhooks/registrations` 
 
 **Responses**
 
@@ -425,7 +425,7 @@
 ### GET 
 
 ### HTTP Request 
-`GET /api/webhooks/registrations/{id}` 
+`GET /webhooks/registrations/{id}` 
 
 **Parameters**
 
@@ -442,7 +442,7 @@
 ### PUT 
 
 ### HTTP Request 
-`PUT /api/webhooks/registrations/{id}` 
+`PUT /webhooks/registrations/{id}` 
 
 **Parameters**
 
@@ -460,7 +460,7 @@
 ### DELETE 
 
 ### HTTP Request 
-`DELETE /api/webhooks/registrations/{id}` 
+`DELETE /webhooks/registrations/{id}` 
 
 **Parameters**
 
