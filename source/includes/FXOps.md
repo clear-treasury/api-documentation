@@ -1,4 +1,4 @@
-# Bookquote
+# Book a Trade
 > Example JSON response:
 
 ```json
@@ -23,7 +23,7 @@
 }
 ```
 ### Description 
-Book a Trade
+Book a trade by verifying acceptance of a quote.
 
 ### HTTP Request 
 `POST /BookQuote` 
