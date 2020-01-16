@@ -1,17 +1,12 @@
 title: API Reference
 
-language_tabs:
-   - javascript
-   - bash
-
-
 toc_footers:
-   - <a href="https://payments.cleartreasury.co.uk">Sign up for a developer key</a>
+  - <a href="https://payments.cleartreasury.co.uk">Sign up for a developer key</a>
 
 includes:
-   - main
-   - FXOps
-   - _errors
+  - main
+  - FXOps
+  - _errors
 
 search: true
 

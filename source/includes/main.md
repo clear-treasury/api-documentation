@@ -1,67 +1,60 @@
-
 # Introduction
 
-> Base [ENV] url variables
-```
-sandbox: api-test.cleartreasury.co.uk/api
-live: api.cleartreasury.co.uk/api
-```
-
-Welcome to the Clear Payments API - Powered by Clear Treasury. With international payments a daily necessity for many, we have developed our online payments platform that dramatically streamlines the process.
-
-We have designed the Clear Payments API to integrate directly into your process, product or software.
-
-# Authentication
-
-> use this code:
+> Base URL Sandbox
 
 ```bash
-# With shell, you can just pass the correct header with each request
-curl -X POST \
-  http://[ENV].cleartreasury.co.uk/api/token \
-  -H 'Content-Type: application/x-www-form-urlencoded' \
-  -d 'login=--YOUR LOGIN--&password=--YOUR PASSWORD--'
+http://api-test.cleartreasury.co.uk/api
 ```
 
-```javascript
-var settings = {
-  "async": true,
-  "crossDomain": true,
-  "url": "http://[ENV].cleartreasury.co.uk/api/token",
-  "method": "POST",
-  "headers": {
-    "Content-Type": "application/x-www-form-urlencoded",
-   },
-  "data": {
-    "login": "--YOUR LOGIN--",
-    "password": "--YOUR PASSWORD--"
-  }
-}
+> Base URL Live
 
-$.ajax(settings).done(function (response) {
-  console.log(response);
-});
-```
-> Clear Payments expects the API Token to be included in all API requests to the server in a header that looks like the following:
-```
-curl -X POST \
-  '[ENV].cleartreasury.co.uk/--ENDPOINT--' \
-  -H 'Authorization: Bearer --YOUR TOKEN--' \ 
- 
+```bash
+http://api.cleartreasury.co.uk/api
 ```
 
-Clear API uses a token that needs to be set in the header of each call.
+Welcome to the Clear Payments API - Powered by Clear Treasury.
 
-To generate your token you can use /api/Token endpoint
+With international payments being a daily necessity for many, we have developed our online payments platform to dramatically streamline the process.
 
-<aside class=notice>
-You must replace <code>--YOUR TOKEN--</code> with your personal API key.
-</aside>
-<aside class=notice>
-You must replace <code>--YOUR LOGIN--</code> with your Login.
-</aside>
-<aside class=notice>
-You must replace <code>--YOUR PASSWORD--</code> with your Password. 
-</aside>
+Our aim is to make the Clear Payments API as simple as possible for you to integrate into your process, product or software.
 
-This Token is valid for 6 months.
+# API access
+
+Every call to the Clear Payments API requires an authorization token that needs to be set in the header of each subsequent call.
+
+## Token
+
+```bash
+curl -X POST http://api-test.cleartreasury.co.uk/api/token \
+     -H 'Content-Type: application/json' \
+     -d '{
+           "login": <your username>,
+           "password": <your password>
+         }'
+```
+
+Use your provided login details to request an authorization token. The resulting token is then sent in a header in every subsequent request.
+
+The Token is valid for 6 months.
+
+### Request
+
+`POST /token`
+
+**Parameters**
+
+| Name     | Description         | Required | Type   |
+| -------- | ------------------- | -------- | ------ |
+| login    | Your given username | Yes      | string |
+| password | Your given password | Yes      | string |
+
+## Authorization
+
+```bash
+curl -X GET http://api-test.cleartreasury.co.uk/api/quote \
+     -H "Authorization: Bearer xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx"
+```
+
+Once you have your API token, add it as a header parameter to every request like this:
+
+`Authorization: Bearer xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx`
