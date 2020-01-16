@@ -28,7 +28,7 @@
     "prebuild": "gulp clean",
     "build": "gulp build-static-site",
     "postbuild": "gulp lint && gulp publish",
-    "deploy": "./deploy.sh"
+    "deploy": "deploy.sh"
   },
   "dependencies": {
     "del": "~5.1",
