@@ -653,7 +653,7 @@ curl -X GET http://api-test.cleartreasury.co.uk/api/statement?ccy={ccy}&fromDate
 
 ### Request
 
-`GET /statement?ccy={ccy}&fromDate={fromDate}&toDate={toDate}`
+`GET /statement?ccy={ccy}&fromDate={fromDate}&toDate={toDate}client_ref={client_ref}`
 
 | Name       | Description                                                          | Required | Type   |
 | ---------- | -------------------------------------------------------------------- | -------- | ------ |
