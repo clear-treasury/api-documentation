@@ -641,13 +641,12 @@ curl -X GET http://api-test.cleartreasury.co.uk/api/statement?ccy={ccy}&fromDate
 ```json
 [
   {
-    "Date": "2019-10-17T12:24:39.589Z",
-    "Reference": "string",
-    "Detail": "string",
-    "Receipts": 0,
-    "Payments": 0,
-    "Bank_Account": "string",
-    "Balance": 0
+    "sDate": "2020-01-01T00:00:00",
+    "Ref": "AA00000000",
+    "Description": "Currency Bought (GBP) ",
+    "Debit": 0.0,
+    "Credit": 1000.0,
+    "Balance": 1000.0
   }
 ]
 ```
@@ -656,23 +655,23 @@ curl -X GET http://api-test.cleartreasury.co.uk/api/statement?ccy={ccy}&fromDate
 
 `GET /statement?ccy={ccy}&fromDate={fromDate}&toDate={toDate}`
 
-| Name     | Description                               | Required | Type   |
-| -------- | ----------------------------------------- | -------- | ------ |
-| ccy      |                                           | Yes      | string |
-| fromDate | Inclusive from date. In `yyyyMMdd` format | No       | string |
-| toDate   | Inclusive to date. In `yyyyMMdd` format   | No       | string |
+| Name       | Description                                                          | Required | Type   |
+| ---------- | -------------------------------------------------------------------- | -------- | ------ |
+| ccy        | The currency of the statements to filter by                          | Yes      | string |
+| fromDate   | Inclusive from date. In `yyyyMMdd` format                            | No       | string |
+| toDate     | Inclusive to date. In `yyyyMMdd` format                              | No       | string |
+| client_ref | Client reference when making calls as a trader on behalf of a client | No       | string |
 
 ### Response
 
-| Name         | Description | Type    |
-| ------------ | ----------- | ------- |
-| Date         |             | date    |
-| Reference    |             | string  |
-| Detail       |             | string  |
-| Receipts     |             | decimal |
-| Payments     |             | decimal |
-| Bank_Account |             | string  |
-| Balance      |             | decimal |
+| Name        | Description                                                           | Type    |
+| ----------- | --------------------------------------------------------------------- | ------- |
+| sDate       | The date of the statement                                             | date    |
+| Ref         | The reference of the statement                                        | string  |
+| Description | Whether the currency is being bought or sold and which currency it is | string  |
+| Debit       | The amount debited                                                    | decimal |
+| Credit      | The amount credited                                                   | decimal |
+| Balance     | The balance of the statement                                          | decimal |
 
 # Trade History
 
