@@ -1357,13 +1357,12 @@
 </blockquote>
 <pre class="highlight json"><code>[
   {
-    <span class="hljs-attr">"Date"</span>: <span class="hljs-string">"2019-10-17T12:24:39.589Z"</span>,
-    <span class="hljs-attr">"Reference"</span>: <span class="hljs-string">"string"</span>,
-    <span class="hljs-attr">"Detail"</span>: <span class="hljs-string">"string"</span>,
-    <span class="hljs-attr">"Receipts"</span>: <span class="hljs-number">0</span>,
-    <span class="hljs-attr">"Payments"</span>: <span class="hljs-number">0</span>,
-    <span class="hljs-attr">"Bank_Account"</span>: <span class="hljs-string">"string"</span>,
-    <span class="hljs-attr">"Balance"</span>: <span class="hljs-number">0</span>
+    <span class="hljs-attr">"sDate"</span>: <span class="hljs-string">"2020-01-01T00:00:00"</span>,
+    <span class="hljs-attr">"Ref"</span>: <span class="hljs-string">"AA00000000"</span>,
+    <span class="hljs-attr">"Description"</span>: <span class="hljs-string">"Currency Bought (GBP) "</span>,
+    <span class="hljs-attr">"Debit"</span>: <span class="hljs-number">0.0</span>,
+    <span class="hljs-attr">"Credit"</span>: <span class="hljs-number">1000.0</span>,
+    <span class="hljs-attr">"Balance"</span>: <span class="hljs-number">1000.0</span>
   }
 ]</code></pre><h3 id="request-7">Request</h3>
 <p><code>GET /statement?ccy={ccy}&amp;fromDate={fromDate}&amp;toDate={toDate}</code></p>
@@ -1378,7 +1377,7 @@
 </thead>
 <tbody><tr>
 <td>ccy</td>
-<td></td>
+<td>The currency of the statements to filter by</td>
 <td>Yes</td>
 <td>string</td>
 </tr>
@@ -1394,6 +1393,12 @@
 <td>No</td>
 <td>string</td>
 </tr>
+<tr>
+<td>client_ref</td>
+<td>Client reference when making calls as a trader on behalf of a client</td>
+<td>No</td>
+<td>string</td>
+</tr>
 </tbody></table>
 <h3 id="response-7">Response</h3>
 <table>
@@ -1405,38 +1410,33 @@
 </tr>
 </thead>
 <tbody><tr>
-<td>Date</td>
-<td></td>
+<td>sDate</td>
+<td>The date of the statement</td>
 <td>date</td>
 </tr>
 <tr>
-<td>Reference</td>
-<td></td>
+<td>Ref</td>
+<td>The reference of the statement</td>
 <td>string</td>
 </tr>
 <tr>
-<td>Detail</td>
-<td></td>
+<td>Description</td>
+<td>Whether the currency is being bought or sold and which currency it is</td>
 <td>string</td>
 </tr>
 <tr>
-<td>Receipts</td>
-<td></td>
+<td>Debit</td>
+<td>The amount debited</td>
 <td>decimal</td>
 </tr>
 <tr>
-<td>Payments</td>
-<td></td>
+<td>Credit</td>
+<td>The amount credited</td>
 <td>decimal</td>
-</tr>
-<tr>
-<td>Bank_Account</td>
-<td></td>
-<td>string</td>
 </tr>
 <tr>
 <td>Balance</td>
-<td></td>
+<td>The balance of the statement</td>
 <td>decimal</td>
 </tr>
 </tbody></table>
