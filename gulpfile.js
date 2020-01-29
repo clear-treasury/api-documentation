@@ -175,10 +175,13 @@ const task = {
       console.log(path.resolve('source'));
       },
    publishToDocs: () => {
-      // fs.mkdirSync('docs');
-      fs.writeFileSync('docs/CNAME', 'api.cleartreasury.co.uk\n');
+      var dir = 'docs';
+      if (!fs.existsSync(dir)){
+         fs.mkdirSync(dir);
+      }
+      fs.writeFileSync(dir + '/CNAME', 'api-docs.cleartreasury.co.uk\n');
       return gulp.src('build/**/*')
-         .pipe(gulp.dest('docs'));
+         .pipe(gulp.dest(dir));
       }
    };
 
