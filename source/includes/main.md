@@ -24,29 +24,9 @@ Every call to the Clear Treasury API requires an authorization token that needs 
 
 ## Token
 
-```bash
-curl -X POST http://api-test.cleartreasury.co.uk/api/token \
-     -H 'Content-Type: application/json' \
-     -d '{
-           "login": <your username>,
-           "password": <your password>
-         }'
-```
-
-Use your provided login details to request an authorization token. The resulting token is then sent in a header in every subsequent request.
+Use your provided login details to generate an authorization token within FXOps. The resulting token must then be sent in a header in every subsequent request.
 
 The Token is valid for 6 months.
-
-### Request
-
-`POST /token`
-
-**Parameters**
-
-| Name     | Description         | Required | Type   |
-| -------- | ------------------- | -------- | ------ |
-| login    | Your given username | Yes      | string |
-| password | Your given password | Yes      | string |
 
 ## Authorization
 
@@ -55,6 +35,6 @@ curl -X GET http://api-test.cleartreasury.co.uk/api/quote \
      -H "Authorization: Bearer xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx"
 ```
 
-Once you have your API token, add it as a header parameter to every request like this:
+Once you have your API token, add it as a bearer token in an `Authorization` header to every request.
 
 `Authorization: Bearer xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx`
