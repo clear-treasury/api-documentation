@@ -23,17 +23,17 @@ under the License.
 
 // BACKGROUND COLORS
 ////////////////////
-$nav-bg: #251D53;
+$nav-bg: #007373;
 $examples-bg: #393939;
 $code-bg: #292929;
 $code-annotation-bg: #1c1c1c;
-$nav-subitem-bg: #262626;
-$nav-active-bg: #A8A5BA;
+$nav-subitem-bg: rgb(1, 53, 35);
+$nav-active-bg: #015858;
 $lang-select-border: black;
 $lang-select-bg: #222;
 $lang-select-active-bg: $examples-bg; // feel free to change this to blue or something
 $lang-select-pressed-bg: #111; // color of language tab bg when mouse is pressed
-$main-bg: #eaf2f6;
+$main-bg: #F3F3F3;
 $aside-notice-bg: lightblue;
 $aside-success-bg: mediumseagreen;
 $aside-warning-bg: khaki;
@@ -42,9 +42,9 @@ $search-notice-bg: lightcoral;
 
 // TEXT COLORS
 ////////////////////
-$main-text: #1E1742; // main content text color
+$main-text: #252525; // main content text color
 $nav-text: white;
-$nav-active-text: white;
+$nav-active-text: #E9E9E9;
 $lang-select-text: white; // color of unselected language tab text
 $lang-select-active-text: white; // color of selected language tab text
 $lang-select-pressed-text: white; // color of language tab text when mouse is pressed
@@ -84,11 +84,11 @@ $phone-width: $tablet-width - $nav-width; // min width before reverting to mobil
 // OTHER
 ////////////////////
 $nav-active-shadow: black;
-$nav-footer-border-color: #666;
+$nav-footer-border-color: #015858;
 $nav-embossed-border-top: black;
-$nav-embossed-border-bottom: #939393;
+$nav-embossed-border-bottom: #EAF8F3;
 $main-embossed-text-shadow: 0px 1px 0px white;
-$search-box-border-color: #666;
+$search-box-border-color: #878787;
 
 ////////////////////////////////////////////////////////////////////////////////
 // INTERNAL

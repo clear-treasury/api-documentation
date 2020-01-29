@@ -12,15 +12,15 @@ http://api-test.cleartreasury.co.uk/api
 http://api.cleartreasury.co.uk/api
 ```
 
-Welcome to the Clear Payments API - Powered by Clear Treasury.
+Welcome to the Clear Treasury API.
 
 With international payments being a daily necessity for many, we have developed our online payments platform to dramatically streamline the process.
 
-Our aim is to make the Clear Payments API as simple as possible for you to integrate into your process, product or software.
+Our aim is to make the Clear Treasury API as simple as possible for you to integrate into your process, product or software.
 
 # API access
 
-Every call to the Clear Payments API requires an authorization token that needs to be set in the header of each subsequent call.
+Every call to the Clear Treasury API requires an authorization token that needs to be set in the header of each subsequent call.
 
 ## Token
 
