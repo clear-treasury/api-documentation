@@ -51,41 +51,11 @@
 <h1 id="api-access">API access</h1>
 <p>Every call to the Clear Treasury API requires an authorization token that needs to be set in the header of each subsequent call.</p>
 <h2 id="token">Token</h2>
-<pre class="highlight bash"><code>curl -X POST http://api-test.cleartreasury.co.uk/api/token \
-     -H <span class="hljs-string">'Content-Type: application/json'</span> \
-     -d <span class="hljs-string">'{
-           "login": &lt;your username&gt;,
-           "password": &lt;your password&gt;
-         }'</span></code></pre><p>Use your provided login details to request an authorization token. The resulting token is then sent in a header in every subsequent request.</p>
+<p>Use your provided login details to generate an authorization token within FXOps. The resulting token must then be sent in a header in every subsequent request.</p>
 <p>The Token is valid for 6 months.</p>
-<h3 id="request">Request</h3>
-<p><code>POST /token</code></p>
-<p><strong>Parameters</strong></p>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-<th>Required</th>
-<th>Type</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>login</td>
-<td>Your given username</td>
-<td>Yes</td>
-<td>string</td>
-</tr>
-<tr>
-<td>password</td>
-<td>Your given password</td>
-<td>Yes</td>
-<td>string</td>
-</tr>
-</tbody></table>
 <h2 id="authorization">Authorization</h2>
 <pre class="highlight bash"><code>curl -X GET http://api-test.cleartreasury.co.uk/api/quote \
-     -H <span class="hljs-string">"Authorization: Bearer xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx"</span></code></pre><p>Once you have your API token, add it as a header parameter to every request like this:</p>
+     -H <span class="hljs-string">"Authorization: Bearer xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx"</span></code></pre><p>Once you have your API token, add it as a bearer token in an <code>Authorization</code> header to every request.</p>
 <p><code>Authorization: Bearer xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx</code></p>
 
             
