@@ -696,14 +696,15 @@ curl -X POST http://api-test.cleartreasury.co.uk/api/trade?fromDate={fromDate}&t
     "Value_Date": "string",
     "CCY_Bought": "string",
     "CCY_Sold": "string",
-    "Rate": 0,
-    "Bought_Amount": 0,
-    "Sold_Amount": 0,
-    "Payment_Fee": 0,
+    "Rate": 0.0,
+    "Bought_Amount": 0.0,
+    "Sold_Amount": 0.0,
+    "Payment_Fee": 0.0,
     "Trade_ID": "string",
     "Trade_Type": "string",
     "Status": "string",
-    "Beneficiary": "string"
+    "Beneficiary": "string",
+    "Client_reference": "string"
   }
 ]
 ```
