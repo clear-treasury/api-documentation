@@ -6,6 +6,7 @@ toc_footers:
 includes:
   - main
   - access
+  - register
   - quotes
   - beneficiaries
   - bookquote
