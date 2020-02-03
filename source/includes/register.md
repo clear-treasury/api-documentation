@@ -27,7 +27,7 @@ curl -X POST http://api-test.cleartreasury.co.uk/api/registration \
 
 ```json
 {
-  "id": "XXXXXX",
+  "client_id": "XXXXXX",
   "client_ref": "X00000001"
 }
 ```
