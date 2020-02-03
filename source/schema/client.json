@@ -1,0 +1,620 @@
+{
+  "definitions": {
+    "name": {
+      "type": "object",
+      "title": "The Name Schema",
+      "properties": {
+        "first": { "type": "string" },
+        "middle": { "type": "string" },
+        "last": { "type": "string" }
+      },
+      "required": ["first", "last"]
+    },
+    "address": {
+      "type": "object",
+      "title": "The Address Schema",
+      "properties": {
+        "line_1": { "type": "string" },
+        "line_2": { "type": "string" },
+        "line_3": { "type": "string" },
+        "city": { "type": "string" },
+        "country": { "type": "string" },
+        "postcode": { "type": "string" }
+      },
+      "required": ["line_1", "city", "country", "postcode"]
+    },
+    "website": {
+      "type": "string",
+      "title": "The Website Schema",
+      "default": "",
+      "examples": ["http://example.com"],
+      "pattern": "^(https?://)?([\\w\\d-_]+)\\.([\\w\\d-_\\.]+)/?\\??([^#\n\r]*)?#?([^\n\r]*)"
+    },
+    "email": {
+      "$id": "#/properties/email",
+      "type": "string",
+      "title": "The Email Schema",
+      "default": "",
+      "examples": ["sample string 17"],
+      "pattern": "^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$"
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://https://api-docs.cleartreasury.co.uk/clients",
+  "type": "object",
+  "title": "Client Schema",
+  "required": [
+    "trader",
+    "cold_caller",
+    "type",
+    "name",
+    "address",
+    "company_number",
+    "company_sic",
+    "email",
+    "trader_commission",
+    "cold_caller_commission",
+    "web_commission",
+    "ip",
+    "kyc_source",
+    "kyc_nature",
+    "kyc_currency",
+    "kyc_average_volume",
+    "kyc_annual_volume",
+    "kyc_max_volume",
+    "kyc_frequency",
+    "kyc_source_of_wealth",
+    "kyc_relationship_with_beneficiaries",
+    "kyc_json",
+    "country_of_incorporation",
+    "countries_of_interest_beneficiary",
+    "countries_of_interest_remediation",
+    "currencies_of_interest",
+    "regulator_name",
+    "source",
+    "reason",
+    "legal_status",
+    "trading_as_name",
+    "trading_address",
+    "referer",
+    "activity",
+    "agree_marketing_conditions",
+    "agree_marketing_conditions_affiliate",
+    "group_industry",
+    "sid",
+    "unsubscribe_emails",
+    "affiliate_reference",
+    "language",
+    "non_uk_shareholder",
+    "contact_list"
+  ],
+  "properties": {
+    "trader": {
+      "$id": "#/properties/trader",
+      "type": "string",
+      "title": "The Trader Schema",
+      "default": "",
+      "examples": ["sample string 1"],
+      "pattern": "^(.*)$"
+    },
+    "cold_caller": {
+      "$id": "#/properties/cold_caller",
+      "type": "string",
+      "title": "The Cold_caller Schema",
+      "default": "",
+      "examples": ["sample string 2"],
+      "pattern": "^(.*)$"
+    },
+    "type": {
+      "$id": "#/properties/type",
+      "type": "string",
+      "title": "The Type Schema",
+      "default": "",
+      "examples": ["sample string 3"],
+      "pattern": "^(.*)$"
+    },
+    "name": {
+      "$ref": "#/definitions/name"
+    },
+    "address": {
+      "$ref": "#/definitions/address"
+    },
+    "fax": {
+      "$id": "#/properties/fax",
+      "type": "string",
+      "title": "The Fax Schema",
+      "default": "",
+      "examples": ["sample string 11"],
+      "pattern": "^(.*)$"
+    },
+    "switchboard": {
+      "$id": "#/properties/switchboard",
+      "type": "string",
+      "title": "The Switchboard Schema",
+      "default": "",
+      "examples": ["sample string 12"],
+      "pattern": "^(.*)$"
+    },
+    "comment": {
+      "$id": "#/properties/comment",
+      "type": "string",
+      "title": "The Comment Schema",
+      "default": "",
+      "examples": ["sample string 13"],
+      "pattern": "^(.*)$"
+    },
+    "company_number": {
+      "$id": "#/properties/company_number",
+      "type": "string",
+      "title": "The Company_number Schema",
+      "default": "",
+      "examples": ["sample string 14"],
+      "pattern": "^[+]*[(]?[0-9]*[)]?[-\\s\\./0-9]*$"
+    },
+    "company_sic": {
+      "$id": "#/properties/company_sic",
+      "type": "string",
+      "title": "The Company_sic Schema",
+      "default": "",
+      "examples": ["sample string 15"],
+      "pattern": "^(.*)$"
+    },
+    "website": {
+      "$ref": "#/definitions/website"
+    },
+    "email": {
+      "$ref": "#/definitions/email"
+    },
+    "trader_commission": {
+      "$id": "#/properties/trader_commission",
+      "type": "string",
+      "title": "The Trader_commission Schema",
+      "default": "",
+      "examples": ["sample string 18"],
+      "pattern": "^(.*)$"
+    },
+    "cold_caller_commission": {
+      "$id": "#/properties/cold_caller_commission",
+      "type": "string",
+      "title": "The Cold_caller_commission Schema",
+      "default": "",
+      "examples": ["sample string 19"],
+      "pattern": "^(.*)$"
+    },
+    "web_commission": {
+      "$id": "#/properties/web_commission",
+      "type": "string",
+      "title": "The Web_commission Schema",
+      "default": "",
+      "examples": ["sample string 20"],
+      "pattern": "^(.*)$"
+    },
+    "ip": {
+      "$id": "#/properties/ip",
+      "type": "string",
+      "title": "The Ip Schema",
+      "default": "",
+      "examples": ["sample string 21"],
+      "pattern": "^(.*)$"
+    },
+    "kyc_source": {
+      "$id": "#/properties/kyc_source",
+      "type": "string",
+      "title": "The Kyc_source Schema",
+      "default": "",
+      "examples": ["sample string 45"],
+      "pattern": "^(.*)$"
+    },
+    "kyc_nature": {
+      "$id": "#/properties/kyc_nature",
+      "type": "string",
+      "title": "The Kyc_nature Schema",
+      "default": "",
+      "examples": ["sample string 22"],
+      "pattern": "^(.*)$"
+    },
+    "kyc_currency": {
+      "$id": "#/properties/kyc_currency",
+      "type": "string",
+      "title": "The Kyc_currency Schema",
+      "default": "",
+      "examples": ["sample string 31"],
+      "pattern": "^(.*)$"
+    },
+    "kyc_average_volume": {
+      "$id": "#/properties/kyc_average_volume",
+      "type": "string",
+      "title": "The Kyc_average_volume Schema",
+      "default": "",
+      "examples": ["sample string 23"],
+      "pattern": "^(.*)$"
+    },
+    "kyc_annual_volume": {
+      "$id": "#/properties/kyc_annual_volume",
+      "type": "string",
+      "title": "The Kyc_annual_volume Schema",
+      "default": "",
+      "examples": ["sample string 24"],
+      "pattern": "^(.*)$"
+    },
+    "kyc_max_volume": {
+      "$id": "#/properties/kyc_max_volume",
+      "type": "string",
+      "title": "The Kyc_max_volume Schema",
+      "default": "",
+      "examples": ["sample string 30"],
+      "pattern": "^(.*)$"
+    },
+    "kyc_frequency": {
+      "$id": "#/properties/kyc_frequency",
+      "type": "string",
+      "title": "The Kyc_frequency Schema",
+      "default": "",
+      "examples": ["sample string 25"],
+      "pattern": "^(.*)$"
+    },
+    "kyc_source_of_wealth": {
+      "$id": "#/properties/kyc_source_of_wealth",
+      "type": "string",
+      "title": "The Kyc_source_of_wealth Schema",
+      "default": "",
+      "examples": ["sample string 44"],
+      "pattern": "^(.*)$"
+    },
+    "kyc_relationship_with_beneficiaries": {
+      "$id": "#/properties/kyc_relationship_with_beneficiaries",
+      "type": "string",
+      "title": "The Kyc_relationship_with_beneficiaries Schema",
+      "default": "",
+      "examples": ["sample string 46"],
+      "pattern": "^(.*)$"
+    },
+    "kyc_json": {
+      "$id": "#/properties/kyc_json",
+      "type": "string",
+      "title": "The Kyc_json Schema",
+      "default": "",
+      "examples": ["sample string 53"],
+      "pattern": "^(.*)$"
+    },
+    "country_of_incorporation": {
+      "$id": "#/properties/country_of_incorporation",
+      "type": "string",
+      "title": "The Country_of_incorporation Schema",
+      "default": "",
+      "examples": ["sample string 32"],
+      "pattern": "^(.*)$"
+    },
+    "countries_of_interest_beneficiary": {
+      "$id": "#/properties/countries_of_interest_beneficiary",
+      "type": "array",
+      "title": "The Countries_of_interest_beneficiary Schema",
+      "items": {
+        "$id": "#/properties/countries_of_interest_beneficiary/items",
+        "type": "string",
+        "title": "The Items Schema",
+        "default": "",
+        "examples": ["sample string 1", "sample string 2"],
+        "pattern": "^(.*)$"
+      }
+    },
+    "countries_of_interest_remediation": {
+      "$id": "#/properties/countries_of_interest_remediation",
+      "type": "array",
+      "title": "The Countries_of_interest_remediation Schema",
+      "items": {
+        "$id": "#/properties/countries_of_interest_remediation/items",
+        "type": "string",
+        "title": "The Items Schema",
+        "default": "",
+        "examples": ["sample string 1", "sample string 2"],
+        "pattern": "^(.*)$"
+      }
+    },
+    "currencies_of_interest": {
+      "$id": "#/properties/currencies_of_interest",
+      "type": "array",
+      "title": "The Currencies_of_interest Schema",
+      "items": {
+        "$id": "#/properties/currencies_of_interest/items",
+        "type": "string",
+        "title": "The Items Schema",
+        "default": "",
+        "examples": ["sample string 1", "sample string 2"],
+        "pattern": "^(.*)$"
+      }
+    },
+    "expiry_date": {
+      "$id": "#/properties/expiry_date",
+      "type": "string",
+      "title": "The Expiry_date Schema",
+      "default": "",
+      "examples": ["sample string 26"],
+      "pattern": "^(.*)$"
+    },
+    "regulator_name": {
+      "$id": "#/properties/regulator_name",
+      "type": "string",
+      "title": "The Regulator_name Schema",
+      "default": "",
+      "examples": ["sample string 27"],
+      "pattern": "^(.*)$"
+    },
+    "source": {
+      "$id": "#/properties/source",
+      "type": "string",
+      "title": "The Source Schema",
+      "default": "",
+      "examples": ["sample string 28"],
+      "pattern": "^(.*)$"
+    },
+    "reason": {
+      "$id": "#/properties/reason",
+      "type": "string",
+      "title": "The Reason Schema",
+      "default": "",
+      "examples": ["sample string 29"],
+      "pattern": "^(.*)$"
+    },
+    "legal_status": {
+      "$id": "#/properties/legal_status",
+      "type": "string",
+      "title": "The Legal_status Schema",
+      "default": "",
+      "examples": ["sample string 33"],
+      "pattern": "^(.*)$"
+    },
+    "company_vat": {
+      "$id": "#/properties/company_vat",
+      "type": "string",
+      "title": "The Company_vat Schema",
+      "default": "",
+      "examples": ["sample string 34"],
+      "pattern": "^(.*)$"
+    },
+    "trading_as_name": {
+      "$id": "#/properties/trading_as_name",
+      "type": "string",
+      "title": "The Trading_as_name Schema",
+      "default": "",
+      "examples": ["sample string 35"],
+      "pattern": "^(.*)$"
+    },
+    "trading_address": {
+      "$ref": "#/definitions/address"
+    },
+    "referer": {
+      "$id": "#/properties/referer",
+      "type": "string",
+      "title": "The Referer Schema",
+      "default": "",
+      "examples": ["sample string 42"],
+      "pattern": "^(.*)$"
+    },
+    "activity": {
+      "$id": "#/properties/activity",
+      "type": "string",
+      "title": "The Activity Schema",
+      "default": "",
+      "examples": ["sample string 43"],
+      "pattern": "^(.*)$"
+    },
+    "agree_marketing_conditions": {
+      "$id": "#/properties/agree_marketing_conditions",
+      "type": "integer",
+      "title": "The Agree_marketing_conditions Schema",
+      "default": 0,
+      "examples": [47]
+    },
+    "agree_marketing_conditions_affiliate": {
+      "$id": "#/properties/agree_marketing_conditions_affiliate",
+      "type": "integer",
+      "title": "The Agree_marketing_conditions_affiliate Schema",
+      "default": 0,
+      "examples": [48]
+    },
+    "group_industry": {
+      "$id": "#/properties/group_industry",
+      "type": "string",
+      "title": "The Group_industry Schema",
+      "default": "",
+      "examples": ["sample string 49"],
+      "pattern": "^(.*)$"
+    },
+    "sid": {
+      "$id": "#/properties/sid",
+      "type": "string",
+      "title": "The Sid Schema",
+      "default": "",
+      "examples": ["sample string 50"],
+      "pattern": "^(.*)$"
+    },
+    "unsubscribe_emails": {
+      "$id": "#/properties/unsubscribe_emails",
+      "type": "boolean",
+      "title": "The Unsubscribe_emails Schema",
+      "default": false,
+      "examples": [true, false]
+    },
+    "affiliate_reference": {
+      "$id": "#/properties/affiliate_reference",
+      "type": "string",
+      "title": "The Affiliate_reference Schema",
+      "default": "",
+      "examples": ["sample string 52"],
+      "pattern": "^(.*)$"
+    },
+    "language": {
+      "$id": "#/properties/language",
+      "type": "string",
+      "title": "The Language Schema",
+      "default": "",
+      "examples": ["sample string 54"],
+      "pattern": "^(.*)$"
+    },
+    "non_uk_shareholder": {
+      "$id": "#/properties/non_uk_shareholder",
+      "type": "string",
+      "title": "The Non_uk_shareholder Schema",
+      "default": "",
+      "examples": ["sample string 55"],
+      "pattern": "^(.*)$"
+    },
+    "contact_list": {
+      "$id": "#/properties/contact_list",
+      "type": "array",
+      "title": "The Contact_list Schema",
+      "items": {
+        "$id": "#/properties/contact_list/items",
+        "type": "object",
+        "title": "The Items Schema",
+        "required": [
+          "name",
+          "address",
+          "title",
+          "job_title",
+          "date_of_birth",
+          "email",
+          "mobile_phone",
+          "nationality",
+          "telephone"
+        ],
+        "properties": {
+          "name": {
+            "$ref": "#/definitions/name"
+          },
+          "address": {
+            "$id": "#/properties/contact_list/items/properties/address",
+            "type": "object",
+            "title": "The Address Schema",
+            "required": [
+              "line_1",
+              "line_2",
+              "line_3",
+              "city",
+              "country",
+              "postcode"
+            ],
+            "properties": {
+              "line_1": {
+                "$id": "#/properties/contact_list/items/properties/address/properties/line_1",
+                "type": "string",
+                "title": "The Line_1 Schema",
+                "default": "",
+                "examples": ["sample string 5"],
+                "pattern": "^(.*)$"
+              },
+              "line_2": {
+                "$id": "#/properties/contact_list/items/properties/address/properties/line_2",
+                "type": "string",
+                "title": "The Line_2 Schema",
+                "default": "",
+                "examples": ["sample string 6"],
+                "pattern": "^(.*)$"
+              },
+              "line_3": {
+                "$id": "#/properties/contact_list/items/properties/address/properties/line_3",
+                "type": "string",
+                "title": "The Line_3 Schema",
+                "default": "",
+                "examples": ["sample string 7"],
+                "pattern": "^(.*)$"
+              },
+              "city": {
+                "$id": "#/properties/contact_list/items/properties/address/properties/city",
+                "type": "string",
+                "title": "The City Schema",
+                "default": "",
+                "examples": ["sample string 8"],
+                "pattern": "^(.*)$"
+              },
+              "country": {
+                "$id": "#/properties/contact_list/items/properties/address/properties/country",
+                "type": "string",
+                "title": "The Country Schema",
+                "default": "",
+                "examples": ["sample string 9"],
+                "pattern": "^(.*)$"
+              },
+              "postcode": {
+                "$id": "#/properties/contact_list/items/properties/address/properties/postcode",
+                "type": "string",
+                "title": "The Postcode Schema",
+                "default": "",
+                "examples": ["sample string 15"],
+                "pattern": "^(.*)$"
+              }
+            }
+          },
+          "title": {
+            "$id": "#/properties/contact_list/items/properties/title",
+            "type": "string",
+            "title": "The Title Schema",
+            "default": "",
+            "examples": ["sample string 17"],
+            "pattern": "^(.*)$"
+          },
+          "job_title": {
+            "$id": "#/properties/contact_list/items/properties/job_title",
+            "type": "string",
+            "title": "The Job_title Schema",
+            "default": "",
+            "examples": ["sample string 3"],
+            "pattern": "^(.*)$"
+          },
+          "date_of_birth": {
+            "$id": "#/properties/contact_list/items/properties/date_of_birth",
+            "type": "string",
+            "title": "The Date_of_birth Schema",
+            "default": "",
+            "examples": ["sample string 10"],
+            "pattern": "^(.*)$"
+          },
+          "email": {
+            "$id": "#/properties/contact_list/items/properties/email",
+            "type": "string",
+            "title": "The Email Schema",
+            "default": "",
+            "examples": ["sample string 11"],
+            "pattern": "^(.*)$"
+          },
+          "fax": {
+            "$id": "#/properties/contact_list/items/properties/fax",
+            "type": "string",
+            "title": "The Fax Schema",
+            "default": "",
+            "examples": ["sample string 12"],
+            "pattern": "^(.*)$"
+          },
+          "mobile_phone": {
+            "$id": "#/properties/contact_list/items/properties/mobile_phone",
+            "type": "string",
+            "title": "The Mobile_phone Schema",
+            "default": "",
+            "examples": ["sample string 13"],
+            "pattern": "^(.*)$"
+          },
+          "nationality": {
+            "$id": "#/properties/contact_list/items/properties/nationality",
+            "type": "string",
+            "title": "The Nationality Schema",
+            "default": "",
+            "examples": ["sample string 14"],
+            "pattern": "^(.*)$"
+          },
+          "telephone": {
+            "$id": "#/properties/contact_list/items/properties/telephone",
+            "type": "string",
+            "title": "The Telephone Schema",
+            "default": "",
+            "examples": ["sample string 16"],
+            "pattern": "^(.*)$"
+          },
+          "website": {
+            "$ref": "#/definitions/website"
+          }
+        }
+      }
+    }
+  }
+}
