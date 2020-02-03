@@ -5,7 +5,13 @@ toc_footers:
 
 includes:
   - main
-  - FXOps
+  - access
+  - quotes
+  - beneficiaries
+  - bookquote
+  - payments
+  - statements
+  - trades
   - _errors
 
 search: true
