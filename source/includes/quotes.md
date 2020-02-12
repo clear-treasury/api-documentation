@@ -1,4 +1,4 @@
-# Quote
+# Quotes
 
 There are four steps to executing a trade:
 
@@ -21,14 +21,15 @@ Before you can book a trade you need to have been issued a quote and have create
 > Example request:
 
 ```bash
-curl -X POST http://api-test.cleartreasury.co.uk/api/quote \
+curl -X POST http://api-test.cleartreasury.co.uk/api/quotes \
      -H 'Authorization: Bearer <your api token>'
      -H 'Content-Type: application/json' \
      -d '{
-            "ccy_sell": "GBP",
-            "ccy_buy": "EUR",
-            "value_date": "20193112",
-            "sell_amount": 600.00
+            "currency_sell": "GBP",
+            "currency_buy": "EUR",
+            "value_date": "20200101",
+            "buy_amount": 500.00,
+            "client_ref": "<client reference>"
         }'
 ```
 
@@ -36,63 +37,57 @@ curl -X POST http://api-test.cleartreasury.co.uk/api/quote \
 
 ```json
 {
-  "ID": "sample string 1",
-  "sell_amount": 2.1,
-  "buy_amount": 3.1,
-  "client_rate": 4.1,
-  "bank_rate": 5.1,
-  "ccy_sell": "sample string 6",
-  "fee": 7.1,
-  "fee_ccy": 8.1,
-  "ccy_buy": "sample string 9",
-  "value_date": "sample string 10",
-  "Message": "sample string 11",
-  "Status": true
+  "ID": "0123",
+  "sell_amount": 595.8,
+  "buy_amount": 500.0,
+  "quote_rate": 1.1916,
+  "currency_sell": "GBP",
+  "fee": 0.0,
+  "fee_ccy": 0.0,
+  "currency_buy": "EUR",
+  "value_date": "20200101"
 }
 ```
 
 ### Request
 
-`POST /quote`
+`POST /quotes`
 
-| Name        | Description                                                                 | Required | Type    |
-| ----------- | --------------------------------------------------------------------------- | -------- | ------- |
-| ccy_sell    | The currency the end customer is wanting to sell.<br>ISO 3 letters currency | No       | string  |
-| ccy_buy     | The currency the end customer is wanting to sell.<br>ISO 3 letters currency | No       | string  |
-| value_date  | Date. In yyyyMMdd format                                                    | No       | string  |
-| sell_amount | Selling Amount                                                              | No       | decimal |
-| buy_amount  | Buying Amount                                                               | No       | decimal |
-| quoteID     |                                                                             | No       | integer |
+| Name          | Description                                                                 | Required | Type    |
+| ------------- | --------------------------------------------------------------------------- | -------- | ------- |
+| currency_sell | The currency the end customer is wanting to sell.<br>ISO 3 letters currency | No       | string  |
+| currency_buy  | The currency the end customer is wanting to sell.<br>ISO 3 letters currency | No       | string  |
+| value_date    | Date. In yyyyMMdd format                                                    | No       | string  |
+| sell_amount   | Selling Amount                                                              | No       | decimal |
+| buy_amount    | Buying Amount                                                               | No       | decimal |
+| client_ref    | The client reference you're getting a quote on behalf of                    | Yes      | string  |
 
 ### Response
 
-Quote id is needed for booking a trade in step 3.
+The quote `ID` is needed for booking a trade in step 3.
 
-| Name        | Description                                                  | Type    |
-| ----------- | ------------------------------------------------------------ | ------- |
-| ID          | Quote ID                                                     | string  |
-| sell_amount | Sell Amount                                                  | decimal |
-| buy_amount  | Sell Amount                                                  | decimal |
-| client_rate | Client Rate                                                  | decimal |
-| bank_rate   | Bank Rate                                                    | decimal |
-| ccy_sell    | Sell Currency                                                | string  |
-| fee         | Charge amount                                                | decimal |
-| fee_ccy     | Charge Currency                                              | decimal |
-| ccy_buy     | Buy Currency                                                 | string  |
-| value_date  | yyyyMMdd Date                                                | string  |
-| Message     | Free Message                                                 | string  |
-| Status      | Returns true if quote is value or false if there is an error | boolean |
+| Name          | Description     | Type    |
+| ------------- | --------------- | ------- |
+| ID            | Quote ID        | string  |
+| sell_amount   | Sell Amount     | decimal |
+| buy_amount    | Sell Amount     | decimal |
+| client_rate   | Client Rate     | decimal |
+| currency_sell | Sell Currency   | string  |
+| fee           | Charge amount   | decimal |
+| fee_ccy       | Charge Currency | decimal |
+| currency_buy  | Buy Currency    | string  |
+| value_date    | yyyyMMdd Date   | string  |
 
 ## Get a refreshed price for a quote
 
 <!-- TODO: Add info about how long a quote lasts for -->
 
-You can request a new price for a previously requested quote.
+You can request a new price for a previously requested quote. Quotes last for 30 seconds.
 
 > Example request:
 
 ```bash
-curl -X GET http://api-test.cleartreasury.co.uk/api/quote?quote_id={quote_id} \
+curl -X POST http://api-test.cleartreasury.co.uk/api/quotes?quote_id={quote_id} \
      -H 'Authorization: Bearer <your api token>'
 ```
 
@@ -117,7 +112,7 @@ curl -X GET http://api-test.cleartreasury.co.uk/api/quote?quote_id={quote_id} \
 
 ### Request
 
-`GET /quote?quote_id={quote_id}`
+`GET /quotes?quote_id={quote_id}`
 
 | Name     | Description         | Required | Type    |
 | -------- | ------------------- | -------- | ------- |
@@ -127,6 +122,16 @@ curl -X GET http://api-test.cleartreasury.co.uk/api/quote?quote_id={quote_id} \
 
 <!-- TODO: Add proper response data -->
 
-| Code | Description |
-| ---- | ----------- |
-| 200  | OK          |
+| Name          | Description     | Type    |
+| ------------- | --------------- | ------- |
+| ID            | Quote ID        | string  |
+| sell_amount   | Sell Amount     | decimal |
+| buy_amount    | Sell Amount     | decimal |
+| client_rate   | Client Rate     | decimal |
+| currency_sell | Sell Currency   | string  |
+| fee           | Charge amount   | decimal |
+| fee_ccy       | Charge Currency | decimal |
+| currency_buy  | Buy Currency    | string  |
+| value_date    | `yyyyMMdd` Date | string  |
+| Message       |                 | string  |
+| Status        |                 | boolean |

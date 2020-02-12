@@ -1,4 +1,4 @@
-# Beneficiary Templates
+# Beneficiaries
 
 There are four steps to executing a trade:
 
@@ -16,14 +16,77 @@ Beneficiary is a person or institution who is the ultimate recipient of your pay
 
 In order to book a trade you must have created a beneficiary.
 
-## List Templates
+## Create a beneficiary
 
-Get a list of Beneficiary Templates
+Create a new beneficiary in order to trade with them.
 
 > Example request:
 
 ```bash
-curl -X GET http://api-test.cleartreasury.co.uk/api/template \
+curl -X POST http://api-test.cleartreasury.co.uk/api/beneficiaries \
+     -H 'Authorization: Bearer <your api token>'
+     -H 'Content-Type: application/json'
+     -d '{
+          "account_name": "Bank account",
+          "account_number": "01234567",
+          "address": "Test bank house",
+          "bank_name": "Test bank",
+          "currency": "GBP",
+          "sort_code": "001122",
+          "swift": "AAAAUK12345",
+          "country_code": "GB",
+          "email": "test.beneficiary@example.com",
+          "beneficiary_address": "Test beneficiary house, Beneton, England",
+          "client_ref": "<client reference>"
+        }'
+```
+
+> Example response:
+
+```json
+{
+  "message": "Beneficiary added to client's list ",
+  "id": 24538
+}
+```
+
+### Request
+
+`POST /beneficiaries`
+
+| Name           | Description | Type   | Additional information                             |
+| -------------- | ----------- | ------ | -------------------------------------------------- |
+| intermediary   |             | string | Max length: 50                                     |
+| account_name   |             | string | Required                                           |
+| account_number |             | string | Required                                           |
+| address        |             | string | None.                                              |
+| bankname       |             | string | None.                                              |
+| currency       |             | string | Required. String length: inclusive between 3 and 3 |
+| notes          |             | string | None.                                              |
+| sort_code      |             | string | String length: inclusive between 6 and 6           |
+| swift          |             | string | None.                                              |
+| country_code   |             | string | Required                                           |
+| email          |             | string | None.                                              |
+| ben_address    |             | string | None.                                              |
+| cnaps          |             | string | None.                                              |
+| id             |             | string | None.                                              |
+| client_ref     |             | string | None.                                              |
+
+### Response
+
+| Name    | Description    | Type    |
+| ------- | -------------- | ------- |
+| id      | Beneficiary ID | integer |
+| message |                | string  |
+
+## List all beneficiaries
+
+Get a list of Beneficiaries you have access to
+
+> Example request:
+
+```bash
+curl -X GET http://api-test.cleartreasury.co.uk/api/beneficiaries \
      -H 'Authorization: Bearer <your api token>'
 ```
 

@@ -1,5 +1,64 @@
 # Trade History
 
+## List all trades
+
+Retreive a list of all trades you have access to.
+
+> Example request:
+
+```bash
+curl -X GET http://api-test.cleartreasury.co.uk/api/trades \
+     -H 'Authorization: Bearer <your api token>'
+```
+
+> Example response:
+
+```json
+[
+  {
+    "id": 000001,
+    "trade_date": "20200130",
+    "value_date": "20200130",
+    "currency_bought": "USD",
+    "currency_sold": "EUR",
+    "client_rate": 1.0,
+    "bank_rate": 0.0,
+    "bought_amount": 532.56,
+    "sold_amount": 532.56,
+    "payment_fee": 0.0,
+    "trade_id": "A00000000",
+    "trade_type": "Spot Trade",
+    "status": "No Instructions received. Not paid in. Not paid out.",
+    "beneficiary": null,
+    "client_ref": "C00000001"
+  }
+]
+```
+
+### Request
+
+`GET /trades`
+
+### Response
+
+| Name            | Description | Type    |
+| --------------- | ----------- | ------- |
+| id              |             | integer |
+| trade_date      |             | string  |
+| value_date      |             | string  |
+| currency_bought |             | string  |
+| currency_sold   |             | string  |
+| client_rate     |             | decimal |
+| bank_rate       |             | decimal |
+| bought_amount   |             | decimal |
+| sold_amount     |             | decimal |
+| payment_fee     |             | decimal |
+| trade_id        |             | string  |
+| trade_type      |             | string  |
+| status          |             | string  |
+| beneficiary     |             | string  |
+| client_ref      |             | string  |
+
 ## Retrieve a Trade list between two dates
 
 Retreive a list of trades between inclusive from and to dates.
@@ -7,7 +66,7 @@ Retreive a list of trades between inclusive from and to dates.
 > Example request:
 
 ```bash
-curl -X POST http://api-test.cleartreasury.co.uk/api/trade?fromDate={fromDate}&toDate={toDate} \
+curl -X POST http://api-test.cleartreasury.co.uk/api/trades?fromDate={fromDate}&toDate={toDate} \
      -H 'Authorization: Bearer <your api token>'
 ```
 
@@ -36,7 +95,7 @@ curl -X POST http://api-test.cleartreasury.co.uk/api/trade?fromDate={fromDate}&t
 
 ### Request
 
-`GET /trade?fromDate={fromDate}&toDate={toDate}`
+`GET /trades?fromDate={fromDate}&toDate={toDate}`
 
 | Name     | Located in | Description | Required | Type   |
 | -------- | ---------- | ----------- | -------- | ------ |
@@ -61,12 +120,13 @@ curl -X POST http://api-test.cleartreasury.co.uk/api/trade?fromDate={fromDate}&t
 | Status        | Status        | string  |
 | Beneficiary   | Beneficiary   | string  |
 
+<!--
 ## Retrieve payment instruction by ID
 
 > Example request:
 
 ```bash
-curl -X GET http://api-test.cleartreasury.co.uk/api/trade/{id} \
+curl -X GET http://api-test.cleartreasury.co.uk/api/trades/{id} \
      -H 'Authorization: Bearer <your api token>'
 ```
 
@@ -94,7 +154,7 @@ curl -X GET http://api-test.cleartreasury.co.uk/api/trade/{id} \
 
 ### Request
 
-`GET /trade/{id}`
+`GET /trades/{id}`
 
 | Name | Description  | Required | Type   |
 | ---- | ------------ | -------- | ------ |
@@ -117,3 +177,4 @@ curl -X GET http://api-test.cleartreasury.co.uk/api/trade/{id} \
 | Trade_Type    | Trade Type    | string  |
 | Status        | Status        | string  |
 | Beneficiary   | Beneficiary   | string  |
+-->
