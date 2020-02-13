@@ -22,7 +22,7 @@ Before you can book a trade you need to have been issued a quote and have create
 
 ```bash
 curl -X POST http://api-test.cleartreasury.co.uk/api/quotes \
-     -H 'Authorization: Bearer <your auth token>'
+     -H 'Authorization: Bearer <your auth token>' \
      -H 'Content-Type: application/json' \
      -d '{
             "currency_sell": "GBP",

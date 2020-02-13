@@ -14,7 +14,7 @@ Create a new client in order to operate on their behalf.
 
 ```bash
 curl -X POST http://api-test.cleartreasury.co.uk/api/clients \
-     -H 'Authorization: Bearer <your auth token>'
+     -H 'Authorization: Bearer <your auth token>' \
      -H 'Content-Type: application/json' \
      -d '{
           "trader": "<your trader id>",

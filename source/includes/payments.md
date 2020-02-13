@@ -187,7 +187,7 @@ curl -X POST http://api-test.cleartreasury.co.uk/api/paymentinstruction/{id} \
 
 ```bash
 curl -X POST http://api-test.cleartreasury.co.uk/api/paymentinstruction \
-     -H 'Authorization: Bearer <your auth token>'
+     -H 'Authorization: Bearer <your auth token>' \
      -H 'Content-Type: application/json' \
      -d '{
           "Intermediary": "sample string 1",

@@ -22,7 +22,7 @@ Book a trade by verifying acceptance of a quote.
 
 ```bash
 curl -X POST http://api-test.cleartreasury.co.uk/api/trades \
-     -H 'Authorization: Bearer <your auth token>'
+     -H 'Authorization: Bearer <your auth token>' \
      -H 'Content-Type: application/json' \
      -d '{
           "quote_id": <quote id>,
