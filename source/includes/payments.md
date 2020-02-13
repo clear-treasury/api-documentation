@@ -24,7 +24,7 @@ Retrieve payment instruction list inclusive of from and to dates.
 
 ```bash
 curl -X GET http://api-test.cleartreasury.co.uk/api/paymentinstruction?fromDate={fromDate}&toDate={toDate} \
-     -H 'Authorization: Bearer <your api token>'
+     -H 'Authorization: Bearer <your auth token>'
 ```
 
 > Example response:
@@ -108,7 +108,7 @@ Get payment instruction by ID
 
 ```bash
 curl -X POST http://api-test.cleartreasury.co.uk/api/paymentinstruction/{id} \
-     -H 'Authorization: Bearer <your api token>'
+     -H 'Authorization: Bearer <your auth token>'
 ```
 
 > Example response:
@@ -187,7 +187,7 @@ curl -X POST http://api-test.cleartreasury.co.uk/api/paymentinstruction/{id} \
 
 ```bash
 curl -X POST http://api-test.cleartreasury.co.uk/api/paymentinstruction \
-     -H 'Authorization: Bearer <your api token>'
+     -H 'Authorization: Bearer <your auth token>'
      -H 'Content-Type: application/json' \
      -d '{
           "Intermediary": "sample string 1",

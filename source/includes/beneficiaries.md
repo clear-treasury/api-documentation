@@ -24,7 +24,7 @@ Create a new beneficiary in order to trade with them.
 
 ```bash
 curl -X POST http://api-test.cleartreasury.co.uk/api/beneficiaries \
-     -H 'Authorization: Bearer <your api token>'
+     -H 'Authorization: Bearer <your auth token>'
      -H 'Content-Type: application/json'
      -d '{
           "account_name": "Bank account",
@@ -87,7 +87,7 @@ Get a list of Beneficiaries you have access to
 
 ```bash
 curl -X GET http://api-test.cleartreasury.co.uk/api/beneficiaries \
-     -H 'Authorization: Bearer <your api token>'
+     -H 'Authorization: Bearer <your auth token>'
 ```
 
 > Example response:

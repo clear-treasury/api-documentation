@@ -22,7 +22,7 @@ Before you can book a trade you need to have been issued a quote and have create
 
 ```bash
 curl -X POST http://api-test.cleartreasury.co.uk/api/quotes \
-     -H 'Authorization: Bearer <your api token>'
+     -H 'Authorization: Bearer <your auth token>'
      -H 'Content-Type: application/json' \
      -d '{
             "currency_sell": "GBP",
@@ -88,7 +88,7 @@ You can request a new price for a previously requested quote. Quotes last for 30
 
 ```bash
 curl -X POST http://api-test.cleartreasury.co.uk/api/quotes?quote_id={quote_id} \
-     -H 'Authorization: Bearer <your api token>'
+     -H 'Authorization: Bearer <your auth token>'
 ```
 
 > Example response:

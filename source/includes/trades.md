@@ -8,7 +8,7 @@ Retreive a list of all trades you have access to.
 
 ```bash
 curl -X GET http://api-test.cleartreasury.co.uk/api/trades \
-     -H 'Authorization: Bearer <your api token>'
+     -H 'Authorization: Bearer <your auth token>'
 ```
 
 > Example response:
@@ -67,7 +67,7 @@ Retreive a list of trades between inclusive from and to dates.
 
 ```bash
 curl -X POST http://api-test.cleartreasury.co.uk/api/trades?fromDate={fromDate}&toDate={toDate} \
-     -H 'Authorization: Bearer <your api token>'
+     -H 'Authorization: Bearer <your auth token>'
 ```
 
 > Example response:
@@ -127,7 +127,7 @@ curl -X POST http://api-test.cleartreasury.co.uk/api/trades?fromDate={fromDate}&
 
 ```bash
 curl -X GET http://api-test.cleartreasury.co.uk/api/trades/{id} \
-     -H 'Authorization: Bearer <your api token>'
+     -H 'Authorization: Bearer <your auth token>'
 ```
 
 > Example response:

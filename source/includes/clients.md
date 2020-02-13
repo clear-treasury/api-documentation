@@ -14,7 +14,7 @@ Create a new client in order to operate on their behalf.
 
 ```bash
 curl -X POST http://api-test.cleartreasury.co.uk/api/clients \
-     -H 'Authorization: Bearer <your api token>'
+     -H 'Authorization: Bearer <your auth token>'
      -H 'Content-Type: application/json' \
      -d '{
           "trader": "<your trader id>",
@@ -155,7 +155,7 @@ Retrieve a list of all clients you have access to.
 
 ```bash
 curl -X GET http://api-test.cleartreasury.co.uk/api/clients \
-     -H 'Authorization: Bearer <your api token>'
+     -H 'Authorization: Bearer <your auth token>'
 ```
 
 > Example response:
@@ -201,7 +201,7 @@ Retrieve a single client by client reference.
 
 ```bash
 curl -X GET http://api-test.cleartreasury.co.uk/api/clients?client_ref={client_ref} \
-     -H 'Authorization: Bearer <your api token>'
+     -H 'Authorization: Bearer <your auth token>'
 ```
 
 > Example response:

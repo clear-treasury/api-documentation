@@ -8,7 +8,7 @@ Retrieve a statement for a given currency, optionally filtered by inclusive from
 
 ```bash
 curl -X GET http://api-test.cleartreasury.co.uk/api/statement?ccy={ccy}&fromDate={fromDate}&toDate={toDate} \
-     -H 'Authorization: Bearer <your api token>'
+     -H 'Authorization: Bearer <your auth token>'
 ```
 
 > Example response:
