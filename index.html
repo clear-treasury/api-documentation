@@ -52,12 +52,20 @@
             
                <h1 id="api-access">API access</h1>
 <p>Every call to the Clear Treasury API requires an authorization token that needs to be set in the header of each subsequent call.</p>
-<h2 id="token">Token</h2>
-<p>Use your provided login details to generate an authorization token within FXOps. The resulting token must then be sent in a header in every subsequent request.</p>
-<p>The Token is valid for 6 months.</p>
+<h2 id="auth-token">Auth Token</h2>
+<p>Use your provided login details to generate an authorization token within our back-office system.</p>
+<p>If you haven&#39;t been given any login details or you don&#39;t have access to our back-office system we can securely provide you with a token.</p>
+<p><strong>The Token is valid for 6 months.</strong></p>
+<p>The resulting token must then be sent in an <code>Authorization</code> header in every subsequent request.</p>
+<h3 id="regenerating-a-token">Regenerating a token</h3>
+<aside class="warning">
+     We are in the process of building a developer portal for you to be able to generate your own tokens from.
+</aside>
+
+<p>In the meantime we suggest you set a reminder before the 6 months is up to request a new token and we&#39;ll generate one for you.</p>
 <h2 id="authorization">Authorization</h2>
 <pre class="highlight bash"><code>curl -X GET http://api-test.cleartreasury.co.uk/api/quote \
-     -H <span class="hljs-string">"Authorization: Bearer xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx"</span></code></pre><p>Once you have your API token, add it as a bearer token in an <code>Authorization</code> header to every request.</p>
+     -H <span class="hljs-string">"Authorization: Bearer xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx"</span></code></pre><p>Once you have your authorization token, add it as a bearer token in an <code>Authorization</code> header to every request.</p>
 <p><code>Authorization: Bearer xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx</code></p>
 
             
@@ -71,7 +79,7 @@
 <p>Example request:</p>
 </blockquote>
 <pre class="highlight bash"><code>curl -X POST http://api-test.cleartreasury.co.uk/api/clients \
-     -H <span class="hljs-string">'Authorization: Bearer &lt;your api token&gt;'</span>
+     -H <span class="hljs-string">'Authorization: Bearer &lt;your auth token&gt;'</span>
      -H <span class="hljs-string">'Content-Type: application/json'</span> \
      -d <span class="hljs-string">'{
           "trader": "&lt;your trader id&gt;",
@@ -527,7 +535,7 @@
 <p>Example request:</p>
 </blockquote>
 <pre class="highlight bash"><code>curl -X GET http://api-test.cleartreasury.co.uk/api/clients \
-     -H <span class="hljs-string">'Authorization: Bearer &lt;your api token&gt;'</span></code></pre><blockquote>
+     -H <span class="hljs-string">'Authorization: Bearer &lt;your auth token&gt;'</span></code></pre><blockquote>
 <p>Example response:</p>
 </blockquote>
 <pre class="highlight json"><code>[
@@ -588,7 +596,7 @@
 <p>Example request:</p>
 </blockquote>
 <pre class="highlight bash"><code>curl -X GET http://api-test.cleartreasury.co.uk/api/clients?client_ref={client_ref} \
-     -H <span class="hljs-string">'Authorization: Bearer &lt;your api token&gt;'</span></code></pre><blockquote>
+     -H <span class="hljs-string">'Authorization: Bearer &lt;your auth token&gt;'</span></code></pre><blockquote>
 <p>Example response:</p>
 </blockquote>
 <pre class="highlight json"><code>[
@@ -668,7 +676,7 @@
 <p>Example request:</p>
 </blockquote>
 <pre class="highlight bash"><code>curl -X POST http://api-test.cleartreasury.co.uk/api/quotes \
-     -H <span class="hljs-string">'Authorization: Bearer &lt;your api token&gt;'</span>
+     -H <span class="hljs-string">'Authorization: Bearer &lt;your auth token&gt;'</span>
      -H <span class="hljs-string">'Content-Type: application/json'</span> \
      -d <span class="hljs-string">'{
             "currency_sell": "GBP",
@@ -801,7 +809,7 @@
 <p>Example request:</p>
 </blockquote>
 <pre class="highlight bash"><code>curl -X POST http://api-test.cleartreasury.co.uk/api/quotes?quote_id={quote_id} \
-     -H <span class="hljs-string">'Authorization: Bearer &lt;your api token&gt;'</span></code></pre><blockquote>
+     -H <span class="hljs-string">'Authorization: Bearer &lt;your auth token&gt;'</span></code></pre><blockquote>
 <p>Example response:</p>
 </blockquote>
 <pre class="highlight json"><code>{
@@ -919,7 +927,7 @@
 <p>Example request:</p>
 </blockquote>
 <pre class="highlight bash"><code>curl -X POST http://api-test.cleartreasury.co.uk/api/beneficiaries \
-     -H <span class="hljs-string">'Authorization: Bearer &lt;your api token&gt;'</span>
+     -H <span class="hljs-string">'Authorization: Bearer &lt;your auth token&gt;'</span>
      -H <span class="hljs-string">'Content-Type: application/json'</span>
      -d <span class="hljs-string">'{
           "account_name": "Bank account",
@@ -1067,7 +1075,7 @@
 <p>Example request:</p>
 </blockquote>
 <pre class="highlight bash"><code>curl -X GET http://api-test.cleartreasury.co.uk/api/beneficiaries \
-     -H <span class="hljs-string">'Authorization: Bearer &lt;your api token&gt;'</span></code></pre><blockquote>
+     -H <span class="hljs-string">'Authorization: Bearer &lt;your auth token&gt;'</span></code></pre><blockquote>
 <p>Example response:</p>
 </blockquote>
 <pre class="highlight json"><code>[
@@ -1336,7 +1344,7 @@
 <p>Example request:</p>
 </blockquote>
 <pre class="highlight bash"><code>curl -X POST http://api-test.cleartreasury.co.uk/api/trades \
-     -H <span class="hljs-string">'Authorization: Bearer &lt;your api token&gt;'</span>
+     -H <span class="hljs-string">'Authorization: Bearer &lt;your auth token&gt;'</span>
      -H <span class="hljs-string">'Content-Type: application/json'</span> \
      -d <span class="hljs-string">'{
           "quote_id": &lt;quote id&gt;,
@@ -1524,7 +1532,7 @@
 <p>Example request:</p>
 </blockquote>
 <pre class="highlight bash"><code>curl -X GET http://api-test.cleartreasury.co.uk/api/paymentinstruction?fromDate={fromDate}&amp;toDate={toDate} \
-     -H <span class="hljs-string">'Authorization: Bearer &lt;your api token&gt;'</span></code></pre><blockquote>
+     -H <span class="hljs-string">'Authorization: Bearer &lt;your auth token&gt;'</span></code></pre><blockquote>
 <p>Example response:</p>
 </blockquote>
 <pre class="highlight json"><code>[
@@ -1720,7 +1728,7 @@
 <p>Example request:</p>
 </blockquote>
 <pre class="highlight bash"><code>curl -X POST http://api-test.cleartreasury.co.uk/api/paymentinstruction/{id} \
-     -H <span class="hljs-string">'Authorization: Bearer &lt;your api token&gt;'</span></code></pre><blockquote>
+     -H <span class="hljs-string">'Authorization: Bearer &lt;your auth token&gt;'</span></code></pre><blockquote>
 <p>Example response:</p>
 </blockquote>
 <pre class="highlight json"><code>{
@@ -1909,7 +1917,7 @@
 <p>Example request:</p>
 </blockquote>
 <pre class="highlight bash"><code>curl -X POST http://api-test.cleartreasury.co.uk/api/paymentinstruction \
-     -H <span class="hljs-string">'Authorization: Bearer &lt;your api token&gt;'</span>
+     -H <span class="hljs-string">'Authorization: Bearer &lt;your auth token&gt;'</span>
      -H <span class="hljs-string">'Content-Type: application/json'</span> \
      -d <span class="hljs-string">'{
           "Intermediary": "sample string 1",
@@ -2126,7 +2134,7 @@
 <p>Example request:</p>
 </blockquote>
 <pre class="highlight bash"><code>curl -X GET http://api-test.cleartreasury.co.uk/api/statement?ccy={ccy}&amp;fromDate={fromDate}&amp;toDate={toDate} \
-     -H <span class="hljs-string">'Authorization: Bearer &lt;your api token&gt;'</span></code></pre><blockquote>
+     -H <span class="hljs-string">'Authorization: Bearer &lt;your auth token&gt;'</span></code></pre><blockquote>
 <p>Example response:</p>
 </blockquote>
 <pre class="highlight json"><code>[
@@ -2223,7 +2231,7 @@
 <p>Example request:</p>
 </blockquote>
 <pre class="highlight bash"><code>curl -X GET http://api-test.cleartreasury.co.uk/api/trades \
-     -H <span class="hljs-string">'Authorization: Bearer &lt;your api token&gt;'</span></code></pre><blockquote>
+     -H <span class="hljs-string">'Authorization: Bearer &lt;your auth token&gt;'</span></code></pre><blockquote>
 <p>Example response:</p>
 </blockquote>
 <pre class="highlight json"><code>[
@@ -2337,7 +2345,7 @@
 <p>Example request:</p>
 </blockquote>
 <pre class="highlight bash"><code>curl -X POST http://api-test.cleartreasury.co.uk/api/trades?fromDate={fromDate}&amp;toDate={toDate} \
-     -H <span class="hljs-string">'Authorization: Bearer &lt;your api token&gt;'</span></code></pre><blockquote>
+     -H <span class="hljs-string">'Authorization: Bearer &lt;your auth token&gt;'</span></code></pre><blockquote>
 <p>Example response:</p>
 </blockquote>
 <pre class="highlight json"><code>[
@@ -2466,7 +2474,7 @@
 
 ```bash
 curl -X GET http://api-test.cleartreasury.co.uk/api/trades/{id} \
-     -H 'Authorization: Bearer <your api token>'
+     -H 'Authorization: Bearer <your auth token>'
 ```
 
 > Example response:
