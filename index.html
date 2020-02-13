@@ -79,7 +79,7 @@
 <p>Example request:</p>
 </blockquote>
 <pre class="highlight bash"><code>curl -X POST http://api-test.cleartreasury.co.uk/api/clients \
-     -H <span class="hljs-string">'Authorization: Bearer &lt;your auth token&gt;'</span>
+     -H <span class="hljs-string">'Authorization: Bearer &lt;your auth token&gt;'</span> \
      -H <span class="hljs-string">'Content-Type: application/json'</span> \
      -d <span class="hljs-string">'{
           "trader": "&lt;your trader id&gt;",
@@ -676,7 +676,7 @@
 <p>Example request:</p>
 </blockquote>
 <pre class="highlight bash"><code>curl -X POST http://api-test.cleartreasury.co.uk/api/quotes \
-     -H <span class="hljs-string">'Authorization: Bearer &lt;your auth token&gt;'</span>
+     -H <span class="hljs-string">'Authorization: Bearer &lt;your auth token&gt;'</span> \
      -H <span class="hljs-string">'Content-Type: application/json'</span> \
      -d <span class="hljs-string">'{
             "currency_sell": "GBP",
@@ -927,8 +927,8 @@
 <p>Example request:</p>
 </blockquote>
 <pre class="highlight bash"><code>curl -X POST http://api-test.cleartreasury.co.uk/api/beneficiaries \
-     -H <span class="hljs-string">'Authorization: Bearer &lt;your auth token&gt;'</span>
-     -H <span class="hljs-string">'Content-Type: application/json'</span>
+     -H <span class="hljs-string">'Authorization: Bearer &lt;your auth token&gt;'</span> \
+     -H <span class="hljs-string">'Content-Type: application/json'</span> \
      -d <span class="hljs-string">'{
           "account_name": "Bank account",
           "account_number": "01234567",
@@ -1344,7 +1344,7 @@
 <p>Example request:</p>
 </blockquote>
 <pre class="highlight bash"><code>curl -X POST http://api-test.cleartreasury.co.uk/api/trades \
-     -H <span class="hljs-string">'Authorization: Bearer &lt;your auth token&gt;'</span>
+     -H <span class="hljs-string">'Authorization: Bearer &lt;your auth token&gt;'</span> \
      -H <span class="hljs-string">'Content-Type: application/json'</span> \
      -d <span class="hljs-string">'{
           "quote_id": &lt;quote id&gt;,
@@ -1917,7 +1917,7 @@
 <p>Example request:</p>
 </blockquote>
 <pre class="highlight bash"><code>curl -X POST http://api-test.cleartreasury.co.uk/api/paymentinstruction \
-     -H <span class="hljs-string">'Authorization: Bearer &lt;your auth token&gt;'</span>
+     -H <span class="hljs-string">'Authorization: Bearer &lt;your auth token&gt;'</span> \
      -H <span class="hljs-string">'Content-Type: application/json'</span> \
      -d <span class="hljs-string">'{
           "Intermediary": "sample string 1",
