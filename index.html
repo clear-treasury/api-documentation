@@ -2520,10 +2520,9 @@ curl -X GET http://api-test.cleartreasury.co.uk/api/trades/{id} \
 
             
                <h1 id="errors">Errors</h1>
-<aside class=error>
-The Clear Payments API uses the following error codes:
-</aside>
-
+<p>We use common HTTP status codes included in the response header to indicate success or failure.</p>
+<p>We follow <a href="https://tools.ietf.org/html/rfc7807">RFC 7807 - Problem Details for HTTP APIs</a> for formatting our response objects.</p>
+<h2 id="http-status-codes">HTTP Status Codes</h2>
 <table>
 <thead>
 <tr>
@@ -2532,32 +2531,40 @@ The Clear Payments API uses the following error codes:
 </tr>
 </thead>
 <tbody><tr>
+<td>200</td>
+<td>OK. Successful request</td>
+</tr>
+<tr>
+<td>201</td>
+<td>OK. Resource created.</td>
+</tr>
+<tr>
 <td>400</td>
-<td>Bad Request -- The request could not be understood by the server due to malformed syntax.</td>
+<td>Bad Request. The request could not be understood by the server due to malformed syntax.</td>
 </tr>
 <tr>
 <td>401</td>
-<td>Unauthorized -- Your API key is wrong.</td>
+<td>Unauthorized. Your API key is invalid or has expired.</td>
 </tr>
 <tr>
 <td>403</td>
-<td>Forbidden -- The value requested is hidden for administrators only.</td>
+<td>Forbidden. You do not have permissions to access the resource.</td>
 </tr>
 <tr>
 <td>404</td>
-<td>Not Found -- The specified value could not be found.</td>
+<td>Not Found. The specified resource could not be found.</td>
 </tr>
 <tr>
 <td>405</td>
-<td>Method Not Allowed -- You tried to access a value with an invalid method.</td>
+<td>Method Not Allowed. You tried to access a resource with an invalid method.</td>
 </tr>
 <tr>
 <td>406</td>
-<td>Not Acceptable -- You requested a format that isn&#39;t JSON.</td>
+<td>Not Acceptable. You requested a format that isn&#39;t JSON.</td>
 </tr>
 <tr>
 <td>410</td>
-<td>Gone -- The value requested has been removed from our servers.</td>
+<td>Gone. The value requested has been removed from our servers or has expired.</td>
 </tr>
 <tr>
 <td>418</td>
@@ -2565,17 +2572,57 @@ The Clear Payments API uses the following error codes:
 </tr>
 <tr>
 <td>429</td>
-<td>Too Many Requests -- You&#39;re requesting too many values! Slow down!</td>
+<td>Too Many Requests. You&#39;re requesting too many values! Slow down!</td>
 </tr>
 <tr>
 <td>500</td>
-<td>Internal Server Error -- We had a problem with our server. Try again later.</td>
+<td>Internal Server Error. We had a problem with our server. Try again later.</td>
 </tr>
 <tr>
 <td>503</td>
-<td>Service Unavailable -- We&#39;re temporarily offline for maintenance. Please try again later.</td>
+<td>Service Unavailable. We&#39;re temporarily offline for maintenance. Please try again later.</td>
 </tr>
 </tbody></table>
+<h2 id="validation-errors">Validation Errors</h2>
+<blockquote>
+<p>Example Validation Error:</p>
+</blockquote>
+<pre class="highlight json"><code>{
+  <span class="hljs-attr">"Type"</span>: <span class="hljs-string">"https://api-docs.cleartreasury.co.uk/#errors"</span>,
+  <span class="hljs-attr">"Title"</span>: <span class="hljs-string">"Problem creating resource"</span>,
+  <span class="hljs-attr">"Status"</span>: <span class="hljs-number">400</span>,
+  <span class="hljs-attr">"Detail"</span>: <span class="hljs-string">"There is a problem creating the resource"</span>,
+  <span class="hljs-attr">"Instance"</span>: <span class="hljs-string">"/error/00000"</span>,
+  <span class="hljs-attr">"invalid_params"</span>: [
+    {
+      <span class="hljs-attr">"name"</span>: <span class="hljs-string">"param"</span>,
+      <span class="hljs-attr">"reason"</span>: <span class="hljs-string">"Param needs to be supplied"</span>
+    }
+  ]
+}</code></pre><p>Data validation or violation of business rules related errors. Response could contain multiple errors.</p>
+<h2 id="authentication-errors">Authentication Errors</h2>
+<blockquote>
+<p>Example Authentication Error:</p>
+</blockquote>
+<pre class="highlight json"><code>{
+  <span class="hljs-attr">"Type"</span>: <span class="hljs-string">"https://api-docs.cleartreasury.co.uk/#errors"</span>,
+  <span class="hljs-attr">"Title"</span>: <span class="hljs-string">"Unauthorized"</span>,
+  <span class="hljs-attr">"Status"</span>: <span class="hljs-number">401</span>,
+  <span class="hljs-attr">"Detail"</span>: <span class="hljs-string">"You must be authorized to access this resource"</span>
+}</code></pre><p>Your authorization token is either not valid or has expired.</p>
+<p>Get in touch with us to to request a new token.</p>
+<h2 id="system-errors">System Errors</h2>
+<blockquote>
+<p>Example System Error:</p>
+</blockquote>
+<pre class="highlight json"><code>{
+  <span class="hljs-attr">"Type"</span>: <span class="hljs-string">"https://api-docs.cleartreasury.co.uk/#errors"</span>,
+  <span class="hljs-attr">"Title"</span>: <span class="hljs-string">"Internal Server Error"</span>,
+  <span class="hljs-attr">"Status"</span>: <span class="hljs-number">500</span>,
+  <span class="hljs-attr">"Detail"</span>: <span class="hljs-string">"No message available"</span>,
+  <span class="hljs-attr">"Instance"</span>: <span class="hljs-string">"/error/00000"</span>
+}</code></pre><p>Something went wrong in our side.</p>
+<p>Please contact support quoting the <code>Instance</code> URI.</p>
 
             
          </div>
