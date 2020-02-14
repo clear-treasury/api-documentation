@@ -4,7 +4,7 @@ A client is a person or institution that has trades and payments associated to t
 
 ### Description
 
-Before you're able to act on behalf of a client you will need to have created one first.
+Before you're able to act on behalf of a client you will need to create one first.
 
 ## Create a client
 
@@ -27,13 +27,11 @@ curl -X POST http://api-test.cleartreasury.co.uk/api/clients \
           "company_number": "01234567",
           "company_sic": "64999",
           "web": "https://www.cleartreasury.co.uk/",
-          "email": "test.user@example.com",
+          "email": "test.company@example.com",
           "countries_of_interest_beneficiaries": [ "GB", "US" ],
           "countries_of_interest_remitters": [ "GB", "US" ],
           "currency_of_interest": [ "GBP", "USD" ],
-          "reason": "Making an investment (e.g. shares, stock market, investment fund)",
-          "agree_marketing_conditions": 1,
-          "agree_marketing_conditions_affiliate": 1,
+          "reason": "Making an investment",
           "language": "<your provided language>",
           "contact_list": [
             {
@@ -42,11 +40,10 @@ curl -X POST http://api-test.cleartreasury.co.uk/api/clients \
               "address1": "Tester House",
               "city": "London",
               "country": "England",
-              "date_of_birth": "19700101",
-              "email": "tester.testerson@example.com",
-              "mobile_phone": "+447712345678",
-              "nationality": "British",
               "post_code": "BB2 2BB",
+              "date_of_birth": "19700101",
+              "email": "test.tester@example.com",
+              "mobile_phone": "+447712345678",
               "telephone": "+441234567890"
             }
           ]
@@ -71,85 +68,121 @@ curl -X POST http://api-test.cleartreasury.co.uk/api/clients \
 
 `POST /clients`
 
-| Name                                 | Description                                                        | Type                       | Additional information |
-| ------------------------------------ | ------------------------------------------------------------------ | -------------------------- | ---------------------- |
-| trader                               | Your trader account ID.<br>This will be provided to you at signup. | string                     | None.                  |
-| cold_caller                          |                                                                    | string                     | None.                  |
-| type                                 | The type of client. This can be either `CORPORATE` or `PRIVATE`.   | string                     | None.                  |
-| name                                 |                                                                    | string                     | None.                  |
-| address1                             |                                                                    | string                     | None.                  |
-| address2                             |                                                                    | string                     | None.                  |
-| address3                             |                                                                    | string                     | None.                  |
-| postcode                             |                                                                    | string                     | None.                  |
-| city                                 |                                                                    | string                     | None.                  |
-| country                              |                                                                    | string                     | None.                  |
-| fax                                  |                                                                    | string                     | None.                  |
-| switchboard                          |                                                                    | string                     | None.                  |
-| comment                              |                                                                    | string                     | None.                  |
-| company_number                       |                                                                    | string                     | None.                  |
-| company_sic                          |                                                                    | string                     | None.                  |
-| web                                  |                                                                    | string                     | None.                  |
-| email                                |                                                                    | string                     | None.                  |
-| trader_commission                    |                                                                    | string                     | None.                  |
-| cold_caller_commission               |                                                                    | string                     | None.                  |
-| web_commission                       |                                                                    | string                     | None.                  |
-| ip                                   |                                                                    | string                     | None.                  |
-| kyc_nature                           |                                                                    | string                     | None.                  |
-| kyc_avg_volume                       |                                                                    | string                     | None.                  |
-| kyc_annual_volume                    |                                                                    | string                     | None.                  |
-| kyc_frequency                        |                                                                    | string                     | None.                  |
-| countries_of_interest_beneficiaries  |                                                                    | Collection of string       | None.                  |
-| countries_of_interest_remitters      |                                                                    | Collection of string       | None.                  |
-| currency_of_interest                 |                                                                    | Collection of string       | None.                  |
-| expiry_date                          |                                                                    | string                     | None.                  |
-| regulator_name                       |                                                                    | string                     | None.                  |
-| source                               |                                                                    | string                     | None.                  |
-| reason                               |                                                                    | string                     | None.                  |
-| kyc_max_volume                       |                                                                    | string                     | None.                  |
-| kyc_ccy                              |                                                                    | string                     | None.                  |
-| country_of_incorporation             |                                                                    | string                     | None.                  |
-| legal_status                         |                                                                    | string                     | None.                  |
-| company_vat                          |                                                                    | string                     | None.                  |
-| trading_as_name                      |                                                                    | string                     | None.                  |
-| trading_country                      |                                                                    | string                     | None.                  |
-| trading_address1                     |                                                                    | string                     | None.                  |
-| trading_address2                     |                                                                    | string                     | None.                  |
-| trading_address3                     |                                                                    | string                     | None.                  |
-| trading_city                         |                                                                    | string                     | None.                  |
-| trading_postcode                     |                                                                    | string                     | None.                  |
-| referer                              |                                                                    | string                     | None.                  |
-| activity                             |                                                                    | string                     | None.                  |
-| kyc_source_of_wealth                 |                                                                    | string                     | None.                  |
-| kyc_source                           |                                                                    | string                     | None.                  |
-| kyc_relationship_with_beneficiaries  |                                                                    | string                     | None.                  |
-| agree_marketing_conditions           |                                                                    | integer                    | None.                  |
-| agree_marketing_conditions_affiliate |                                                                    | integer                    | None.                  |
-| group_industry                       |                                                                    | string                     | None.                  |
-| sid                                  |                                                                    | string                     | None.                  |
-| unsubscribe_emails                   |                                                                    | string                     | None.                  |
-| affiliate_reference                  |                                                                    | string                     | None.                  |
-| kyc_json                             |                                                                    | string                     | None.                  |
-| language                             |                                                                    | string                     | None.                  |
-| non_uk_shareholder                   |                                                                    | string                     | None.                  |
-| contact_list                         |                                                                    | Collection of contacts_obj | None.                  |
+| Name                                 | Description                                        | Required | Type                                            | Additional information                 |
+| ------------------------------------ | -------------------------------------------------- | -------- | ----------------------------------------------- | -------------------------------------- |
+| trader                               | Your trader account ID                             | Yes      | string                                          | This will be provided to you at signup |
+| type                                 | The type of client                                 | Yes      | string                                          | `"CORPORATE"` or `"PRIVATE"`           |
+| name                                 | Client's name                                      | No       | string                                          | Company name for `CORPORATE` client    |
+| address1                             | Address line 1                                     | No       | string                                          | None                                   |
+| address2                             | Address line 2                                     | No       | string                                          | None                                   |
+| address3                             | Address line 3                                     | No       | string                                          | None                                   |
+| city                                 | City                                               | No       | string                                          | None                                   |
+| country                              | Country                                            | No       | string                                          | None                                   |
+| postcode                             | Postcode                                           | No       | string                                          | None                                   |
+| web                                  | Website                                            | No       | string                                          | None                                   |
+| email                                | Email                                              | No       | string                                          | None                                   |
+| fax                                  | Fax number                                         | No       | string                                          | None                                   |
+| switchboard                          | Switchboard extension                              | No       | string                                          | None                                   |
+| ip                                   | IP address                                         | No       | string                                          | None                                   |
+| company_number                       | Company number                                     | No       | string                                          | None                                   |
+| company_sic                          | Company SIC code                                   | No       | string                                          | None                                   |
+| company_vat                          | Company VAT number                                 | No       | string                                          | None                                   |
+| country_of_incorporation             | Country of incorporation                           | No       | string                                          | None                                   |
+| legal_status                         | Legal status                                       | No       | string                                          | None                                   |
+| trading_as_name                      | Trading as name                                    | No       | string                                          | None                                   |
+| trading_address1                     | Trading address line 1                             | No       | string                                          | None                                   |
+| trading_address2                     | Trading address line 2                             | No       | string                                          | None                                   |
+| trading_address3                     | Trading address line 3                             | No       | string                                          | None                                   |
+| trading_city                         | Trading city                                       | No       | string                                          | None                                   |
+| trading_country                      | Trading country                                    | No       | string                                          | None                                   |
+| trading_postcode                     | Trading postcode                                   | No       | string                                          | None                                   |
+| countries_of_interest_beneficiaries  | The countries of the client's beneficiaries        | No       | Collection of string                            | None                                   |
+| countries_of_interest_remitters      | The countries of the client's remitters            | No       | Collection of string                            | None                                   |
+| currency_of_interest                 | The countries the client wants to trade            | No       | Collection of string                            | None                                   |
+| expiry_date                          | Client expiry date                                 | No       | string                                          | None                                   |
+| regulator_name                       | Name of the client's regulator                     | No       | string                                          | None                                   |
+| source                               | Source                                             | No       | string                                          | None                                   |
+| reason                               | Reason for trading                                 | No       | string                                          | None                                   |
+| comment                              | Free text comment                                  | No       | string                                          | None                                   |
+| trader_commission                    | Trader's commission                                | No       | string                                          | None                                   |
+| cold_caller                          | Which cold caller made contact with the client     | No       | string                                          | None                                   |
+| cold_caller_commission               | Cold caller's commission                           | No       | string                                          | None                                   |
+| web_commission                       |                                                    | No       | string                                          | None                                   |
+| activity                             |                                                    | No       | string                                          | None                                   |
+| language                             | Your parent company's identifier within our system | No       | string                                          | This will be provided to you at signup |
+| group_industry                       |                                                    | No       | string                                          | None                                   |
+| sid                                  |                                                    | No       | string                                          | None                                   |
+| referer                              |                                                    | No       | string                                          | None                                   |
+| affiliate_reference                  |                                                    | No       | string                                          | None                                   |
+| non_uk_shareholder                   |                                                    | No       | string                                          | None                                   |
+| kyc_ccy                              |                                                    | No       | string                                          | None                                   |
+| kyc_max_volume                       |                                                    | No       | string                                          | None                                   |
+| kyc_source_of_wealth                 |                                                    | No       | string                                          | None                                   |
+| kyc_source                           |                                                    | No       | string                                          | None                                   |
+| kyc_relationship_with_beneficiaries  |                                                    | No       | string                                          | None                                   |
+| kyc_nature                           |                                                    | No       | string                                          | None                                   |
+| kyc_avg_volume                       |                                                    | No       | string                                          | None                                   |
+| kyc_annual_volume                    |                                                    | No       | string                                          | None                                   |
+| kyc_frequency                        |                                                    | No       | string                                          | None                                   |
+| kyc_max_volume                       |                                                    | No       | string                                          | None                                   |
+| kyc_ccy                              |                                                    | No       | string                                          | None                                   |
+| kyc_source_of_wealth                 |                                                    | No       | string                                          | None                                   |
+| kyc_source                           |                                                    | No       | string                                          | None                                   |
+| kyc_relationship_with_beneficiaries  |                                                    | No       | string                                          | None                                   |
+| kyc_json                             |                                                    | No       | string                                          | None                                   |
+| agree_marketing_conditions           |                                                    | No       | integer                                         | `0` or `1`                             |
+| agree_marketing_conditions_affiliate |                                                    | No       | integer                                         | `0` or `1`                             |
+| unsubscribe_emails                   |                                                    | No       | string                                          | None                                   |
+| contact_list                         |                                                    | Yes      | Collection of [contact object](#contact-object) | None                                   |
+
+### Contact Object
+
+| Name          | Description         | Required | Type   | Additional information |
+| ------------- | ------------------- | -------- | ------ | ---------------------- |
+| title         | Title               | No       | string | None.                  |
+| first_name    | First name          | Yes      | string | None.                  |
+| middle_name   | Middle name         | Yes      | string | None.                  |
+| last_name     | Last name           | No       | string | None.                  |
+| date_of_birth | Date of birth       | No       | string | None.                  |
+| nationality   | Nationality         | No       | string | None.                  |
+| job_title     | Job title           | No       | string | None.                  |
+| address1      | Address line 1      | No       | string | None.                  |
+| address2      | Address line 2      | No       | string | None.                  |
+| address3      | Address line 3      | No       | string | None.                  |
+| city          | City                | No       | string | None.                  |
+| country       | Country             | No       | string | None.                  |
+| post_code     | Postcode            | No       | string | None.                  |
+| email         | Email address       | No       | string | None.                  |
+| fax           | Fax number          | No       | string | None.                  |
+| mobile_phone  | Mobile phone number | No       | string | None.                  |
+| telephone     | Telephone number    | No       | string | None.                  |
+| web           | Website             | No       | string | None.                  |
 
 ### Response
 
 `ClientRef` is needed for all future requests when operating as a trader on behalf of a client.
 
-The `Status` is the KYC status.
+`Status` determines the client's ability to trade.
 
-| Name             | Description                                                                                 | Type   |
-| ---------------- | ------------------------------------------------------------------------------------------- | ------ |
-| ClientName       | The company name of the new client                                                          | string |
-| ClientRef        | The unique reference of the client.<br>This is generated initially but can be updated later | string |
-| ContactFirstName | The company contact's first name for the client                                             | string |
-| ContactLastName  | The company contact's last name for the client                                              | string |
-| Status           | The KYC status of the new client                                                            | string |
+A client will automatically be marked as `New` at the point of creation in the system.  
+A client cannot trade until their status is `Active`.  
+A client's status is changed from `New` to `Active` after successfully passing our compliance checks.
+
+<!-- TODO: add details of our compliance checks? -->
+
+<!-- TODO: list all possible statuses in table? -->
+
+| Name             | Description                                                                                        | Type   |
+| ---------------- | -------------------------------------------------------------------------------------------------- | ------ |
+| ClientName       | Company name of the client                                                                         | string |
+| ClientRef        | Unique reference of the client.<br>This is autogenerated initially but can be updated by you later | string |
+| ContactFirstName | First name of the client's contact                                                                 | string |
+| ContactLastName  | Last name of the client's contact                                                                  | string |
+| Status           | Trading status of the client                                                                       | string |
 
 ## List all clients
 
-Retrieve a list of all clients you have access to.
+Retrieve a list of all the clients you have access to.
 
 > Example request:
 
@@ -185,15 +218,15 @@ curl -X GET http://api-test.cleartreasury.co.uk/api/clients \
 
 ### Response
 
-| Name             | Description                                                                                 | Type   |
-| ---------------- | ------------------------------------------------------------------------------------------- | ------ |
-| ClientName       | The company name of the new client                                                          | string |
-| ClientRef        | The unique reference of the client.<br>This is generated initially but can be updated later | string |
-| ContactFirstName | The company contact's first name for the client                                             | string |
-| ContactLastName  | The company contact's last name for the client                                              | string |
-| Status           | The KYC status of the new client                                                            | string |
+| Name             | Description                        | Type   |
+| ---------------- | ---------------------------------- | ------ |
+| ClientName       | Company name of the client         | string |
+| ClientRef        | Unique reference of the client     | string |
+| ContactFirstName | First name of the client's contact | string |
+| ContactLastName  | Last name of the client's contact  | string |
+| Status           | Trading status of the client       | string |
 
-## Get a single client
+## Get a client
 
 Retrieve a single client by client reference.
 
@@ -222,16 +255,16 @@ curl -X GET http://api-test.cleartreasury.co.uk/api/clients?client_ref={client_r
 
 `GET /clients?client_ref={client_ref}`
 
-| Name       | Description                                        | Required | Type   |
-| ---------- | -------------------------------------------------- | -------- | ------ |
-| client_ref | The client reference you're wanting the details of | Yes      | string |
+| Name       | Description                    | Required | Type   |
+| ---------- | ------------------------------ | -------- | ------ |
+| client_ref | Unique reference of the client | Yes      | string |
 
 ### Response
 
-| Name             | Description                                     | Type   |
-| ---------------- | ----------------------------------------------- | ------ |
-| ClientName       | The company name of the new client              | string |
-| ClientRef        | The unique reference of the client              | string |
-| ContactFirstName | The company contact's first name for the client | string |
-| ContactLastName  | The company contact's last name for the client  | string |
-| Status           | The KYC status of the new client                | string |
+| Name             | Description                        | Type   |
+| ---------------- | ---------------------------------- | ------ |
+| ClientName       | Company name of the client         | string |
+| ClientRef        | Unique reference of the client     | string |
+| ContactFirstName | First name of the client's contact | string |
+| ContactLastName  | Last name of the client's contact  | string |
+| Status           | Trading status of the client       | string |
