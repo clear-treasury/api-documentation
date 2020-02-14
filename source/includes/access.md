@@ -1,24 +1,27 @@
 # API access
 
-Every call to the Clear Treasury API requires an authorization token that needs to be set in the header of each subsequent call.
+Every call to the Clear Treasury API requires an authorization token that needs to be set in the header of every call.
 
 ## Auth Token
 
-Use your provided login details to generate an authorization token within our back-office system.
+Use your provided login credentials to access our back-office system and generate an authorization token.
 
-If you haven't been given any login details or you don't have access to our back-office system we can securely provide you with a token.
+<aside class="warning">
+     If you haven't been given any login credentials, or you don't have access to our back-office system, we will securely provide you with an authorization token.
+</aside>
 
 **The Token is valid for 6 months.**
 
-The resulting token must then be sent in an `Authorization` header in every subsequent request.
+The resulting authorization token must then be sent in an `Authorization` header in every request.
 
 ### Regenerating a token
 
-<aside class="warning">
-     We are in the process of building a developer portal for you to be able to generate your own tokens from.
-</aside>
+Use your provided login credentials to access our back-office system and generate a new authorization token.
 
-In the meantime we suggest you set a reminder before the 6 months is up to request a new token and we'll generate one for you.
+<aside class="warning">
+     If you don't have access to our back-office system we will be providing a developer portal in the near future for you to be able to generate your own tokens.<br>
+     In the meantime we suggest you set a reminder before the 6 months is up to request a new token and we'll generate one for you.
+</aside>
 
 ## Authorization
 
