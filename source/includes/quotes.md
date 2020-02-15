@@ -71,7 +71,7 @@ curl -X POST http://api-test.cleartreasury.co.uk/api/quotes \
 
 ### Response
 
-The quote `ID` is needed for booking a trade in step 3.
+The quote `ID` and `client_rate` is needed for booking a trade in step 3.
 
 | Name          | Description                                | Type    |
 | ------------- | ------------------------------------------ | ------- |
