@@ -4,19 +4,26 @@ There are four steps to executing a trade:
 
 **Step 1: Create a quote**
 
-Step 2: Create a beneficiary
+Step 2: Book a trade
 
-Step 3: Book a trade
+Step 3: Create a beneficiary
 
 Step 4: Instruct a payment
 
 ### Description
 
-A quote can be used to create a trade<!-- TODO: within 30 minutes -->. You need `quoteID` as an input to create a trade. <!-- TODO: Quote locks current mid-market exchange rate that will be used for your payment. Quote also calculates transfer fee and estimates delivery time. -->
+A quote can be used to create a trade. Quotes expire after 30 seconds.
+During that time you can refresh the price and the 30 second expiry time will be restarted, renewing its life for another 30 seconds.
+
+Once a quote expires you'll need to place a new quote.
+
+You need the returned quote `ID` and `client_rate` as inputs to create a trade in step 2.
+
+<!-- TODO: add more details about what constitutes a quote, how it's calculated, and what the fees are -->
 
 ## Place a Quote
 
-Before you can book a trade you need to have been issued a quote and have created a beneficiary.
+You need to have placed a quote before you can book a trade in step 2.
 
 > Example request:
 
@@ -27,8 +34,8 @@ curl -X POST http://api-test.cleartreasury.co.uk/api/quotes \
      -d '{
             "currency_sell": "GBP",
             "currency_buy": "EUR",
+            "sell_amount": 500.00,
             "value_date": "20200101",
-            "buy_amount": 500.00,
             "client_ref": "<client reference>"
         }'
 ```
@@ -37,15 +44,15 @@ curl -X POST http://api-test.cleartreasury.co.uk/api/quotes \
 
 ```json
 {
-  "ID": "0123",
-  "sell_amount": 595.8,
-  "buy_amount": 500.0,
-  "quote_rate": 1.1916,
-  "currency_sell": "GBP",
-  "fee": 0.0,
-  "fee_ccy": 0.0,
+  "ID": "0001",
+  "sell_amount": 500.0,
+  "buy_amount": 599.85,
+  "quote_rate": 1.1997028,
+  "value_date": "20200101",
   "currency_buy": "EUR",
-  "value_date": "20200101"
+  "currency_sell": "GBP",
+  "fee_ccy": 0.0,
+  "fee": 0.0
 }
 ```
 
@@ -53,36 +60,38 @@ curl -X POST http://api-test.cleartreasury.co.uk/api/quotes \
 
 `POST /quotes`
 
-| Name          | Description                                                                 | Required | Type    |
-| ------------- | --------------------------------------------------------------------------- | -------- | ------- |
-| currency_sell | The currency the end customer is wanting to sell.<br>ISO 3 letters currency | No       | string  |
-| currency_buy  | The currency the end customer is wanting to sell.<br>ISO 3 letters currency | No       | string  |
-| value_date    | Date. In yyyyMMdd format                                                    | No       | string  |
-| sell_amount   | Selling Amount                                                              | No       | decimal |
-| buy_amount    | Buying Amount                                                               | No       | decimal |
-| client_ref    | The client reference you're getting a quote on behalf of                    | Yes      | string  |
+| Name          | Description                                      | Required | Type    | Aditional Info        |
+| ------------- | ------------------------------------------------ | -------- | ------- | --------------------- |
+| currency_sell | The currency the end customer is wanting to sell | Yes      | string  | ISO 3 letter currency |
+| currency_buy  | The currency the end customer is wanting to sell | Yes      | string  | ISO 3 letter currency |
+| sell_amount   | Amount being sold                                | Yes      | decimal | None                  |
+| buy_amount    | Amount being bought                              | Yes      | decimal | None                  |
+| value_date    | Date the currency will be bought/sold            | No       | string  | `yyyyMMdd` format     |
+| client_ref    | Unique reference of the client                   | Yes      | string  | None                  |
 
 ### Response
 
 The quote `ID` is needed for booking a trade in step 3.
 
-| Name          | Description     | Type    |
-| ------------- | --------------- | ------- |
-| ID            | Quote ID        | string  |
-| sell_amount   | Sell Amount     | decimal |
-| buy_amount    | Sell Amount     | decimal |
-| client_rate   | Client Rate     | decimal |
-| currency_sell | Sell Currency   | string  |
-| fee           | Charge amount   | decimal |
-| fee_ccy       | Charge Currency | decimal |
-| currency_buy  | Buy Currency    | string  |
-| value_date    | yyyyMMdd Date   | string  |
+| Name          | Description                                | Type    |
+| ------------- | ------------------------------------------ | ------- |
+| ID            | Quote ID                                   | string  |
+| sell_amount   | Sell Amount                                | decimal |
+| buy_amount    | Sell Amount                                | decimal |
+| client_rate   | Client Rate                                | decimal |
+| currency_sell | Sell Currency                              | string  |
+| currency_buy  | Buy Currency                               | string  |
+| value_date    | Date that the currency will be bought/sold | string  |
+| fee           | Charge amount                              | decimal |
+| fee_ccy       | Charge Currency                            | decimal |
 
-## Get a refreshed price for a quote
+## Refreshed the price for a quote
 
-<!-- TODO: Add info about how long a quote lasts for -->
+You can request a new price for a previously placed quote.
 
-You can request a new price for a previously requested quote. Quotes last for 30 seconds.
+Quotes expire after 30 seconds. During that time you can refresh the price of a quote to renew its life for another 30 seconds.
+
+Once a quote expires you'll need to place a new quote.
 
 > Example request:
 
@@ -95,32 +104,27 @@ curl -X POST http://api-test.cleartreasury.co.uk/api/quotes?quote_id={quote_id} 
 
 ```json
 {
-  "ID": "string",
-  "sell_amount": 0,
-  "buy_amount": 0,
-  "client_rate": 0,
-  "bank_rate": 0,
-  "ccy_sell": "string",
-  "fee": 0,
-  "fee_ccy": 0,
-  "ccy_buy": "string",
-  "value_date": "string",
-  "Message": "string",
-  "Status": true
+  "ID": "0001",
+  "sell_amount": 500.0,
+  "buy_amount": 599.85,
+  "quote_rate": 1.1997028,
+  "value_date": "20200101",
+  "currency_buy": "EUR",
+  "currency_sell": "GBP",
+  "fee_ccy": 0.0,
+  "fee": 0.0
 }
 ```
 
 ### Request
 
-`GET /quotes?quote_id={quote_id}`
+`POST /quotes?quote_id={quote_id}`
 
-| Name     | Description         | Required | Type    |
-| -------- | ------------------- | -------- | ------- |
-| quote_id | Quote Id to refresh | Yes      | integer |
+| Name     | Description | Required | Type    |
+| -------- | ----------- | -------- | ------- |
+| quote_id | Quote ID    | Yes      | integer |
 
 ### Response
-
-<!-- TODO: Add proper response data -->
 
 | Name          | Description     | Type    |
 | ------------- | --------------- | ------- |
@@ -129,9 +133,56 @@ curl -X POST http://api-test.cleartreasury.co.uk/api/quotes?quote_id={quote_id} 
 | buy_amount    | Sell Amount     | decimal |
 | client_rate   | Client Rate     | decimal |
 | currency_sell | Sell Currency   | string  |
-| fee           | Charge amount   | decimal |
-| fee_ccy       | Charge Currency | decimal |
 | currency_buy  | Buy Currency    | string  |
 | value_date    | `yyyyMMdd` Date | string  |
-| Message       |                 | string  |
-| Status        |                 | boolean |
+| fee_ccy       | Charge Currency | decimal |
+| fee           | Charge amount   | decimal |
+
+## Get a placed quote
+
+Get the details of a previously placed quote
+
+> Example request:
+
+```bash
+curl -X GET http://api-test.cleartreasury.co.uk/api/quotes?quote_id={quote_id} \
+     -H 'Authorization: Bearer <your auth token>'
+```
+
+> Example response:
+
+```json
+{
+  "ID": "0001",
+  "sell_amount": 500.0,
+  "buy_amount": 599.85,
+  "quote_rate": 1.1997028,
+  "value_date": "20200101",
+  "currency_buy": "EUR",
+  "currency_sell": "GBP",
+  "fee_ccy": 0.0,
+  "fee": 0.0
+}
+```
+
+### Request
+
+`POST /quotes?quote_id={quote_id}`
+
+| Name     | Description | Required | Type    |
+| -------- | ----------- | -------- | ------- |
+| quote_id | Quote ID    | Yes      | integer |
+
+### Response
+
+| Name          | Description     | Type    |
+| ------------- | --------------- | ------- |
+| ID            | Quote ID        | string  |
+| sell_amount   | Sell Amount     | decimal |
+| buy_amount    | Sell Amount     | decimal |
+| client_rate   | Client Rate     | decimal |
+| currency_sell | Sell Currency   | string  |
+| currency_buy  | Buy Currency    | string  |
+| value_date    | `yyyyMMdd` Date | string  |
+| fee_ccy       | Charge Currency | decimal |
+| fee           | Charge amount   | decimal |
