@@ -76,22 +76,22 @@ curl -X POST http://api-test.cleartreasury.co.uk/api/trades \
 
 The `trade_ref` is needed for instructing a payment in step 4.
 
-| Name             | Description                                  | Type    | Additional information                  |
-| ---------------- | -------------------------------------------- | ------- | --------------------------------------- |
-| id               | Unique ID                                    | integer | None                                    |
-| trade_ref        | Unique reference                             | integer | This is used when instructing a payment |
-| trade_date       | Date the trade was made                      | string  | None                                    |
-| value_date       | Date the currency will be bought or sold     | string  | None                                    |
-| currency_bought  | Currency being bought                        | string  | None                                    |
-| currency_sold    | Currency being sold                          | string  | None                                    |
-| bought_amount    | Amount being bought                          | decimal | None                                    |
-| sold_amount      | Amount being sold                            | decimal | None                                    |
-| rate             | Rate of the trade                            | decimal | None                                    |
-| payment_fee      | Payment fee                                  | decimal | None                                    |
-| trade_type       | Type of trade                                | string  | None                                    |
-| our_account_name | Bank account name of Clear Treasury          | string  | None                                    |
-| our_bank_name    | Bank name of Clear Treasury                  | string  | None                                    |
-| our_iban         | IBAN for Clear Treasury's bank account       | string  | None                                    |
-| our_sort_code    | Sort code for Clear Treasury's bank account  | string  | None                                    |
-| our_swift_code   | SWIFT Code for Clear Treasury's bank account | string  | None                                    |
-| message          | Information about the trade                  | string  | None                                    |
+| Name             | Description                              | Type    | Additional information     |
+| ---------------- | ---------------------------------------- | ------- | -------------------------- |
+| id               | Unique ID                                | integer | None                       |
+| trade_ref        | Unique reference                         | integer | None                       |
+| trade_date       | Date the trade was made                  | string  | None                       |
+| value_date       | Date the currency will be bought or sold | string  | `yyyyMMDD` format          |
+| currency_bought  | Currency being bought                    | string  | ISO 3 letter currency code |
+| currency_sold    | Currency being sold                      | string  | ISO 3 letter currency code |
+| bought_amount    | Amount being bought                      | decimal | None                       |
+| sold_amount      | Amount being sold                        | decimal | None                       |
+| rate             | Rate of the trade                        | decimal | None                       |
+| payment_fee      | Payment fee                              | decimal | None                       |
+| trade_type       | Type of trade                            | string  | "Spot" or "Forward"        |
+| our_account_name | Our bank account name                    | string  | None                       |
+| our_bank_name    | Our bank name                            | string  | None                       |
+| our_iban         | Our IBAN                                 | string  | None                       |
+| our_sort_code    | Our sort code                            | string  | None                       |
+| our_swift_code   | Our SWIFT code                           | string  | None                       |
+| message          | Information about the trade              | string  | None                       |
