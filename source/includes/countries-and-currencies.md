@@ -56,14 +56,14 @@ curl -X GET http://api-test.cleartreasury.co.uk/api/countries \
 
 | Name        | Description                            | Type    |
 | ----------- | -------------------------------------- | ------- |
-| CountryName | Name of the country                    | string  |
+| CountryName | Full name of the country               | string  |
 | ISO2        | 2 letter ISO country code              | string  |
 | ISO3        | 3 letter ISO country code              | string  |
 | RiskScore   | Compliance risk score for this country | decimal |
 
 ## List all currencies
 
-List of allowed currencies we accept trades and payments of.
+List of allowed currencies we accept for trades and payments.
 
 > Example request:
 
