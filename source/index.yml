@@ -13,6 +13,7 @@ includes:
   - payments
   - statements
   - trades
+  - countries-and-currencies
   - _errors
 
 search: true
