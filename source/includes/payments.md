@@ -41,7 +41,7 @@ curl -X POST http://api-test.cleartreasury.co.uk/api/payments \
 
 ```json
 {
-  "PaymentGuid": "686a80e1-9264-4939-8050-0ae7049a0340"
+  "PaymentGuid": "<your GUID>"
 }
 ```
 
@@ -86,58 +86,24 @@ curl -X GET http://api-test.cleartreasury.co.uk/api/payments \
 ```json
 [
   {
-    "Intermediary": "string",
-    "AccountName": "string",
-    "AccountNumber": "string",
-    "Address": "string",
-    "BankName": "string",
-    "CCY": "string",
-    "Notes": "string",
-    "SortCode": "string",
-    "Swift": "string",
-    "CountryCode": "string",
-    "Email": "string",
-    "BenAddress": "string",
-    "CNAPS": "string",
-    "Purpose": "string",
-    "ChargeCode": "string",
-    "Amount": 0,
-    "PaymentReference": "string",
-    "TradeReference": "string",
-    "tra_client_id": 0,
-    "pin_id": 0,
-    "PaymentGUID": "00000000-0000-0000-0000-000000000000",
-    "opi_id": 0,
-    "CreationDate": "2019-10-17T11:27:23.691Z",
-    "Status": "string",
-    "exportedDate": "2019-10-17T11:27:23.691Z"
+    "beneficiary_id": "2",
+    "currency": "GBP",
+    "purpose": "Making an investment",
+    "fee": "SHA",
+    "amount": "200.00",
+    "trade_ref": "<trade reference>",
+    "payment_guid": "<your GUID>",
+    "client_ref": "<client reference>"
   },
   {
-    "Intermediary": "string",
-    "AccountName": "string",
-    "AccountNumber": "string",
-    "Address": "string",
-    "BankName": "string",
-    "CCY": "string",
-    "Notes": "string",
-    "SortCode": "string",
-    "Swift": "string",
-    "CountryCode": "string",
-    "Email": "string",
-    "BenAddress": "string",
-    "CNAPS": "string",
-    "Purpose": "string",
-    "ChargeCode": "string",
-    "Amount": 0,
-    "PaymentReference": "string",
-    "TradeReference": "string",
-    "tra_client_id": 0,
-    "pin_id": 0,
-    "PaymentGUID": "00000000-0000-0000-0000-000000000000",
-    "opi_id": 0,
-    "CreationDate": "2019-10-17T11:27:23.691Z",
-    "Status": "string",
-    "exportedDate": "2019-10-17T11:27:23.691Z"
+    "beneficiary_id": "1",
+    "currency": "GBP",
+    "purpose": "Making an investment",
+    "fee": "SHA",
+    "amount": "100.00",
+    "trade_ref": "<trade reference>",
+    "payment_guid": "<your GUID>",
+    "client_ref": "<client reference>"
   }
 ]
 ```
@@ -150,35 +116,18 @@ curl -X GET http://api-test.cleartreasury.co.uk/api/payments \
 
 ### Response
 
-| Name             | Description | Type    |
-| ---------------- | ----------- | ------- |
-| Intermediary     |             | string  |
-| AccountName      |             | string  |
-| AccountNumber    |             | string  |
-| Address          |             | string  |
-| BankName         |             | string  |
-| CCY              |             | string  |
-| Notes            |             | string  |
-| SortCode         |             | string  |
-| Swift            |             | string  |
-| CountryCode      |             | string  |
-| Email            |             | string  |
-| BenAddress       |             | string  |
-| CNAPS            |             | string  |
-| Purpose          |             | string  |
-| ChargeCode       |             | string  |
-| Amount           |             | decimal |
-| PaymentReference |             | string  |
-| TradeReference   |             | string  |
-| tra_client_id    |             | integer |
-| pin_id           |             | integer |
-| PaymentGUID      |             | string  |
-| opi_id           |             | integer |
-| CreationDate     |             | date    |
-| Status           |             | string  |
-| exportedDate     |             | date    |
+| Name           | Description      | Type   |
+| -------------- | ---------------- | ------ |
+| beneficiary_id | Beneficiary ID   | string |
+| currency       | Currency         | string |
+| purpose        | Purpose          | string |
+| fee            | Fee              | string |
+| amount         | Amount           | string |
+| trade_ref      | Trade reference  | string |
+| payment_guid   | Payment GUID     | string |
+| client_ref     | Client reference | string |
 
-## Get a payment
+<!-- ## Get a payment
 
 Get payment instruction by ID
 
@@ -344,4 +293,4 @@ curl -X GET http://api-test.cleartreasury.co.uk/api/payments?fromDate={fromDate}
 | CreationDate     |             | date    |
 | Status           |             | string  |
 | exportedDate     |             | date    |
--->
+--> -->
