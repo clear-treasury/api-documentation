@@ -4,21 +4,21 @@ There are four steps to executing a trade:
 
 Step 1: Create a quote
 
-**Step 2: Create a beneficiary**
+Step 2: Book a trade
 
-Step 3: Book a trade
+**Step 3: Create a beneficiary**
 
 Step 4: Instruct a payment
 
 ### Description
 
-Beneficiary is a person or institution who is the ultimate recipient of your payment.
+A beneficiary is a person or institution who is the ultimate recipient of your payment.
 
-In order to book a trade you must have created a beneficiary.
+You need the returned beneficiary `id` as an input to instruct a payment in step 4.
 
 ## Create a beneficiary
 
-Create a new beneficiary in order to trade with them.
+Create a new beneficiary in order to instruct a payment to them.
 
 > Example request:
 
@@ -54,34 +54,35 @@ curl -X POST http://api-test.cleartreasury.co.uk/api/beneficiaries \
 
 `POST /beneficiaries`
 
-| Name           | Description | Type   | Additional information                             |
-| -------------- | ----------- | ------ | -------------------------------------------------- |
-| intermediary   |             | string | Max length: 50                                     |
-| account_name   |             | string | Required                                           |
-| account_number |             | string | Required                                           |
-| address        |             | string | None.                                              |
-| bankname       |             | string | None.                                              |
-| currency       |             | string | Required. String length: inclusive between 3 and 3 |
-| notes          |             | string | None.                                              |
-| sort_code      |             | string | String length: inclusive between 6 and 6           |
-| swift          |             | string | None.                                              |
-| country_code   |             | string | Required                                           |
-| email          |             | string | None.                                              |
-| ben_address    |             | string | None.                                              |
-| cnaps          |             | string | None.                                              |
-| id             |             | string | None.                                              |
-| client_ref     |             | string | None.                                              |
+| Name           | Description                                        | Required | Type   | Additional information                    |
+| -------------- | -------------------------------------------------- | -------- | ------ | ----------------------------------------- |
+| client_ref     | Client reference to associate the beneficiary with | Yes      | string |                                           |
+| intermediary   | SWIFT code of the intermediary bank account        | No       | string | Max length 50                             |
+| account_name   | Bank account name                                  | Yes      | string |                                           |
+| account_number | Bank account number                                | Yes      | string |                                           |
+| sort_code      | Bank account sort code                             | No       | string | 6 digits. No spaces or special characters |
+| bankname       | Bank name                                          | No       | string |                                           |
+| address        | Bank Address                                       | No       | string |                                           |
+| swift          | Bank SWIFT code                                    | No       | string |                                           |
+| cnaps          | CNAPS account number                               | No       | string |                                           |
+| country_code   | Country code                                       | Yes      | string | ISO 2 letter country code                 |
+| currency       | Currency                                           | No       | string | ISO 3 letter currency code                |
+| email          | Email address                                      | No       | string |                                           |
+| ben_address    | Contact address                                    | No       | string |                                           |
+| notes          | Noteworthy information                             | No       | string |                                           |
 
 ### Response
 
-| Name    | Description    | Type    |
-| ------- | -------------- | ------- |
-| id      | Beneficiary ID | integer |
-| message |                | string  |
+The `id` is needed when instructing a payment.
+
+| Name    | Description                                | Type    |
+| ------- | ------------------------------------------ | ------- |
+| id      | Beneficiary ID                             | integer |
+| message | Information about the beneficiary creation | string  |
 
 ## List all beneficiaries
 
-Get a list of Beneficiaries you have access to
+Get a list of beneficiaries you have access to
 
 > Example request:
 
@@ -95,95 +96,45 @@ curl -X GET http://api-test.cleartreasury.co.uk/api/beneficiaries \
 ```json
 [
   {
-    "pin_id": 0,
-    "pin_link_id": 0,
-    "pin_link_type": 0,
-    "pin_ccy": "string",
-    "pin_bank_name": "string",
-    "pin_address": "string",
-    "pin_account_name": "string",
-    "pin_account_number": "string",
-    "pin_sort_code": "string",
-    "pin_iban": "string",
-    "pin_swift_bic": "string",
-    "pin_fedwire_bank_code": "string",
-    "pin_details": "string",
-    "pin_notes": "string",
-    "pin_country_code": "string",
-    "pin_intermediary": "string",
-    "pin_email": "string",
-    "pin_alert_date": "string",
-    "pin_archived": true,
-    "pin_ben_name": "string",
-    "pin_ben_contact_name": "string",
-    "pin_ben_address": "string",
-    "pin_ben_activity": "string",
-    "pin_ben_post_code": "string",
-    "pin_ben_Town": "string",
-    "pin_bank_post_code": "string",
-    "pin_bank_Town": "string",
-    "pin_bank_code": "string",
-    "pin_bank_branch": "string",
-    "pin_CPF": "string",
-    "pin_account_type": "string",
-    "pin_cnaps": "string",
-    "pin_purpose": "string",
-    "pin_validate_date": "string",
-    "pin_last_external_check_date": "string",
-    "pin_low_risk": 0,
-    "pin_recurrent": 0,
-    "pin_partner": 0,
-    "pin_check_count": 0
+    "intermediary": "",
+    "account_name": "Test bank account",
+    "account_number": "94907814",
+    "address": "1 Test Bank Avenue, UK, AA1 1AA",
+    "bankname": "Test bank",
+    "currency": "GBP",
+    "notes": "",
+    "sort_code": "001122",
+    "swift": "BARCGB22XXX",
+    "country_code": "GB",
+    "email": "test@example.com",
+    "ben_address": "1 test road, UK, BB2 2BB",
+    "id": "1",
+    "client_ref": "<client reference>"
   }
 ]
 ```
 
 ### Request
 
-`GET /template`
+`GET /beneficiaries`
 
 ### Response
 
-Beneficiary id is needed for booking a trade in step 3.
+Beneficiary `id` is needed for booking a trade.
 
-| Name                         | Description | Type    |
-| ---------------------------- | ----------- | ------- |
-| pin_id                       |             | integer |
-| pin_link_id                  |             | integer |
-| pin_link_type                |             | integer |
-| pin_ccy                      |             | string  |
-| pin_bank_name                |             | string  |
-| pin_address                  |             | string  |
-| pin_account_name             |             | string  |
-| pin_account_number           |             | string  |
-| pin_sort_code                |             | string  |
-| pin_iban                     |             | string  |
-| pin_swift_bic                |             | string  |
-| pin_fedwire_bank_code        |             | string  |
-| pin_details                  |             | string  |
-| pin_notes                    |             | string  |
-| pin_country_code             |             | string  |
-| pin_intermediary             |             | string  |
-| pin_email                    |             | string  |
-| pin_alert_date               |             | string  |
-| pin_archived                 |             | boolean |
-| pin_ben_name                 |             | string  |
-| pin_ben_contact_name         |             | string  |
-| pin_ben_address              |             | string  |
-| pin_ben_activity             |             | string  |
-| pin_ben_post_code            |             | string  |
-| pin_ben_Town                 |             | string  |
-| pin_bank_post_code           |             | string  |
-| pin_bank_Town                |             | string  |
-| pin_bank_code                |             | string  |
-| pin_bank_branch              |             | string  |
-| pin_CPF                      |             | string  |
-| pin_account_type             |             | string  |
-| pin_cnaps                    |             | string  |
-| pin_purpose                  |             | string  |
-| pin_validate_date            |             | string  |
-| pin_last_external_check_date |             | string  |
-| pin_low_risk                 |             | integer |
-| pin_recurrent                |             | integer |
-| pin_partner                  |             | integer |
-| pin_check_count              |             | integer |
+| Name           | Description                                        | Type   | Additional information                    |
+| -------------- | -------------------------------------------------- | ------ | ----------------------------------------- |
+| intermediary   | SWIFT code of the intermediary bank account        | string | Max length 50                             |
+| account_name   | Bank account name                                  | string |                                           |
+| account_number | Bank account number                                | string |                                           |
+| sort_code      | Bank account sort code                             | string | 6 digits. No spaces or special characters |
+| bankname       | Bank name                                          | string |                                           |
+| address        | Bank Address                                       | string |                                           |
+| swift          | Bank SWIFT code                                    | string |                                           |
+| cnaps          | CNAPS account number                               | string |                                           |
+| country_code   | Country code                                       | string | ISO 2 letter country code                 |
+| currency       | Currency                                           | string | ISO 3 letter currency code                |
+| email          | Email address                                      | string |                                           |
+| ben_address    | Contact address                                    | string |                                           |
+| notes          | Noteworthy information                             | string |                                           |
+| client_ref     | Client reference to associate the beneficiary with | string |                                           |
