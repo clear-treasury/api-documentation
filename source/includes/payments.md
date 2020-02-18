@@ -209,7 +209,6 @@ curl -X GET http://api-test.cleartreasury.co.uk/api/payments/{id}?client_ref={{c
 | Status           |             | string  |
 | exportedDate     |             | date    |
 
-<!--
 ## List payments by date
 
 Retrieve payment instruction list inclusive of from and to dates.
@@ -293,4 +292,4 @@ curl -X GET http://api-test.cleartreasury.co.uk/api/payments?fromDate={fromDate}
 | CreationDate     |             | date    |
 | Status           |             | string  |
 | exportedDate     |             | date    |
---> -->
+-->
