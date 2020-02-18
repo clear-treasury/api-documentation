@@ -1,0 +1,26 @@
+[
+  {
+    "currency_sell": "EUR",
+    "currency_buy": "GBP",
+    "value_date": "20200218",
+    "sell_amount": 200
+  },
+  {
+    "currency_sell": "GBP",
+    "currency_buy": "EUR",
+    "value_date": "20200219",
+    "sell_amount": 400.0
+  },
+  {
+    "currency_sell": "USD",
+    "currency_buy": "GBP",
+    "value_date": "20200218",
+    "sell_amount": 600
+  },
+  {
+    "currency_sell": "GBP",
+    "currency_buy": "USD",
+    "value_date": "20200219",
+    "sell_amount": 800.0
+  }
+]
