@@ -64,13 +64,11 @@ curl -X POST http://api-test.cleartreasury.co.uk/api/payments \
 
 ### Response
 
-<!-- TODO: Add response data -->
-
 | Name        | Description                           | Type   |
 | ----------- | ------------------------------------- | ------ |
 | PaymentGuid | The GUID you specified in the request | string |
 
-## List all payments
+<!-- ## List all payments
 
 Retrieve a list of all payment you have access to.
 
@@ -93,7 +91,8 @@ curl -X GET http://api-test.cleartreasury.co.uk/api/payments \
     "amount": "200.00",
     "trade_ref": "<trade reference>",
     "payment_guid": "<your GUID>",
-    "client_ref": "<client reference>"
+    "client_ref": "<client reference>",
+    "status": "Pending"
   },
   {
     "beneficiary_id": "1",
@@ -103,7 +102,8 @@ curl -X GET http://api-test.cleartreasury.co.uk/api/payments \
     "amount": "100.00",
     "trade_ref": "<trade reference>",
     "payment_guid": "<your GUID>",
-    "client_ref": "<client reference>"
+    "client_ref": "<client reference>",
+    "status": "Paid"
   }
 ]
 ```
@@ -126,8 +126,9 @@ curl -X GET http://api-test.cleartreasury.co.uk/api/payments \
 | trade_ref      | Trade reference  | string |
 | payment_guid   | Payment GUID     | string |
 | client_ref     | Client reference | string |
+| status         | Payment status   | string | -->
 
-<!-- ## Get a payment
+## Get a payment
 
 Get payment instruction by ID
 
@@ -142,73 +143,41 @@ curl -X GET http://api-test.cleartreasury.co.uk/api/payments/{id}?client_ref={{c
 
 ```json
 {
-  "Intermediary": "string",
-  "AccountName": "string",
-  "AccountNumber": "string",
-  "Address": "string",
-  "BankName": "string",
-  "CCY": "string",
-  "Notes": "string",
-  "SortCode": "string",
-  "Swift": "string",
-  "CountryCode": "string",
-  "Email": "string",
-  "BenAddress": "string",
-  "CNAPS": "string",
-  "Purpose": "string",
-  "ChargeCode": "string",
-  "Amount": 0,
-  "PaymentReference": "string",
-  "TradeReference": "string",
-  "tra_client_id": 0,
-  "pin_id": 0,
-  "PaymentGUID": "00000000-0000-0000-0000-000000000000",
-  "opi_id": 0,
-  "CreationDate": "2019-10-17T11:27:23.691Z",
-  "Status": "string",
-  "exportedDate": "2019-10-17T11:27:23.691Z"
+  "beneficiary_id": "2",
+  "currency": "GBP",
+  "purpose": "Making an investment",
+  "fee": "SHA",
+  "amount": "200.00",
+  "trade_ref": "<trade reference>",
+  "payment_guid": "<your GUID>",
+  "client_ref": "<client reference>",
+  "status": "Pending"
 }
 ```
 
 ### Request
 
-`GET /payments/{id}client_ref={{client_ref}}`
+`GET /payments/{payment_guid}`
 
-| Name       | Description                                                  | Required | Type   |
-| ---------- | ------------------------------------------------------------ | -------- | ------ |
-| id         | payment GUID                                                 | yes      | string |
-| client_ref | Client reference you're instructing the payment on behalf of | yes      | string |
+| Name         | Description              | Required | Type   |
+| ------------ | ------------------------ | -------- | ------ |
+| payment_guid | Unique ID of the payment | yes      | string |
 
 ### Response
 
-| Name             | Description | Type    |
-| ---------------- | ----------- | ------- |
-| Intermediary     |             | string  |
-| AccountName      |             | string  |
-| AccountNumber    |             | string  |
-| Address          |             | string  |
-| BankName         |             | string  |
-| CCY              |             | string  |
-| Notes            |             | string  |
-| SortCode         |             | string  |
-| Swift            |             | string  |
-| CountryCode      |             | string  |
-| Email            |             | string  |
-| BenAddress       |             | string  |
-| CNAPS            |             | string  |
-| Purpose          |             | string  |
-| ChargeCode       |             | string  |
-| Amount           |             | decimal |
-| PaymentReference |             | string  |
-| TradeReference   |             | string  |
-| tra_client_id    |             | integer |
-| pin_id           |             | integer |
-| PaymentGUID      |             | string  |
-| opi_id           |             | integer |
-| CreationDate     |             | date    |
-| Status           |             | string  |
-| exportedDate     |             | date    |
+| Name           | Description      | Type   |
+| -------------- | ---------------- | ------ |
+| beneficiary_id | Beneficiary ID   | string |
+| currency       | Currency         | string |
+| purpose        | Purpose          | string |
+| fee            | Fee              | string |
+| amount         | Amount           | string |
+| trade_ref      | Trade reference  | string |
+| payment_guid   | Payment GUID     | string |
+| client_ref     | Client reference | string |
+| status         | Payment status   | string |
 
+<!--
 ## List payments by date
 
 Retrieve payment instruction list inclusive of from and to dates.

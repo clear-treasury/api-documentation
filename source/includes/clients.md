@@ -233,27 +233,25 @@ Retrieve a single client by client reference.
 > Example request:
 
 ```bash
-curl -X GET http://api-test.cleartreasury.co.uk/api/clients?client_ref={client_ref} \
+curl -X GET http://api-test.cleartreasury.co.uk/api/clients/{client_ref} \
      -H 'Authorization: Bearer <your auth token>'
 ```
 
 > Example response:
 
 ```json
-[
-  {
-    "ClientName": "TEST Company Ltd",
-    "ClientRef": "C00000002",
-    "ContactFirstName": "Test",
-    "ContactLastName": "Tester",
-    "Status": "New"
-  }
-]
+{
+  "ClientName": "TEST Company Ltd",
+  "ClientRef": "C00000002",
+  "ContactFirstName": "Test",
+  "ContactLastName": "Tester",
+  "Status": "New"
+}
 ```
 
 ### Request
 
-`GET /clients?client_ref={client_ref}`
+`GET /clients/{client_ref}`
 
 | Name       | Description                    | Required | Type   |
 | ---------- | ------------------------------ | -------- | ------ |

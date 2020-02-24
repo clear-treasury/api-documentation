@@ -1,8 +1,9 @@
 # Trade History
 
+<!--
 ## List all trades
 
-Retreive a list of all trades you have access to.
+Retrieve a list of all trades you have access to.
 
 > Example request:
 
@@ -58,15 +59,85 @@ curl -X GET http://api-test.cleartreasury.co.uk/api/trades \
 | status          |             | string  |
 | beneficiary     |             | string  |
 | client_ref      |             | string  |
+-->
+
+## List all trades by client
+
+Retrieve a list of all trades made by a client.
+
+> Example request:
+
+```bash
+curl -X GET http://api-test.cleartreasury.co.uk/api/trades?client_ref={client_ref} \
+     -H 'Authorization: Bearer <your auth token>'
+```
+
+> Example response:
+
+```json
+[
+  {
+    "id": 000001,
+    "trade_date": "20200130",
+    "value_date": "20200130",
+    "currency_bought": "EUR",
+    "currency_sold": "GBP",
+    "client_rate": 1.2994149,
+    "bank_rate": 0.0,
+    "bought_amount": 416.87,
+    "sold_amount": 500.0,
+    "payment_fee": 0.0,
+    "trade_ref": "A00000000",
+    "trade_type": "Spot Trade",
+    "status": "FILLED",
+    "beneficiary": null,
+    "client_ref": "C00000001",
+    "instructed_amount": 0.0,
+    "received_amount": 0.0,
+    "paid_amount": 0.0
+  }
+]
+```
+
+### Request
+
+`GET /trades?client_ref={client_ref}`
+
+| Name       | Description                | Required | Type   |
+| ---------- | -------------------------- | -------- | ------ |
+| client_ref | Unique reference of client | Yes      | string |
+
+### Response
+
+| Name              | Description                           | Type    |
+| ----------------- | ------------------------------------- | ------- |
+| id                | Trade ID                              | integer |
+| trade_date        | Date the trade was booked             | string  |
+| value_date        | Date the currency will be bought/sold | string  |
+| currency_bought   | Currency bought                       | string  |
+| currency_sold     | Currency sold                         | string  |
+| client_rate       | Rate agreed with the client           | decimal |
+| bank_rate         | Rate given by the bank                | decimal |
+| bought_amount     | Amount bought                         | decimal |
+| sold_amount       | Amount sold                           | decimal |
+| payment_fee       | Payment fee                           | decimal |
+| trade_ref         | Reference of the trade                | string  |
+| trade_type        | Type of trade                         | string  |
+| status            | Trade status                          | string  |
+| beneficiary       | Beneficiary ID                        | string  |
+| client_ref        | Client reference                      | string  |
+| instructed_amount | Amount instructed                     | decimal |
+| received_amount   | Amount received                       | decimal |
+| paid_amount       | Amount paid                           | decimal |
 
 ## Retrieve a Trade list between two dates
 
-Retreive a list of trades between inclusive from and to dates.
+Retrieve a list of trades between inclusive from and to dates.
 
 > Example request:
 
 ```bash
-curl -X POST http://api-test.cleartreasury.co.uk/api/trades?fromDate={fromDate}&toDate={toDate} \
+curl -X POST http://api-test.cleartreasury.co.uk/api/trades?from_date={from_date}&to_date={to_date} \
      -H 'Authorization: Bearer <your auth token>'
 ```
 
@@ -75,106 +146,125 @@ curl -X POST http://api-test.cleartreasury.co.uk/api/trades?fromDate={fromDate}&
 ```json
 [
   {
-    "ID": 0,
-    "Trade_Date": "string",
-    "Value_Date": "string",
-    "CCY_Bought": "string",
-    "CCY_Sold": "string",
-    "Rate": 0.0,
-    "Bought_Amount": 0.0,
-    "Sold_Amount": 0.0,
-    "Payment_Fee": 0.0,
-    "Trade_ID": "string",
-    "Trade_Type": "string",
-    "Status": "string",
-    "Beneficiary": "string",
-    "Client_reference": "string"
+    "id": 000001,
+    "trade_date": "20200130",
+    "value_date": "20200130",
+    "currency_bought": "EUR",
+    "currency_sold": "GBP",
+    "client_rate": 1.2994149,
+    "bank_rate": 0.0,
+    "bought_amount": 416.87,
+    "sold_amount": 500.0,
+    "payment_fee": 0.0,
+    "trade_ref": "A00000000",
+    "trade_type": "Spot Trade",
+    "status": "FILLED",
+    "beneficiary": null,
+    "client_ref": "C00000001",
+    "instructed_amount": 0.0,
+    "received_amount": 0.0,
+    "paid_amount": 0.0
   }
 ]
 ```
 
 ### Request
 
-`GET /trades?fromDate={fromDate}&toDate={toDate}`
+`GET /trades?from_date={from_date}&to_date={to_date}`
 
-| Name     | Located in | Description | Required | Type   |
-| -------- | ---------- | ----------- | -------- | ------ |
-| fromDate | query      |             | No       | string |
-| toDate   | query      |             | No       | string |
+| Name      | Description | Required | Type   |
+| --------- | ----------- | -------- | ------ |
+| from_date | From date   | Yes      | string |
+| to_date   | To date     | Yes      | string |
 
 ### Response
 
-| Name          | Description   | Type    |
-| ------------- | ------------- | ------- |
-| ID            | Trade ID      | integer |
-| Trade_Date    | Trade Date    | string  |
-| Value_Date    | Value Date    | string  |
-| CCY_Bought    | CCY Bought    | string  |
-| CCY_Sold      | CCY Sold      | string  |
-| Rate          | Rate          | decimal |
-| Bought_Amount | Bought_Amount | decimal |
-| Sold_Amount   | Sold_Amount   | decimal |
-| Payment_Fee   | Payment_Fee   | decimal |
-| Trade_ID      | Trade ID      | string  |
-| Trade_Type    | Trade Type    | string  |
-| Status        | Status        | string  |
-| Beneficiary   | Beneficiary   | string  |
+| Name              | Description                           | Type    |
+| ----------------- | ------------------------------------- | ------- |
+| id                | Trade ID                              | integer |
+| trade_date        | Date the trade was booked             | string  |
+| value_date        | Date the currency will be bought/sold | string  |
+| currency_bought   | Currency bought                       | string  |
+| currency_sold     | Currency sold                         | string  |
+| client_rate       | Rate agreed with the client           | decimal |
+| bank_rate         | Rate given by the bank                | decimal |
+| bought_amount     | Amount bought                         | decimal |
+| sold_amount       | Amount sold                           | decimal |
+| payment_fee       | Payment fee                           | decimal |
+| trade_ref         | Reference of the trade                | string  |
+| trade_type        | Type of trade                         | string  |
+| status            | Trade status                          | string  |
+| beneficiary       | Beneficiary ID                        | string  |
+| client_ref        | Client reference                      | string  |
+| instructed_amount | Amount instructed                     | decimal |
+| received_amount   | Amount received                       | decimal |
+| paid_amount       | Amount paid                           | decimal |
 
-<!--
-## Retrieve payment instruction by ID
+## Get a trade
+
+Retrieve a single trade.
 
 > Example request:
 
 ```bash
-curl -X GET http://api-test.cleartreasury.co.uk/api/trades/{id} \
+curl -X GET http://api-test.cleartreasury.co.uk/api/trades/{trade_ref} \
      -H 'Authorization: Bearer <your auth token>'
 ```
 
 > Example response:
 
 ```json
-[
-  {
-    "ID": 0,
-    "Trade_Date": "string",
-    "Value_Date": "string",
-    "CCY_Bought": "string",
-    "CCY_Sold": "string",
-    "Rate": 0,
-    "Bought_Amount": 0,
-    "Sold_Amount": 0,
-    "Payment_Fee": 0,
-    "Trade_ID": "string",
-    "Trade_Type": "string",
-    "Status": "string",
-    "Beneficiary": "string"
-  }
-]
+{
+  "id": 000001,
+  "trade_date": "20200130",
+  "value_date": "20200130",
+  "currency_bought": "EUR",
+  "currency_sold": "GBP",
+  "client_rate": 1.2994149,
+  "bank_rate": 0.0,
+  "bought_amount": 416.87,
+  "sold_amount": 500.0,
+  "payment_fee": 0.0,
+  "trade_ref": "A00000000",
+  "trade_type": "Spot Trade",
+  "status": "FILLED",
+  "beneficiary": null,
+  "client_ref": "C00000001",
+  "instructed_amount": 0.0,
+  "received_amount": 0.0,
+  "paid_amount": 0.0
+}
 ```
 
 ### Request
 
-`GET /trades/{id}`
+`GET /trades/{trade_ref}`
 
-| Name | Description  | Required | Type   |
-| ---- | ------------ | -------- | ------ |
-| id   | Payment GUID | Yes      | string |
+| Name      | Description                   | Required | Type   |
+| --------- | ----------------------------- | -------- | ------ |
+| trade_ref | Unique reference of the trade | Yes      | string |
 
 ### Response
 
-| Name          | Description   | Type    |
-| ------------- | ------------- | ------- |
-| ID            | Trade ID      | integer |
-| Trade_Date    | Trade Date    | string  |
-| Value_Date    | Value Date    | string  |
-| CCY_Bought    | CCY Bought    | string  |
-| CCY_Sold      | CCY Sold      | string  |
-| Rate          | Rate          | decimal |
-| Bought_Amount | Bought_Amount | decimal |
-| Sold_Amount   | Sold_Amount   | decimal |
-| Payment_Fee   | Payment_Fee   | decimal |
-| Trade_ID      | Trade ID      | string  |
-| Trade_Type    | Trade Type    | string  |
-| Status        | Status        | string  |
-| Beneficiary   | Beneficiary   | string  |
+| Name              | Description                           | Type    |
+| ----------------- | ------------------------------------- | ------- |
+| id                | Trade ID                              | integer |
+| trade_date        | Date the trade was booked             | string  |
+| value_date        | Date the currency will be bought/sold | string  |
+| currency_bought   | Currency bought                       | string  |
+| currency_sold     | Currency sold                         | string  |
+| client_rate       | Rate agreed with the client           | decimal |
+| bank_rate         | Rate given by the bank                | decimal |
+| bought_amount     | Amount bought                         | decimal |
+| sold_amount       | Amount sold                           | decimal |
+| payment_fee       | Payment fee                           | decimal |
+| trade_ref         | Unique reference of the trade         | string  |
+| trade_type        | Type of trade                         | string  |
+| status            | Trade status                          | string  |
+| beneficiary       | Beneficiary ID                        | string  |
+| client_ref        | Client reference                      | string  |
+| instructed_amount | Amount instructed                     | decimal |
+| received_amount   | Amount received                       | decimal |
+| paid_amount       | Amount paid                           | decimal |
+
 -->

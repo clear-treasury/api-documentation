@@ -14,6 +14,7 @@ includes:
   - statements
   - trades
   - countries-and-currencies
+  - payment-methods
   - _errors
 
 search: true

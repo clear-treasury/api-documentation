@@ -82,12 +82,12 @@ The `id` is needed when instructing a payment.
 
 ## List all beneficiaries
 
-Get a list of beneficiaries you have access to
+Get a list of beneficiaries you have access to.
 
 > Example request:
 
 ```bash
-curl -X GET http://api-test.cleartreasury.co.uk/api/beneficiaries \
+curl -X GET http://api-test.cleartreasury.co.uk/api/beneficiaries?client_ref={client_ref} \
      -H 'Authorization: Bearer <your auth token>'
 ```
 
@@ -116,7 +116,11 @@ curl -X GET http://api-test.cleartreasury.co.uk/api/beneficiaries \
 
 ### Request
 
-`GET /beneficiaries`
+`GET /beneficiaries?client_ref={client_ref}`
+
+| Name           | Description                  | Required | Type   |
+| -------------- | ---------------------------- | -------- | ------ |
+| beneficiary_id | Unique ID of the beneficiary | Yes      | string |
 
 ### Response
 
@@ -137,4 +141,66 @@ Beneficiary `id` is needed for booking a trade.
 | email          | Email address                                      | string |                                           |
 | ben_address    | Contact address                                    | string |                                           |
 | notes          | Noteworthy information                             | string |                                           |
+| id             | Unique ID of the beneficiary                       | string |                                           |
+| client_ref     | Client reference to associate the beneficiary with | string |                                           |
+
+## Get a beneficiary
+
+Retrieve a single beneficiary by beneficiary ID.
+
+> Example request:
+
+```bash
+curl -X GET http://api-test.cleartreasury.co.uk/api/beneficiaries/{beneficiary_id} \
+     -H 'Authorization: Bearer <your auth token>'
+```
+
+> Example response:
+
+```json
+{
+  "client_ref": "C00000001",
+  "id": "1",
+  "intermediary": "",
+  "account_name": "Test bank account",
+  "account_number": "01234567",
+  "address": "",
+  "bankname": "",
+  "currency": "GBP",
+  "notes": "Added from API 01/01/2020 00:00:00",
+  "sort_code": "001122",
+  "swift": "AAAAUK12345XXX",
+  "country_code": "GB",
+  "email": "test.beneficiary@example.com",
+  "ben_address": "",
+  "cnaps": ""
+}
+```
+
+### Request
+
+`GET /beneficiaries/{beneficiary_id}`
+
+| Name           | Description                  | Required | Type   |
+| -------------- | ---------------------------- | -------- | ------ |
+| beneficiary_id | Unique ID of the beneficiary | Yes      | string |
+
+### Response
+
+| Name           | Description                                        | Type   | Additional information                    |
+| -------------- | -------------------------------------------------- | ------ | ----------------------------------------- |
+| intermediary   | SWIFT code of the intermediary bank account        | string | Max length 50                             |
+| account_name   | Bank account name                                  | string |                                           |
+| account_number | Bank account number                                | string |                                           |
+| sort_code      | Bank account sort code                             | string | 6 digits. No spaces or special characters |
+| bankname       | Bank name                                          | string |                                           |
+| address        | Bank Address                                       | string |                                           |
+| swift          | Bank SWIFT code                                    | string |                                           |
+| cnaps          | CNAPS account number                               | string |                                           |
+| country_code   | Country code                                       | string | ISO 2 letter country code                 |
+| currency       | Currency                                           | string | ISO 3 letter currency code                |
+| email          | Email address                                      | string |                                           |
+| ben_address    | Contact address                                    | string |                                           |
+| notes          | Noteworthy information                             | string |                                           |
+| id             | Unique ID of the beneficiary                       | string |
 | client_ref     | Client reference to associate the beneficiary with | string |                                           |
