@@ -835,20 +835,18 @@ A client&#39;s status is changed from <code>New</code> to <code>Active</code> af
 <blockquote>
 <p>Example request:</p>
 </blockquote>
-<pre class="highlight bash"><code>curl -X GET http://api-test.cleartreasury.co.uk/api/clients?client_ref={client_ref} \
+<pre class="highlight bash"><code>curl -X GET http://api-test.cleartreasury.co.uk/api/clients/{client_ref} \
      -H <span class="hljs-string">'Authorization: Bearer &lt;your auth token&gt;'</span></code></pre><blockquote>
 <p>Example response:</p>
 </blockquote>
-<pre class="highlight json"><code>[
-  {
-    <span class="hljs-attr">"ClientName"</span>: <span class="hljs-string">"TEST Company Ltd"</span>,
-    <span class="hljs-attr">"ClientRef"</span>: <span class="hljs-string">"C00000002"</span>,
-    <span class="hljs-attr">"ContactFirstName"</span>: <span class="hljs-string">"Test"</span>,
-    <span class="hljs-attr">"ContactLastName"</span>: <span class="hljs-string">"Tester"</span>,
-    <span class="hljs-attr">"Status"</span>: <span class="hljs-string">"New"</span>
-  }
-]</code></pre><h3 id="request-2">Request</h3>
-<p><code>GET /clients?client_ref={client_ref}</code></p>
+<pre class="highlight json"><code>{
+  <span class="hljs-attr">"ClientName"</span>: <span class="hljs-string">"TEST Company Ltd"</span>,
+  <span class="hljs-attr">"ClientRef"</span>: <span class="hljs-string">"C00000002"</span>,
+  <span class="hljs-attr">"ContactFirstName"</span>: <span class="hljs-string">"Test"</span>,
+  <span class="hljs-attr">"ContactLastName"</span>: <span class="hljs-string">"Tester"</span>,
+  <span class="hljs-attr">"Status"</span>: <span class="hljs-string">"New"</span>
+}</code></pre><h3 id="request-2">Request</h3>
+<p><code>GET /clients/{client_ref}</code></p>
 <table>
 <thead>
 <tr>
@@ -912,6 +910,7 @@ A client&#39;s status is changed from <code>New</code> to <code>Active</code> af
 <p>A quote can be used to create a trade. Quotes expire after 30 seconds.
 During that time you can refresh the price and the 30 second expiry time will be restarted, renewing its life for another 30 seconds.</p>
 <p>Once a quote expires you&#39;ll need to place a new quote.</p>
+<p>The rate returned is always in the sell-buy direction.</p>
 <p>You need the returned quote <code>ID</code> and <code>client_rate</code> as inputs to create a trade in step 2.</p>
 <!-- TODO: add more details about what constitutes a quote, how it's calculated, and what the fees are -->
 
@@ -998,7 +997,8 @@ During that time you can refresh the price and the 30 second expiry time will be
 </tr>
 </tbody></table>
 <h3 id="response">Response</h3>
-<p>The quote <code>ID</code> and <code>client_rate</code> is needed for booking a trade in step 3.</p>
+<p>The quote <code>ID</code> and <code>quote_rate</code> is needed for booking a trade in step 3.</p>
+<p>The rate returned is always in the sell/buy direction.</p>
 <table>
 <thead>
 <tr>
@@ -1014,27 +1014,27 @@ During that time you can refresh the price and the 30 second expiry time will be
 </tr>
 <tr>
 <td>sell_amount</td>
-<td>Sell Amount</td>
+<td>Amount being sold</td>
 <td>decimal</td>
 </tr>
 <tr>
 <td>buy_amount</td>
-<td>Sell Amount</td>
+<td>Amount being bought</td>
 <td>decimal</td>
 </tr>
 <tr>
-<td>client_rate</td>
-<td>Client Rate</td>
+<td>quote_rate</td>
+<td>Quote Rate. Always in sell/buy direction</td>
 <td>decimal</td>
 </tr>
 <tr>
 <td>currency_sell</td>
-<td>Sell Currency</td>
+<td>Currency beign sold</td>
 <td>string</td>
 </tr>
 <tr>
 <td>currency_buy</td>
-<td>Buy Currency</td>
+<td>Currency being bought</td>
 <td>string</td>
 </tr>
 <tr>
@@ -1152,7 +1152,7 @@ During that time you can refresh the price and the 30 second expiry time will be
 <blockquote>
 <p>Example request:</p>
 </blockquote>
-<pre class="highlight bash"><code>curl -X GET http://api-test.cleartreasury.co.uk/api/quotes?quote_id={quote_id} \
+<pre class="highlight bash"><code>curl -X GET http://api-test.cleartreasury.co.uk/api/quotes/{quote_id} \
      -H <span class="hljs-string">'Authorization: Bearer &lt;your auth token&gt;'</span></code></pre><blockquote>
 <p>Example response:</p>
 </blockquote>
@@ -1167,7 +1167,7 @@ During that time you can refresh the price and the 30 second expiry time will be
   <span class="hljs-attr">"fee_ccy"</span>: <span class="hljs-number">0.0</span>,
   <span class="hljs-attr">"fee"</span>: <span class="hljs-number">0.0</span>
 }</code></pre><h3 id="request-2">Request</h3>
-<p><code>POST /quotes?quote_id={quote_id}</code></p>
+<p><code>GET /quotes/{quote_id}</code></p>
 <table>
 <thead>
 <tr>
@@ -1200,42 +1200,42 @@ During that time you can refresh the price and the 30 second expiry time will be
 </tr>
 <tr>
 <td>sell_amount</td>
-<td>Sell Amount</td>
+<td>Amount being sold</td>
 <td>decimal</td>
 </tr>
 <tr>
 <td>buy_amount</td>
-<td>Sell Amount</td>
+<td>Amount being bought</td>
 <td>decimal</td>
 </tr>
 <tr>
-<td>client_rate</td>
-<td>Client Rate</td>
+<td>quote_rate</td>
+<td>Quote Rate. Always in sell/buy direction</td>
 <td>decimal</td>
 </tr>
 <tr>
 <td>currency_sell</td>
-<td>Sell Currency</td>
+<td>Currency beign sold</td>
 <td>string</td>
 </tr>
 <tr>
 <td>currency_buy</td>
-<td>Buy Currency</td>
+<td>Currency being bought</td>
 <td>string</td>
 </tr>
 <tr>
 <td>value_date</td>
-<td><code>yyyyMMdd</code> Date</td>
+<td>Date that the currency will be bought/sold</td>
 <td>string</td>
-</tr>
-<tr>
-<td>fee_ccy</td>
-<td>Charge Currency</td>
-<td>decimal</td>
 </tr>
 <tr>
 <td>fee</td>
 <td>Charge amount</td>
+<td>decimal</td>
+</tr>
+<tr>
+<td>fee_ccy</td>
+<td>Charge Currency</td>
 <td>decimal</td>
 </tr>
 </tbody></table>
@@ -1409,11 +1409,11 @@ During that time you can refresh the price and the 30 second expiry time will be
 </tr>
 </tbody></table>
 <h2 id="list-all-beneficiaries">List all beneficiaries</h2>
-<p>Get a list of beneficiaries you have access to</p>
+<p>Get a list of beneficiaries you have access to.</p>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
-<pre class="highlight bash"><code>curl -X GET http://api-test.cleartreasury.co.uk/api/beneficiaries \
+<pre class="highlight bash"><code>curl -X GET http://api-test.cleartreasury.co.uk/api/beneficiaries?client_ref={client_ref} \
      -H <span class="hljs-string">'Authorization: Bearer &lt;your auth token&gt;'</span></code></pre><blockquote>
 <p>Example response:</p>
 </blockquote>
@@ -1435,7 +1435,23 @@ During that time you can refresh the price and the 30 second expiry time will be
     <span class="hljs-attr">"client_ref"</span>: <span class="hljs-string">"&lt;client reference&gt;"</span>
   }
 ]</code></pre><h3 id="request-1">Request</h3>
-<p><code>GET /beneficiaries</code></p>
+<p><code>GET /beneficiaries?client_ref={client_ref}</code></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Required</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>beneficiary_id</td>
+<td>Unique ID of the beneficiary</td>
+<td>Yes</td>
+<td>string</td>
+</tr>
+</tbody></table>
 <h3 id="response-1">Response</h3>
 <p>Beneficiary <code>id</code> is needed for booking a trade.</p>
 <table>
@@ -1522,6 +1538,156 @@ During that time you can refresh the price and the 30 second expiry time will be
 <tr>
 <td>notes</td>
 <td>Noteworthy information</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>id</td>
+<td>Unique ID of the beneficiary</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>client_ref</td>
+<td>Client reference to associate the beneficiary with</td>
+<td>string</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id="get-a-beneficiary">Get a beneficiary</h2>
+<p>Retrieve a single beneficiary by beneficiary ID.</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre class="highlight bash"><code>curl -X GET http://api-test.cleartreasury.co.uk/api/beneficiaries/{beneficiary_id} \
+     -H <span class="hljs-string">'Authorization: Bearer &lt;your auth token&gt;'</span></code></pre><blockquote>
+<p>Example response:</p>
+</blockquote>
+<pre class="highlight json"><code>{
+  <span class="hljs-attr">"client_ref"</span>: <span class="hljs-string">"C00000001"</span>,
+  <span class="hljs-attr">"id"</span>: <span class="hljs-string">"1"</span>,
+  <span class="hljs-attr">"intermediary"</span>: <span class="hljs-string">""</span>,
+  <span class="hljs-attr">"account_name"</span>: <span class="hljs-string">"Test bank account"</span>,
+  <span class="hljs-attr">"account_number"</span>: <span class="hljs-string">"01234567"</span>,
+  <span class="hljs-attr">"address"</span>: <span class="hljs-string">""</span>,
+  <span class="hljs-attr">"bankname"</span>: <span class="hljs-string">""</span>,
+  <span class="hljs-attr">"currency"</span>: <span class="hljs-string">"GBP"</span>,
+  <span class="hljs-attr">"notes"</span>: <span class="hljs-string">"Added from API 01/01/2020 00:00:00"</span>,
+  <span class="hljs-attr">"sort_code"</span>: <span class="hljs-string">"001122"</span>,
+  <span class="hljs-attr">"swift"</span>: <span class="hljs-string">"AAAAUK12345XXX"</span>,
+  <span class="hljs-attr">"country_code"</span>: <span class="hljs-string">"GB"</span>,
+  <span class="hljs-attr">"email"</span>: <span class="hljs-string">"test.beneficiary@example.com"</span>,
+  <span class="hljs-attr">"ben_address"</span>: <span class="hljs-string">""</span>,
+  <span class="hljs-attr">"cnaps"</span>: <span class="hljs-string">""</span>
+}</code></pre><h3 id="request-2">Request</h3>
+<p><code>GET /beneficiaries/{beneficiary_id}</code></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Required</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>beneficiary_id</td>
+<td>Unique ID of the beneficiary</td>
+<td>Yes</td>
+<td>string</td>
+</tr>
+</tbody></table>
+<h3 id="response-2">Response</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Type</th>
+<th>Additional information</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>intermediary</td>
+<td>SWIFT code of the intermediary bank account</td>
+<td>string</td>
+<td>Max length 50</td>
+</tr>
+<tr>
+<td>account_name</td>
+<td>Bank account name</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>account_number</td>
+<td>Bank account number</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>sort_code</td>
+<td>Bank account sort code</td>
+<td>string</td>
+<td>6 digits. No spaces or special characters</td>
+</tr>
+<tr>
+<td>bankname</td>
+<td>Bank name</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>address</td>
+<td>Bank Address</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>swift</td>
+<td>Bank SWIFT code</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>cnaps</td>
+<td>CNAPS account number</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>country_code</td>
+<td>Country code</td>
+<td>string</td>
+<td>ISO 2 letter country code</td>
+</tr>
+<tr>
+<td>currency</td>
+<td>Currency</td>
+<td>string</td>
+<td>ISO 3 letter currency code</td>
+</tr>
+<tr>
+<td>email</td>
+<td>Email address</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>ben_address</td>
+<td>Contact address</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>notes</td>
+<td>Noteworthy information</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>id</td>
+<td>Unique ID of the beneficiary</td>
 <td>string</td>
 <td></td>
 </tr>
@@ -1845,8 +2011,6 @@ During that time you can refresh the price and the 30 second expiry time will be
 </tr>
 </tbody></table>
 <h3 id="response">Response</h3>
-<!-- TODO: Add response data -->
-
 <table>
 <thead>
 <tr>
@@ -1861,40 +2025,104 @@ During that time you can refresh the price and the 30 second expiry time will be
 <td>string</td>
 </tr>
 </tbody></table>
-<h2 id="list-all-payments">List all payments</h2>
-<p>Retrieve a list of all payment you have access to.</p>
+<!-- ## List all payments
+
+Retrieve a list of all payment you have access to.
+
+> Example reequest:
+
+```bash
+curl -X GET http://api-test.cleartreasury.co.uk/api/payments \
+     -H 'Authorization: Bearer <your auth token>'
+```
+
+> Example response:
+
+```json
+[
+  {
+    "beneficiary_id": "2",
+    "currency": "GBP",
+    "purpose": "Making an investment",
+    "fee": "SHA",
+    "amount": "200.00",
+    "trade_ref": "<trade reference>",
+    "payment_guid": "<your GUID>",
+    "client_ref": "<client reference>",
+    "status": "Pending"
+  },
+  {
+    "beneficiary_id": "1",
+    "currency": "GBP",
+    "purpose": "Making an investment",
+    "fee": "SHA",
+    "amount": "100.00",
+    "trade_ref": "<trade reference>",
+    "payment_guid": "<your GUID>",
+    "client_ref": "<client reference>",
+    "status": "Paid"
+  }
+]
+```
+
+### Request
+
+`GET /payments`
+
+### Response
+
+### Response
+
+| Name           | Description      | Type   |
+| -------------- | ---------------- | ------ |
+| beneficiary_id | Beneficiary ID   | string |
+| currency       | Currency         | string |
+| purpose        | Purpose          | string |
+| fee            | Fee              | string |
+| amount         | Amount           | string |
+| trade_ref      | Trade reference  | string |
+| payment_guid   | Payment GUID     | string |
+| client_ref     | Client reference | string |
+| status         | Payment status   | string | -->
+
+<h2 id="get-a-payment">Get a payment</h2>
+<p>Get payment instruction by ID</p>
 <blockquote>
-<p>Example reequest:</p>
+<p>Example request:</p>
 </blockquote>
-<pre class="highlight bash"><code>curl -X GET http://api-test.cleartreasury.co.uk/api/payments \
+<pre class="highlight bash"><code>curl -X GET http://api-test.cleartreasury.co.uk/api/payments/{id}?client_ref={{client_ref}} \
      -H <span class="hljs-string">'Authorization: Bearer &lt;your auth token&gt;'</span></code></pre><blockquote>
 <p>Example response:</p>
 </blockquote>
-<pre class="highlight json"><code>[
-  {
-    <span class="hljs-attr">"beneficiary_id"</span>: <span class="hljs-string">"2"</span>,
-    <span class="hljs-attr">"currency"</span>: <span class="hljs-string">"GBP"</span>,
-    <span class="hljs-attr">"purpose"</span>: <span class="hljs-string">"Making an investment"</span>,
-    <span class="hljs-attr">"fee"</span>: <span class="hljs-string">"SHA"</span>,
-    <span class="hljs-attr">"amount"</span>: <span class="hljs-string">"200.00"</span>,
-    <span class="hljs-attr">"trade_ref"</span>: <span class="hljs-string">"&lt;trade reference&gt;"</span>,
-    <span class="hljs-attr">"payment_guid"</span>: <span class="hljs-string">"&lt;your GUID&gt;"</span>,
-    <span class="hljs-attr">"client_ref"</span>: <span class="hljs-string">"&lt;client reference&gt;"</span>
-  },
-  {
-    <span class="hljs-attr">"beneficiary_id"</span>: <span class="hljs-string">"1"</span>,
-    <span class="hljs-attr">"currency"</span>: <span class="hljs-string">"GBP"</span>,
-    <span class="hljs-attr">"purpose"</span>: <span class="hljs-string">"Making an investment"</span>,
-    <span class="hljs-attr">"fee"</span>: <span class="hljs-string">"SHA"</span>,
-    <span class="hljs-attr">"amount"</span>: <span class="hljs-string">"100.00"</span>,
-    <span class="hljs-attr">"trade_ref"</span>: <span class="hljs-string">"&lt;trade reference&gt;"</span>,
-    <span class="hljs-attr">"payment_guid"</span>: <span class="hljs-string">"&lt;your GUID&gt;"</span>,
-    <span class="hljs-attr">"client_ref"</span>: <span class="hljs-string">"&lt;client reference&gt;"</span>
-  }
-]</code></pre><h3 id="request-1">Request</h3>
-<p><code>GET /payments</code></p>
+<pre class="highlight json"><code>{
+  <span class="hljs-attr">"beneficiary_id"</span>: <span class="hljs-string">"2"</span>,
+  <span class="hljs-attr">"currency"</span>: <span class="hljs-string">"GBP"</span>,
+  <span class="hljs-attr">"purpose"</span>: <span class="hljs-string">"Making an investment"</span>,
+  <span class="hljs-attr">"fee"</span>: <span class="hljs-string">"SHA"</span>,
+  <span class="hljs-attr">"amount"</span>: <span class="hljs-string">"200.00"</span>,
+  <span class="hljs-attr">"trade_ref"</span>: <span class="hljs-string">"&lt;trade reference&gt;"</span>,
+  <span class="hljs-attr">"payment_guid"</span>: <span class="hljs-string">"&lt;your GUID&gt;"</span>,
+  <span class="hljs-attr">"client_ref"</span>: <span class="hljs-string">"&lt;client reference&gt;"</span>,
+  <span class="hljs-attr">"status"</span>: <span class="hljs-string">"Pending"</span>
+}</code></pre><h3 id="request-1">Request</h3>
+<p><code>GET /payments/{payment_guid}</code></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Required</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>payment_guid</td>
+<td>Unique ID of the payment</td>
+<td>yes</td>
+<td>string</td>
+</tr>
+</tbody></table>
 <h3 id="response-1">Response</h3>
-<h3 id="response-2">Response</h3>
 <table>
 <thead>
 <tr>
@@ -1943,89 +2171,13 @@ During that time you can refresh the price and the 30 second expiry time will be
 <td>Client reference</td>
 <td>string</td>
 </tr>
+<tr>
+<td>status</td>
+<td>Payment status</td>
+<td>string</td>
+</tr>
 </tbody></table>
-<!-- ## Get a payment
-
-Get payment instruction by ID
-
-> Example request:
-
-```bash
-curl -X GET http://api-test.cleartreasury.co.uk/api/payments/{id}?client_ref={{client_ref}} \
-     -H 'Authorization: Bearer <your auth token>'
-```
-
-> Example response:
-
-```json
-{
-  "Intermediary": "string",
-  "AccountName": "string",
-  "AccountNumber": "string",
-  "Address": "string",
-  "BankName": "string",
-  "CCY": "string",
-  "Notes": "string",
-  "SortCode": "string",
-  "Swift": "string",
-  "CountryCode": "string",
-  "Email": "string",
-  "BenAddress": "string",
-  "CNAPS": "string",
-  "Purpose": "string",
-  "ChargeCode": "string",
-  "Amount": 0,
-  "PaymentReference": "string",
-  "TradeReference": "string",
-  "tra_client_id": 0,
-  "pin_id": 0,
-  "PaymentGUID": "00000000-0000-0000-0000-000000000000",
-  "opi_id": 0,
-  "CreationDate": "2019-10-17T11:27:23.691Z",
-  "Status": "string",
-  "exportedDate": "2019-10-17T11:27:23.691Z"
-}
-```
-
-### Request
-
-`GET /payments/{id}client_ref={{client_ref}}`
-
-| Name       | Description                                                  | Required | Type   |
-| ---------- | ------------------------------------------------------------ | -------- | ------ |
-| id         | payment GUID                                                 | yes      | string |
-| client_ref | Client reference you're instructing the payment on behalf of | yes      | string |
-
-### Response
-
-| Name             | Description | Type    |
-| ---------------- | ----------- | ------- |
-| Intermediary     |             | string  |
-| AccountName      |             | string  |
-| AccountNumber    |             | string  |
-| Address          |             | string  |
-| BankName         |             | string  |
-| CCY              |             | string  |
-| Notes            |             | string  |
-| SortCode         |             | string  |
-| Swift            |             | string  |
-| CountryCode      |             | string  |
-| Email            |             | string  |
-| BenAddress       |             | string  |
-| CNAPS            |             | string  |
-| Purpose          |             | string  |
-| ChargeCode       |             | string  |
-| Amount           |             | decimal |
-| PaymentReference |             | string  |
-| TradeReference   |             | string  |
-| tra_client_id    |             | integer |
-| pin_id           |             | integer |
-| PaymentGUID      |             | string  |
-| opi_id           |             | integer |
-| CreationDate     |             | date    |
-| Status           |             | string  |
-| exportedDate     |             | date    |
-
+<!--
 ## List payments by date
 
 Retrieve payment instruction list inclusive of from and to dates.
@@ -2210,12 +2362,73 @@ curl -X GET http://api-test.cleartreasury.co.uk/api/payments?fromDate={fromDate}
 
             
                <h1 id="trade-history">Trade History</h1>
-<h2 id="list-all-trades">List all trades</h2>
-<p>Retreive a list of all trades you have access to.</p>
+<!--
+## List all trades
+
+Retrieve a list of all trades you have access to.
+
+> Example request:
+
+```bash
+curl -X GET http://api-test.cleartreasury.co.uk/api/trades \
+     -H 'Authorization: Bearer <your auth token>'
+```
+
+> Example response:
+
+```json
+[
+  {
+    "id": 000001,
+    "trade_date": "20200130",
+    "value_date": "20200130",
+    "currency_bought": "USD",
+    "currency_sold": "EUR",
+    "client_rate": 1.0,
+    "bank_rate": 0.0,
+    "bought_amount": 532.56,
+    "sold_amount": 532.56,
+    "payment_fee": 0.0,
+    "trade_id": "A00000000",
+    "trade_type": "Spot Trade",
+    "status": "No Instructions received. Not paid in. Not paid out.",
+    "beneficiary": null,
+    "client_ref": "C00000001"
+  }
+]
+```
+
+### Request
+
+`GET /trades`
+
+### Response
+
+| Name            | Description | Type    |
+| --------------- | ----------- | ------- |
+| id              |             | integer |
+| trade_date      |             | string  |
+| value_date      |             | string  |
+| currency_bought |             | string  |
+| currency_sold   |             | string  |
+| client_rate     |             | decimal |
+| bank_rate       |             | decimal |
+| bought_amount   |             | decimal |
+| sold_amount     |             | decimal |
+| payment_fee     |             | decimal |
+| trade_id        |             | string  |
+| trade_type      |             | string  |
+| status          |             | string  |
+| beneficiary     |             | string  |
+| client_ref      |             | string  |
+-->
+
+<h2 id="list-all-trades-by-client">List all trades by client</h2>
+<p>Retrieve a list of all trades made by a client.</p>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
-<pre class="highlight bash"><code>curl -X GET http://api-test.cleartreasury.co.uk/api/trades \
+<pre class="highlight bash"><code>curl -X GET http://api-test.cleartreasury.co.uk/api/trades?client_ref={client_ref} \
      -H <span class="hljs-string">'Authorization: Bearer &lt;your auth token&gt;'</span></code></pre><blockquote>
 <p>Example response:</p>
 </blockquote>
@@ -2224,21 +2437,40 @@ curl -X GET http://api-test.cleartreasury.co.uk/api/payments?fromDate={fromDate}
     <span class="hljs-attr">"id"</span>: <span class="hljs-number">000001</span>,
     <span class="hljs-attr">"trade_date"</span>: <span class="hljs-string">"20200130"</span>,
     <span class="hljs-attr">"value_date"</span>: <span class="hljs-string">"20200130"</span>,
-    <span class="hljs-attr">"currency_bought"</span>: <span class="hljs-string">"USD"</span>,
-    <span class="hljs-attr">"currency_sold"</span>: <span class="hljs-string">"EUR"</span>,
-    <span class="hljs-attr">"client_rate"</span>: <span class="hljs-number">1.0</span>,
+    <span class="hljs-attr">"currency_bought"</span>: <span class="hljs-string">"EUR"</span>,
+    <span class="hljs-attr">"currency_sold"</span>: <span class="hljs-string">"GBP"</span>,
+    <span class="hljs-attr">"client_rate"</span>: <span class="hljs-number">1.2994149</span>,
     <span class="hljs-attr">"bank_rate"</span>: <span class="hljs-number">0.0</span>,
-    <span class="hljs-attr">"bought_amount"</span>: <span class="hljs-number">532.56</span>,
-    <span class="hljs-attr">"sold_amount"</span>: <span class="hljs-number">532.56</span>,
+    <span class="hljs-attr">"bought_amount"</span>: <span class="hljs-number">416.87</span>,
+    <span class="hljs-attr">"sold_amount"</span>: <span class="hljs-number">500.0</span>,
     <span class="hljs-attr">"payment_fee"</span>: <span class="hljs-number">0.0</span>,
-    <span class="hljs-attr">"trade_id"</span>: <span class="hljs-string">"A00000000"</span>,
+    <span class="hljs-attr">"trade_ref"</span>: <span class="hljs-string">"A00000000"</span>,
     <span class="hljs-attr">"trade_type"</span>: <span class="hljs-string">"Spot Trade"</span>,
-    <span class="hljs-attr">"status"</span>: <span class="hljs-string">"No Instructions received. Not paid in. Not paid out."</span>,
+    <span class="hljs-attr">"status"</span>: <span class="hljs-string">"FILLED"</span>,
     <span class="hljs-attr">"beneficiary"</span>: <span class="hljs-literal">null</span>,
-    <span class="hljs-attr">"client_ref"</span>: <span class="hljs-string">"C00000001"</span>
+    <span class="hljs-attr">"client_ref"</span>: <span class="hljs-string">"C00000001"</span>,
+    <span class="hljs-attr">"instructed_amount"</span>: <span class="hljs-number">0.0</span>,
+    <span class="hljs-attr">"received_amount"</span>: <span class="hljs-number">0.0</span>,
+    <span class="hljs-attr">"paid_amount"</span>: <span class="hljs-number">0.0</span>
   }
 ]</code></pre><h3 id="request">Request</h3>
-<p><code>GET /trades</code></p>
+<p><code>GET /trades?client_ref={client_ref}</code></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Required</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>client_ref</td>
+<td>Unique reference of client</td>
+<td>Yes</td>
+<td>string</td>
+</tr>
+</tbody></table>
 <h3 id="response">Response</h3>
 <table>
 <thead>
@@ -2250,130 +2482,146 @@ curl -X GET http://api-test.cleartreasury.co.uk/api/payments?fromDate={fromDate}
 </thead>
 <tbody><tr>
 <td>id</td>
-<td></td>
+<td>Trade ID</td>
 <td>integer</td>
 </tr>
 <tr>
 <td>trade_date</td>
-<td></td>
+<td>Date the trade was booked</td>
 <td>string</td>
 </tr>
 <tr>
 <td>value_date</td>
-<td></td>
+<td>Date the currency will be bought/sold</td>
 <td>string</td>
 </tr>
 <tr>
 <td>currency_bought</td>
-<td></td>
+<td>Currency bought</td>
 <td>string</td>
 </tr>
 <tr>
 <td>currency_sold</td>
-<td></td>
+<td>Currency sold</td>
 <td>string</td>
 </tr>
 <tr>
 <td>client_rate</td>
-<td></td>
+<td>Rate agreed with the client</td>
 <td>decimal</td>
 </tr>
 <tr>
 <td>bank_rate</td>
-<td></td>
+<td>Rate given by the bank</td>
 <td>decimal</td>
 </tr>
 <tr>
 <td>bought_amount</td>
-<td></td>
+<td>Amount bought</td>
 <td>decimal</td>
 </tr>
 <tr>
 <td>sold_amount</td>
-<td></td>
+<td>Amount sold</td>
 <td>decimal</td>
 </tr>
 <tr>
 <td>payment_fee</td>
-<td></td>
+<td>Payment fee</td>
 <td>decimal</td>
 </tr>
 <tr>
-<td>trade_id</td>
-<td></td>
+<td>trade_ref</td>
+<td>Reference of the trade</td>
 <td>string</td>
 </tr>
 <tr>
 <td>trade_type</td>
-<td></td>
+<td>Type of trade</td>
 <td>string</td>
 </tr>
 <tr>
 <td>status</td>
-<td></td>
+<td>Trade status</td>
 <td>string</td>
 </tr>
 <tr>
 <td>beneficiary</td>
-<td></td>
+<td>Beneficiary ID</td>
 <td>string</td>
 </tr>
 <tr>
 <td>client_ref</td>
-<td></td>
+<td>Client reference</td>
 <td>string</td>
+</tr>
+<tr>
+<td>instructed_amount</td>
+<td>Amount instructed</td>
+<td>decimal</td>
+</tr>
+<tr>
+<td>received_amount</td>
+<td>Amount received</td>
+<td>decimal</td>
+</tr>
+<tr>
+<td>paid_amount</td>
+<td>Amount paid</td>
+<td>decimal</td>
 </tr>
 </tbody></table>
 <h2 id="retrieve-a-trade-list-between-two-dates">Retrieve a Trade list between two dates</h2>
-<p>Retreive a list of trades between inclusive from and to dates.</p>
+<p>Retrieve a list of trades between inclusive from and to dates.</p>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
-<pre class="highlight bash"><code>curl -X POST http://api-test.cleartreasury.co.uk/api/trades?fromDate={fromDate}&amp;toDate={toDate} \
+<pre class="highlight bash"><code>curl -X POST http://api-test.cleartreasury.co.uk/api/trades?from_date={from_date}&amp;to_date={to_date} \
      -H <span class="hljs-string">'Authorization: Bearer &lt;your auth token&gt;'</span></code></pre><blockquote>
 <p>Example response:</p>
 </blockquote>
 <pre class="highlight json"><code>[
   {
-    <span class="hljs-attr">"ID"</span>: <span class="hljs-number">0</span>,
-    <span class="hljs-attr">"Trade_Date"</span>: <span class="hljs-string">"string"</span>,
-    <span class="hljs-attr">"Value_Date"</span>: <span class="hljs-string">"string"</span>,
-    <span class="hljs-attr">"CCY_Bought"</span>: <span class="hljs-string">"string"</span>,
-    <span class="hljs-attr">"CCY_Sold"</span>: <span class="hljs-string">"string"</span>,
-    <span class="hljs-attr">"Rate"</span>: <span class="hljs-number">0.0</span>,
-    <span class="hljs-attr">"Bought_Amount"</span>: <span class="hljs-number">0.0</span>,
-    <span class="hljs-attr">"Sold_Amount"</span>: <span class="hljs-number">0.0</span>,
-    <span class="hljs-attr">"Payment_Fee"</span>: <span class="hljs-number">0.0</span>,
-    <span class="hljs-attr">"Trade_ID"</span>: <span class="hljs-string">"string"</span>,
-    <span class="hljs-attr">"Trade_Type"</span>: <span class="hljs-string">"string"</span>,
-    <span class="hljs-attr">"Status"</span>: <span class="hljs-string">"string"</span>,
-    <span class="hljs-attr">"Beneficiary"</span>: <span class="hljs-string">"string"</span>,
-    <span class="hljs-attr">"Client_reference"</span>: <span class="hljs-string">"string"</span>
+    <span class="hljs-attr">"id"</span>: <span class="hljs-number">000001</span>,
+    <span class="hljs-attr">"trade_date"</span>: <span class="hljs-string">"20200130"</span>,
+    <span class="hljs-attr">"value_date"</span>: <span class="hljs-string">"20200130"</span>,
+    <span class="hljs-attr">"currency_bought"</span>: <span class="hljs-string">"EUR"</span>,
+    <span class="hljs-attr">"currency_sold"</span>: <span class="hljs-string">"GBP"</span>,
+    <span class="hljs-attr">"client_rate"</span>: <span class="hljs-number">1.2994149</span>,
+    <span class="hljs-attr">"bank_rate"</span>: <span class="hljs-number">0.0</span>,
+    <span class="hljs-attr">"bought_amount"</span>: <span class="hljs-number">416.87</span>,
+    <span class="hljs-attr">"sold_amount"</span>: <span class="hljs-number">500.0</span>,
+    <span class="hljs-attr">"payment_fee"</span>: <span class="hljs-number">0.0</span>,
+    <span class="hljs-attr">"trade_ref"</span>: <span class="hljs-string">"A00000000"</span>,
+    <span class="hljs-attr">"trade_type"</span>: <span class="hljs-string">"Spot Trade"</span>,
+    <span class="hljs-attr">"status"</span>: <span class="hljs-string">"FILLED"</span>,
+    <span class="hljs-attr">"beneficiary"</span>: <span class="hljs-literal">null</span>,
+    <span class="hljs-attr">"client_ref"</span>: <span class="hljs-string">"C00000001"</span>,
+    <span class="hljs-attr">"instructed_amount"</span>: <span class="hljs-number">0.0</span>,
+    <span class="hljs-attr">"received_amount"</span>: <span class="hljs-number">0.0</span>,
+    <span class="hljs-attr">"paid_amount"</span>: <span class="hljs-number">0.0</span>
   }
 ]</code></pre><h3 id="request-1">Request</h3>
-<p><code>GET /trades?fromDate={fromDate}&amp;toDate={toDate}</code></p>
+<p><code>GET /trades?from_date={from_date}&amp;to_date={to_date}</code></p>
 <table>
 <thead>
 <tr>
 <th>Name</th>
-<th>Located in</th>
 <th>Description</th>
 <th>Required</th>
 <th>Type</th>
 </tr>
 </thead>
 <tbody><tr>
-<td>fromDate</td>
-<td>query</td>
-<td></td>
-<td>No</td>
+<td>from_date</td>
+<td>From date</td>
+<td>Yes</td>
 <td>string</td>
 </tr>
 <tr>
-<td>toDate</td>
-<td>query</td>
-<td></td>
-<td>No</td>
+<td>to_date</td>
+<td>To date</td>
+<td>Yes</td>
 <td>string</td>
 </tr>
 </tbody></table>
@@ -2387,129 +2635,243 @@ curl -X GET http://api-test.cleartreasury.co.uk/api/payments?fromDate={fromDate}
 </tr>
 </thead>
 <tbody><tr>
-<td>ID</td>
+<td>id</td>
 <td>Trade ID</td>
 <td>integer</td>
 </tr>
 <tr>
-<td>Trade_Date</td>
-<td>Trade Date</td>
+<td>trade_date</td>
+<td>Date the trade was booked</td>
 <td>string</td>
 </tr>
 <tr>
-<td>Value_Date</td>
-<td>Value Date</td>
+<td>value_date</td>
+<td>Date the currency will be bought/sold</td>
 <td>string</td>
 </tr>
 <tr>
-<td>CCY_Bought</td>
-<td>CCY Bought</td>
+<td>currency_bought</td>
+<td>Currency bought</td>
 <td>string</td>
 </tr>
 <tr>
-<td>CCY_Sold</td>
-<td>CCY Sold</td>
+<td>currency_sold</td>
+<td>Currency sold</td>
 <td>string</td>
 </tr>
 <tr>
-<td>Rate</td>
-<td>Rate</td>
+<td>client_rate</td>
+<td>Rate agreed with the client</td>
 <td>decimal</td>
 </tr>
 <tr>
-<td>Bought_Amount</td>
-<td>Bought_Amount</td>
+<td>bank_rate</td>
+<td>Rate given by the bank</td>
 <td>decimal</td>
 </tr>
 <tr>
-<td>Sold_Amount</td>
-<td>Sold_Amount</td>
+<td>bought_amount</td>
+<td>Amount bought</td>
 <td>decimal</td>
 </tr>
 <tr>
-<td>Payment_Fee</td>
-<td>Payment_Fee</td>
+<td>sold_amount</td>
+<td>Amount sold</td>
 <td>decimal</td>
 </tr>
 <tr>
-<td>Trade_ID</td>
-<td>Trade ID</td>
+<td>payment_fee</td>
+<td>Payment fee</td>
+<td>decimal</td>
+</tr>
+<tr>
+<td>trade_ref</td>
+<td>Reference of the trade</td>
 <td>string</td>
 </tr>
 <tr>
-<td>Trade_Type</td>
-<td>Trade Type</td>
+<td>trade_type</td>
+<td>Type of trade</td>
 <td>string</td>
 </tr>
 <tr>
-<td>Status</td>
-<td>Status</td>
+<td>status</td>
+<td>Trade status</td>
 <td>string</td>
 </tr>
 <tr>
-<td>Beneficiary</td>
-<td>Beneficiary</td>
+<td>beneficiary</td>
+<td>Beneficiary ID</td>
+<td>string</td>
+</tr>
+<tr>
+<td>client_ref</td>
+<td>Client reference</td>
+<td>string</td>
+</tr>
+<tr>
+<td>instructed_amount</td>
+<td>Amount instructed</td>
+<td>decimal</td>
+</tr>
+<tr>
+<td>received_amount</td>
+<td>Amount received</td>
+<td>decimal</td>
+</tr>
+<tr>
+<td>paid_amount</td>
+<td>Amount paid</td>
+<td>decimal</td>
+</tr>
+</tbody></table>
+<h2 id="get-a-trade">Get a trade</h2>
+<p>Retrieve a single trade.</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre class="highlight bash"><code>curl -X GET http://api-test.cleartreasury.co.uk/api/trades/{trade_ref} \
+     -H <span class="hljs-string">'Authorization: Bearer &lt;your auth token&gt;'</span></code></pre><blockquote>
+<p>Example response:</p>
+</blockquote>
+<pre class="highlight json"><code>{
+  <span class="hljs-attr">"id"</span>: <span class="hljs-number">000001</span>,
+  <span class="hljs-attr">"trade_date"</span>: <span class="hljs-string">"20200130"</span>,
+  <span class="hljs-attr">"value_date"</span>: <span class="hljs-string">"20200130"</span>,
+  <span class="hljs-attr">"currency_bought"</span>: <span class="hljs-string">"EUR"</span>,
+  <span class="hljs-attr">"currency_sold"</span>: <span class="hljs-string">"GBP"</span>,
+  <span class="hljs-attr">"client_rate"</span>: <span class="hljs-number">1.2994149</span>,
+  <span class="hljs-attr">"bank_rate"</span>: <span class="hljs-number">0.0</span>,
+  <span class="hljs-attr">"bought_amount"</span>: <span class="hljs-number">416.87</span>,
+  <span class="hljs-attr">"sold_amount"</span>: <span class="hljs-number">500.0</span>,
+  <span class="hljs-attr">"payment_fee"</span>: <span class="hljs-number">0.0</span>,
+  <span class="hljs-attr">"trade_ref"</span>: <span class="hljs-string">"A00000000"</span>,
+  <span class="hljs-attr">"trade_type"</span>: <span class="hljs-string">"Spot Trade"</span>,
+  <span class="hljs-attr">"status"</span>: <span class="hljs-string">"FILLED"</span>,
+  <span class="hljs-attr">"beneficiary"</span>: <span class="hljs-literal">null</span>,
+  <span class="hljs-attr">"client_ref"</span>: <span class="hljs-string">"C00000001"</span>,
+  <span class="hljs-attr">"instructed_amount"</span>: <span class="hljs-number">0.0</span>,
+  <span class="hljs-attr">"received_amount"</span>: <span class="hljs-number">0.0</span>,
+  <span class="hljs-attr">"paid_amount"</span>: <span class="hljs-number">0.0</span>
+}</code></pre><h3 id="request-2">Request</h3>
+<p><code>GET /trades/{trade_ref}</code></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Required</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>trade_ref</td>
+<td>Unique reference of the trade</td>
+<td>Yes</td>
 <td>string</td>
 </tr>
 </tbody></table>
-<!--
-## Retrieve payment instruction by ID
-
-> Example request:
-
-```bash
-curl -X GET http://api-test.cleartreasury.co.uk/api/trades/{id} \
-     -H 'Authorization: Bearer <your auth token>'
-```
-
-> Example response:
-
-```json
-[
-  {
-    "ID": 0,
-    "Trade_Date": "string",
-    "Value_Date": "string",
-    "CCY_Bought": "string",
-    "CCY_Sold": "string",
-    "Rate": 0,
-    "Bought_Amount": 0,
-    "Sold_Amount": 0,
-    "Payment_Fee": 0,
-    "Trade_ID": "string",
-    "Trade_Type": "string",
-    "Status": "string",
-    "Beneficiary": "string"
-  }
-]
-```
-
-### Request
-
-`GET /trades/{id}`
-
-| Name | Description  | Required | Type   |
-| ---- | ------------ | -------- | ------ |
-| id   | Payment GUID | Yes      | string |
-
-### Response
-
-| Name          | Description   | Type    |
-| ------------- | ------------- | ------- |
-| ID            | Trade ID      | integer |
-| Trade_Date    | Trade Date    | string  |
-| Value_Date    | Value Date    | string  |
-| CCY_Bought    | CCY Bought    | string  |
-| CCY_Sold      | CCY Sold      | string  |
-| Rate          | Rate          | decimal |
-| Bought_Amount | Bought_Amount | decimal |
-| Sold_Amount   | Sold_Amount   | decimal |
-| Payment_Fee   | Payment_Fee   | decimal |
-| Trade_ID      | Trade ID      | string  |
-| Trade_Type    | Trade Type    | string  |
-| Status        | Status        | string  |
-| Beneficiary   | Beneficiary   | string  |
--->
+<h3 id="response-2">Response</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>id</td>
+<td>Trade ID</td>
+<td>integer</td>
+</tr>
+<tr>
+<td>trade_date</td>
+<td>Date the trade was booked</td>
+<td>string</td>
+</tr>
+<tr>
+<td>value_date</td>
+<td>Date the currency will be bought/sold</td>
+<td>string</td>
+</tr>
+<tr>
+<td>currency_bought</td>
+<td>Currency bought</td>
+<td>string</td>
+</tr>
+<tr>
+<td>currency_sold</td>
+<td>Currency sold</td>
+<td>string</td>
+</tr>
+<tr>
+<td>client_rate</td>
+<td>Rate agreed with the client</td>
+<td>decimal</td>
+</tr>
+<tr>
+<td>bank_rate</td>
+<td>Rate given by the bank</td>
+<td>decimal</td>
+</tr>
+<tr>
+<td>bought_amount</td>
+<td>Amount bought</td>
+<td>decimal</td>
+</tr>
+<tr>
+<td>sold_amount</td>
+<td>Amount sold</td>
+<td>decimal</td>
+</tr>
+<tr>
+<td>payment_fee</td>
+<td>Payment fee</td>
+<td>decimal</td>
+</tr>
+<tr>
+<td>trade_ref</td>
+<td>Unique reference of the trade</td>
+<td>string</td>
+</tr>
+<tr>
+<td>trade_type</td>
+<td>Type of trade</td>
+<td>string</td>
+</tr>
+<tr>
+<td>status</td>
+<td>Trade status</td>
+<td>string</td>
+</tr>
+<tr>
+<td>beneficiary</td>
+<td>Beneficiary ID</td>
+<td>string</td>
+</tr>
+<tr>
+<td>client_ref</td>
+<td>Client reference</td>
+<td>string</td>
+</tr>
+<tr>
+<td>instructed_amount</td>
+<td>Amount instructed</td>
+<td>decimal</td>
+</tr>
+<tr>
+<td>received_amount</td>
+<td>Amount received</td>
+<td>decimal</td>
+</tr>
+<tr>
+<td>paid_amount</td>
+<td>Amount paid</td>
+<td>decimal</td>
+</tr>
+</tbody></table>
+<p>--&gt;</p>
 
             
                <h1 id="countries-and-currencies">Countries and Currencies</h1>
@@ -2655,6 +3017,87 @@ curl -X GET http://api-test.cleartreasury.co.uk/api/trades/{id} \
 <td>CutOffTime</td>
 <td>Time by which a payment needs to be successfully initiated for same-day execution</td>
 <td>string</td>
+</tr>
+</tbody></table>
+
+            
+               <h1 id="payment-methods">Payment methods</h1>
+<p>Different countries have different details required for making payments to them.</p>
+<h3 id="description">Description</h3>
+<p>This is an informational read-only endpoint for listing the payment methods for the countries and currencies we accept.</p>
+<h2 id="get-payment-methods-for-a-country">Get payment methods for a country</h2>
+<p>Retrieve the payment methods of a country.</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre class="highlight bash"><code>curl -X GET http://api-test.cleartreasury.co.uk/api/paymentmethod \
+     -H <span class="hljs-string">'Authorization: Bearer &lt;your auth token&gt;'</span>
+     -d <span class="hljs-string">'{
+          "CountryCode": "GB",
+          "CCY": "GBP"
+        }'</span></code></pre><blockquote>
+<p>Example response:</p>
+</blockquote>
+<pre class="highlight json"><code>[
+  {
+    <span class="hljs-attr">"CountryName"</span>: <span class="hljs-string">"United Kingdom"</span>,
+    <span class="hljs-attr">"CCY"</span>: <span class="hljs-string">"GBP"</span>,
+    <span class="hljs-attr">"RequiredField"</span>: <span class="hljs-string">"(Account Number, SortCode, Beneficiary Address) OR (IBAN, SWIFT)"</span>
+  }
+]</code></pre><h3 id="request">Request</h3>
+<p><code>GET /paymentmethod</code></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>CountryName</td>
+<td>The full name of the country</td>
+<td>string</td>
+</tr>
+<tr>
+<td>CCY</td>
+<td>The currency</td>
+<td>string</td>
+</tr>
+<tr>
+<td>RequiredField</td>
+<td>Required fields when instructing payments of the requested currency to the country</td>
+<td>string</td>
+</tr>
+</tbody></table>
+<h3 id="response">Response</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>CountryName</td>
+<td>Full name of the country</td>
+<td>string</td>
+</tr>
+<tr>
+<td>ISO2</td>
+<td>2 letter ISO country code</td>
+<td>string</td>
+</tr>
+<tr>
+<td>ISO3</td>
+<td>3 letter ISO country code</td>
+<td>string</td>
+</tr>
+<tr>
+<td>RiskScore</td>
+<td>Compliance risk score for this country</td>
+<td>decimal</td>
 </tr>
 </tbody></table>
 
