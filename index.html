@@ -4,85 +4,69 @@
       <meta charset=utf-8>
       <meta name=viewport content="width=device-width, initial-scale=1, maximum-scale=1">
       <title>API Reference - Clear Treasury</title>
-      <link rel=icon href=images/bookmark.png> <link href=stylesheets/screen.css rel=stylesheet media=screen>
+      <link rel=icon href=images/bookmark.png>
+      <link href=stylesheets/screen.css rel=stylesheet media=screen>
       <link href=stylesheets/print.css rel=stylesheet media=print>
       <link href=stylesheets/highlight-monokai.css rel=stylesheet media=screen,print>
-      <script src=javascripts/all.js type=text/javascript> </script> </head> <body class="" data-languages="[]"> <a href=# id=nav-button>
+      <script src=javascripts/all.js type=text/javascript></script>
+   </head>
+   <body class="" data-languages="[]">
+      <a href=# id=nav-button>
          <span>NAV <img alt=navbar class=image-navbar src=images/navbar.png></span>
       </a>
-
       <div class=tocify-wrapper>
          <img alt=logo class=image-logo src=images/logo.png>
-         
-            <div class=lang-selector>
-               
-            </div>
-         
-         
-            <div class=search>
-               <input type=text class=search id=input-search placeholder="Search">
-            </div>
-            <ul class=search-results></ul>
-         
+         <div class=lang-selector>
+         </div>
+         <div class=search>
+            <input type=text class=search id=input-search placeholder="Search">
+         </div>
+         <ul class=search-results></ul>
          <div id=toc></div>
-         
-            <ul class=toc-footer>
-               
-                  <li><a href="https://payments.cleartreasury.co.uk">Sign up for a developer key</a></li>
-               
-            </ul>
-         
+         <ul class=toc-footer>
+            <li><a href="https://payments.cleartreasury.co.uk">Sign up for a developer key</a></li>
+         </ul>
       </div>
-
       <div class=page-wrapper>
          <div class=dark-box></div>
          <div class=content>
-            
-               <h1 id="introduction">Introduction</h1>
-<blockquote>
-<p>Base URL Sandbox</p>
-</blockquote>
-<pre class="highlight bash"><code>http://api-test.cleartreasury.co.uk/api</code></pre><blockquote>
-<p>Base URL Live</p>
-</blockquote>
-<pre class="highlight bash"><code>http://api.cleartreasury.co.uk/api</code></pre><p>Welcome to the Clear Treasury API.</p>
-<p>With international payments being a daily necessity for many, we have developed our online payments platform to dramatically streamline the process.</p>
-<p>Our aim is to make the Clear Treasury API as simple as possible for you to integrate into your process, product or software.</p>
-
-            
-               <h1 id="api-access">API access</h1>
-<p>Every call to the Clear Treasury API requires an authorization token that needs to be set in the header of every call.</p>
-<h2 id="auth-token">Auth Token</h2>
-<p>Use your provided login credentials to access our back-office system and generate an authorization token.</p>
-<aside class="warning">
-     If you haven't been given any login credentials, or you don't have access to our back-office system, we will securely provide you with an authorization token.
-</aside>
-
-<p><strong>The Token is valid for 6 months.</strong></p>
-<p>The resulting authorization token must then be sent in an <code>Authorization</code> header in every request.</p>
-<h3 id="regenerating-a-token">Regenerating a token</h3>
-<p>Use your provided login credentials to access our back-office system and generate a new authorization token.</p>
-<aside class="warning">
-     If you don't have access to our back-office system we will be providing a developer portal in the near future for you to be able to generate your own tokens.<br>
-     In the meantime we suggest you set a reminder before the 6 months is up to request a new token and we'll generate one for you.
-</aside>
-
-<h2 id="authorization">Authorization</h2>
-<pre class="highlight bash"><code>curl -X GET http://api-test.cleartreasury.co.uk/api/quote \
-     -H <span class="hljs-string">"Authorization: Bearer xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx"</span></code></pre><p>Once you have your authorization token, add it as a bearer token in an <code>Authorization</code> header to every request.</p>
-<p><code>Authorization: Bearer xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx</code></p>
-
-            
-               <h1 id="clients">Clients</h1>
-<p>A client is a person or institution that has trades and payments associated to them.</p>
-<h3 id="description">Description</h3>
-<p>Before you&#39;re able to act on behalf of a client you will need to create one first.</p>
-<h2 id="create-a-client">Create a client</h2>
-<p>Create a new client in order to operate on their behalf.</p>
-<blockquote>
-<p>Example request:</p>
-</blockquote>
-<pre class="highlight bash"><code>curl -X POST http://api-test.cleartreasury.co.uk/api/clients \
+            <h1 id="introduction">Introduction</h1>
+            <blockquote>
+               <p>Base URL Sandbox</p>
+            </blockquote>
+            <pre class="highlight bash"><code>http://api-test.cleartreasury.co.uk/api</code></pre>
+            <blockquote>
+               <p>Base URL Live</p>
+            </blockquote>
+            <pre class="highlight bash"><code>http://api.cleartreasury.co.uk/api</code></pre>
+            <p>Welcome to the Clear Treasury API.</p>
+            <p>With international payments being a daily necessity for many, we have developed our online payments platform to dramatically streamline the process.</p>
+            <p>Our aim is to make the Clear Treasury API as simple as possible for you to integrate into your process, product or software.</p>
+            <h1 id="api-access">API access</h1>
+            <p>Every call to the Clear Treasury API requires an authorization token that needs to be set in the header of every call.</p>
+            <h2 id="auth-token">Auth Token</h2>
+            <p>Use your provided login credentials to access our back-office system and generate an authorization token.</p>
+            <aside class="warning"> If you haven't been given any login credentials, or you don't have access to our back-office system, we will securely provide you with an authorization token. </aside>
+            <p><strong>The Token is valid for 6 months.</strong></p>
+            <p>The resulting authorization token must then be sent in an <code>Authorization</code> header in every request.</p>
+            <h3 id="regenerating-a-token">Regenerating a token</h3>
+            <p>Use your provided login credentials to access our back-office system and generate a new authorization token.</p>
+            <aside class="warning"> If you don't have access to our back-office system we will be providing a developer portal in the near future for you to be able to generate your own tokens.<br> In the meantime we suggest you set a reminder before the 6 months is up to request a new token and we'll generate one for you. </aside>
+            <h2 id="authorization">Authorization</h2>
+            <pre class="highlight bash"><code>curl -X GET http://api-test.cleartreasury.co.uk/api/quote \
+     -H <span class="hljs-string">"Authorization: Bearer xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx"</span></code></pre>
+            <p>Once you have your authorization token, add it as a bearer token in an <code>Authorization</code> header to every request.</p>
+            <p><code>Authorization: Bearer xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx</code></p>
+            <h1 id="clients">Clients</h1>
+            <p>A client is a person or institution that has trades and payments associated to them.</p>
+            <h3 id="description">Description</h3>
+            <p>Before you&#39;re able to act on behalf of a client you will need to create one first.</p>
+            <h2 id="create-a-client">Create a client</h2>
+            <p>Create a new client in order to operate on their behalf.</p>
+            <blockquote>
+               <p>Example request:</p>
+            </blockquote>
+            <pre class="highlight bash"><code>curl -X POST http://api-test.cleartreasury.co.uk/api/clients \
      -H <span class="hljs-string">'Authorization: Bearer &lt;your auth token&gt;'</span> \
      -H <span class="hljs-string">'Content-Type: application/json'</span> \
      -d <span class="hljs-string">'{
@@ -116,10 +100,11 @@
               "telephone": "+441234567890"
             }
           ]
-        }'</span></code></pre><blockquote>
-<p>Example response:</p>
-</blockquote>
-<pre class="highlight json"><code>[
+        }'</span></code></pre>
+            <blockquote>
+               <p>Example response:</p>
+            </blockquote>
+            <pre class="highlight json"><code>[
   {
     <span class="hljs-attr">"ClientName"</span>: <span class="hljs-string">"TEST Company name"</span>,
     <span class="hljs-attr">"ClientRef"</span>: <span class="hljs-string">"C00000001"</span>,
@@ -127,658 +112,663 @@
     <span class="hljs-attr">"ContactLastName"</span>: <span class="hljs-string">"Tester"</span>,
     <span class="hljs-attr">"Status"</span>: <span class="hljs-string">"New"</span>
   }
-]</code></pre><h3 id="request">Request</h3>
-<p><code>POST /clients</code></p>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-<th>Required</th>
-<th>Type</th>
-<th>Additional information</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>trader</td>
-<td>Your trader account ID</td>
-<td>Yes</td>
-<td>string</td>
-<td>This will be provided to you at signup</td>
-</tr>
-<tr>
-<td>type</td>
-<td>The type of client</td>
-<td>Yes</td>
-<td>string</td>
-<td><code>&quot;CORPORATE&quot;</code> or <code>&quot;PRIVATE&quot;</code></td>
-</tr>
-<tr>
-<td>name</td>
-<td>Client&#39;s name</td>
-<td>No</td>
-<td>string</td>
-<td>Company name for <code>CORPORATE</code> client</td>
-</tr>
-<tr>
-<td>address1</td>
-<td>Address line 1</td>
-<td>No</td>
-<td>string</td>
-<td>None</td>
-</tr>
-<tr>
-<td>address2</td>
-<td>Address line 2</td>
-<td>No</td>
-<td>string</td>
-<td>None</td>
-</tr>
-<tr>
-<td>address3</td>
-<td>Address line 3</td>
-<td>No</td>
-<td>string</td>
-<td>None</td>
-</tr>
-<tr>
-<td>city</td>
-<td>City</td>
-<td>No</td>
-<td>string</td>
-<td>None</td>
-</tr>
-<tr>
-<td>country</td>
-<td>Country</td>
-<td>No</td>
-<td>string</td>
-<td>None</td>
-</tr>
-<tr>
-<td>postcode</td>
-<td>Postcode</td>
-<td>No</td>
-<td>string</td>
-<td>None</td>
-</tr>
-<tr>
-<td>web</td>
-<td>Website</td>
-<td>No</td>
-<td>string</td>
-<td>None</td>
-</tr>
-<tr>
-<td>email</td>
-<td>Email</td>
-<td>No</td>
-<td>string</td>
-<td>None</td>
-</tr>
-<tr>
-<td>fax</td>
-<td>Fax number</td>
-<td>No</td>
-<td>string</td>
-<td>None</td>
-</tr>
-<tr>
-<td>switchboard</td>
-<td>Switchboard extension</td>
-<td>No</td>
-<td>string</td>
-<td>None</td>
-</tr>
-<tr>
-<td>ip</td>
-<td>IP address</td>
-<td>No</td>
-<td>string</td>
-<td>None</td>
-</tr>
-<tr>
-<td>company_number</td>
-<td>Company number</td>
-<td>No</td>
-<td>string</td>
-<td>None</td>
-</tr>
-<tr>
-<td>company_sic</td>
-<td>Company SIC code</td>
-<td>No</td>
-<td>string</td>
-<td>None</td>
-</tr>
-<tr>
-<td>company_vat</td>
-<td>Company VAT number</td>
-<td>No</td>
-<td>string</td>
-<td>None</td>
-</tr>
-<tr>
-<td>country_of_incorporation</td>
-<td>Country of incorporation</td>
-<td>No</td>
-<td>string</td>
-<td>None</td>
-</tr>
-<tr>
-<td>legal_status</td>
-<td>Legal status</td>
-<td>No</td>
-<td>string</td>
-<td>None</td>
-</tr>
-<tr>
-<td>trading_as_name</td>
-<td>Trading as name</td>
-<td>No</td>
-<td>string</td>
-<td>None</td>
-</tr>
-<tr>
-<td>trading_address1</td>
-<td>Trading address line 1</td>
-<td>No</td>
-<td>string</td>
-<td>None</td>
-</tr>
-<tr>
-<td>trading_address2</td>
-<td>Trading address line 2</td>
-<td>No</td>
-<td>string</td>
-<td>None</td>
-</tr>
-<tr>
-<td>trading_address3</td>
-<td>Trading address line 3</td>
-<td>No</td>
-<td>string</td>
-<td>None</td>
-</tr>
-<tr>
-<td>trading_city</td>
-<td>Trading city</td>
-<td>No</td>
-<td>string</td>
-<td>None</td>
-</tr>
-<tr>
-<td>trading_country</td>
-<td>Trading country</td>
-<td>No</td>
-<td>string</td>
-<td>None</td>
-</tr>
-<tr>
-<td>trading_postcode</td>
-<td>Trading postcode</td>
-<td>No</td>
-<td>string</td>
-<td>None</td>
-</tr>
-<tr>
-<td>countries_of_interest_beneficiaries</td>
-<td>The countries of the client&#39;s beneficiaries</td>
-<td>No</td>
-<td>Collection of string</td>
-<td>None</td>
-</tr>
-<tr>
-<td>countries_of_interest_remitters</td>
-<td>The countries of the client&#39;s remitters</td>
-<td>No</td>
-<td>Collection of string</td>
-<td>None</td>
-</tr>
-<tr>
-<td>currency_of_interest</td>
-<td>The countries the client wants to trade</td>
-<td>No</td>
-<td>Collection of string</td>
-<td>None</td>
-</tr>
-<tr>
-<td>expiry_date</td>
-<td>Client expiry date</td>
-<td>No</td>
-<td>string</td>
-<td>None</td>
-</tr>
-<tr>
-<td>regulator_name</td>
-<td>Name of the client&#39;s regulator</td>
-<td>No</td>
-<td>string</td>
-<td>None</td>
-</tr>
-<tr>
-<td>source</td>
-<td>Source</td>
-<td>No</td>
-<td>string</td>
-<td>None</td>
-</tr>
-<tr>
-<td>reason</td>
-<td>Reason for trading</td>
-<td>No</td>
-<td>string</td>
-<td>None</td>
-</tr>
-<tr>
-<td>comment</td>
-<td>Free text comment</td>
-<td>No</td>
-<td>string</td>
-<td>None</td>
-</tr>
-<tr>
-<td>trader_commission</td>
-<td>Trader&#39;s commission</td>
-<td>No</td>
-<td>string</td>
-<td>None</td>
-</tr>
-<tr>
-<td>cold_caller</td>
-<td>Which cold caller made contact with the client</td>
-<td>No</td>
-<td>string</td>
-<td>None</td>
-</tr>
-<tr>
-<td>cold_caller_commission</td>
-<td>Cold caller&#39;s commission</td>
-<td>No</td>
-<td>string</td>
-<td>None</td>
-</tr>
-<tr>
-<td>web_commission</td>
-<td></td>
-<td>No</td>
-<td>string</td>
-<td>None</td>
-</tr>
-<tr>
-<td>activity</td>
-<td></td>
-<td>No</td>
-<td>string</td>
-<td>None</td>
-</tr>
-<tr>
-<td>language</td>
-<td>Your parent company&#39;s identifier within our system</td>
-<td>No</td>
-<td>string</td>
-<td>This will be provided to you at signup</td>
-</tr>
-<tr>
-<td>group_industry</td>
-<td></td>
-<td>No</td>
-<td>string</td>
-<td>None</td>
-</tr>
-<tr>
-<td>sid</td>
-<td></td>
-<td>No</td>
-<td>string</td>
-<td>None</td>
-</tr>
-<tr>
-<td>referer</td>
-<td></td>
-<td>No</td>
-<td>string</td>
-<td>None</td>
-</tr>
-<tr>
-<td>affiliate_reference</td>
-<td></td>
-<td>No</td>
-<td>string</td>
-<td>None</td>
-</tr>
-<tr>
-<td>non_uk_shareholder</td>
-<td></td>
-<td>No</td>
-<td>string</td>
-<td>None</td>
-</tr>
-<tr>
-<td>kyc_ccy</td>
-<td></td>
-<td>No</td>
-<td>string</td>
-<td>None</td>
-</tr>
-<tr>
-<td>kyc_max_volume</td>
-<td></td>
-<td>No</td>
-<td>string</td>
-<td>None</td>
-</tr>
-<tr>
-<td>kyc_source_of_wealth</td>
-<td></td>
-<td>No</td>
-<td>string</td>
-<td>None</td>
-</tr>
-<tr>
-<td>kyc_source</td>
-<td></td>
-<td>No</td>
-<td>string</td>
-<td>None</td>
-</tr>
-<tr>
-<td>kyc_relationship_with_beneficiaries</td>
-<td></td>
-<td>No</td>
-<td>string</td>
-<td>None</td>
-</tr>
-<tr>
-<td>kyc_nature</td>
-<td></td>
-<td>No</td>
-<td>string</td>
-<td>None</td>
-</tr>
-<tr>
-<td>kyc_avg_volume</td>
-<td></td>
-<td>No</td>
-<td>string</td>
-<td>None</td>
-</tr>
-<tr>
-<td>kyc_annual_volume</td>
-<td></td>
-<td>No</td>
-<td>string</td>
-<td>None</td>
-</tr>
-<tr>
-<td>kyc_frequency</td>
-<td></td>
-<td>No</td>
-<td>string</td>
-<td>None</td>
-</tr>
-<tr>
-<td>kyc_max_volume</td>
-<td></td>
-<td>No</td>
-<td>string</td>
-<td>None</td>
-</tr>
-<tr>
-<td>kyc_ccy</td>
-<td></td>
-<td>No</td>
-<td>string</td>
-<td>None</td>
-</tr>
-<tr>
-<td>kyc_source_of_wealth</td>
-<td></td>
-<td>No</td>
-<td>string</td>
-<td>None</td>
-</tr>
-<tr>
-<td>kyc_source</td>
-<td></td>
-<td>No</td>
-<td>string</td>
-<td>None</td>
-</tr>
-<tr>
-<td>kyc_relationship_with_beneficiaries</td>
-<td></td>
-<td>No</td>
-<td>string</td>
-<td>None</td>
-</tr>
-<tr>
-<td>kyc_json</td>
-<td></td>
-<td>No</td>
-<td>string</td>
-<td>None</td>
-</tr>
-<tr>
-<td>agree_marketing_conditions</td>
-<td></td>
-<td>No</td>
-<td>integer</td>
-<td><code>0</code> or <code>1</code></td>
-</tr>
-<tr>
-<td>agree_marketing_conditions_affiliate</td>
-<td></td>
-<td>No</td>
-<td>integer</td>
-<td><code>0</code> or <code>1</code></td>
-</tr>
-<tr>
-<td>unsubscribe_emails</td>
-<td></td>
-<td>No</td>
-<td>string</td>
-<td>None</td>
-</tr>
-<tr>
-<td>contact_list</td>
-<td></td>
-<td>Yes</td>
-<td>Collection of <a href="#contact-object">contact object</a></td>
-<td>None</td>
-</tr>
-</tbody></table>
-<h3 id="contact-object">Contact Object</h3>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-<th>Required</th>
-<th>Type</th>
-<th>Additional information</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>title</td>
-<td>Title</td>
-<td>No</td>
-<td>string</td>
-<td>None.</td>
-</tr>
-<tr>
-<td>first_name</td>
-<td>First name</td>
-<td>Yes</td>
-<td>string</td>
-<td>None.</td>
-</tr>
-<tr>
-<td>middle_name</td>
-<td>Middle name</td>
-<td>Yes</td>
-<td>string</td>
-<td>None.</td>
-</tr>
-<tr>
-<td>last_name</td>
-<td>Last name</td>
-<td>No</td>
-<td>string</td>
-<td>None.</td>
-</tr>
-<tr>
-<td>date_of_birth</td>
-<td>Date of birth</td>
-<td>No</td>
-<td>string</td>
-<td>None.</td>
-</tr>
-<tr>
-<td>nationality</td>
-<td>Nationality</td>
-<td>No</td>
-<td>string</td>
-<td>None.</td>
-</tr>
-<tr>
-<td>job_title</td>
-<td>Job title</td>
-<td>No</td>
-<td>string</td>
-<td>None.</td>
-</tr>
-<tr>
-<td>address1</td>
-<td>Address line 1</td>
-<td>No</td>
-<td>string</td>
-<td>None.</td>
-</tr>
-<tr>
-<td>address2</td>
-<td>Address line 2</td>
-<td>No</td>
-<td>string</td>
-<td>None.</td>
-</tr>
-<tr>
-<td>address3</td>
-<td>Address line 3</td>
-<td>No</td>
-<td>string</td>
-<td>None.</td>
-</tr>
-<tr>
-<td>city</td>
-<td>City</td>
-<td>No</td>
-<td>string</td>
-<td>None.</td>
-</tr>
-<tr>
-<td>country</td>
-<td>Country</td>
-<td>No</td>
-<td>string</td>
-<td>None.</td>
-</tr>
-<tr>
-<td>post_code</td>
-<td>Postcode</td>
-<td>No</td>
-<td>string</td>
-<td>None.</td>
-</tr>
-<tr>
-<td>email</td>
-<td>Email address</td>
-<td>No</td>
-<td>string</td>
-<td>None.</td>
-</tr>
-<tr>
-<td>fax</td>
-<td>Fax number</td>
-<td>No</td>
-<td>string</td>
-<td>None.</td>
-</tr>
-<tr>
-<td>mobile_phone</td>
-<td>Mobile phone number</td>
-<td>No</td>
-<td>string</td>
-<td>None.</td>
-</tr>
-<tr>
-<td>telephone</td>
-<td>Telephone number</td>
-<td>No</td>
-<td>string</td>
-<td>None.</td>
-</tr>
-<tr>
-<td>web</td>
-<td>Website</td>
-<td>No</td>
-<td>string</td>
-<td>None.</td>
-</tr>
-</tbody></table>
-<h3 id="response">Response</h3>
-<p><code>ClientRef</code> is needed for all future requests when operating as a trader on behalf of a client.</p>
-<p><code>Status</code> determines the client&#39;s ability to trade.</p>
-<p>A client will automatically be marked as <code>New</code> at the point of creation in the system.<br>A client cannot trade until their status is <code>Active</code>.  
-A client&#39;s status is changed from <code>New</code> to <code>Active</code> after successfully passing our compliance checks.</p>
-<!-- TODO: add details of our compliance checks? -->
-
-<!-- TODO: list all possible statuses in table? -->
-
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-<th>Type</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>ClientName</td>
-<td>Company name of the client</td>
-<td>string</td>
-</tr>
-<tr>
-<td>ClientRef</td>
-<td>Unique reference of the client.<br>This is autogenerated initially but can be updated by you later</td>
-<td>string</td>
-</tr>
-<tr>
-<td>ContactFirstName</td>
-<td>First name of the client&#39;s contact</td>
-<td>string</td>
-</tr>
-<tr>
-<td>ContactLastName</td>
-<td>Last name of the client&#39;s contact</td>
-<td>string</td>
-</tr>
-<tr>
-<td>Status</td>
-<td>Trading status of the client</td>
-<td>string</td>
-</tr>
-</tbody></table>
-<h2 id="list-all-clients">List all clients</h2>
-<p>Retrieve a list of all the clients you have access to.</p>
-<blockquote>
-<p>Example request:</p>
-</blockquote>
-<pre class="highlight bash"><code>curl -X GET http://api-test.cleartreasury.co.uk/api/clients \
-     -H <span class="hljs-string">'Authorization: Bearer &lt;your auth token&gt;'</span></code></pre><blockquote>
-<p>Example response:</p>
-</blockquote>
-<pre class="highlight json"><code>[
+]</code></pre>
+            <h3 id="request">Request</h3>
+            <p><code>POST /clients</code></p>
+            <table>
+               <thead>
+                  <tr>
+                     <th>Name</th>
+                     <th>Description</th>
+                     <th>Required</th>
+                     <th>Type</th>
+                     <th>Additional information</th>
+                  </tr>
+               </thead>
+               <tbody>
+                  <tr>
+                     <td>trader</td>
+                     <td>Your trader account ID</td>
+                     <td>Yes</td>
+                     <td>string</td>
+                     <td>This will be provided to you at signup</td>
+                  </tr>
+                  <tr>
+                     <td>type</td>
+                     <td>The type of client</td>
+                     <td>Yes</td>
+                     <td>string</td>
+                     <td><code>&quot;CORPORATE&quot;</code> or <code>&quot;PRIVATE&quot;</code></td>
+                  </tr>
+                  <tr>
+                     <td>name</td>
+                     <td>Client&#39;s name</td>
+                     <td>No</td>
+                     <td>string</td>
+                     <td>Company name for <code>CORPORATE</code> client</td>
+                  </tr>
+                  <tr>
+                     <td>address1</td>
+                     <td>Address line 1</td>
+                     <td>No</td>
+                     <td>string</td>
+                     <td>None</td>
+                  </tr>
+                  <tr>
+                     <td>address2</td>
+                     <td>Address line 2</td>
+                     <td>No</td>
+                     <td>string</td>
+                     <td>None</td>
+                  </tr>
+                  <tr>
+                     <td>address3</td>
+                     <td>Address line 3</td>
+                     <td>No</td>
+                     <td>string</td>
+                     <td>None</td>
+                  </tr>
+                  <tr>
+                     <td>city</td>
+                     <td>City</td>
+                     <td>No</td>
+                     <td>string</td>
+                     <td>None</td>
+                  </tr>
+                  <tr>
+                     <td>country</td>
+                     <td>Country</td>
+                     <td>No</td>
+                     <td>string</td>
+                     <td>None</td>
+                  </tr>
+                  <tr>
+                     <td>postcode</td>
+                     <td>Postcode</td>
+                     <td>No</td>
+                     <td>string</td>
+                     <td>None</td>
+                  </tr>
+                  <tr>
+                     <td>web</td>
+                     <td>Website</td>
+                     <td>No</td>
+                     <td>string</td>
+                     <td>None</td>
+                  </tr>
+                  <tr>
+                     <td>email</td>
+                     <td>Email</td>
+                     <td>No</td>
+                     <td>string</td>
+                     <td>None</td>
+                  </tr>
+                  <tr>
+                     <td>fax</td>
+                     <td>Fax number</td>
+                     <td>No</td>
+                     <td>string</td>
+                     <td>None</td>
+                  </tr>
+                  <tr>
+                     <td>switchboard</td>
+                     <td>Switchboard extension</td>
+                     <td>No</td>
+                     <td>string</td>
+                     <td>None</td>
+                  </tr>
+                  <tr>
+                     <td>ip</td>
+                     <td>IP address</td>
+                     <td>No</td>
+                     <td>string</td>
+                     <td>None</td>
+                  </tr>
+                  <tr>
+                     <td>company_number</td>
+                     <td>Company number</td>
+                     <td>No</td>
+                     <td>string</td>
+                     <td>None</td>
+                  </tr>
+                  <tr>
+                     <td>company_sic</td>
+                     <td>Company SIC code</td>
+                     <td>No</td>
+                     <td>string</td>
+                     <td>None</td>
+                  </tr>
+                  <tr>
+                     <td>company_vat</td>
+                     <td>Company VAT number</td>
+                     <td>No</td>
+                     <td>string</td>
+                     <td>None</td>
+                  </tr>
+                  <tr>
+                     <td>country_of_incorporation</td>
+                     <td>Country of incorporation</td>
+                     <td>No</td>
+                     <td>string</td>
+                     <td>None</td>
+                  </tr>
+                  <tr>
+                     <td>legal_status</td>
+                     <td>Legal status</td>
+                     <td>No</td>
+                     <td>string</td>
+                     <td>None</td>
+                  </tr>
+                  <tr>
+                     <td>trading_as_name</td>
+                     <td>Trading as name</td>
+                     <td>No</td>
+                     <td>string</td>
+                     <td>None</td>
+                  </tr>
+                  <tr>
+                     <td>trading_address1</td>
+                     <td>Trading address line 1</td>
+                     <td>No</td>
+                     <td>string</td>
+                     <td>None</td>
+                  </tr>
+                  <tr>
+                     <td>trading_address2</td>
+                     <td>Trading address line 2</td>
+                     <td>No</td>
+                     <td>string</td>
+                     <td>None</td>
+                  </tr>
+                  <tr>
+                     <td>trading_address3</td>
+                     <td>Trading address line 3</td>
+                     <td>No</td>
+                     <td>string</td>
+                     <td>None</td>
+                  </tr>
+                  <tr>
+                     <td>trading_city</td>
+                     <td>Trading city</td>
+                     <td>No</td>
+                     <td>string</td>
+                     <td>None</td>
+                  </tr>
+                  <tr>
+                     <td>trading_country</td>
+                     <td>Trading country</td>
+                     <td>No</td>
+                     <td>string</td>
+                     <td>None</td>
+                  </tr>
+                  <tr>
+                     <td>trading_postcode</td>
+                     <td>Trading postcode</td>
+                     <td>No</td>
+                     <td>string</td>
+                     <td>None</td>
+                  </tr>
+                  <tr>
+                     <td>countries_of_interest_beneficiaries</td>
+                     <td>The countries of the client&#39;s beneficiaries</td>
+                     <td>No</td>
+                     <td>Collection of string</td>
+                     <td>None</td>
+                  </tr>
+                  <tr>
+                     <td>countries_of_interest_remitters</td>
+                     <td>The countries of the client&#39;s remitters</td>
+                     <td>No</td>
+                     <td>Collection of string</td>
+                     <td>None</td>
+                  </tr>
+                  <tr>
+                     <td>currency_of_interest</td>
+                     <td>The countries the client wants to trade</td>
+                     <td>No</td>
+                     <td>Collection of string</td>
+                     <td>None</td>
+                  </tr>
+                  <tr>
+                     <td>expiry_date</td>
+                     <td>Client expiry date</td>
+                     <td>No</td>
+                     <td>string</td>
+                     <td>None</td>
+                  </tr>
+                  <tr>
+                     <td>regulator_name</td>
+                     <td>Name of the client&#39;s regulator</td>
+                     <td>No</td>
+                     <td>string</td>
+                     <td>None</td>
+                  </tr>
+                  <tr>
+                     <td>source</td>
+                     <td>Source</td>
+                     <td>No</td>
+                     <td>string</td>
+                     <td>None</td>
+                  </tr>
+                  <tr>
+                     <td>reason</td>
+                     <td>Reason for trading</td>
+                     <td>No</td>
+                     <td>string</td>
+                     <td>None</td>
+                  </tr>
+                  <tr>
+                     <td>comment</td>
+                     <td>Free text comment</td>
+                     <td>No</td>
+                     <td>string</td>
+                     <td>None</td>
+                  </tr>
+                  <tr>
+                     <td>trader_commission</td>
+                     <td>Trader&#39;s commission</td>
+                     <td>No</td>
+                     <td>string</td>
+                     <td>None</td>
+                  </tr>
+                  <tr>
+                     <td>cold_caller</td>
+                     <td>Which cold caller made contact with the client</td>
+                     <td>No</td>
+                     <td>string</td>
+                     <td>None</td>
+                  </tr>
+                  <tr>
+                     <td>cold_caller_commission</td>
+                     <td>Cold caller&#39;s commission</td>
+                     <td>No</td>
+                     <td>string</td>
+                     <td>None</td>
+                  </tr>
+                  <tr>
+                     <td>web_commission</td>
+                     <td></td>
+                     <td>No</td>
+                     <td>string</td>
+                     <td>None</td>
+                  </tr>
+                  <tr>
+                     <td>activity</td>
+                     <td></td>
+                     <td>No</td>
+                     <td>string</td>
+                     <td>None</td>
+                  </tr>
+                  <tr>
+                     <td>language</td>
+                     <td>Your parent company&#39;s identifier within our system</td>
+                     <td>No</td>
+                     <td>string</td>
+                     <td>This will be provided to you at signup</td>
+                  </tr>
+                  <tr>
+                     <td>group_industry</td>
+                     <td></td>
+                     <td>No</td>
+                     <td>string</td>
+                     <td>None</td>
+                  </tr>
+                  <tr>
+                     <td>sid</td>
+                     <td></td>
+                     <td>No</td>
+                     <td>string</td>
+                     <td>None</td>
+                  </tr>
+                  <tr>
+                     <td>referer</td>
+                     <td></td>
+                     <td>No</td>
+                     <td>string</td>
+                     <td>None</td>
+                  </tr>
+                  <tr>
+                     <td>affiliate_reference</td>
+                     <td></td>
+                     <td>No</td>
+                     <td>string</td>
+                     <td>None</td>
+                  </tr>
+                  <tr>
+                     <td>non_uk_shareholder</td>
+                     <td></td>
+                     <td>No</td>
+                     <td>string</td>
+                     <td>None</td>
+                  </tr>
+                  <tr>
+                     <td>kyc_ccy</td>
+                     <td></td>
+                     <td>No</td>
+                     <td>string</td>
+                     <td>None</td>
+                  </tr>
+                  <tr>
+                     <td>kyc_max_volume</td>
+                     <td></td>
+                     <td>No</td>
+                     <td>string</td>
+                     <td>None</td>
+                  </tr>
+                  <tr>
+                     <td>kyc_source_of_wealth</td>
+                     <td></td>
+                     <td>No</td>
+                     <td>string</td>
+                     <td>None</td>
+                  </tr>
+                  <tr>
+                     <td>kyc_source</td>
+                     <td></td>
+                     <td>No</td>
+                     <td>string</td>
+                     <td>None</td>
+                  </tr>
+                  <tr>
+                     <td>kyc_relationship_with_beneficiaries</td>
+                     <td></td>
+                     <td>No</td>
+                     <td>string</td>
+                     <td>None</td>
+                  </tr>
+                  <tr>
+                     <td>kyc_nature</td>
+                     <td></td>
+                     <td>No</td>
+                     <td>string</td>
+                     <td>None</td>
+                  </tr>
+                  <tr>
+                     <td>kyc_avg_volume</td>
+                     <td></td>
+                     <td>No</td>
+                     <td>string</td>
+                     <td>None</td>
+                  </tr>
+                  <tr>
+                     <td>kyc_annual_volume</td>
+                     <td></td>
+                     <td>No</td>
+                     <td>string</td>
+                     <td>None</td>
+                  </tr>
+                  <tr>
+                     <td>kyc_frequency</td>
+                     <td></td>
+                     <td>No</td>
+                     <td>string</td>
+                     <td>None</td>
+                  </tr>
+                  <tr>
+                     <td>kyc_max_volume</td>
+                     <td></td>
+                     <td>No</td>
+                     <td>string</td>
+                     <td>None</td>
+                  </tr>
+                  <tr>
+                     <td>kyc_ccy</td>
+                     <td></td>
+                     <td>No</td>
+                     <td>string</td>
+                     <td>None</td>
+                  </tr>
+                  <tr>
+                     <td>kyc_source_of_wealth</td>
+                     <td></td>
+                     <td>No</td>
+                     <td>string</td>
+                     <td>None</td>
+                  </tr>
+                  <tr>
+                     <td>kyc_source</td>
+                     <td></td>
+                     <td>No</td>
+                     <td>string</td>
+                     <td>None</td>
+                  </tr>
+                  <tr>
+                     <td>kyc_relationship_with_beneficiaries</td>
+                     <td></td>
+                     <td>No</td>
+                     <td>string</td>
+                     <td>None</td>
+                  </tr>
+                  <tr>
+                     <td>kyc_json</td>
+                     <td></td>
+                     <td>No</td>
+                     <td>string</td>
+                     <td>None</td>
+                  </tr>
+                  <tr>
+                     <td>agree_marketing_conditions</td>
+                     <td></td>
+                     <td>No</td>
+                     <td>integer</td>
+                     <td><code>0</code> or <code>1</code></td>
+                  </tr>
+                  <tr>
+                     <td>agree_marketing_conditions_affiliate</td>
+                     <td></td>
+                     <td>No</td>
+                     <td>integer</td>
+                     <td><code>0</code> or <code>1</code></td>
+                  </tr>
+                  <tr>
+                     <td>unsubscribe_emails</td>
+                     <td></td>
+                     <td>No</td>
+                     <td>string</td>
+                     <td>None</td>
+                  </tr>
+                  <tr>
+                     <td>contact_list</td>
+                     <td></td>
+                     <td>Yes</td>
+                     <td>Collection of <a href="#contact-object">contact object</a></td>
+                     <td>None</td>
+                  </tr>
+               </tbody>
+            </table>
+            <h3 id="contact-object">Contact Object</h3>
+            <table>
+               <thead>
+                  <tr>
+                     <th>Name</th>
+                     <th>Description</th>
+                     <th>Required</th>
+                     <th>Type</th>
+                     <th>Additional information</th>
+                  </tr>
+               </thead>
+               <tbody>
+                  <tr>
+                     <td>title</td>
+                     <td>Title</td>
+                     <td>No</td>
+                     <td>string</td>
+                     <td>None.</td>
+                  </tr>
+                  <tr>
+                     <td>first_name</td>
+                     <td>First name</td>
+                     <td>Yes</td>
+                     <td>string</td>
+                     <td>None.</td>
+                  </tr>
+                  <tr>
+                     <td>middle_name</td>
+                     <td>Middle name</td>
+                     <td>Yes</td>
+                     <td>string</td>
+                     <td>None.</td>
+                  </tr>
+                  <tr>
+                     <td>last_name</td>
+                     <td>Last name</td>
+                     <td>No</td>
+                     <td>string</td>
+                     <td>None.</td>
+                  </tr>
+                  <tr>
+                     <td>date_of_birth</td>
+                     <td>Date of birth</td>
+                     <td>No</td>
+                     <td>string</td>
+                     <td>None.</td>
+                  </tr>
+                  <tr>
+                     <td>nationality</td>
+                     <td>Nationality</td>
+                     <td>No</td>
+                     <td>string</td>
+                     <td>None.</td>
+                  </tr>
+                  <tr>
+                     <td>job_title</td>
+                     <td>Job title</td>
+                     <td>No</td>
+                     <td>string</td>
+                     <td>None.</td>
+                  </tr>
+                  <tr>
+                     <td>address1</td>
+                     <td>Address line 1</td>
+                     <td>No</td>
+                     <td>string</td>
+                     <td>None.</td>
+                  </tr>
+                  <tr>
+                     <td>address2</td>
+                     <td>Address line 2</td>
+                     <td>No</td>
+                     <td>string</td>
+                     <td>None.</td>
+                  </tr>
+                  <tr>
+                     <td>address3</td>
+                     <td>Address line 3</td>
+                     <td>No</td>
+                     <td>string</td>
+                     <td>None.</td>
+                  </tr>
+                  <tr>
+                     <td>city</td>
+                     <td>City</td>
+                     <td>No</td>
+                     <td>string</td>
+                     <td>None.</td>
+                  </tr>
+                  <tr>
+                     <td>country</td>
+                     <td>Country</td>
+                     <td>No</td>
+                     <td>string</td>
+                     <td>None.</td>
+                  </tr>
+                  <tr>
+                     <td>post_code</td>
+                     <td>Postcode</td>
+                     <td>No</td>
+                     <td>string</td>
+                     <td>None.</td>
+                  </tr>
+                  <tr>
+                     <td>email</td>
+                     <td>Email address</td>
+                     <td>No</td>
+                     <td>string</td>
+                     <td>None.</td>
+                  </tr>
+                  <tr>
+                     <td>fax</td>
+                     <td>Fax number</td>
+                     <td>No</td>
+                     <td>string</td>
+                     <td>None.</td>
+                  </tr>
+                  <tr>
+                     <td>mobile_phone</td>
+                     <td>Mobile phone number</td>
+                     <td>No</td>
+                     <td>string</td>
+                     <td>None.</td>
+                  </tr>
+                  <tr>
+                     <td>telephone</td>
+                     <td>Telephone number</td>
+                     <td>No</td>
+                     <td>string</td>
+                     <td>None.</td>
+                  </tr>
+                  <tr>
+                     <td>web</td>
+                     <td>Website</td>
+                     <td>No</td>
+                     <td>string</td>
+                     <td>None.</td>
+                  </tr>
+               </tbody>
+            </table>
+            <h3 id="response">Response</h3>
+            <p><code>ClientRef</code> is needed for all future requests when operating as a trader on behalf of a client.</p>
+            <p><code>Status</code> determines the client&#39;s ability to trade.</p>
+            <p>A client will automatically be marked as <code>New</code> at the point of creation in the system.<br>A client cannot trade until their status is <code>Active</code>. A client&#39;s status is changed from <code>New</code> to <code>Active</code> after successfully passing our compliance checks.</p>
+            <!-- TODO: add details of our compliance checks? -->
+            <!-- TODO: list all possible statuses in table? -->
+            <table>
+               <thead>
+                  <tr>
+                     <th>Name</th>
+                     <th>Description</th>
+                     <th>Type</th>
+                  </tr>
+               </thead>
+               <tbody>
+                  <tr>
+                     <td>ClientName</td>
+                     <td>Company name of the client</td>
+                     <td>string</td>
+                  </tr>
+                  <tr>
+                     <td>ClientRef</td>
+                     <td>Unique reference of the client.<br>This is autogenerated initially but can be updated by you later</td>
+                     <td>string</td>
+                  </tr>
+                  <tr>
+                     <td>ContactFirstName</td>
+                     <td>First name of the client&#39;s contact</td>
+                     <td>string</td>
+                  </tr>
+                  <tr>
+                     <td>ContactLastName</td>
+                     <td>Last name of the client&#39;s contact</td>
+                     <td>string</td>
+                  </tr>
+                  <tr>
+                     <td>Status</td>
+                     <td>Trading status of the client</td>
+                     <td>string</td>
+                  </tr>
+               </tbody>
+            </table>
+            <h2 id="list-all-clients">List all clients</h2>
+            <p>Retrieve a list of all the clients you have access to.</p>
+            <blockquote>
+               <p>Example request:</p>
+            </blockquote>
+            <pre class="highlight bash"><code>curl -X GET http://api-test.cleartreasury.co.uk/api/clients \
+     -H <span class="hljs-string">'Authorization: Bearer &lt;your auth token&gt;'</span></code></pre>
+            <blockquote>
+               <p>Example response:</p>
+            </blockquote>
+            <pre class="highlight json"><code>[
   {
     <span class="hljs-attr">"ClientName"</span>: <span class="hljs-string">"TEST Company Ltd"</span>,
     <span class="hljs-attr">"ClientRef"</span>: <span class="hljs-string">"C00000002"</span>,
@@ -793,133 +783,138 @@ A client&#39;s status is changed from <code>New</code> to <code>Active</code> af
     <span class="hljs-attr">"ContactLastName"</span>: <span class="hljs-string">"Tester"</span>,
     <span class="hljs-attr">"Status"</span>: <span class="hljs-string">"Active"</span>
   }
-]</code></pre><h3 id="request-1">Request</h3>
-<p><code>GET /clients</code></p>
-<h3 id="response-1">Response</h3>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-<th>Type</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>ClientName</td>
-<td>Company name of the client</td>
-<td>string</td>
-</tr>
-<tr>
-<td>ClientRef</td>
-<td>Unique reference of the client</td>
-<td>string</td>
-</tr>
-<tr>
-<td>ContactFirstName</td>
-<td>First name of the client&#39;s contact</td>
-<td>string</td>
-</tr>
-<tr>
-<td>ContactLastName</td>
-<td>Last name of the client&#39;s contact</td>
-<td>string</td>
-</tr>
-<tr>
-<td>Status</td>
-<td>Trading status of the client</td>
-<td>string</td>
-</tr>
-</tbody></table>
-<h2 id="get-a-client">Get a client</h2>
-<p>Retrieve a single client by client reference.</p>
-<blockquote>
-<p>Example request:</p>
-</blockquote>
-<pre class="highlight bash"><code>curl -X GET http://api-test.cleartreasury.co.uk/api/clients/{client_ref} \
-     -H <span class="hljs-string">'Authorization: Bearer &lt;your auth token&gt;'</span></code></pre><blockquote>
-<p>Example response:</p>
-</blockquote>
-<pre class="highlight json"><code>{
+]</code></pre>
+            <h3 id="request-1">Request</h3>
+            <p><code>GET /clients</code></p>
+            <h3 id="response-1">Response</h3>
+            <table>
+               <thead>
+                  <tr>
+                     <th>Name</th>
+                     <th>Description</th>
+                     <th>Type</th>
+                  </tr>
+               </thead>
+               <tbody>
+                  <tr>
+                     <td>ClientName</td>
+                     <td>Company name of the client</td>
+                     <td>string</td>
+                  </tr>
+                  <tr>
+                     <td>ClientRef</td>
+                     <td>Unique reference of the client</td>
+                     <td>string</td>
+                  </tr>
+                  <tr>
+                     <td>ContactFirstName</td>
+                     <td>First name of the client&#39;s contact</td>
+                     <td>string</td>
+                  </tr>
+                  <tr>
+                     <td>ContactLastName</td>
+                     <td>Last name of the client&#39;s contact</td>
+                     <td>string</td>
+                  </tr>
+                  <tr>
+                     <td>Status</td>
+                     <td>Trading status of the client</td>
+                     <td>string</td>
+                  </tr>
+               </tbody>
+            </table>
+            <h2 id="get-a-client">Get a client</h2>
+            <p>Retrieve a single client by client reference.</p>
+            <blockquote>
+               <p>Example request:</p>
+            </blockquote>
+            <pre class="highlight bash"><code>curl -X GET http://api-test.cleartreasury.co.uk/api/clients/{client_ref} \
+     -H <span class="hljs-string">'Authorization: Bearer &lt;your auth token&gt;'</span></code></pre>
+            <blockquote>
+               <p>Example response:</p>
+            </blockquote>
+            <pre class="highlight json"><code>{
   <span class="hljs-attr">"ClientName"</span>: <span class="hljs-string">"TEST Company Ltd"</span>,
   <span class="hljs-attr">"ClientRef"</span>: <span class="hljs-string">"C00000002"</span>,
   <span class="hljs-attr">"ContactFirstName"</span>: <span class="hljs-string">"Test"</span>,
   <span class="hljs-attr">"ContactLastName"</span>: <span class="hljs-string">"Tester"</span>,
   <span class="hljs-attr">"Status"</span>: <span class="hljs-string">"New"</span>
-}</code></pre><h3 id="request-2">Request</h3>
-<p><code>GET /clients/{client_ref}</code></p>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-<th>Required</th>
-<th>Type</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>client_ref</td>
-<td>Unique reference of the client</td>
-<td>Yes</td>
-<td>string</td>
-</tr>
-</tbody></table>
-<h3 id="response-2">Response</h3>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-<th>Type</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>ClientName</td>
-<td>Company name of the client</td>
-<td>string</td>
-</tr>
-<tr>
-<td>ClientRef</td>
-<td>Unique reference of the client</td>
-<td>string</td>
-</tr>
-<tr>
-<td>ContactFirstName</td>
-<td>First name of the client&#39;s contact</td>
-<td>string</td>
-</tr>
-<tr>
-<td>ContactLastName</td>
-<td>Last name of the client&#39;s contact</td>
-<td>string</td>
-</tr>
-<tr>
-<td>Status</td>
-<td>Trading status of the client</td>
-<td>string</td>
-</tr>
-</tbody></table>
-
-            
-               <h1 id="quotes">Quotes</h1>
-<p>There are four steps to executing a trade:</p>
-<p><strong>Step 1: Create a quote</strong></p>
-<p>Step 2: Book a trade</p>
-<p>Step 3: Create a beneficiary</p>
-<p>Step 4: Instruct a payment</p>
-<h3 id="description">Description</h3>
-<p>A quote can be used to create a trade. Quotes expire after 30 seconds.
-During that time you can refresh the price and the 30 second expiry time will be restarted, renewing its life for another 30 seconds.</p>
-<p>Once a quote expires you&#39;ll need to place a new quote.</p>
-<p>The rate returned is always in the sell-buy direction.</p>
-<p>You need the returned quote <code>ID</code> and <code>client_rate</code> as inputs to create a trade in step 2.</p>
-<!-- TODO: add more details about what constitutes a quote, how it's calculated, and what the fees are -->
-
-<h2 id="place-a-quote">Place a Quote</h2>
-<p>You need to have placed a quote before you can book a trade in step 2.</p>
-<blockquote>
-<p>Example request:</p>
-</blockquote>
-<pre class="highlight bash"><code>curl -X POST http://api-test.cleartreasury.co.uk/api/quotes \
+}</code></pre>
+            <h3 id="request-2">Request</h3>
+            <p><code>GET /clients/{client_ref}</code></p>
+            <table>
+               <thead>
+                  <tr>
+                     <th>Name</th>
+                     <th>Description</th>
+                     <th>Required</th>
+                     <th>Type</th>
+                  </tr>
+               </thead>
+               <tbody>
+                  <tr>
+                     <td>client_ref</td>
+                     <td>Unique reference of the client</td>
+                     <td>Yes</td>
+                     <td>string</td>
+                  </tr>
+               </tbody>
+            </table>
+            <h3 id="response-2">Response</h3>
+            <table>
+               <thead>
+                  <tr>
+                     <th>Name</th>
+                     <th>Description</th>
+                     <th>Type</th>
+                  </tr>
+               </thead>
+               <tbody>
+                  <tr>
+                     <td>ClientName</td>
+                     <td>Company name of the client</td>
+                     <td>string</td>
+                  </tr>
+                  <tr>
+                     <td>ClientRef</td>
+                     <td>Unique reference of the client</td>
+                     <td>string</td>
+                  </tr>
+                  <tr>
+                     <td>ContactFirstName</td>
+                     <td>First name of the client&#39;s contact</td>
+                     <td>string</td>
+                  </tr>
+                  <tr>
+                     <td>ContactLastName</td>
+                     <td>Last name of the client&#39;s contact</td>
+                     <td>string</td>
+                  </tr>
+                  <tr>
+                     <td>Status</td>
+                     <td>Trading status of the client</td>
+                     <td>string</td>
+                  </tr>
+               </tbody>
+            </table>
+            <h1 id="quotes">Quotes</h1>
+            <p>There are four steps to executing a trade:</p>
+            <p><strong>Step 1: Create a quote</strong></p>
+            <p>Step 2: Book a trade</p>
+            <p>Step 3: Create a beneficiary</p>
+            <p>Step 4: Instruct a payment</p>
+            <h3 id="description">Description</h3>
+            <p>A quote can be used to create a trade. Quotes expire after 30 seconds. During that time you can refresh the price and the 30 second expiry time will be restarted, renewing its life for another 30 seconds.</p>
+            <p>Once a quote expires you&#39;ll need to place a new quote.</p>
+            <p>The rate returned is always in the sell-buy direction.</p>
+            <p>You need the returned quote <code>ID</code> and <code>client_rate</code> as inputs to create a trade in step 2.</p>
+            <!-- TODO: add more details about what constitutes a quote, how it's calculated, and what the fees are -->
+            <h2 id="place-a-quote">Place a Quote</h2>
+            <p>You need to have placed a quote before you can book a trade in step 2.</p>
+            <blockquote>
+               <p>Example request:</p>
+            </blockquote>
+            <pre class="highlight bash"><code>curl -X POST http://api-test.cleartreasury.co.uk/api/quotes \
      -H <span class="hljs-string">'Authorization: Bearer &lt;your auth token&gt;'</span> \
      -H <span class="hljs-string">'Content-Type: application/json'</span> \
      -d <span class="hljs-string">'{
@@ -928,10 +923,11 @@ During that time you can refresh the price and the 30 second expiry time will be
             "sell_amount": 500.00,
             "value_date": "20200101",
             "client_ref": "&lt;client reference&gt;"
-        }'</span></code></pre><blockquote>
-<p>Example response:</p>
-</blockquote>
-<pre class="highlight json"><code>{
+        }'</span></code></pre>
+            <blockquote>
+               <p>Example response:</p>
+            </blockquote>
+            <pre class="highlight json"><code>{
   <span class="hljs-attr">"ID"</span>: <span class="hljs-string">"0001"</span>,
   <span class="hljs-attr">"sell_amount"</span>: <span class="hljs-number">500.0</span>,
   <span class="hljs-attr">"buy_amount"</span>: <span class="hljs-number">599.85</span>,
@@ -941,130 +937,136 @@ During that time you can refresh the price and the 30 second expiry time will be
   <span class="hljs-attr">"currency_sell"</span>: <span class="hljs-string">"GBP"</span>,
   <span class="hljs-attr">"fee_ccy"</span>: <span class="hljs-number">0.0</span>,
   <span class="hljs-attr">"fee"</span>: <span class="hljs-number">0.0</span>
-}</code></pre><h3 id="request">Request</h3>
-<p><code>POST /quotes</code></p>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-<th>Required</th>
-<th>Type</th>
-<th>Aditional Info</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>currency_sell</td>
-<td>The currency the end customer is wanting to sell</td>
-<td>Yes</td>
-<td>string</td>
-<td>ISO 3 letter currency</td>
-</tr>
-<tr>
-<td>currency_buy</td>
-<td>The currency the end customer is wanting to sell</td>
-<td>Yes</td>
-<td>string</td>
-<td>ISO 3 letter currency</td>
-</tr>
-<tr>
-<td>sell_amount</td>
-<td>Amount being sold</td>
-<td>Yes</td>
-<td>decimal</td>
-<td>None</td>
-</tr>
-<tr>
-<td>buy_amount</td>
-<td>Amount being bought</td>
-<td>Yes</td>
-<td>decimal</td>
-<td>None</td>
-</tr>
-<tr>
-<td>value_date</td>
-<td>Date the currency will be bought/sold</td>
-<td>No</td>
-<td>string</td>
-<td><code>yyyyMMdd</code> format</td>
-</tr>
-<tr>
-<td>client_ref</td>
-<td>Unique reference of the client</td>
-<td>Yes</td>
-<td>string</td>
-<td>None</td>
-</tr>
-</tbody></table>
-<h3 id="response">Response</h3>
-<p>The quote <code>ID</code> and <code>quote_rate</code> is needed for booking a trade in step 3.</p>
-<p>The rate returned is always in the sell/buy direction.</p>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-<th>Type</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>ID</td>
-<td>Quote ID</td>
-<td>string</td>
-</tr>
-<tr>
-<td>sell_amount</td>
-<td>Amount being sold</td>
-<td>decimal</td>
-</tr>
-<tr>
-<td>buy_amount</td>
-<td>Amount being bought</td>
-<td>decimal</td>
-</tr>
-<tr>
-<td>quote_rate</td>
-<td>Quote Rate. Always in sell/buy direction</td>
-<td>decimal</td>
-</tr>
-<tr>
-<td>currency_sell</td>
-<td>Currency beign sold</td>
-<td>string</td>
-</tr>
-<tr>
-<td>currency_buy</td>
-<td>Currency being bought</td>
-<td>string</td>
-</tr>
-<tr>
-<td>value_date</td>
-<td>Date that the currency will be bought/sold</td>
-<td>string</td>
-</tr>
-<tr>
-<td>fee</td>
-<td>Charge amount</td>
-<td>decimal</td>
-</tr>
-<tr>
-<td>fee_ccy</td>
-<td>Charge Currency</td>
-<td>decimal</td>
-</tr>
-</tbody></table>
-<h2 id="refreshed-the-price-for-a-quote">Refreshed the price for a quote</h2>
-<p>You can request a new price for a previously placed quote.</p>
-<p>Quotes expire after 30 seconds. During that time you can refresh the price of a quote to renew its life for another 30 seconds.</p>
-<p>Once a quote expires you&#39;ll need to place a new quote.</p>
-<blockquote>
-<p>Example request:</p>
-</blockquote>
-<pre class="highlight bash"><code>curl -X POST http://api-test.cleartreasury.co.uk/api/quotes?quote_id={quote_id} \
-     -H <span class="hljs-string">'Authorization: Bearer &lt;your auth token&gt;'</span></code></pre><blockquote>
-<p>Example response:</p>
-</blockquote>
-<pre class="highlight json"><code>{
+}</code></pre>
+            <h3 id="request">Request</h3>
+            <p><code>POST /quotes</code></p>
+            <table>
+               <thead>
+                  <tr>
+                     <th>Name</th>
+                     <th>Description</th>
+                     <th>Required</th>
+                     <th>Type</th>
+                     <th>Aditional Info</th>
+                  </tr>
+               </thead>
+               <tbody>
+                  <tr>
+                     <td>currency_sell</td>
+                     <td>The currency the end customer is wanting to sell</td>
+                     <td>Yes</td>
+                     <td>string</td>
+                     <td>ISO 3 letter currency</td>
+                  </tr>
+                  <tr>
+                     <td>currency_buy</td>
+                     <td>The currency the end customer is wanting to sell</td>
+                     <td>Yes</td>
+                     <td>string</td>
+                     <td>ISO 3 letter currency</td>
+                  </tr>
+                  <tr>
+                     <td>sell_amount</td>
+                     <td>Amount being sold</td>
+                     <td>Yes</td>
+                     <td>decimal</td>
+                     <td>None</td>
+                  </tr>
+                  <tr>
+                     <td>buy_amount</td>
+                     <td>Amount being bought</td>
+                     <td>Yes</td>
+                     <td>decimal</td>
+                     <td>None</td>
+                  </tr>
+                  <tr>
+                     <td>value_date</td>
+                     <td>Date the currency will be bought/sold</td>
+                     <td>No</td>
+                     <td>string</td>
+                     <td><code>yyyyMMdd</code> format</td>
+                  </tr>
+                  <tr>
+                     <td>client_ref</td>
+                     <td>Unique reference of the client</td>
+                     <td>Yes</td>
+                     <td>string</td>
+                     <td>None</td>
+                  </tr>
+               </tbody>
+            </table>
+            <h3 id="response">Response</h3>
+            <p>The quote <code>ID</code> and <code>quote_rate</code> is needed for booking a trade in step 3.</p>
+            <p>The rate returned is always in the sell/buy direction.</p>
+            <table>
+               <thead>
+                  <tr>
+                     <th>Name</th>
+                     <th>Description</th>
+                     <th>Type</th>
+                  </tr>
+               </thead>
+               <tbody>
+                  <tr>
+                     <td>ID</td>
+                     <td>Quote ID</td>
+                     <td>string</td>
+                  </tr>
+                  <tr>
+                     <td>sell_amount</td>
+                     <td>Amount being sold</td>
+                     <td>decimal</td>
+                  </tr>
+                  <tr>
+                     <td>buy_amount</td>
+                     <td>Amount being bought</td>
+                     <td>decimal</td>
+                  </tr>
+                  <tr>
+                     <td>quote_rate</td>
+                     <td>Quote Rate. Always in sell/buy direction</td>
+                     <td>decimal</td>
+                  </tr>
+                  <tr>
+                     <td>currency_sell</td>
+                     <td>Currency beign sold</td>
+                     <td>string</td>
+                  </tr>
+                  <tr>
+                     <td>currency_buy</td>
+                     <td>Currency being bought</td>
+                     <td>string</td>
+                  </tr>
+                  <tr>
+                     <td>value_date</td>
+                     <td>Date that the currency will be bought/sold</td>
+                     <td>string</td>
+                  </tr>
+                  <tr>
+                     <td>fee</td>
+                     <td>Charge amount</td>
+                     <td>decimal</td>
+                  </tr>
+                  <tr>
+                     <td>fee_ccy</td>
+                     <td>Charge Currency</td>
+                     <td>decimal</td>
+                  </tr>
+               </tbody>
+            </table>
+            <h2 id="refreshed-the-price-for-a-quote">Refreshed the price for a quote</h2>
+            <p>You can request a new price for a previously placed quote.</p>
+            <p>Quotes expire after 30 seconds. During that time you can refresh the price of a quote to renew its life for another 30 seconds.</p>
+            <p>Once a quote expires you&#39;ll need to place a new quote.</p>
+            <blockquote>
+               <p>Example request:</p>
+            </blockquote>
+            <pre class="highlight bash"><code>curl -X POST http://api-test.cleartreasury.co.uk/api/quotes?quote_id={quote_id} \
+     -H <span class="hljs-string">'Authorization: Bearer &lt;your auth token&gt;'</span></code></pre>
+            <blockquote>
+               <p>Example response:</p>
+            </blockquote>
+            <pre class="highlight json"><code>{
   <span class="hljs-attr">"ID"</span>: <span class="hljs-string">"0001"</span>,
   <span class="hljs-attr">"sell_amount"</span>: <span class="hljs-number">500.0</span>,
   <span class="hljs-attr">"buy_amount"</span>: <span class="hljs-number">599.85</span>,
@@ -1074,89 +1076,95 @@ During that time you can refresh the price and the 30 second expiry time will be
   <span class="hljs-attr">"currency_sell"</span>: <span class="hljs-string">"GBP"</span>,
   <span class="hljs-attr">"fee_ccy"</span>: <span class="hljs-number">0.0</span>,
   <span class="hljs-attr">"fee"</span>: <span class="hljs-number">0.0</span>
-}</code></pre><h3 id="request-1">Request</h3>
-<p><code>POST /quotes?quote_id={quote_id}</code></p>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-<th>Required</th>
-<th>Type</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>quote_id</td>
-<td>Quote ID</td>
-<td>Yes</td>
-<td>integer</td>
-</tr>
-</tbody></table>
-<h3 id="response-1">Response</h3>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-<th>Type</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>ID</td>
-<td>Quote ID</td>
-<td>string</td>
-</tr>
-<tr>
-<td>sell_amount</td>
-<td>Sell Amount</td>
-<td>decimal</td>
-</tr>
-<tr>
-<td>buy_amount</td>
-<td>Sell Amount</td>
-<td>decimal</td>
-</tr>
-<tr>
-<td>client_rate</td>
-<td>Client Rate</td>
-<td>decimal</td>
-</tr>
-<tr>
-<td>currency_sell</td>
-<td>Sell Currency</td>
-<td>string</td>
-</tr>
-<tr>
-<td>currency_buy</td>
-<td>Buy Currency</td>
-<td>string</td>
-</tr>
-<tr>
-<td>value_date</td>
-<td><code>yyyyMMdd</code> Date</td>
-<td>string</td>
-</tr>
-<tr>
-<td>fee_ccy</td>
-<td>Charge Currency</td>
-<td>decimal</td>
-</tr>
-<tr>
-<td>fee</td>
-<td>Charge amount</td>
-<td>decimal</td>
-</tr>
-</tbody></table>
-<h2 id="get-a-placed-quote">Get a placed quote</h2>
-<p>Get the details of a previously placed quote</p>
-<blockquote>
-<p>Example request:</p>
-</blockquote>
-<pre class="highlight bash"><code>curl -X GET http://api-test.cleartreasury.co.uk/api/quotes/{quote_id} \
-     -H <span class="hljs-string">'Authorization: Bearer &lt;your auth token&gt;'</span></code></pre><blockquote>
-<p>Example response:</p>
-</blockquote>
-<pre class="highlight json"><code>{
+}</code></pre>
+            <h3 id="request-1">Request</h3>
+            <p><code>POST /quotes?quote_id={quote_id}</code></p>
+            <table>
+               <thead>
+                  <tr>
+                     <th>Name</th>
+                     <th>Description</th>
+                     <th>Required</th>
+                     <th>Type</th>
+                  </tr>
+               </thead>
+               <tbody>
+                  <tr>
+                     <td>quote_id</td>
+                     <td>Quote ID</td>
+                     <td>Yes</td>
+                     <td>integer</td>
+                  </tr>
+               </tbody>
+            </table>
+            <h3 id="response-1">Response</h3>
+            <table>
+               <thead>
+                  <tr>
+                     <th>Name</th>
+                     <th>Description</th>
+                     <th>Type</th>
+                  </tr>
+               </thead>
+               <tbody>
+                  <tr>
+                     <td>ID</td>
+                     <td>Quote ID</td>
+                     <td>string</td>
+                  </tr>
+                  <tr>
+                     <td>sell_amount</td>
+                     <td>Sell Amount</td>
+                     <td>decimal</td>
+                  </tr>
+                  <tr>
+                     <td>buy_amount</td>
+                     <td>Sell Amount</td>
+                     <td>decimal</td>
+                  </tr>
+                  <tr>
+                     <td>client_rate</td>
+                     <td>Client Rate</td>
+                     <td>decimal</td>
+                  </tr>
+                  <tr>
+                     <td>currency_sell</td>
+                     <td>Sell Currency</td>
+                     <td>string</td>
+                  </tr>
+                  <tr>
+                     <td>currency_buy</td>
+                     <td>Buy Currency</td>
+                     <td>string</td>
+                  </tr>
+                  <tr>
+                     <td>value_date</td>
+                     <td><code>yyyyMMdd</code> Date</td>
+                     <td>string</td>
+                  </tr>
+                  <tr>
+                     <td>fee_ccy</td>
+                     <td>Charge Currency</td>
+                     <td>decimal</td>
+                  </tr>
+                  <tr>
+                     <td>fee</td>
+                     <td>Charge amount</td>
+                     <td>decimal</td>
+                  </tr>
+               </tbody>
+            </table>
+            <h2 id="get-a-placed-quote">Get a placed quote</h2>
+            <p>Get the details of a previously placed quote</p>
+            <blockquote>
+               <p>Example request:</p>
+            </blockquote>
+            <pre class="highlight bash"><code>curl -X GET http://api-test.cleartreasury.co.uk/api/quotes/{quote_id} \
+     -H <span class="hljs-string">'Authorization: Bearer &lt;your auth token&gt;'</span></code></pre>
+            <blockquote>
+               <p>Example response:</p>
+            </blockquote>
+            <pre class="highlight json"><code>{
   <span class="hljs-attr">"ID"</span>: <span class="hljs-string">"0001"</span>,
   <span class="hljs-attr">"sell_amount"</span>: <span class="hljs-number">500.0</span>,
   <span class="hljs-attr">"buy_amount"</span>: <span class="hljs-number">599.85</span>,
@@ -1166,96 +1174,99 @@ During that time you can refresh the price and the 30 second expiry time will be
   <span class="hljs-attr">"currency_sell"</span>: <span class="hljs-string">"GBP"</span>,
   <span class="hljs-attr">"fee_ccy"</span>: <span class="hljs-number">0.0</span>,
   <span class="hljs-attr">"fee"</span>: <span class="hljs-number">0.0</span>
-}</code></pre><h3 id="request-2">Request</h3>
-<p><code>GET /quotes/{quote_id}</code></p>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-<th>Required</th>
-<th>Type</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>quote_id</td>
-<td>Quote ID</td>
-<td>Yes</td>
-<td>integer</td>
-</tr>
-</tbody></table>
-<h3 id="response-2">Response</h3>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-<th>Type</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>ID</td>
-<td>Quote ID</td>
-<td>string</td>
-</tr>
-<tr>
-<td>sell_amount</td>
-<td>Amount being sold</td>
-<td>decimal</td>
-</tr>
-<tr>
-<td>buy_amount</td>
-<td>Amount being bought</td>
-<td>decimal</td>
-</tr>
-<tr>
-<td>quote_rate</td>
-<td>Quote Rate. Always in sell/buy direction</td>
-<td>decimal</td>
-</tr>
-<tr>
-<td>currency_sell</td>
-<td>Currency beign sold</td>
-<td>string</td>
-</tr>
-<tr>
-<td>currency_buy</td>
-<td>Currency being bought</td>
-<td>string</td>
-</tr>
-<tr>
-<td>value_date</td>
-<td>Date that the currency will be bought/sold</td>
-<td>string</td>
-</tr>
-<tr>
-<td>fee</td>
-<td>Charge amount</td>
-<td>decimal</td>
-</tr>
-<tr>
-<td>fee_ccy</td>
-<td>Charge Currency</td>
-<td>decimal</td>
-</tr>
-</tbody></table>
-
-            
-               <h1 id="beneficiaries">Beneficiaries</h1>
-<p>There are four steps to executing a trade:</p>
-<p>Step 1: Create a quote</p>
-<p>Step 2: Book a trade</p>
-<p><strong>Step 3: Create a beneficiary</strong></p>
-<p>Step 4: Instruct a payment</p>
-<h3 id="description">Description</h3>
-<p>A beneficiary is a person or institution who is the ultimate recipient of your payment.</p>
-<p>You need the returned beneficiary <code>id</code> as an input to instruct a payment in step 4.</p>
-<h2 id="create-a-beneficiary">Create a beneficiary</h2>
-<p>Create a new beneficiary in order to instruct a payment to them.</p>
-<blockquote>
-<p>Example request:</p>
-</blockquote>
-<pre class="highlight bash"><code>curl -X POST http://api-test.cleartreasury.co.uk/api/beneficiaries \
+}</code></pre>
+            <h3 id="request-2">Request</h3>
+            <p><code>GET /quotes/{quote_id}</code></p>
+            <table>
+               <thead>
+                  <tr>
+                     <th>Name</th>
+                     <th>Description</th>
+                     <th>Required</th>
+                     <th>Type</th>
+                  </tr>
+               </thead>
+               <tbody>
+                  <tr>
+                     <td>quote_id</td>
+                     <td>Quote ID</td>
+                     <td>Yes</td>
+                     <td>integer</td>
+                  </tr>
+               </tbody>
+            </table>
+            <h3 id="response-2">Response</h3>
+            <table>
+               <thead>
+                  <tr>
+                     <th>Name</th>
+                     <th>Description</th>
+                     <th>Type</th>
+                  </tr>
+               </thead>
+               <tbody>
+                  <tr>
+                     <td>ID</td>
+                     <td>Quote ID</td>
+                     <td>string</td>
+                  </tr>
+                  <tr>
+                     <td>sell_amount</td>
+                     <td>Amount being sold</td>
+                     <td>decimal</td>
+                  </tr>
+                  <tr>
+                     <td>buy_amount</td>
+                     <td>Amount being bought</td>
+                     <td>decimal</td>
+                  </tr>
+                  <tr>
+                     <td>quote_rate</td>
+                     <td>Quote Rate. Always in sell/buy direction</td>
+                     <td>decimal</td>
+                  </tr>
+                  <tr>
+                     <td>currency_sell</td>
+                     <td>Currency beign sold</td>
+                     <td>string</td>
+                  </tr>
+                  <tr>
+                     <td>currency_buy</td>
+                     <td>Currency being bought</td>
+                     <td>string</td>
+                  </tr>
+                  <tr>
+                     <td>value_date</td>
+                     <td>Date that the currency will be bought/sold</td>
+                     <td>string</td>
+                  </tr>
+                  <tr>
+                     <td>fee</td>
+                     <td>Charge amount</td>
+                     <td>decimal</td>
+                  </tr>
+                  <tr>
+                     <td>fee_ccy</td>
+                     <td>Charge Currency</td>
+                     <td>decimal</td>
+                  </tr>
+               </tbody>
+            </table>
+            <h1 id="beneficiaries">Beneficiaries</h1>
+            <p>There are four steps to executing a trade:</p>
+            <p>Step 1: Create a quote</p>
+            <p>Step 2: Book a trade</p>
+            <p><strong>Step 3: Create a beneficiary</strong></p>
+            <p>Step 4: Instruct a payment</p>
+            <h3 id="description">Description</h3>
+            <p>A beneficiary is a person or institution who is the ultimate recipient of your payment.</p>
+            <p>You need the returned beneficiary <code>id</code> as an input to instruct a payment in step 4.</p>
+            <h2 id="create-a-beneficiary">Create a beneficiary</h2>
+            <p>Create a new beneficiary in order to instruct a payment to them.</p>
+            <blockquote>
+               <p>Example request:</p>
+            </blockquote>
+            <pre class="highlight bash"><code>curl -X POST http://api-test.cleartreasury.co.uk/api/beneficiaries \
      -H <span class="hljs-string">'Authorization: Bearer &lt;your auth token&gt;'</span> \
      -H <span class="hljs-string">'Content-Type: application/json'</span> \
      -d <span class="hljs-string">'{
@@ -1270,154 +1281,161 @@ During that time you can refresh the price and the 30 second expiry time will be
           "email": "test.beneficiary@example.com",
           "beneficiary_address": "Test beneficiary house, Beneton, England",
           "client_ref": "&lt;client reference&gt;"
-        }'</span></code></pre><blockquote>
-<p>Example response:</p>
-</blockquote>
-<pre class="highlight json"><code>{
+        }'</span></code></pre>
+            <blockquote>
+               <p>Example response:</p>
+            </blockquote>
+            <pre class="highlight json"><code>{
   <span class="hljs-attr">"message"</span>: <span class="hljs-string">"Beneficiary added to client's list "</span>,
   <span class="hljs-attr">"id"</span>: <span class="hljs-number">24538</span>
-}</code></pre><h3 id="request">Request</h3>
-<p><code>POST /beneficiaries</code></p>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-<th>Required</th>
-<th>Type</th>
-<th>Additional information</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>client_ref</td>
-<td>Client reference to associate the beneficiary with</td>
-<td>Yes</td>
-<td>string</td>
-<td></td>
-</tr>
-<tr>
-<td>intermediary</td>
-<td>SWIFT code of the intermediary bank account</td>
-<td>No</td>
-<td>string</td>
-<td>Max length 50</td>
-</tr>
-<tr>
-<td>account_name</td>
-<td>Bank account name</td>
-<td>Yes</td>
-<td>string</td>
-<td></td>
-</tr>
-<tr>
-<td>account_number</td>
-<td>Bank account number</td>
-<td>Yes</td>
-<td>string</td>
-<td></td>
-</tr>
-<tr>
-<td>sort_code</td>
-<td>Bank account sort code</td>
-<td>No</td>
-<td>string</td>
-<td>6 digits. No spaces or special characters</td>
-</tr>
-<tr>
-<td>bankname</td>
-<td>Bank name</td>
-<td>No</td>
-<td>string</td>
-<td></td>
-</tr>
-<tr>
-<td>address</td>
-<td>Bank Address</td>
-<td>No</td>
-<td>string</td>
-<td></td>
-</tr>
-<tr>
-<td>swift</td>
-<td>Bank SWIFT code</td>
-<td>No</td>
-<td>string</td>
-<td></td>
-</tr>
-<tr>
-<td>cnaps</td>
-<td>CNAPS account number</td>
-<td>No</td>
-<td>string</td>
-<td></td>
-</tr>
-<tr>
-<td>country_code</td>
-<td>Country code</td>
-<td>Yes</td>
-<td>string</td>
-<td>ISO 2 letter country code</td>
-</tr>
-<tr>
-<td>currency</td>
-<td>Currency</td>
-<td>No</td>
-<td>string</td>
-<td>ISO 3 letter currency code</td>
-</tr>
-<tr>
-<td>email</td>
-<td>Email address</td>
-<td>No</td>
-<td>string</td>
-<td></td>
-</tr>
-<tr>
-<td>ben_address</td>
-<td>Contact address</td>
-<td>No</td>
-<td>string</td>
-<td></td>
-</tr>
-<tr>
-<td>notes</td>
-<td>Noteworthy information</td>
-<td>No</td>
-<td>string</td>
-<td></td>
-</tr>
-</tbody></table>
-<h3 id="response">Response</h3>
-<p>The <code>id</code> is needed when instructing a payment.</p>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-<th>Type</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>id</td>
-<td>Beneficiary ID</td>
-<td>integer</td>
-</tr>
-<tr>
-<td>message</td>
-<td>Information about the beneficiary creation</td>
-<td>string</td>
-</tr>
-</tbody></table>
-<h2 id="list-all-beneficiaries">List all beneficiaries</h2>
-<p>Get a list of beneficiaries you have access to.</p>
-<blockquote>
-<p>Example request:</p>
-</blockquote>
-<pre class="highlight bash"><code>curl -X GET http://api-test.cleartreasury.co.uk/api/beneficiaries?client_ref={client_ref} \
-     -H <span class="hljs-string">'Authorization: Bearer &lt;your auth token&gt;'</span></code></pre><blockquote>
-<p>Example response:</p>
-</blockquote>
-<pre class="highlight json"><code>[
+}</code></pre>
+            <h3 id="request">Request</h3>
+            <p><code>POST /beneficiaries</code></p>
+            <table>
+               <thead>
+                  <tr>
+                     <th>Name</th>
+                     <th>Description</th>
+                     <th>Required</th>
+                     <th>Type</th>
+                     <th>Additional information</th>
+                  </tr>
+               </thead>
+               <tbody>
+                  <tr>
+                     <td>client_ref</td>
+                     <td>Client reference to associate the beneficiary with</td>
+                     <td>Yes</td>
+                     <td>string</td>
+                     <td></td>
+                  </tr>
+                  <tr>
+                     <td>intermediary</td>
+                     <td>SWIFT code of the intermediary bank account</td>
+                     <td>No</td>
+                     <td>string</td>
+                     <td>Max length 50</td>
+                  </tr>
+                  <tr>
+                     <td>account_name</td>
+                     <td>Bank account name</td>
+                     <td>Yes</td>
+                     <td>string</td>
+                     <td></td>
+                  </tr>
+                  <tr>
+                     <td>account_number</td>
+                     <td>Bank account number</td>
+                     <td>Yes</td>
+                     <td>string</td>
+                     <td></td>
+                  </tr>
+                  <tr>
+                     <td>sort_code</td>
+                     <td>Bank account sort code</td>
+                     <td>No</td>
+                     <td>string</td>
+                     <td>6 digits. No spaces or special characters</td>
+                  </tr>
+                  <tr>
+                     <td>bankname</td>
+                     <td>Bank name</td>
+                     <td>No</td>
+                     <td>string</td>
+                     <td></td>
+                  </tr>
+                  <tr>
+                     <td>address</td>
+                     <td>Bank Address</td>
+                     <td>No</td>
+                     <td>string</td>
+                     <td></td>
+                  </tr>
+                  <tr>
+                     <td>swift</td>
+                     <td>Bank SWIFT code</td>
+                     <td>No</td>
+                     <td>string</td>
+                     <td></td>
+                  </tr>
+                  <tr>
+                     <td>cnaps</td>
+                     <td>CNAPS account number</td>
+                     <td>No</td>
+                     <td>string</td>
+                     <td></td>
+                  </tr>
+                  <tr>
+                     <td>country_code</td>
+                     <td>Country code</td>
+                     <td>Yes</td>
+                     <td>string</td>
+                     <td>ISO 2 letter country code</td>
+                  </tr>
+                  <tr>
+                     <td>currency</td>
+                     <td>Currency</td>
+                     <td>No</td>
+                     <td>string</td>
+                     <td>ISO 3 letter currency code</td>
+                  </tr>
+                  <tr>
+                     <td>email</td>
+                     <td>Email address</td>
+                     <td>No</td>
+                     <td>string</td>
+                     <td></td>
+                  </tr>
+                  <tr>
+                     <td>ben_address</td>
+                     <td>Contact address</td>
+                     <td>No</td>
+                     <td>string</td>
+                     <td></td>
+                  </tr>
+                  <tr>
+                     <td>notes</td>
+                     <td>Noteworthy information</td>
+                     <td>No</td>
+                     <td>string</td>
+                     <td></td>
+                  </tr>
+               </tbody>
+            </table>
+            <h3 id="response">Response</h3>
+            <p>The <code>id</code> is needed when instructing a payment.</p>
+            <table>
+               <thead>
+                  <tr>
+                     <th>Name</th>
+                     <th>Description</th>
+                     <th>Type</th>
+                  </tr>
+               </thead>
+               <tbody>
+                  <tr>
+                     <td>id</td>
+                     <td>Beneficiary ID</td>
+                     <td>integer</td>
+                  </tr>
+                  <tr>
+                     <td>message</td>
+                     <td>Information about the beneficiary creation</td>
+                     <td>string</td>
+                  </tr>
+               </tbody>
+            </table>
+            <h2 id="list-all-beneficiaries">List all beneficiaries</h2>
+            <p>Get a list of beneficiaries you have access to.</p>
+            <blockquote>
+               <p>Example request:</p>
+            </blockquote>
+            <pre class="highlight bash"><code>curl -X GET http://api-test.cleartreasury.co.uk/api/beneficiaries?client_ref={client_ref} \
+     -H <span class="hljs-string">'Authorization: Bearer &lt;your auth token&gt;'</span></code></pre>
+            <blockquote>
+               <p>Example response:</p>
+            </blockquote>
+            <pre class="highlight json"><code>[
   {
     <span class="hljs-attr">"intermediary"</span>: <span class="hljs-string">""</span>,
     <span class="hljs-attr">"account_name"</span>: <span class="hljs-string">"Test bank account"</span>,
@@ -1434,136 +1452,142 @@ During that time you can refresh the price and the 30 second expiry time will be
     <span class="hljs-attr">"id"</span>: <span class="hljs-string">"1"</span>,
     <span class="hljs-attr">"client_ref"</span>: <span class="hljs-string">"&lt;client reference&gt;"</span>
   }
-]</code></pre><h3 id="request-1">Request</h3>
-<p><code>GET /beneficiaries?client_ref={client_ref}</code></p>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-<th>Required</th>
-<th>Type</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>beneficiary_id</td>
-<td>Unique ID of the beneficiary</td>
-<td>Yes</td>
-<td>string</td>
-</tr>
-</tbody></table>
-<h3 id="response-1">Response</h3>
-<p>Beneficiary <code>id</code> is needed for booking a trade.</p>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-<th>Type</th>
-<th>Additional information</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>intermediary</td>
-<td>SWIFT code of the intermediary bank account</td>
-<td>string</td>
-<td>Max length 50</td>
-</tr>
-<tr>
-<td>account_name</td>
-<td>Bank account name</td>
-<td>string</td>
-<td></td>
-</tr>
-<tr>
-<td>account_number</td>
-<td>Bank account number</td>
-<td>string</td>
-<td></td>
-</tr>
-<tr>
-<td>sort_code</td>
-<td>Bank account sort code</td>
-<td>string</td>
-<td>6 digits. No spaces or special characters</td>
-</tr>
-<tr>
-<td>bankname</td>
-<td>Bank name</td>
-<td>string</td>
-<td></td>
-</tr>
-<tr>
-<td>address</td>
-<td>Bank Address</td>
-<td>string</td>
-<td></td>
-</tr>
-<tr>
-<td>swift</td>
-<td>Bank SWIFT code</td>
-<td>string</td>
-<td></td>
-</tr>
-<tr>
-<td>cnaps</td>
-<td>CNAPS account number</td>
-<td>string</td>
-<td></td>
-</tr>
-<tr>
-<td>country_code</td>
-<td>Country code</td>
-<td>string</td>
-<td>ISO 2 letter country code</td>
-</tr>
-<tr>
-<td>currency</td>
-<td>Currency</td>
-<td>string</td>
-<td>ISO 3 letter currency code</td>
-</tr>
-<tr>
-<td>email</td>
-<td>Email address</td>
-<td>string</td>
-<td></td>
-</tr>
-<tr>
-<td>ben_address</td>
-<td>Contact address</td>
-<td>string</td>
-<td></td>
-</tr>
-<tr>
-<td>notes</td>
-<td>Noteworthy information</td>
-<td>string</td>
-<td></td>
-</tr>
-<tr>
-<td>id</td>
-<td>Unique ID of the beneficiary</td>
-<td>string</td>
-<td></td>
-</tr>
-<tr>
-<td>client_ref</td>
-<td>Client reference to associate the beneficiary with</td>
-<td>string</td>
-<td></td>
-</tr>
-</tbody></table>
-<h2 id="get-a-beneficiary">Get a beneficiary</h2>
-<p>Retrieve a single beneficiary by beneficiary ID.</p>
-<blockquote>
-<p>Example request:</p>
-</blockquote>
-<pre class="highlight bash"><code>curl -X GET http://api-test.cleartreasury.co.uk/api/beneficiaries/{beneficiary_id} \
-     -H <span class="hljs-string">'Authorization: Bearer &lt;your auth token&gt;'</span></code></pre><blockquote>
-<p>Example response:</p>
-</blockquote>
-<pre class="highlight json"><code>{
+]</code></pre>
+            <h3 id="request-1">Request</h3>
+            <p><code>GET /beneficiaries?client_ref={client_ref}</code></p>
+            <table>
+               <thead>
+                  <tr>
+                     <th>Name</th>
+                     <th>Description</th>
+                     <th>Required</th>
+                     <th>Type</th>
+                  </tr>
+               </thead>
+               <tbody>
+                  <tr>
+                     <td>beneficiary_id</td>
+                     <td>Unique ID of the beneficiary</td>
+                     <td>Yes</td>
+                     <td>string</td>
+                  </tr>
+               </tbody>
+            </table>
+            <h3 id="response-1">Response</h3>
+            <p>Beneficiary <code>id</code> is needed for booking a trade.</p>
+            <table>
+               <thead>
+                  <tr>
+                     <th>Name</th>
+                     <th>Description</th>
+                     <th>Type</th>
+                     <th>Additional information</th>
+                  </tr>
+               </thead>
+               <tbody>
+                  <tr>
+                     <td>intermediary</td>
+                     <td>SWIFT code of the intermediary bank account</td>
+                     <td>string</td>
+                     <td>Max length 50</td>
+                  </tr>
+                  <tr>
+                     <td>account_name</td>
+                     <td>Bank account name</td>
+                     <td>string</td>
+                     <td></td>
+                  </tr>
+                  <tr>
+                     <td>account_number</td>
+                     <td>Bank account number</td>
+                     <td>string</td>
+                     <td></td>
+                  </tr>
+                  <tr>
+                     <td>sort_code</td>
+                     <td>Bank account sort code</td>
+                     <td>string</td>
+                     <td>6 digits. No spaces or special characters</td>
+                  </tr>
+                  <tr>
+                     <td>bankname</td>
+                     <td>Bank name</td>
+                     <td>string</td>
+                     <td></td>
+                  </tr>
+                  <tr>
+                     <td>address</td>
+                     <td>Bank Address</td>
+                     <td>string</td>
+                     <td></td>
+                  </tr>
+                  <tr>
+                     <td>swift</td>
+                     <td>Bank SWIFT code</td>
+                     <td>string</td>
+                     <td></td>
+                  </tr>
+                  <tr>
+                     <td>cnaps</td>
+                     <td>CNAPS account number</td>
+                     <td>string</td>
+                     <td></td>
+                  </tr>
+                  <tr>
+                     <td>country_code</td>
+                     <td>Country code</td>
+                     <td>string</td>
+                     <td>ISO 2 letter country code</td>
+                  </tr>
+                  <tr>
+                     <td>currency</td>
+                     <td>Currency</td>
+                     <td>string</td>
+                     <td>ISO 3 letter currency code</td>
+                  </tr>
+                  <tr>
+                     <td>email</td>
+                     <td>Email address</td>
+                     <td>string</td>
+                     <td></td>
+                  </tr>
+                  <tr>
+                     <td>ben_address</td>
+                     <td>Contact address</td>
+                     <td>string</td>
+                     <td></td>
+                  </tr>
+                  <tr>
+                     <td>notes</td>
+                     <td>Noteworthy information</td>
+                     <td>string</td>
+                     <td></td>
+                  </tr>
+                  <tr>
+                     <td>id</td>
+                     <td>Unique ID of the beneficiary</td>
+                     <td>string</td>
+                     <td></td>
+                  </tr>
+                  <tr>
+                     <td>client_ref</td>
+                     <td>Client reference to associate the beneficiary with</td>
+                     <td>string</td>
+                     <td></td>
+                  </tr>
+               </tbody>
+            </table>
+            <h2 id="get-a-beneficiary">Get a beneficiary</h2>
+            <p>Retrieve a single beneficiary by beneficiary ID.</p>
+            <blockquote>
+               <p>Example request:</p>
+            </blockquote>
+            <pre class="highlight bash"><code>curl -X GET http://api-test.cleartreasury.co.uk/api/beneficiaries/{beneficiary_id} \
+     -H <span class="hljs-string">'Authorization: Bearer &lt;your auth token&gt;'</span></code></pre>
+            <blockquote>
+               <p>Example response:</p>
+            </blockquote>
+            <pre class="highlight json"><code>{
   <span class="hljs-attr">"client_ref"</span>: <span class="hljs-string">"C00000001"</span>,
   <span class="hljs-attr">"id"</span>: <span class="hljs-string">"1"</span>,
   <span class="hljs-attr">"intermediary"</span>: <span class="hljs-string">""</span>,
@@ -1579,144 +1603,146 @@ During that time you can refresh the price and the 30 second expiry time will be
   <span class="hljs-attr">"email"</span>: <span class="hljs-string">"test.beneficiary@example.com"</span>,
   <span class="hljs-attr">"ben_address"</span>: <span class="hljs-string">""</span>,
   <span class="hljs-attr">"cnaps"</span>: <span class="hljs-string">""</span>
-}</code></pre><h3 id="request-2">Request</h3>
-<p><code>GET /beneficiaries/{beneficiary_id}</code></p>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-<th>Required</th>
-<th>Type</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>beneficiary_id</td>
-<td>Unique ID of the beneficiary</td>
-<td>Yes</td>
-<td>string</td>
-</tr>
-</tbody></table>
-<h3 id="response-2">Response</h3>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-<th>Type</th>
-<th>Additional information</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>intermediary</td>
-<td>SWIFT code of the intermediary bank account</td>
-<td>string</td>
-<td>Max length 50</td>
-</tr>
-<tr>
-<td>account_name</td>
-<td>Bank account name</td>
-<td>string</td>
-<td></td>
-</tr>
-<tr>
-<td>account_number</td>
-<td>Bank account number</td>
-<td>string</td>
-<td></td>
-</tr>
-<tr>
-<td>sort_code</td>
-<td>Bank account sort code</td>
-<td>string</td>
-<td>6 digits. No spaces or special characters</td>
-</tr>
-<tr>
-<td>bankname</td>
-<td>Bank name</td>
-<td>string</td>
-<td></td>
-</tr>
-<tr>
-<td>address</td>
-<td>Bank Address</td>
-<td>string</td>
-<td></td>
-</tr>
-<tr>
-<td>swift</td>
-<td>Bank SWIFT code</td>
-<td>string</td>
-<td></td>
-</tr>
-<tr>
-<td>cnaps</td>
-<td>CNAPS account number</td>
-<td>string</td>
-<td></td>
-</tr>
-<tr>
-<td>country_code</td>
-<td>Country code</td>
-<td>string</td>
-<td>ISO 2 letter country code</td>
-</tr>
-<tr>
-<td>currency</td>
-<td>Currency</td>
-<td>string</td>
-<td>ISO 3 letter currency code</td>
-</tr>
-<tr>
-<td>email</td>
-<td>Email address</td>
-<td>string</td>
-<td></td>
-</tr>
-<tr>
-<td>ben_address</td>
-<td>Contact address</td>
-<td>string</td>
-<td></td>
-</tr>
-<tr>
-<td>notes</td>
-<td>Noteworthy information</td>
-<td>string</td>
-<td></td>
-</tr>
-<tr>
-<td>id</td>
-<td>Unique ID of the beneficiary</td>
-<td>string</td>
-<td></td>
-</tr>
-<tr>
-<td>client_ref</td>
-<td>Client reference to associate the beneficiary with</td>
-<td>string</td>
-<td></td>
-</tr>
-</tbody></table>
-
-            
-               <h1 id="book-a-trade">Book a Trade</h1>
-<p>There are four steps to executing a trade:</p>
-<p>Step 1: Create a quote</p>
-<p><strong>Step 2: Book a trade</strong></p>
-<p>Step 3: Create a beneficiary</p>
-<p>Step 4: Instruct a payment</p>
-<h3 id="description">Description</h3>
-<p>Trade is a payment order to a beneficiary account based on a quote.</p>
-<p>Once created, a trade needs to be funded by the <code>value_date</code>.</p>
-<!-- TODO:  In the event that it does not, it will get cancelled automatically. ?? -->
-
-<h2 id="book-trade">Book trade</h2>
-<p>Book a trade by verifying acceptance of a quote.</p>
-<blockquote>
-<p>Example request:</p>
-</blockquote>
-<pre class="highlight bash"><code>curl -X POST http://api-test.cleartreasury.co.uk/api/trades \
+}</code></pre>
+            <h3 id="request-2">Request</h3>
+            <p><code>GET /beneficiaries/{beneficiary_id}</code></p>
+            <table>
+               <thead>
+                  <tr>
+                     <th>Name</th>
+                     <th>Description</th>
+                     <th>Required</th>
+                     <th>Type</th>
+                  </tr>
+               </thead>
+               <tbody>
+                  <tr>
+                     <td>beneficiary_id</td>
+                     <td>Unique ID of the beneficiary</td>
+                     <td>Yes</td>
+                     <td>string</td>
+                  </tr>
+               </tbody>
+            </table>
+            <h3 id="response-2">Response</h3>
+            <table>
+               <thead>
+                  <tr>
+                     <th>Name</th>
+                     <th>Description</th>
+                     <th>Type</th>
+                     <th>Additional information</th>
+                  </tr>
+               </thead>
+               <tbody>
+                  <tr>
+                     <td>intermediary</td>
+                     <td>SWIFT code of the intermediary bank account</td>
+                     <td>string</td>
+                     <td>Max length 50</td>
+                  </tr>
+                  <tr>
+                     <td>account_name</td>
+                     <td>Bank account name</td>
+                     <td>string</td>
+                     <td></td>
+                  </tr>
+                  <tr>
+                     <td>account_number</td>
+                     <td>Bank account number</td>
+                     <td>string</td>
+                     <td></td>
+                  </tr>
+                  <tr>
+                     <td>sort_code</td>
+                     <td>Bank account sort code</td>
+                     <td>string</td>
+                     <td>6 digits. No spaces or special characters</td>
+                  </tr>
+                  <tr>
+                     <td>bankname</td>
+                     <td>Bank name</td>
+                     <td>string</td>
+                     <td></td>
+                  </tr>
+                  <tr>
+                     <td>address</td>
+                     <td>Bank Address</td>
+                     <td>string</td>
+                     <td></td>
+                  </tr>
+                  <tr>
+                     <td>swift</td>
+                     <td>Bank SWIFT code</td>
+                     <td>string</td>
+                     <td></td>
+                  </tr>
+                  <tr>
+                     <td>cnaps</td>
+                     <td>CNAPS account number</td>
+                     <td>string</td>
+                     <td></td>
+                  </tr>
+                  <tr>
+                     <td>country_code</td>
+                     <td>Country code</td>
+                     <td>string</td>
+                     <td>ISO 2 letter country code</td>
+                  </tr>
+                  <tr>
+                     <td>currency</td>
+                     <td>Currency</td>
+                     <td>string</td>
+                     <td>ISO 3 letter currency code</td>
+                  </tr>
+                  <tr>
+                     <td>email</td>
+                     <td>Email address</td>
+                     <td>string</td>
+                     <td></td>
+                  </tr>
+                  <tr>
+                     <td>ben_address</td>
+                     <td>Contact address</td>
+                     <td>string</td>
+                     <td></td>
+                  </tr>
+                  <tr>
+                     <td>notes</td>
+                     <td>Noteworthy information</td>
+                     <td>string</td>
+                     <td></td>
+                  </tr>
+                  <tr>
+                     <td>id</td>
+                     <td>Unique ID of the beneficiary</td>
+                     <td>string</td>
+                     <td></td>
+                  </tr>
+                  <tr>
+                     <td>client_ref</td>
+                     <td>Client reference to associate the beneficiary with</td>
+                     <td>string</td>
+                     <td></td>
+                  </tr>
+               </tbody>
+            </table>
+            <h1 id="book-a-trade">Book a Trade</h1>
+            <p>There are four steps to executing a trade:</p>
+            <p>Step 1: Create a quote</p>
+            <p><strong>Step 2: Book a trade</strong></p>
+            <p>Step 3: Create a beneficiary</p>
+            <p>Step 4: Instruct a payment</p>
+            <h3 id="description">Description</h3>
+            <p>Trade is a payment order to a beneficiary account based on a quote.</p>
+            <p>Once created, a trade needs to be funded by the <code>value_date</code>.</p>
+            <!-- TODO:  In the event that it does not, it will get cancelled automatically. ?? -->
+            <h2 id="book-trade">Book trade</h2>
+            <p>Book a trade by verifying acceptance of a quote.</p>
+            <blockquote>
+               <p>Example request:</p>
+            </blockquote>
+            <pre class="highlight bash"><code>curl -X POST http://api-test.cleartreasury.co.uk/api/trades \
      -H <span class="hljs-string">'Authorization: Bearer &lt;your auth token&gt;'</span> \
      -H <span class="hljs-string">'Content-Type: application/json'</span> \
      -d <span class="hljs-string">'{
@@ -1724,10 +1750,11 @@ During that time you can refresh the price and the 30 second expiry time will be
           "client_ref": "&lt;client reference&gt;",
           "client_rate": &lt;client rate&gt;,
           "quote_rate": &lt;quoted rate&gt;
-        }'</span></code></pre><blockquote>
-<p>Example response:</p>
-</blockquote>
-<pre class="highlight json"><code>{
+        }'</span></code></pre>
+            <blockquote>
+               <p>Example response:</p>
+            </blockquote>
+            <pre class="highlight json"><code>{
   <span class="hljs-attr">"ID"</span>: <span class="hljs-number">1</span>,
   <span class="hljs-attr">"trade_ref"</span>: <span class="hljs-string">"0000001"</span>,
   <span class="hljs-attr">"trade_date"</span>: <span class="hljs-string">"20200101"</span>,
@@ -1744,188 +1771,188 @@ During that time you can refresh the price and the 30 second expiry time will be
   <span class="hljs-attr">"our_iban"</span>: <span class="hljs-string">"string"</span>,
   <span class="hljs-attr">"our_sort_code"</span>: <span class="hljs-string">"string"</span>,
   <span class="hljs-attr">"our_swift_code"</span>: <span class="hljs-string">"string"</span>
-}</code></pre><h3 id="request">Request</h3>
-<p><code>POST /trades</code></p>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-<th>Type</th>
-<th>Additional information</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>quote_id</td>
-<td>ID of the quote</td>
-<td>integer</td>
-<td>None</td>
-</tr>
-<tr>
-<td>source_of_funds</td>
-<td>Where the funds are coming from</td>
-<td>string</td>
-<td>None</td>
-</tr>
-<tr>
-<td>reason_for_trading</td>
-<td>Reson for the trade</td>
-<td>string</td>
-<td>None</td>
-</tr>
-<tr>
-<td>client_ref</td>
-<td>Unique reference of the client being traded on behalf of</td>
-<td>string</td>
-<td>None</td>
-</tr>
-<tr>
-<td>client_rate</td>
-<td>The rate given to the client</td>
-<td>decimal</td>
-<td>None</td>
-</tr>
-<tr>
-<td>quote_rate</td>
-<td>The rate of the original quote</td>
-<td>decimal</td>
-<td>None</td>
-</tr>
-</tbody></table>
-<h3 id="response">Response</h3>
-<p>The <code>trade_ref</code> is needed for instructing a payment in step 4.</p>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-<th>Type</th>
-<th>Additional information</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>id</td>
-<td>Unique ID</td>
-<td>integer</td>
-<td>None</td>
-</tr>
-<tr>
-<td>trade_ref</td>
-<td>Unique reference</td>
-<td>integer</td>
-<td>None</td>
-</tr>
-<tr>
-<td>trade_date</td>
-<td>Date the trade was made</td>
-<td>string</td>
-<td>None</td>
-</tr>
-<tr>
-<td>value_date</td>
-<td>Date the currency will be bought or sold</td>
-<td>string</td>
-<td><code>yyyyMMDD</code> format</td>
-</tr>
-<tr>
-<td>currency_bought</td>
-<td>Currency being bought</td>
-<td>string</td>
-<td>ISO 3 letter currency code</td>
-</tr>
-<tr>
-<td>currency_sold</td>
-<td>Currency being sold</td>
-<td>string</td>
-<td>ISO 3 letter currency code</td>
-</tr>
-<tr>
-<td>bought_amount</td>
-<td>Amount being bought</td>
-<td>decimal</td>
-<td>None</td>
-</tr>
-<tr>
-<td>sold_amount</td>
-<td>Amount being sold</td>
-<td>decimal</td>
-<td>None</td>
-</tr>
-<tr>
-<td>rate</td>
-<td>Rate of the trade</td>
-<td>decimal</td>
-<td>None</td>
-</tr>
-<tr>
-<td>payment_fee</td>
-<td>Payment fee</td>
-<td>decimal</td>
-<td>None</td>
-</tr>
-<tr>
-<td>trade_type</td>
-<td>Type of trade</td>
-<td>string</td>
-<td>&quot;Spot&quot; or &quot;Forward&quot;</td>
-</tr>
-<tr>
-<td>our_account_name</td>
-<td>Our bank account name</td>
-<td>string</td>
-<td>None</td>
-</tr>
-<tr>
-<td>our_bank_name</td>
-<td>Our bank name</td>
-<td>string</td>
-<td>None</td>
-</tr>
-<tr>
-<td>our_iban</td>
-<td>Our IBAN</td>
-<td>string</td>
-<td>None</td>
-</tr>
-<tr>
-<td>our_sort_code</td>
-<td>Our sort code</td>
-<td>string</td>
-<td>None</td>
-</tr>
-<tr>
-<td>our_swift_code</td>
-<td>Our SWIFT code</td>
-<td>string</td>
-<td>None</td>
-</tr>
-<tr>
-<td>message</td>
-<td>Information about the trade</td>
-<td>string</td>
-<td>None</td>
-</tr>
-</tbody></table>
-
-            
-               <h1 id="payment-instructions">Payment Instructions</h1>
-<p>There are four steps to executing a trade:</p>
-<p>Step 1: Create a quote</p>
-<p>Step 2: Book a trade</p>
-<p>Step 3: Create a beneficiary</p>
-<p><strong>Step 4: Instruct a payment</strong></p>
-<h3 id="description">Description</h3>
-<p>This API call is the final step for executing trades.</p>
-<!-- TODO: add details about how payments work -->
-<aside class="warning">
-  More details about payments coming soon
-</aside>
-
-<h2 id="instruct-a-payment">Instruct a payment</h2>
-<blockquote>
-<p>Example request:</p>
-</blockquote>
-<pre class="highlight bash"><code>curl -X POST http://api-test.cleartreasury.co.uk/api/payments \
+}</code></pre>
+            <h3 id="request">Request</h3>
+            <p><code>POST /trades</code></p>
+            <table>
+               <thead>
+                  <tr>
+                     <th>Name</th>
+                     <th>Description</th>
+                     <th>Type</th>
+                     <th>Additional information</th>
+                  </tr>
+               </thead>
+               <tbody>
+                  <tr>
+                     <td>quote_id</td>
+                     <td>ID of the quote</td>
+                     <td>integer</td>
+                     <td>None</td>
+                  </tr>
+                  <tr>
+                     <td>source_of_funds</td>
+                     <td>Where the funds are coming from</td>
+                     <td>string</td>
+                     <td>None</td>
+                  </tr>
+                  <tr>
+                     <td>reason_for_trading</td>
+                     <td>Reson for the trade</td>
+                     <td>string</td>
+                     <td>None</td>
+                  </tr>
+                  <tr>
+                     <td>client_ref</td>
+                     <td>Unique reference of the client being traded on behalf of</td>
+                     <td>string</td>
+                     <td>None</td>
+                  </tr>
+                  <tr>
+                     <td>client_rate</td>
+                     <td>The rate given to the client</td>
+                     <td>decimal</td>
+                     <td>None</td>
+                  </tr>
+                  <tr>
+                     <td>quote_rate</td>
+                     <td>The rate of the original quote</td>
+                     <td>decimal</td>
+                     <td>None</td>
+                  </tr>
+               </tbody>
+            </table>
+            <h3 id="response">Response</h3>
+            <p>The <code>trade_ref</code> is needed for instructing a payment in step 4.</p>
+            <table>
+               <thead>
+                  <tr>
+                     <th>Name</th>
+                     <th>Description</th>
+                     <th>Type</th>
+                     <th>Additional information</th>
+                  </tr>
+               </thead>
+               <tbody>
+                  <tr>
+                     <td>id</td>
+                     <td>Unique ID</td>
+                     <td>integer</td>
+                     <td>None</td>
+                  </tr>
+                  <tr>
+                     <td>trade_ref</td>
+                     <td>Unique reference</td>
+                     <td>integer</td>
+                     <td>None</td>
+                  </tr>
+                  <tr>
+                     <td>trade_date</td>
+                     <td>Date the trade was made</td>
+                     <td>string</td>
+                     <td>None</td>
+                  </tr>
+                  <tr>
+                     <td>value_date</td>
+                     <td>Date the currency will be bought or sold</td>
+                     <td>string</td>
+                     <td><code>yyyyMMDD</code> format</td>
+                  </tr>
+                  <tr>
+                     <td>currency_bought</td>
+                     <td>Currency being bought</td>
+                     <td>string</td>
+                     <td>ISO 3 letter currency code</td>
+                  </tr>
+                  <tr>
+                     <td>currency_sold</td>
+                     <td>Currency being sold</td>
+                     <td>string</td>
+                     <td>ISO 3 letter currency code</td>
+                  </tr>
+                  <tr>
+                     <td>bought_amount</td>
+                     <td>Amount being bought</td>
+                     <td>decimal</td>
+                     <td>None</td>
+                  </tr>
+                  <tr>
+                     <td>sold_amount</td>
+                     <td>Amount being sold</td>
+                     <td>decimal</td>
+                     <td>None</td>
+                  </tr>
+                  <tr>
+                     <td>rate</td>
+                     <td>Rate of the trade</td>
+                     <td>decimal</td>
+                     <td>None</td>
+                  </tr>
+                  <tr>
+                     <td>payment_fee</td>
+                     <td>Payment fee</td>
+                     <td>decimal</td>
+                     <td>None</td>
+                  </tr>
+                  <tr>
+                     <td>trade_type</td>
+                     <td>Type of trade</td>
+                     <td>string</td>
+                     <td>&quot;Spot&quot; or &quot;Forward&quot;</td>
+                  </tr>
+                  <tr>
+                     <td>our_account_name</td>
+                     <td>Our bank account name</td>
+                     <td>string</td>
+                     <td>None</td>
+                  </tr>
+                  <tr>
+                     <td>our_bank_name</td>
+                     <td>Our bank name</td>
+                     <td>string</td>
+                     <td>None</td>
+                  </tr>
+                  <tr>
+                     <td>our_iban</td>
+                     <td>Our IBAN</td>
+                     <td>string</td>
+                     <td>None</td>
+                  </tr>
+                  <tr>
+                     <td>our_sort_code</td>
+                     <td>Our sort code</td>
+                     <td>string</td>
+                     <td>None</td>
+                  </tr>
+                  <tr>
+                     <td>our_swift_code</td>
+                     <td>Our SWIFT code</td>
+                     <td>string</td>
+                     <td>None</td>
+                  </tr>
+                  <tr>
+                     <td>message</td>
+                     <td>Information about the trade</td>
+                     <td>string</td>
+                     <td>None</td>
+                  </tr>
+               </tbody>
+            </table>
+            <h1 id="payment-instructions">Payment Instructions</h1>
+            <p>There are four steps to executing a trade:</p>
+            <p>Step 1: Create a quote</p>
+            <p>Step 2: Book a trade</p>
+            <p>Step 3: Create a beneficiary</p>
+            <p><strong>Step 4: Instruct a payment</strong></p>
+            <h3 id="description">Description</h3>
+            <p>This API call is the final step for executing trades.</p>
+            <!-- TODO: add details about how payments work -->
+            <aside class="warning"> More details about payments coming soon </aside>
+            <h2 id="instruct-a-payment">Instruct a payment</h2>
+            <blockquote>
+               <p>Example request:</p>
+            </blockquote>
+            <pre class="highlight bash"><code>curl -X POST http://api-test.cleartreasury.co.uk/api/payments \
      -H <span class="hljs-string">'Authorization: Bearer &lt;your auth token&gt;'</span> \
      -H <span class="hljs-string">'Content-Type: application/json'</span> \
      -d <span class="hljs-string">'{
@@ -1934,98 +1961,97 @@ During that time you can refresh the price and the 30 second expiry time will be
           "currency": "GBP",
           "amount": "500",
           "purpose": "Making an investment",
-          "payment_guid": "&lt;your GUID&gt;"
-        }'</span></code></pre><blockquote>
-<p>Example response:</p>
-</blockquote>
-<pre class="highlight json"><code>{
-  <span class="hljs-attr">"PaymentGuid"</span>: <span class="hljs-string">"&lt;your GUID&gt;"</span>
-}</code></pre><h3 id="request">Request</h3>
-<p><code>POST /payments?client_ref={client_ref}</code></p>
-<p><strong>Trade reference</strong>: If this payment is not linked to a trade leave it blank, or set it to <code>&quot;auto&quot;</code> to attempt to automatically retrieve an available trade.</p>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-<th>Required</th>
-<th>Type</th>
-<th>Additional information</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>client_ref</td>
-<td>Client reference you&#39;re instructing the payment on behalf of</td>
-<td>Yes</td>
-<td>string</td>
-<td><a href="#create-a-client"><code>client_ref</code></a></td>
-</tr>
-<tr>
-<td>beneficiary_id</td>
-<td>ID of the beneficiary</td>
-<td>Yes</td>
-<td>string</td>
-<td><a href="#create-a-beneficiary"><code>id</code></a></td>
-</tr>
-<tr>
-<td>trade_ref</td>
-<td>Reference of the trade used to instruct this payment</td>
-<td>Yes</td>
-<td>string</td>
-<td><a href="#book-trade"><code>trade_id</code></a>, <code>&quot;auto&quot;</code>, or <code>&quot;&quot;</code></td>
-</tr>
-<tr>
-<td>currency</td>
-<td>Currency of the payment</td>
-<td>Yes</td>
-<td>string</td>
-<td>ISO 3 letter currency code</td>
-</tr>
-<tr>
-<td>amount</td>
-<td>Amount to be instructed</td>
-<td>Yes</td>
-<td>string</td>
-<td></td>
-</tr>
-<tr>
-<td>fee</td>
-<td></td>
-<td>No</td>
-<td>string</td>
-<td></td>
-</tr>
-<tr>
-<td>purpose</td>
-<td>Reason for the payment</td>
-<td>No</td>
-<td>string</td>
-<td></td>
-</tr>
-<tr>
-<td>payment_guid</td>
-<td>A GUID defined by yourself that can be used to retrieve the payment later</td>
-<td>No</td>
-<td>string</td>
-<td></td>
-</tr>
-</tbody></table>
-<h3 id="response">Response</h3>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-<th>Type</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>PaymentGuid</td>
-<td>The GUID you specified in the request</td>
-<td>string</td>
-</tr>
-</tbody></table>
-<!-- ## List all payments
+          "payment_reference": ""
+        }'</span></code></pre>
+            <blockquote>
+               <p>Example response:</p>
+            </blockquote>
+            <pre class="highlight json"><code>{
+  <span class="hljs-attr">"PaymentGuid"</span>: <span class="hljs-string">"&lt;GUID&gt;"</span>
+}</code></pre>
+            <h3 id="request">Request</h3>
+            <p><code>POST /payments?client_ref={client_ref}</code></p>
+            <p><strong>Trade reference</strong>: If this payment is not linked to a trade leave it blank, or set it to <code>&quot;auto&quot;</code> to attempt to automatically retrieve an available trade.</p>
+            <table>
+               <thead>
+                  <tr>
+                     <th>Name</th>
+                     <th>Description</th>
+                     <th>Required</th>
+                     <th>Type</th>
+                     <th>Additional information</th>
+                  </tr>
+               </thead>
+               <tbody>
+                  <tr>
+                     <td>client_ref</td>
+                     <td>Client reference you&#39;re instructing the payment on behalf of</td>
+                     <td>Yes</td>
+                     <td>string</td>
+                     <td><a href="#create-a-client"><code>client_ref</code></a></td>
+                  </tr>
+                  <tr>
+                     <td>beneficiary_id</td>
+                     <td>ID of the beneficiary</td>
+                     <td>Yes</td>
+                     <td>string</td>
+                     <td><a href="#create-a-beneficiary"><code>id</code></a></td>
+                  </tr>
+                  <tr>
+                     <td>trade_ref</td>
+                     <td>Reference of the trade used to instruct this payment</td>
+                     <td>Yes</td>
+                     <td>string</td>
+                     <td><a href="#book-trade"><code>trade_id</code></a>, <code>&quot;auto&quot;</code>, or <code>&quot;&quot;</code></td>
+                  </tr>
+                  <tr>
+                     <td>currency</td>
+                     <td>Currency of the payment</td>
+                     <td>Yes</td>
+                     <td>string</td>
+                     <td>ISO 3 letter currency code</td>
+                  </tr>
+                  <tr>
+                     <td>amount</td>
+                     <td>Amount to be instructed</td>
+                     <td>Yes</td>
+                     <td>string</td>
+                     <td></td>
+                  </tr>
+                  <tr>
+                     <td>purpose</td>
+                     <td>Reason for the payment</td>
+                     <td>No</td>
+                     <td>string</td>
+                     <td></td>
+                  </tr>
+                  <tr>
+                     <td>payment_reference</td>
+                     <td>Reference to attach to the payment for your records</td>
+                     <td>No</td>
+                     <td>string</td>
+                     <td></td>
+                  </tr>
+               </tbody>
+            </table>
+            <h3 id="response">Response</h3>
+            <table>
+               <thead>
+                  <tr>
+                     <th>Name</th>
+                     <th>Description</th>
+                     <th>Type</th>
+                  </tr>
+               </thead>
+               <tbody>
+                  <tr>
+                     <td>PaymentGuid</td>
+                     <td>The unique ID of the payment</td>
+                     <td>string</td>
+                  </tr>
+               </tbody>
+            </table>
+            <!-- ## List all payments
 
 Retrieve a list of all payment you have access to.
 
@@ -2084,17 +2110,17 @@ curl -X GET http://api-test.cleartreasury.co.uk/api/payments \
 | payment_guid   | Payment GUID     | string |
 | client_ref     | Client reference | string |
 | status         | Payment status   | string | -->
-
-<h2 id="get-a-payment">Get a payment</h2>
-<p>Get payment instruction by ID</p>
-<blockquote>
-<p>Example request:</p>
-</blockquote>
-<pre class="highlight bash"><code>curl -X GET http://api-test.cleartreasury.co.uk/api/payments/{id}?client_ref={{client_ref}} \
-     -H <span class="hljs-string">'Authorization: Bearer &lt;your auth token&gt;'</span></code></pre><blockquote>
-<p>Example response:</p>
-</blockquote>
-<pre class="highlight json"><code>{
+            <h2 id="get-a-payment">Get a payment</h2>
+            <p>Get payment instruction by ID</p>
+            <blockquote>
+               <p>Example request:</p>
+            </blockquote>
+            <pre class="highlight bash"><code>curl -X GET http://api-test.cleartreasury.co.uk/api/payments/{id}?client_ref={{client_ref}} \
+     -H <span class="hljs-string">'Authorization: Bearer &lt;your auth token&gt;'</span></code></pre>
+            <blockquote>
+               <p>Example response:</p>
+            </blockquote>
+            <pre class="highlight json"><code>{
   <span class="hljs-attr">"beneficiary_id"</span>: <span class="hljs-string">"2"</span>,
   <span class="hljs-attr">"currency"</span>: <span class="hljs-string">"GBP"</span>,
   <span class="hljs-attr">"purpose"</span>: <span class="hljs-string">"Making an investment"</span>,
@@ -2104,80 +2130,85 @@ curl -X GET http://api-test.cleartreasury.co.uk/api/payments \
   <span class="hljs-attr">"payment_guid"</span>: <span class="hljs-string">"&lt;your GUID&gt;"</span>,
   <span class="hljs-attr">"client_ref"</span>: <span class="hljs-string">"&lt;client reference&gt;"</span>,
   <span class="hljs-attr">"status"</span>: <span class="hljs-string">"Pending"</span>
-}</code></pre><h3 id="request-1">Request</h3>
-<p><code>GET /payments/{payment_guid}</code></p>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-<th>Required</th>
-<th>Type</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>payment_guid</td>
-<td>Unique ID of the payment</td>
-<td>yes</td>
-<td>string</td>
-</tr>
-</tbody></table>
-<h3 id="response-1">Response</h3>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-<th>Type</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>beneficiary_id</td>
-<td>Beneficiary ID</td>
-<td>string</td>
-</tr>
-<tr>
-<td>currency</td>
-<td>Currency</td>
-<td>string</td>
-</tr>
-<tr>
-<td>purpose</td>
-<td>Purpose</td>
-<td>string</td>
-</tr>
-<tr>
-<td>fee</td>
-<td>Fee</td>
-<td>string</td>
-</tr>
-<tr>
-<td>amount</td>
-<td>Amount</td>
-<td>string</td>
-</tr>
-<tr>
-<td>trade_ref</td>
-<td>Trade reference</td>
-<td>string</td>
-</tr>
-<tr>
-<td>payment_guid</td>
-<td>Payment GUID</td>
-<td>string</td>
-</tr>
-<tr>
-<td>client_ref</td>
-<td>Client reference</td>
-<td>string</td>
-</tr>
-<tr>
-<td>status</td>
-<td>Payment status</td>
-<td>string</td>
-</tr>
-</tbody></table>
-<!--
+}</code></pre>
+            <h3 id="request-1">Request</h3>
+            <p><code>GET /payments/{payment_guid}</code></p>
+            <table>
+               <thead>
+                  <tr>
+                     <th>Name</th>
+                     <th>Description</th>
+                     <th>Required</th>
+                     <th>Type</th>
+                  </tr>
+               </thead>
+               <tbody>
+                  <tr>
+                     <td>payment_guid</td>
+                     <td>Unique ID of the payment</td>
+                     <td>yes</td>
+                     <td>string</td>
+                  </tr>
+               </tbody>
+            </table>
+            <h3 id="response-1">Response</h3>
+            <table>
+               <thead>
+                  <tr>
+                     <th>Name</th>
+                     <th>Description</th>
+                     <th>Type</th>
+                  </tr>
+               </thead>
+               <tbody>
+                  <tr>
+                     <td>beneficiary_id</td>
+                     <td>Beneficiary ID</td>
+                     <td>string</td>
+                  </tr>
+                  <tr>
+                     <td>currency</td>
+                     <td>Currency</td>
+                     <td>string</td>
+                  </tr>
+                  <tr>
+                     <td>purpose</td>
+                     <td>Purpose</td>
+                     <td>string</td>
+                  </tr>
+                  <tr>
+                     <td>fee</td>
+                     <td>Fee</td>
+                     <td>string</td>
+                  </tr>
+                  <tr>
+                     <td>amount</td>
+                     <td>Amount</td>
+                     <td>string</td>
+                  </tr>
+                  <tr>
+                     <td>trade_ref</td>
+                     <td>Trade reference</td>
+                     <td>string</td>
+                  </tr>
+                  <tr>
+                     <td>payment_guid</td>
+                     <td>Payment GUID</td>
+                     <td>string</td>
+                  </tr>
+                  <tr>
+                     <td>client_ref</td>
+                     <td>Client reference</td>
+                     <td>string</td>
+                  </tr>
+                  <tr>
+                     <td>status</td>
+                     <td>Payment status</td>
+                     <td>string</td>
+                  </tr>
+               </tbody>
+            </table>
+            <!--
 ## List payments by date
 
 Retrieve payment instruction list inclusive of from and to dates.
@@ -2262,19 +2293,18 @@ curl -X GET http://api-test.cleartreasury.co.uk/api/payments?fromDate={fromDate}
 | Status           |             | string  |
 | exportedDate     |             | date    |
 -->
-
-            
-               <h1 id="statements">Statements</h1>
-<h2 id="retrieve-a-statement">Retrieve a Statement</h2>
-<p>Retrieve a statement for a given currency, optionally filtered by inclusive from and to dates.</p>
-<blockquote>
-<p>Example request:</p>
-</blockquote>
-<pre class="highlight bash"><code>curl -X GET http://api-test.cleartreasury.co.uk/api/statement?ccy={ccy}&amp;fromDate={fromDate}&amp;toDate={toDate} \
-     -H <span class="hljs-string">'Authorization: Bearer &lt;your auth token&gt;'</span></code></pre><blockquote>
-<p>Example response:</p>
-</blockquote>
-<pre class="highlight json"><code>[
+            <h1 id="statements">Statements</h1>
+            <h2 id="retrieve-a-statement">Retrieve a Statement</h2>
+            <p>Retrieve a statement for a given currency, optionally filtered by inclusive from and to dates.</p>
+            <blockquote>
+               <p>Example request:</p>
+            </blockquote>
+            <pre class="highlight bash"><code>curl -X GET http://api-test.cleartreasury.co.uk/api/statement?ccy={ccy}&amp;fromDate={fromDate}&amp;toDate={toDate} \
+     -H <span class="hljs-string">'Authorization: Bearer &lt;your auth token&gt;'</span></code></pre>
+            <blockquote>
+               <p>Example response:</p>
+            </blockquote>
+            <pre class="highlight json"><code>[
   {
     <span class="hljs-attr">"sDate"</span>: <span class="hljs-string">"2020-01-01T00:00:00"</span>,
     <span class="hljs-attr">"Ref"</span>: <span class="hljs-string">"AA00000000"</span>,
@@ -2283,86 +2313,89 @@ curl -X GET http://api-test.cleartreasury.co.uk/api/payments?fromDate={fromDate}
     <span class="hljs-attr">"Credit"</span>: <span class="hljs-number">1000.0</span>,
     <span class="hljs-attr">"Balance"</span>: <span class="hljs-number">1000.0</span>
   }
-]</code></pre><h3 id="request">Request</h3>
-<p><code>GET /statement?ccy={ccy}&amp;fromDate={fromDate}&amp;toDate={toDate}client_ref={client_ref}</code></p>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-<th>Required</th>
-<th>Type</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>ccy</td>
-<td>The currency of the statements to filter by</td>
-<td>Yes</td>
-<td>string</td>
-</tr>
-<tr>
-<td>fromDate</td>
-<td>Inclusive from date. In <code>yyyyMMdd</code> format</td>
-<td>No</td>
-<td>string</td>
-</tr>
-<tr>
-<td>toDate</td>
-<td>Inclusive to date. In <code>yyyyMMdd</code> format</td>
-<td>No</td>
-<td>string</td>
-</tr>
-<tr>
-<td>client_ref</td>
-<td>Client reference when making calls as a trader on behalf of a client</td>
-<td>No</td>
-<td>string</td>
-</tr>
-</tbody></table>
-<h3 id="response">Response</h3>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-<th>Type</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>sDate</td>
-<td>The date of the statement</td>
-<td>date</td>
-</tr>
-<tr>
-<td>Ref</td>
-<td>The reference of the statement</td>
-<td>string</td>
-</tr>
-<tr>
-<td>Description</td>
-<td>Whether the currency is being bought or sold and which currency it is</td>
-<td>string</td>
-</tr>
-<tr>
-<td>Debit</td>
-<td>The amount debited</td>
-<td>decimal</td>
-</tr>
-<tr>
-<td>Credit</td>
-<td>The amount credited</td>
-<td>decimal</td>
-</tr>
-<tr>
-<td>Balance</td>
-<td>The balance of the statement</td>
-<td>decimal</td>
-</tr>
-</tbody></table>
-
-            
-               <h1 id="trade-history">Trade History</h1>
-<!--
+]</code></pre>
+            <h3 id="request">Request</h3>
+            <p><code>GET /statement?ccy={ccy}&amp;fromDate={fromDate}&amp;toDate={toDate}client_ref={client_ref}</code></p>
+            <table>
+               <thead>
+                  <tr>
+                     <th>Name</th>
+                     <th>Description</th>
+                     <th>Required</th>
+                     <th>Type</th>
+                  </tr>
+               </thead>
+               <tbody>
+                  <tr>
+                     <td>ccy</td>
+                     <td>The currency of the statements to filter by</td>
+                     <td>Yes</td>
+                     <td>string</td>
+                  </tr>
+                  <tr>
+                     <td>fromDate</td>
+                     <td>Inclusive from date. In <code>yyyyMMdd</code> format</td>
+                     <td>No</td>
+                     <td>string</td>
+                  </tr>
+                  <tr>
+                     <td>toDate</td>
+                     <td>Inclusive to date. In <code>yyyyMMdd</code> format</td>
+                     <td>No</td>
+                     <td>string</td>
+                  </tr>
+                  <tr>
+                     <td>client_ref</td>
+                     <td>Client reference when making calls as a trader on behalf of a client</td>
+                     <td>No</td>
+                     <td>string</td>
+                  </tr>
+               </tbody>
+            </table>
+            <h3 id="response">Response</h3>
+            <table>
+               <thead>
+                  <tr>
+                     <th>Name</th>
+                     <th>Description</th>
+                     <th>Type</th>
+                  </tr>
+               </thead>
+               <tbody>
+                  <tr>
+                     <td>sDate</td>
+                     <td>The date of the statement</td>
+                     <td>date</td>
+                  </tr>
+                  <tr>
+                     <td>Ref</td>
+                     <td>The reference of the statement</td>
+                     <td>string</td>
+                  </tr>
+                  <tr>
+                     <td>Description</td>
+                     <td>Whether the currency is being bought or sold and which currency it is</td>
+                     <td>string</td>
+                  </tr>
+                  <tr>
+                     <td>Debit</td>
+                     <td>The amount debited</td>
+                     <td>decimal</td>
+                  </tr>
+                  <tr>
+                     <td>Credit</td>
+                     <td>The amount credited</td>
+                     <td>decimal</td>
+                  </tr>
+                  <tr>
+                     <td>Balance</td>
+                     <td>The balance of the statement</td>
+                     <td>decimal</td>
+                  </tr>
+               </tbody>
+            </table>
+            <h1 id="trade-history">Trade History</h1>
+            <!--
 ## List all trades
 
 Retrieve a list of all trades you have access to.
@@ -2422,17 +2455,17 @@ curl -X GET http://api-test.cleartreasury.co.uk/api/trades \
 | beneficiary     |             | string  |
 | client_ref      |             | string  |
 -->
-
-<h2 id="list-all-trades-by-client">List all trades by client</h2>
-<p>Retrieve a list of all trades made by a client.</p>
-<blockquote>
-<p>Example request:</p>
-</blockquote>
-<pre class="highlight bash"><code>curl -X GET http://api-test.cleartreasury.co.uk/api/trades?client_ref={client_ref} \
-     -H <span class="hljs-string">'Authorization: Bearer &lt;your auth token&gt;'</span></code></pre><blockquote>
-<p>Example response:</p>
-</blockquote>
-<pre class="highlight json"><code>[
+            <h2 id="list-all-trades-by-client">List all trades by client</h2>
+            <p>Retrieve a list of all trades made by a client.</p>
+            <blockquote>
+               <p>Example request:</p>
+            </blockquote>
+            <pre class="highlight bash"><code>curl -X GET http://api-test.cleartreasury.co.uk/api/trades?client_ref={client_ref} \
+     -H <span class="hljs-string">'Authorization: Bearer &lt;your auth token&gt;'</span></code></pre>
+            <blockquote>
+               <p>Example response:</p>
+            </blockquote>
+            <pre class="highlight json"><code>[
   {
     <span class="hljs-attr">"id"</span>: <span class="hljs-number">000001</span>,
     <span class="hljs-attr">"trade_date"</span>: <span class="hljs-string">"20200130"</span>,
@@ -2453,134 +2486,140 @@ curl -X GET http://api-test.cleartreasury.co.uk/api/trades \
     <span class="hljs-attr">"received_amount"</span>: <span class="hljs-number">0.0</span>,
     <span class="hljs-attr">"paid_amount"</span>: <span class="hljs-number">0.0</span>
   }
-]</code></pre><h3 id="request">Request</h3>
-<p><code>GET /trades?client_ref={client_ref}</code></p>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-<th>Required</th>
-<th>Type</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>client_ref</td>
-<td>Unique reference of client</td>
-<td>Yes</td>
-<td>string</td>
-</tr>
-</tbody></table>
-<h3 id="response">Response</h3>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-<th>Type</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>id</td>
-<td>Trade ID</td>
-<td>integer</td>
-</tr>
-<tr>
-<td>trade_date</td>
-<td>Date the trade was booked</td>
-<td>string</td>
-</tr>
-<tr>
-<td>value_date</td>
-<td>Date the currency will be bought/sold</td>
-<td>string</td>
-</tr>
-<tr>
-<td>currency_bought</td>
-<td>Currency bought</td>
-<td>string</td>
-</tr>
-<tr>
-<td>currency_sold</td>
-<td>Currency sold</td>
-<td>string</td>
-</tr>
-<tr>
-<td>client_rate</td>
-<td>Rate agreed with the client</td>
-<td>decimal</td>
-</tr>
-<tr>
-<td>bank_rate</td>
-<td>Rate given by the bank</td>
-<td>decimal</td>
-</tr>
-<tr>
-<td>bought_amount</td>
-<td>Amount bought</td>
-<td>decimal</td>
-</tr>
-<tr>
-<td>sold_amount</td>
-<td>Amount sold</td>
-<td>decimal</td>
-</tr>
-<tr>
-<td>payment_fee</td>
-<td>Payment fee</td>
-<td>decimal</td>
-</tr>
-<tr>
-<td>trade_ref</td>
-<td>Reference of the trade</td>
-<td>string</td>
-</tr>
-<tr>
-<td>trade_type</td>
-<td>Type of trade</td>
-<td>string</td>
-</tr>
-<tr>
-<td>status</td>
-<td>Trade status</td>
-<td>string</td>
-</tr>
-<tr>
-<td>beneficiary</td>
-<td>Beneficiary ID</td>
-<td>string</td>
-</tr>
-<tr>
-<td>client_ref</td>
-<td>Client reference</td>
-<td>string</td>
-</tr>
-<tr>
-<td>instructed_amount</td>
-<td>Amount instructed</td>
-<td>decimal</td>
-</tr>
-<tr>
-<td>received_amount</td>
-<td>Amount received</td>
-<td>decimal</td>
-</tr>
-<tr>
-<td>paid_amount</td>
-<td>Amount paid</td>
-<td>decimal</td>
-</tr>
-</tbody></table>
-<h2 id="retrieve-a-trade-list-between-two-dates">Retrieve a Trade list between two dates</h2>
-<p>Retrieve a list of trades between inclusive from and to dates.</p>
-<blockquote>
-<p>Example request:</p>
-</blockquote>
-<pre class="highlight bash"><code>curl -X POST http://api-test.cleartreasury.co.uk/api/trades?from_date={from_date}&amp;to_date={to_date} \
-     -H <span class="hljs-string">'Authorization: Bearer &lt;your auth token&gt;'</span></code></pre><blockquote>
-<p>Example response:</p>
-</blockquote>
-<pre class="highlight json"><code>[
+]</code></pre>
+            <h3 id="request">Request</h3>
+            <p><code>GET /trades?client_ref={client_ref}</code></p>
+            <table>
+               <thead>
+                  <tr>
+                     <th>Name</th>
+                     <th>Description</th>
+                     <th>Required</th>
+                     <th>Type</th>
+                  </tr>
+               </thead>
+               <tbody>
+                  <tr>
+                     <td>client_ref</td>
+                     <td>Unique reference of client</td>
+                     <td>Yes</td>
+                     <td>string</td>
+                  </tr>
+               </tbody>
+            </table>
+            <h3 id="response">Response</h3>
+            <table>
+               <thead>
+                  <tr>
+                     <th>Name</th>
+                     <th>Description</th>
+                     <th>Type</th>
+                  </tr>
+               </thead>
+               <tbody>
+                  <tr>
+                     <td>id</td>
+                     <td>Trade ID</td>
+                     <td>integer</td>
+                  </tr>
+                  <tr>
+                     <td>trade_date</td>
+                     <td>Date the trade was booked</td>
+                     <td>string</td>
+                  </tr>
+                  <tr>
+                     <td>value_date</td>
+                     <td>Date the currency will be bought/sold</td>
+                     <td>string</td>
+                  </tr>
+                  <tr>
+                     <td>currency_bought</td>
+                     <td>Currency bought</td>
+                     <td>string</td>
+                  </tr>
+                  <tr>
+                     <td>currency_sold</td>
+                     <td>Currency sold</td>
+                     <td>string</td>
+                  </tr>
+                  <tr>
+                     <td>client_rate</td>
+                     <td>Rate agreed with the client</td>
+                     <td>decimal</td>
+                  </tr>
+                  <tr>
+                     <td>bank_rate</td>
+                     <td>Rate given by the bank</td>
+                     <td>decimal</td>
+                  </tr>
+                  <tr>
+                     <td>bought_amount</td>
+                     <td>Amount bought</td>
+                     <td>decimal</td>
+                  </tr>
+                  <tr>
+                     <td>sold_amount</td>
+                     <td>Amount sold</td>
+                     <td>decimal</td>
+                  </tr>
+                  <tr>
+                     <td>payment_fee</td>
+                     <td>Payment fee</td>
+                     <td>decimal</td>
+                  </tr>
+                  <tr>
+                     <td>trade_ref</td>
+                     <td>Reference of the trade</td>
+                     <td>string</td>
+                  </tr>
+                  <tr>
+                     <td>trade_type</td>
+                     <td>Type of trade</td>
+                     <td>string</td>
+                  </tr>
+                  <tr>
+                     <td>status</td>
+                     <td>Trade status</td>
+                     <td>string</td>
+                  </tr>
+                  <tr>
+                     <td>beneficiary</td>
+                     <td>Beneficiary ID</td>
+                     <td>string</td>
+                  </tr>
+                  <tr>
+                     <td>client_ref</td>
+                     <td>Client reference</td>
+                     <td>string</td>
+                  </tr>
+                  <tr>
+                     <td>instructed_amount</td>
+                     <td>Amount instructed</td>
+                     <td>decimal</td>
+                  </tr>
+                  <tr>
+                     <td>received_amount</td>
+                     <td>Amount received</td>
+                     <td>decimal</td>
+                  </tr>
+                  <tr>
+                     <td>paid_amount</td>
+                     <td>Amount paid</td>
+                     <td>decimal</td>
+                  </tr>
+               </tbody>
+            </table>
+            <h2 id="retrieve-a-trade-list-between-two-dates">Retrieve a Trade list between two dates</h2>
+            <p>Retrieve a list of trades between inclusive from and to dates.</p>
+            <blockquote>
+               <p>Example request:</p>
+            </blockquote>
+            <pre class="highlight bash"><code>curl -X POST http://api-test.cleartreasury.co.uk/api/trades?from_date={from_date}&amp;to_date={to_date} \
+     -H <span class="hljs-string">'Authorization: Bearer &lt;your auth token&gt;'</span></code></pre>
+            <blockquote>
+               <p>Example response:</p>
+            </blockquote>
+            <pre class="highlight json"><code>[
   {
     <span class="hljs-attr">"id"</span>: <span class="hljs-number">000001</span>,
     <span class="hljs-attr">"trade_date"</span>: <span class="hljs-string">"20200130"</span>,
@@ -2601,140 +2640,146 @@ curl -X GET http://api-test.cleartreasury.co.uk/api/trades \
     <span class="hljs-attr">"received_amount"</span>: <span class="hljs-number">0.0</span>,
     <span class="hljs-attr">"paid_amount"</span>: <span class="hljs-number">0.0</span>
   }
-]</code></pre><h3 id="request-1">Request</h3>
-<p><code>GET /trades?from_date={from_date}&amp;to_date={to_date}</code></p>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-<th>Required</th>
-<th>Type</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>from_date</td>
-<td>From date</td>
-<td>Yes</td>
-<td>string</td>
-</tr>
-<tr>
-<td>to_date</td>
-<td>To date</td>
-<td>Yes</td>
-<td>string</td>
-</tr>
-</tbody></table>
-<h3 id="response-1">Response</h3>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-<th>Type</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>id</td>
-<td>Trade ID</td>
-<td>integer</td>
-</tr>
-<tr>
-<td>trade_date</td>
-<td>Date the trade was booked</td>
-<td>string</td>
-</tr>
-<tr>
-<td>value_date</td>
-<td>Date the currency will be bought/sold</td>
-<td>string</td>
-</tr>
-<tr>
-<td>currency_bought</td>
-<td>Currency bought</td>
-<td>string</td>
-</tr>
-<tr>
-<td>currency_sold</td>
-<td>Currency sold</td>
-<td>string</td>
-</tr>
-<tr>
-<td>client_rate</td>
-<td>Rate agreed with the client</td>
-<td>decimal</td>
-</tr>
-<tr>
-<td>bank_rate</td>
-<td>Rate given by the bank</td>
-<td>decimal</td>
-</tr>
-<tr>
-<td>bought_amount</td>
-<td>Amount bought</td>
-<td>decimal</td>
-</tr>
-<tr>
-<td>sold_amount</td>
-<td>Amount sold</td>
-<td>decimal</td>
-</tr>
-<tr>
-<td>payment_fee</td>
-<td>Payment fee</td>
-<td>decimal</td>
-</tr>
-<tr>
-<td>trade_ref</td>
-<td>Reference of the trade</td>
-<td>string</td>
-</tr>
-<tr>
-<td>trade_type</td>
-<td>Type of trade</td>
-<td>string</td>
-</tr>
-<tr>
-<td>status</td>
-<td>Trade status</td>
-<td>string</td>
-</tr>
-<tr>
-<td>beneficiary</td>
-<td>Beneficiary ID</td>
-<td>string</td>
-</tr>
-<tr>
-<td>client_ref</td>
-<td>Client reference</td>
-<td>string</td>
-</tr>
-<tr>
-<td>instructed_amount</td>
-<td>Amount instructed</td>
-<td>decimal</td>
-</tr>
-<tr>
-<td>received_amount</td>
-<td>Amount received</td>
-<td>decimal</td>
-</tr>
-<tr>
-<td>paid_amount</td>
-<td>Amount paid</td>
-<td>decimal</td>
-</tr>
-</tbody></table>
-<h2 id="get-a-trade">Get a trade</h2>
-<p>Retrieve a single trade.</p>
-<blockquote>
-<p>Example request:</p>
-</blockquote>
-<pre class="highlight bash"><code>curl -X GET http://api-test.cleartreasury.co.uk/api/trades/{trade_ref} \
-     -H <span class="hljs-string">'Authorization: Bearer &lt;your auth token&gt;'</span></code></pre><blockquote>
-<p>Example response:</p>
-</blockquote>
-<pre class="highlight json"><code>{
+]</code></pre>
+            <h3 id="request-1">Request</h3>
+            <p><code>GET /trades?from_date={from_date}&amp;to_date={to_date}</code></p>
+            <table>
+               <thead>
+                  <tr>
+                     <th>Name</th>
+                     <th>Description</th>
+                     <th>Required</th>
+                     <th>Type</th>
+                  </tr>
+               </thead>
+               <tbody>
+                  <tr>
+                     <td>from_date</td>
+                     <td>From date</td>
+                     <td>Yes</td>
+                     <td>string</td>
+                  </tr>
+                  <tr>
+                     <td>to_date</td>
+                     <td>To date</td>
+                     <td>Yes</td>
+                     <td>string</td>
+                  </tr>
+               </tbody>
+            </table>
+            <h3 id="response-1">Response</h3>
+            <table>
+               <thead>
+                  <tr>
+                     <th>Name</th>
+                     <th>Description</th>
+                     <th>Type</th>
+                  </tr>
+               </thead>
+               <tbody>
+                  <tr>
+                     <td>id</td>
+                     <td>Trade ID</td>
+                     <td>integer</td>
+                  </tr>
+                  <tr>
+                     <td>trade_date</td>
+                     <td>Date the trade was booked</td>
+                     <td>string</td>
+                  </tr>
+                  <tr>
+                     <td>value_date</td>
+                     <td>Date the currency will be bought/sold</td>
+                     <td>string</td>
+                  </tr>
+                  <tr>
+                     <td>currency_bought</td>
+                     <td>Currency bought</td>
+                     <td>string</td>
+                  </tr>
+                  <tr>
+                     <td>currency_sold</td>
+                     <td>Currency sold</td>
+                     <td>string</td>
+                  </tr>
+                  <tr>
+                     <td>client_rate</td>
+                     <td>Rate agreed with the client</td>
+                     <td>decimal</td>
+                  </tr>
+                  <tr>
+                     <td>bank_rate</td>
+                     <td>Rate given by the bank</td>
+                     <td>decimal</td>
+                  </tr>
+                  <tr>
+                     <td>bought_amount</td>
+                     <td>Amount bought</td>
+                     <td>decimal</td>
+                  </tr>
+                  <tr>
+                     <td>sold_amount</td>
+                     <td>Amount sold</td>
+                     <td>decimal</td>
+                  </tr>
+                  <tr>
+                     <td>payment_fee</td>
+                     <td>Payment fee</td>
+                     <td>decimal</td>
+                  </tr>
+                  <tr>
+                     <td>trade_ref</td>
+                     <td>Reference of the trade</td>
+                     <td>string</td>
+                  </tr>
+                  <tr>
+                     <td>trade_type</td>
+                     <td>Type of trade</td>
+                     <td>string</td>
+                  </tr>
+                  <tr>
+                     <td>status</td>
+                     <td>Trade status</td>
+                     <td>string</td>
+                  </tr>
+                  <tr>
+                     <td>beneficiary</td>
+                     <td>Beneficiary ID</td>
+                     <td>string</td>
+                  </tr>
+                  <tr>
+                     <td>client_ref</td>
+                     <td>Client reference</td>
+                     <td>string</td>
+                  </tr>
+                  <tr>
+                     <td>instructed_amount</td>
+                     <td>Amount instructed</td>
+                     <td>decimal</td>
+                  </tr>
+                  <tr>
+                     <td>received_amount</td>
+                     <td>Amount received</td>
+                     <td>decimal</td>
+                  </tr>
+                  <tr>
+                     <td>paid_amount</td>
+                     <td>Amount paid</td>
+                     <td>decimal</td>
+                  </tr>
+               </tbody>
+            </table>
+            <h2 id="get-a-trade">Get a trade</h2>
+            <p>Retrieve a single trade.</p>
+            <blockquote>
+               <p>Example request:</p>
+            </blockquote>
+            <pre class="highlight bash"><code>curl -X GET http://api-test.cleartreasury.co.uk/api/trades/{trade_ref} \
+     -H <span class="hljs-string">'Authorization: Bearer &lt;your auth token&gt;'</span></code></pre>
+            <blockquote>
+               <p>Example response:</p>
+            </blockquote>
+            <pre class="highlight json"><code>{
   <span class="hljs-attr">"id"</span>: <span class="hljs-number">000001</span>,
   <span class="hljs-attr">"trade_date"</span>: <span class="hljs-string">"20200130"</span>,
   <span class="hljs-attr">"value_date"</span>: <span class="hljs-string">"20200130"</span>,
@@ -2753,141 +2798,145 @@ curl -X GET http://api-test.cleartreasury.co.uk/api/trades \
   <span class="hljs-attr">"instructed_amount"</span>: <span class="hljs-number">0.0</span>,
   <span class="hljs-attr">"received_amount"</span>: <span class="hljs-number">0.0</span>,
   <span class="hljs-attr">"paid_amount"</span>: <span class="hljs-number">0.0</span>
-}</code></pre><h3 id="request-2">Request</h3>
-<p><code>GET /trades/{trade_ref}</code></p>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-<th>Required</th>
-<th>Type</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>trade_ref</td>
-<td>Unique reference of the trade</td>
-<td>Yes</td>
-<td>string</td>
-</tr>
-</tbody></table>
-<h3 id="response-2">Response</h3>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-<th>Type</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>id</td>
-<td>Trade ID</td>
-<td>integer</td>
-</tr>
-<tr>
-<td>trade_date</td>
-<td>Date the trade was booked</td>
-<td>string</td>
-</tr>
-<tr>
-<td>value_date</td>
-<td>Date the currency will be bought/sold</td>
-<td>string</td>
-</tr>
-<tr>
-<td>currency_bought</td>
-<td>Currency bought</td>
-<td>string</td>
-</tr>
-<tr>
-<td>currency_sold</td>
-<td>Currency sold</td>
-<td>string</td>
-</tr>
-<tr>
-<td>client_rate</td>
-<td>Rate agreed with the client</td>
-<td>decimal</td>
-</tr>
-<tr>
-<td>bank_rate</td>
-<td>Rate given by the bank</td>
-<td>decimal</td>
-</tr>
-<tr>
-<td>bought_amount</td>
-<td>Amount bought</td>
-<td>decimal</td>
-</tr>
-<tr>
-<td>sold_amount</td>
-<td>Amount sold</td>
-<td>decimal</td>
-</tr>
-<tr>
-<td>payment_fee</td>
-<td>Payment fee</td>
-<td>decimal</td>
-</tr>
-<tr>
-<td>trade_ref</td>
-<td>Unique reference of the trade</td>
-<td>string</td>
-</tr>
-<tr>
-<td>trade_type</td>
-<td>Type of trade</td>
-<td>string</td>
-</tr>
-<tr>
-<td>status</td>
-<td>Trade status</td>
-<td>string</td>
-</tr>
-<tr>
-<td>beneficiary</td>
-<td>Beneficiary ID</td>
-<td>string</td>
-</tr>
-<tr>
-<td>client_ref</td>
-<td>Client reference</td>
-<td>string</td>
-</tr>
-<tr>
-<td>instructed_amount</td>
-<td>Amount instructed</td>
-<td>decimal</td>
-</tr>
-<tr>
-<td>received_amount</td>
-<td>Amount received</td>
-<td>decimal</td>
-</tr>
-<tr>
-<td>paid_amount</td>
-<td>Amount paid</td>
-<td>decimal</td>
-</tr>
-</tbody></table>
-<p>--&gt;</p>
-
-            
-               <h1 id="countries-and-currencies">Countries and Currencies</h1>
-<p>There are certain countries and currencies we don&#39;t currently work with.</p>
-<h3 id="description">Description</h3>
-<p>These are informational read-only endpoints for listing the countries and currencies we accept.</p>
-<h2 id="list-all-countries">List all countries</h2>
-<p>List of allowed countries we accept for clients or beneficiaries.</p>
-<blockquote>
-<p>Example request:</p>
-</blockquote>
-<pre class="highlight bash"><code>curl -X GET http://api-test.cleartreasury.co.uk/api/countries \
-     -H <span class="hljs-string">'Authorization: Bearer &lt;your auth token&gt;'</span></code></pre><blockquote>
-<p>Example response:</p>
-</blockquote>
-<pre class="highlight json"><code>[
+}</code></pre>
+            <h3 id="request-2">Request</h3>
+            <p><code>GET /trades/{trade_ref}</code></p>
+            <table>
+               <thead>
+                  <tr>
+                     <th>Name</th>
+                     <th>Description</th>
+                     <th>Required</th>
+                     <th>Type</th>
+                  </tr>
+               </thead>
+               <tbody>
+                  <tr>
+                     <td>trade_ref</td>
+                     <td>Unique reference of the trade</td>
+                     <td>Yes</td>
+                     <td>string</td>
+                  </tr>
+               </tbody>
+            </table>
+            <h3 id="response-2">Response</h3>
+            <table>
+               <thead>
+                  <tr>
+                     <th>Name</th>
+                     <th>Description</th>
+                     <th>Type</th>
+                  </tr>
+               </thead>
+               <tbody>
+                  <tr>
+                     <td>id</td>
+                     <td>Trade ID</td>
+                     <td>integer</td>
+                  </tr>
+                  <tr>
+                     <td>trade_date</td>
+                     <td>Date the trade was booked</td>
+                     <td>string</td>
+                  </tr>
+                  <tr>
+                     <td>value_date</td>
+                     <td>Date the currency will be bought/sold</td>
+                     <td>string</td>
+                  </tr>
+                  <tr>
+                     <td>currency_bought</td>
+                     <td>Currency bought</td>
+                     <td>string</td>
+                  </tr>
+                  <tr>
+                     <td>currency_sold</td>
+                     <td>Currency sold</td>
+                     <td>string</td>
+                  </tr>
+                  <tr>
+                     <td>client_rate</td>
+                     <td>Rate agreed with the client</td>
+                     <td>decimal</td>
+                  </tr>
+                  <tr>
+                     <td>bank_rate</td>
+                     <td>Rate given by the bank</td>
+                     <td>decimal</td>
+                  </tr>
+                  <tr>
+                     <td>bought_amount</td>
+                     <td>Amount bought</td>
+                     <td>decimal</td>
+                  </tr>
+                  <tr>
+                     <td>sold_amount</td>
+                     <td>Amount sold</td>
+                     <td>decimal</td>
+                  </tr>
+                  <tr>
+                     <td>payment_fee</td>
+                     <td>Payment fee</td>
+                     <td>decimal</td>
+                  </tr>
+                  <tr>
+                     <td>trade_ref</td>
+                     <td>Unique reference of the trade</td>
+                     <td>string</td>
+                  </tr>
+                  <tr>
+                     <td>trade_type</td>
+                     <td>Type of trade</td>
+                     <td>string</td>
+                  </tr>
+                  <tr>
+                     <td>status</td>
+                     <td>Trade status</td>
+                     <td>string</td>
+                  </tr>
+                  <tr>
+                     <td>beneficiary</td>
+                     <td>Beneficiary ID</td>
+                     <td>string</td>
+                  </tr>
+                  <tr>
+                     <td>client_ref</td>
+                     <td>Client reference</td>
+                     <td>string</td>
+                  </tr>
+                  <tr>
+                     <td>instructed_amount</td>
+                     <td>Amount instructed</td>
+                     <td>decimal</td>
+                  </tr>
+                  <tr>
+                     <td>received_amount</td>
+                     <td>Amount received</td>
+                     <td>decimal</td>
+                  </tr>
+                  <tr>
+                     <td>paid_amount</td>
+                     <td>Amount paid</td>
+                     <td>decimal</td>
+                  </tr>
+               </tbody>
+            </table>
+            <p>--&gt;</p>
+            <h1 id="countries-and-currencies">Countries and Currencies</h1>
+            <p>There are certain countries and currencies we don&#39;t currently work with.</p>
+            <h3 id="description">Description</h3>
+            <p>These are informational read-only endpoints for listing the countries and currencies we accept.</p>
+            <h2 id="list-all-countries">List all countries</h2>
+            <p>List of allowed countries we accept for clients or beneficiaries.</p>
+            <blockquote>
+               <p>Example request:</p>
+            </blockquote>
+            <pre class="highlight bash"><code>curl -X GET http://api-test.cleartreasury.co.uk/api/countries \
+     -H <span class="hljs-string">'Authorization: Bearer &lt;your auth token&gt;'</span></code></pre>
+            <blockquote>
+               <p>Example response:</p>
+            </blockquote>
+            <pre class="highlight json"><code>[
   {
     <span class="hljs-attr">"CountryName"</span>: <span class="hljs-string">"Afghanistan"</span>,
     <span class="hljs-attr">"ISO2"</span>: <span class="hljs-string">"AF"</span>,
@@ -2912,48 +2961,52 @@ curl -X GET http://api-test.cleartreasury.co.uk/api/trades \
     <span class="hljs-attr">"ISO3"</span>: <span class="hljs-string">"ZWE"</span>,
     <span class="hljs-attr">"RiskScore"</span>: <span class="hljs-number">0.0</span>
   }
-]</code></pre><h3 id="request">Request</h3>
-<p><code>GET /countries</code></p>
-<h3 id="response">Response</h3>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-<th>Type</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>CountryName</td>
-<td>Full name of the country</td>
-<td>string</td>
-</tr>
-<tr>
-<td>ISO2</td>
-<td>2 letter ISO country code</td>
-<td>string</td>
-</tr>
-<tr>
-<td>ISO3</td>
-<td>3 letter ISO country code</td>
-<td>string</td>
-</tr>
-<tr>
-<td>RiskScore</td>
-<td>Compliance risk score for this country</td>
-<td>decimal</td>
-</tr>
-</tbody></table>
-<h2 id="list-all-currencies">List all currencies</h2>
-<p>List of allowed currencies we accept for trades and payments.</p>
-<blockquote>
-<p>Example request:</p>
-</blockquote>
-<pre class="highlight bash"><code>curl -X GET http://api-test.cleartreasury.co.uk/api/currencies \
-     -H <span class="hljs-string">'Authorization: Bearer &lt;your auth token&gt;'</span></code></pre><blockquote>
-<p>Example response:</p>
-</blockquote>
-<pre class="highlight json"><code>[
+]</code></pre>
+            <h3 id="request">Request</h3>
+            <p><code>GET /countries</code></p>
+            <h3 id="response">Response</h3>
+            <table>
+               <thead>
+                  <tr>
+                     <th>Name</th>
+                     <th>Description</th>
+                     <th>Type</th>
+                  </tr>
+               </thead>
+               <tbody>
+                  <tr>
+                     <td>CountryName</td>
+                     <td>Full name of the country</td>
+                     <td>string</td>
+                  </tr>
+                  <tr>
+                     <td>ISO2</td>
+                     <td>2 letter ISO country code</td>
+                     <td>string</td>
+                  </tr>
+                  <tr>
+                     <td>ISO3</td>
+                     <td>3 letter ISO country code</td>
+                     <td>string</td>
+                  </tr>
+                  <tr>
+                     <td>RiskScore</td>
+                     <td>Compliance risk score for this country</td>
+                     <td>decimal</td>
+                  </tr>
+               </tbody>
+            </table>
+            <h2 id="list-all-currencies">List all currencies</h2>
+            <p>List of allowed currencies we accept for trades and payments.</p>
+            <blockquote>
+               <p>Example request:</p>
+            </blockquote>
+            <pre class="highlight bash"><code>curl -X GET http://api-test.cleartreasury.co.uk/api/currencies \
+     -H <span class="hljs-string">'Authorization: Bearer &lt;your auth token&gt;'</span></code></pre>
+            <blockquote>
+               <p>Example response:</p>
+            </blockquote>
+            <pre class="highlight json"><code>[
   {
     <span class="hljs-attr">"CurrencyCode"</span>: <span class="hljs-string">"GBP"</span>,
     <span class="hljs-attr">"CurrencyName"</span>: <span class="hljs-string">"Sterling Pounds"</span>,
@@ -2982,195 +3035,202 @@ curl -X GET http://api-test.cleartreasury.co.uk/api/trades \
     <span class="hljs-attr">"NumberOfDayToDeliver"</span>: <span class="hljs-string">"0"</span>,
     <span class="hljs-attr">"CutOffTime"</span>: <span class="hljs-string">"000000"</span>
   }
-]</code></pre><h3 id="request-1">Request</h3>
-<p><code>GET /currencies</code></p>
-<h3 id="response-1">Response</h3>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-<th>Type</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>CurrencyCode</td>
-<td>3 letter ISO country code</td>
-<td>string</td>
-</tr>
-<tr>
-<td>CurrencyName</td>
-<td>Full name of the currency</td>
-<td>string</td>
-</tr>
-<tr>
-<td>CurrencyFractionalName</td>
-<td>Name of the fractional currency</td>
-<td>string</td>
-</tr>
-<tr>
-<td>NumberOfDayToDeliver</td>
-<td>Number of days the currency will take to be delivered</td>
-<td>string</td>
-</tr>
-<tr>
-<td>CutOffTime</td>
-<td>Time by which a payment needs to be successfully initiated for same-day execution</td>
-<td>string</td>
-</tr>
-</tbody></table>
-
-            
-               <h1 id="payment-methods">Payment methods</h1>
-<p>Different countries have different details required for making payments to them.</p>
-<h3 id="description">Description</h3>
-<p>This is an informational read-only endpoint for listing the payment methods for the countries and currencies we accept.</p>
-<h2 id="get-payment-methods-for-a-country">Get payment methods for a country</h2>
-<p>Retrieve the payment methods of a country.</p>
-<blockquote>
-<p>Example request:</p>
-</blockquote>
-<pre class="highlight bash"><code>curl -X GET http://api-test.cleartreasury.co.uk/api/paymentmethod \
+]</code></pre>
+            <h3 id="request-1">Request</h3>
+            <p><code>GET /currencies</code></p>
+            <h3 id="response-1">Response</h3>
+            <table>
+               <thead>
+                  <tr>
+                     <th>Name</th>
+                     <th>Description</th>
+                     <th>Type</th>
+                  </tr>
+               </thead>
+               <tbody>
+                  <tr>
+                     <td>CurrencyCode</td>
+                     <td>3 letter ISO country code</td>
+                     <td>string</td>
+                  </tr>
+                  <tr>
+                     <td>CurrencyName</td>
+                     <td>Full name of the currency</td>
+                     <td>string</td>
+                  </tr>
+                  <tr>
+                     <td>CurrencyFractionalName</td>
+                     <td>Name of the fractional currency</td>
+                     <td>string</td>
+                  </tr>
+                  <tr>
+                     <td>NumberOfDayToDeliver</td>
+                     <td>Number of days the currency will take to be delivered</td>
+                     <td>string</td>
+                  </tr>
+                  <tr>
+                     <td>CutOffTime</td>
+                     <td>Time by which a payment needs to be successfully initiated for same-day execution</td>
+                     <td>string</td>
+                  </tr>
+               </tbody>
+            </table>
+            <h1 id="payment-methods">Payment methods</h1>
+            <p>Different countries have different details required for making payments to them.</p>
+            <h3 id="description">Description</h3>
+            <p>This is an informational read-only endpoint for listing the payment methods for the countries and currencies we accept.</p>
+            <h2 id="get-payment-methods-for-a-country">Get payment methods for a country</h2>
+            <p>Retrieve the payment methods of a country.</p>
+            <blockquote>
+               <p>Example request:</p>
+            </blockquote>
+            <pre class="highlight bash"><code>curl -X GET http://api-test.cleartreasury.co.uk/api/paymentmethod \
      -H <span class="hljs-string">'Authorization: Bearer &lt;your auth token&gt;'</span>
      -d <span class="hljs-string">'{
           "CountryCode": "GB",
           "CCY": "GBP"
-        }'</span></code></pre><blockquote>
-<p>Example response:</p>
-</blockquote>
-<pre class="highlight json"><code>[
+        }'</span></code></pre>
+            <blockquote>
+               <p>Example response:</p>
+            </blockquote>
+            <pre class="highlight json"><code>[
   {
     <span class="hljs-attr">"CountryName"</span>: <span class="hljs-string">"United Kingdom"</span>,
     <span class="hljs-attr">"CCY"</span>: <span class="hljs-string">"GBP"</span>,
     <span class="hljs-attr">"RequiredField"</span>: <span class="hljs-string">"(Account Number, SortCode, Beneficiary Address) OR (IBAN, SWIFT)"</span>
   }
-]</code></pre><h3 id="request">Request</h3>
-<p><code>GET /paymentmethod</code></p>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-<th>Type</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>CountryName</td>
-<td>The full name of the country</td>
-<td>string</td>
-</tr>
-<tr>
-<td>CCY</td>
-<td>The currency</td>
-<td>string</td>
-</tr>
-<tr>
-<td>RequiredField</td>
-<td>Required fields when instructing payments of the requested currency to the country</td>
-<td>string</td>
-</tr>
-</tbody></table>
-<h3 id="response">Response</h3>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Description</th>
-<th>Type</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>CountryName</td>
-<td>Full name of the country</td>
-<td>string</td>
-</tr>
-<tr>
-<td>ISO2</td>
-<td>2 letter ISO country code</td>
-<td>string</td>
-</tr>
-<tr>
-<td>ISO3</td>
-<td>3 letter ISO country code</td>
-<td>string</td>
-</tr>
-<tr>
-<td>RiskScore</td>
-<td>Compliance risk score for this country</td>
-<td>decimal</td>
-</tr>
-</tbody></table>
-
-            
-               <h1 id="errors">Errors</h1>
-<p>We use common HTTP status codes included in the response header to indicate success or failure.</p>
-<p>We follow <a href="https://tools.ietf.org/html/rfc7807">RFC 7807 - Problem Details for HTTP APIs</a> for formatting our response objects.</p>
-<h2 id="http-status-codes">HTTP Status Codes</h2>
-<table>
-<thead>
-<tr>
-<th>Error Code</th>
-<th>Meaning</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>200</td>
-<td>OK. Successful request</td>
-</tr>
-<tr>
-<td>201</td>
-<td>OK. Resource created.</td>
-</tr>
-<tr>
-<td>400</td>
-<td>Bad Request. The request could not be understood by the server due to malformed syntax.</td>
-</tr>
-<tr>
-<td>401</td>
-<td>Unauthorized. Your API key is invalid or has expired.</td>
-</tr>
-<tr>
-<td>403</td>
-<td>Forbidden. You do not have permissions to access the resource.</td>
-</tr>
-<tr>
-<td>404</td>
-<td>Not Found. The specified resource could not be found.</td>
-</tr>
-<tr>
-<td>405</td>
-<td>Method Not Allowed. You tried to access a resource with an invalid method.</td>
-</tr>
-<tr>
-<td>406</td>
-<td>Not Acceptable. You requested a format that isn&#39;t JSON.</td>
-</tr>
-<tr>
-<td>410</td>
-<td>Gone. The value requested has been removed from our servers or has expired.</td>
-</tr>
-<tr>
-<td>418</td>
-<td><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/418">I&#39;m a teapot</a></td>
-</tr>
-<tr>
-<td>429</td>
-<td>Too Many Requests. You&#39;re requesting too many values! Slow down!</td>
-</tr>
-<tr>
-<td>500</td>
-<td>Internal Server Error. We had a problem with our server. Try again later.</td>
-</tr>
-<tr>
-<td>503</td>
-<td>Service Unavailable. We&#39;re temporarily offline for maintenance. Please try again later.</td>
-</tr>
-</tbody></table>
-<h2 id="validation-errors">Validation Errors</h2>
-<blockquote>
-<p>Example Validation Error:</p>
-</blockquote>
-<pre class="highlight json"><code>{
+]</code></pre>
+            <h3 id="request">Request</h3>
+            <p><code>GET /paymentmethod</code></p>
+            <table>
+               <thead>
+                  <tr>
+                     <th>Name</th>
+                     <th>Description</th>
+                     <th>Type</th>
+                  </tr>
+               </thead>
+               <tbody>
+                  <tr>
+                     <td>CountryName</td>
+                     <td>The full name of the country</td>
+                     <td>string</td>
+                  </tr>
+                  <tr>
+                     <td>CCY</td>
+                     <td>The currency</td>
+                     <td>string</td>
+                  </tr>
+                  <tr>
+                     <td>RequiredField</td>
+                     <td>Required fields when instructing payments of the requested currency to the country</td>
+                     <td>string</td>
+                  </tr>
+               </tbody>
+            </table>
+            <h3 id="response">Response</h3>
+            <table>
+               <thead>
+                  <tr>
+                     <th>Name</th>
+                     <th>Description</th>
+                     <th>Type</th>
+                  </tr>
+               </thead>
+               <tbody>
+                  <tr>
+                     <td>CountryName</td>
+                     <td>Full name of the country</td>
+                     <td>string</td>
+                  </tr>
+                  <tr>
+                     <td>ISO2</td>
+                     <td>2 letter ISO country code</td>
+                     <td>string</td>
+                  </tr>
+                  <tr>
+                     <td>ISO3</td>
+                     <td>3 letter ISO country code</td>
+                     <td>string</td>
+                  </tr>
+                  <tr>
+                     <td>RiskScore</td>
+                     <td>Compliance risk score for this country</td>
+                     <td>decimal</td>
+                  </tr>
+               </tbody>
+            </table>
+            <h1 id="errors">Errors</h1>
+            <p>We use common HTTP status codes included in the response header to indicate success or failure.</p>
+            <p>We follow <a href="https://tools.ietf.org/html/rfc7807">RFC 7807 - Problem Details for HTTP APIs</a> for formatting our response objects.</p>
+            <h2 id="http-status-codes">HTTP Status Codes</h2>
+            <table>
+               <thead>
+                  <tr>
+                     <th>Error Code</th>
+                     <th>Meaning</th>
+                  </tr>
+               </thead>
+               <tbody>
+                  <tr>
+                     <td>200</td>
+                     <td>OK. Successful request</td>
+                  </tr>
+                  <tr>
+                     <td>201</td>
+                     <td>OK. Resource created.</td>
+                  </tr>
+                  <tr>
+                     <td>400</td>
+                     <td>Bad Request. The request could not be understood by the server due to malformed syntax.</td>
+                  </tr>
+                  <tr>
+                     <td>401</td>
+                     <td>Unauthorized. Your API key is invalid or has expired.</td>
+                  </tr>
+                  <tr>
+                     <td>403</td>
+                     <td>Forbidden. You do not have permissions to access the resource.</td>
+                  </tr>
+                  <tr>
+                     <td>404</td>
+                     <td>Not Found. The specified resource could not be found.</td>
+                  </tr>
+                  <tr>
+                     <td>405</td>
+                     <td>Method Not Allowed. You tried to access a resource with an invalid method.</td>
+                  </tr>
+                  <tr>
+                     <td>406</td>
+                     <td>Not Acceptable. You requested a format that isn&#39;t JSON.</td>
+                  </tr>
+                  <tr>
+                     <td>410</td>
+                     <td>Gone. The value requested has been removed from our servers or has expired.</td>
+                  </tr>
+                  <tr>
+                     <td>418</td>
+                     <td><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/418">I&#39;m a teapot</a></td>
+                  </tr>
+                  <tr>
+                     <td>429</td>
+                     <td>Too Many Requests. You&#39;re requesting too many values! Slow down!</td>
+                  </tr>
+                  <tr>
+                     <td>500</td>
+                     <td>Internal Server Error. We had a problem with our server. Try again later.</td>
+                  </tr>
+                  <tr>
+                     <td>503</td>
+                     <td>Service Unavailable. We&#39;re temporarily offline for maintenance. Please try again later.</td>
+                  </tr>
+               </tbody>
+            </table>
+            <h2 id="validation-errors">Validation Errors</h2>
+            <blockquote>
+               <p>Example Validation Error:</p>
+            </blockquote>
+            <pre class="highlight json"><code>{
   <span class="hljs-attr">"Type"</span>: <span class="hljs-string">"https://api-docs.cleartreasury.co.uk/#errors"</span>,
   <span class="hljs-attr">"Title"</span>: <span class="hljs-string">"Problem creating resource"</span>,
   <span class="hljs-attr">"Status"</span>: <span class="hljs-number">400</span>,
@@ -3182,42 +3242,38 @@ curl -X GET http://api-test.cleartreasury.co.uk/api/trades \
       <span class="hljs-attr">"reason"</span>: <span class="hljs-string">"Param needs to be supplied"</span>
     }
   ]
-}</code></pre><p>Data validation or violation of business rules related errors. Response could contain multiple errors.</p>
-<h2 id="authentication-errors">Authentication Errors</h2>
-<blockquote>
-<p>Example Authentication Error:</p>
-</blockquote>
-<pre class="highlight json"><code>{
+}</code></pre>
+            <p>Data validation or violation of business rules related errors. Response could contain multiple errors.</p>
+            <h2 id="authentication-errors">Authentication Errors</h2>
+            <blockquote>
+               <p>Example Authentication Error:</p>
+            </blockquote>
+            <pre class="highlight json"><code>{
   <span class="hljs-attr">"Type"</span>: <span class="hljs-string">"https://api-docs.cleartreasury.co.uk/#errors"</span>,
   <span class="hljs-attr">"Title"</span>: <span class="hljs-string">"Unauthorized"</span>,
   <span class="hljs-attr">"Status"</span>: <span class="hljs-number">401</span>,
   <span class="hljs-attr">"Detail"</span>: <span class="hljs-string">"You must be authorized to access this resource"</span>
-}</code></pre><p>Your authorization token is either not valid or has expired.</p>
-<p>Get in touch with us to to request a new token.</p>
-<h2 id="system-errors">System Errors</h2>
-<blockquote>
-<p>Example System Error:</p>
-</blockquote>
-<pre class="highlight json"><code>{
+}</code></pre>
+            <p>Your authorization token is either not valid or has expired.</p>
+            <p>Get in touch with us to to request a new token.</p>
+            <h2 id="system-errors">System Errors</h2>
+            <blockquote>
+               <p>Example System Error:</p>
+            </blockquote>
+            <pre class="highlight json"><code>{
   <span class="hljs-attr">"Type"</span>: <span class="hljs-string">"https://api-docs.cleartreasury.co.uk/#errors"</span>,
   <span class="hljs-attr">"Title"</span>: <span class="hljs-string">"Internal Server Error"</span>,
   <span class="hljs-attr">"Status"</span>: <span class="hljs-number">500</span>,
   <span class="hljs-attr">"Detail"</span>: <span class="hljs-string">"No message available"</span>,
   <span class="hljs-attr">"Instance"</span>: <span class="hljs-string">"/error/00000"</span>
-}</code></pre><p>Something went wrong in our side.</p>
-<p>Please contact support quoting the <code>Instance</code> URI.</p>
-
-            
+}</code></pre>
+            <p>Something went wrong in our side.</p>
+            <p>Please contact support quoting the <code>Instance</code> URI.</p>
          </div>
          <div class=dark-box>
-            
-               <div class=lang-selector>
-                  
-               </div>
-            
+            <div class=lang-selector>
+            </div>
          </div>
       </div>
-
    </body>
-
 </html>
