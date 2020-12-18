@@ -33,7 +33,7 @@ curl -X POST http://api-test.cleartreasury.co.uk/api/payments \
           "currency": "GBP",
           "amount": "500",
           "purpose": "Making an investment",
-          "payment_guid": "<your GUID>"
+          "payment_reference": ""
         }'
 ```
 
@@ -41,7 +41,7 @@ curl -X POST http://api-test.cleartreasury.co.uk/api/payments \
 
 ```json
 {
-  "PaymentGuid": "<your GUID>"
+  "PaymentGuid": "<GUID>"
 }
 ```
 
@@ -49,24 +49,24 @@ curl -X POST http://api-test.cleartreasury.co.uk/api/payments \
 
 `POST /payments?client_ref={client_ref}`
 
-**Trade reference**: If this payment is not linked to a trade leave it blank, or set it to `"auto"` to attempt to automatically retrieve an available trade.
+**Trade reference**: If this payment is not linked to a trade leave it blank, or
+set it to `"auto"` to attempt to automatically retrieve an available trade.
 
-| Name           | Description                                                               | Required | Type   | Additional information                       |
-| -------------- | ------------------------------------------------------------------------- | -------- | ------ | -------------------------------------------- |
-| client_ref     | Client reference you're instructing the payment on behalf of              | Yes      | string | [`client_ref`](#create-a-client)             |
-| beneficiary_id | ID of the beneficiary                                                     | Yes      | string | [`id`](#create-a-beneficiary)                |
-| trade_ref      | Reference of the trade used to instruct this payment                      | Yes      | string | [`trade_id`](#book-trade), `"auto"`, or `""` |
-| currency       | Currency of the payment                                                   | Yes      | string | ISO 3 letter currency code                   |
-| amount         | Amount to be instructed                                                   | Yes      | string |                                              |
-| fee            |                                                                           | No       | string |                                              |
-| purpose        | Reason for the payment                                                    | No       | string |                                              |
-| payment_guid   | A GUID defined by yourself that can be used to retrieve the payment later | No       | string |                                              |
+| Name              | Description                                                  | Required | Type   | Additional information                       |
+| ----------------- | ------------------------------------------------------------ | -------- | ------ | -------------------------------------------- |
+| client_ref        | Client reference you're instructing the payment on behalf of | Yes      | string | [`client_ref`](#create-a-client)             |
+| beneficiary_id    | ID of the beneficiary                                        | Yes      | string | [`id`](#create-a-beneficiary)                |
+| trade_ref         | Reference of the trade used to instruct this payment         | Yes      | string | [`trade_id`](#book-trade), `"auto"`, or `""` |
+| currency          | Currency of the payment                                      | Yes      | string | ISO 3 letter currency code                   |
+| amount            | Amount to be instructed                                      | Yes      | string |                                              |
+| purpose           | Reason for the payment                                       | No       | string |                                              |
+| payment_reference | Reference to attach to the payment for your records          | No       | string |                                              |
 
 ### Response
 
-| Name        | Description                           | Type   |
-| ----------- | ------------------------------------- | ------ |
-| PaymentGuid | The GUID you specified in the request | string |
+| Name        | Description                  | Type   |
+| ----------- | ---------------------------- | ------ |
+| PaymentGuid | The unique ID of the payment | string |
 
 <!-- ## List all payments
 
