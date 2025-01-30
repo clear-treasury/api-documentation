@@ -3,7 +3,7 @@ name: Deploy Slate Docs
 on:
   push:
     branches:
-      - master
+      - master   
 
 jobs:
   build-and-deploy:
@@ -21,7 +21,7 @@ jobs:
 
       - name: Build Slate
         run: |
-          bundle install
+          bundle install --path vendor/bundle
           bundle exec middleman build --clean
 
       - name: Deploy to GitHub Pages
