@@ -3,7 +3,7 @@ name: Deploy Slate Docs
 on:
   push:
     branches:
-      - master  # master branch
+      - master  #  
 
 jobs:
   build-and-deploy:
@@ -17,11 +17,13 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y ruby-full build-essential
-          gem install bundler
+          gem install bundler --user-install
+          echo "$HOME/.local/share/gem/ruby/3.2.0/bin" >> $GITHUB_PATH  #  
 
       - name: Build Slate
         run: |
-          bundle install --path vendor/bundle
+          bundle config set --local path 'vendor/bundle'  #  
+          bundle install
           bundle exec middleman build --clean
 
       - name: Deploy to GitHub Pages
