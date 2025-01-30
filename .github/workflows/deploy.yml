@@ -22,12 +22,13 @@ jobs:
 
       - name: Build Slate
         run: |
+          ls -la  # Vérifier que Gemfile est bien présent
           bundle config set --local path 'vendor/bundle'  #  
           bundle install
-          bundle exec middleman build --clean
+          bundle exec middleman build --clean  #  
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./build
+          publish_dir: ./build  #  
