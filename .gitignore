@@ -6,3 +6,8 @@
 
 # Extraneous system files
 .DS_Store
+/.vs/VSWorkspaceState.json
+/.vs/api-documentation/config/applicationhost.config
+/.vs/api-documentation/FileContentIndex
+/.vs/api-documentation/v17
+/.vs

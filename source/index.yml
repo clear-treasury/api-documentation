@@ -15,6 +15,7 @@ includes:
   - trades
   - countries-and-currencies
   - payment-methods
+  - holidays
   - _errors
 
 search: true
