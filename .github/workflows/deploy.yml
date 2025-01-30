@@ -3,7 +3,7 @@ name: Deploy Slate Docs
 on:
   push:
     branches:
-      - master   
+      - master  # master branch
 
 jobs:
   build-and-deploy:
