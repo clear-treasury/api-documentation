@@ -16,7 +16,7 @@ jobs:
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '3.2'  # Ensure this matches your Ruby version
+          ruby-version: '3.2.6'  # Ensure this matches your Ruby version
           bundler-cache: true
 
       - name: Install Bundler 2.4.19
@@ -28,6 +28,9 @@ jobs:
           bundle config set --local path 'vendor/bundle'
           bundle install
 
+      - name: Verify Installed Gems
+        run: bundle list
+
       - name: Build documentation
         run: bundle exec middleman build --clean
 
@@ -35,4 +38,4 @@ jobs:
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./build  # Ensure this is the correct path to the built files
+          publish_dir: ./build  
