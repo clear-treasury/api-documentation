@@ -18,4 +18,4 @@ gem 'middleman-autoprefixer', '~> 3.0.0'  # Optional: For autoprefixing CSS
 gem 'middleman-deploy', '~> 1.0'
 
 # Bundler version (ensure it matches the installed version)
-gem 'bundler', '2.4.19'
+gem 'bundler', '2.2.3'
