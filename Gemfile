@@ -2,24 +2,23 @@
 
 source 'https://rubygems.org'
 
-# Ruby version requirements
-ruby '3.2.6'
+# Specify your Ruby version here
+ruby '3.2.0'
 
-# Bundler version to match the GitHub Actions setup
-gem 'bundler', '2.4.19'
+# Middleman dependencies
+gem 'middleman', '4.5.1'  # Use Middleman version 4.5.1, which is stable with Ruby 3.2
 
-# Middleman for building static sites
-gem 'middleman', '~> 4.5'
+# ActiveSupport version that works with your Middleman setup
+gem 'activesupport', '~> 6.0.0'  # Change to ActiveSupport 6.0.x for compatibility
 
-# Optional: If you have any other dependencies specific to your project, list them here
-
+# Additional useful gems for Middleman
+gem 'middleman-livereload', '~> 4.5.0'  # Optional: If you're using live-reload functionality
+gem 'middleman-autoprefixer', '~> 4.2.1'  # Optional: For autoprefixing CSS
 # GitHub Pages support
 gem 'middleman-deploy', '~> 1.0'
 
-# Other gems you might need for Middleman
-gem 'middleman-livereload', '~> 3.4'  # compatible version for live reload during development
+# Logger gem, in case it's not being pulled in automatically
+gem 'logger', '~> 1.0'
 
-gem 'activesupport', '~> 6.0'  # Specify a compatible version
-
-# Use 'rake' for task automation (optional)
-gem 'rake', '~> 13.0'
+# Bundler version
+gem 'bundler', '2.4.19'
