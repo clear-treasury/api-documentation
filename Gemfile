@@ -1,6 +1,8 @@
 source 'https://rubygems.org'
 
-gem 'redcarpet', '~> 3.5'
-gem 'middleman', '~> 4.5.1'  # Ensure this is the latest stable Middleman
-gem 'middleman-livereload', '~> 3.4'
-gem 'activesupport', '6.1.7.2'  # Compatible version of ActiveSupport
+gem 'middleman', '~> 4.4.0'  # Downgraded to a version known to be more compatible
+gem 'activesupport', '6.0.3.7'  # Downgraded to a stable version for compatibility
+
+group :development do
+  gem 'bundler', '2.6.3'
+end
