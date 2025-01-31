@@ -6,7 +6,7 @@ source 'https://rubygems.org'
 ruby '3.2.6'
 
 # Bundler version to match the GitHub Actions setup
-gem 'bundler', '2.6.3'
+gem 'bundler', '2.4.19'
 
 # Middleman for building static sites
 gem 'middleman', '~> 4.5'
