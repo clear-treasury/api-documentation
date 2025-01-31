@@ -18,7 +18,7 @@ gem 'middleman-deploy', '~> 1.0'
 
 # Other gems you might need for Middleman
 gem 'middleman-livereload', '~> 3.4'  # compatible version for live reload during development
-gem 'middleman-logger', '~> 4.0'     # optional logging
+
 
 # Use 'rake' for task automation (optional)
 gem 'rake', '~> 13.0'
