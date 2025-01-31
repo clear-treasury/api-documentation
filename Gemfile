@@ -9,7 +9,7 @@ ruby '3.2.0'
 gem 'middleman', '4.5.1'  # Use Middleman version 4.5.1, which is stable with Ruby 3.2
 
 # ActiveSupport version that works with your Middleman setup
-gem 'activesupport', '~> 6.0.0'  # Change to ActiveSupport 6.0.x for compatibility
+gem 'activesupport', '~> 6.1.0'  # Change to ActiveSupport 6.0.x for compatibility
 
 # Additional useful gems for Middleman
 gem 'middleman-livereload', '~> 3.4.7'  # Optional: If you're using live-reload functionality
