@@ -3,7 +3,7 @@
 source 'https://rubygems.org'
 
 # Specify your Ruby version here
-ruby '3.2.0'
+ruby '3.2.6'
 
 # Middleman dependencies
 gem 'middleman', '4.5.1'  # Use Middleman version 4.5.1, which is stable with Ruby 3.2
