@@ -3,32 +3,33 @@ name: Deploy Slate Docs
 on:
   push:
     branches:
-      - master  #  
+      - main  # Change to your default branch if necessary
 
 jobs:
-  build-and-deploy:
+  build:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
-      - name: Install Ruby and Bundler
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y ruby-full build-essential
-          gem install bundler --user-install
-          echo "$HOME/.local/share/gem/ruby/3.2.0/bin" >> $GITHUB_PATH  #  
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.2'  # Ensure this matches your Ruby version
+          bundler-cache: true
 
-      - name: Build Slate
+      - name: Install dependencies
         run: |
-          ls -la  # Vérifier que Gemfile est bien présent
-          bundle config set --local path 'vendor/bundle'  #  
+          ls -la  # Debugging step to check files
+          bundle config set --local path 'vendor/bundle'
           bundle install
-          bundle exec middleman build --clean  #  
+
+      - name: Build Slate documentation
+        run: bundle exec middleman build --clean
 
       - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
+        uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./build  #  
+          publish_dir: ./build  # Ensure this is the correct path to the built files
