@@ -19,6 +19,9 @@ jobs:
           ruby-version: '3.2'  # Ensure this matches your Ruby version
           bundler-cache: true
 
+      - name: Install Bundler 2.6.3
+        run: gem install bundler -v 2.6.3
+
       - name: Install dependencies
         run: |
           ls -la  # Debugging step to check files
