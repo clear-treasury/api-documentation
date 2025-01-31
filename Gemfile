@@ -13,7 +13,7 @@ gem 'activesupport', '~> 6.0.0'  # Change to ActiveSupport 6.0.x for compatibili
 
 # Additional useful gems for Middleman
 gem 'middleman-livereload', '~> 3.4.7'  # Optional: If you're using live-reload functionality
-gem 'middleman-autoprefixer', '~> 4.2.1'  # Optional: For autoprefixing CSS
+gem 'middleman-autoprefixer', '~> 3.0.0'  # Optional: For autoprefixing CSS
 # GitHub Pages support
 gem 'middleman-deploy', '~> 1.0'
 
