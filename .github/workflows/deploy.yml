@@ -16,7 +16,7 @@ jobs:
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '3.2.6'  # Ensure this matches your Ruby version
+          ruby-version: '3.0.0'  # Ensure this matches your Ruby version
           bundler-cache: true
 
       - name: Install Bundler 2.4.19
